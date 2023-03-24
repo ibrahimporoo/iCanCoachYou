@@ -19,7 +19,7 @@ const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
 const taps = document.querySelectorAll('.fields .step');
 const progSteps = document.querySelectorAll('.steps h4');
-let tapIndex = 2;
+let tapIndex = 0;
 showTap(tapIndex);
 
 
