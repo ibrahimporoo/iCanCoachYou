@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>I can coach you</title>
+  <meta content="coaching" name="description">
+  <meta content="coaching, career path, career plan" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">  
+
+  <!-- Firebase's JavaScript API to interact with Firebase services -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-app.js" integrity="sha512-KakHaWvNgg3Mo/LptevcdwXzAmSFCFHrsvRUIRbUb++of57rXmIPQiAmpEeqaEdvhVk0ljxT2FpQk+wvP+j5LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Scaffold - v4.10.0
+  * Template URL: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->    
+</head>
+
+<body class="rtl">
+
+  <!-- Static Elements -->
+  <div id="alert-container">
+    <div id="alert">
+      <i class="alert-icon bi bi-exclamation-diamond-fill"></i>
+      <div class="text">
+        <h3 class="alert-title">You Must fill all fields.</h3>
+      </div>
+      <p>
+        <button id="close-alert">OK</button>
+      </p>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo">
+        <h1>
+          <a href="index.html">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 74 51" style="enable-background:new 0 0 74 51;width: 100px" xml:space="preserve">
+              <style type="text/css">
+                .st0 {
+                  fill: #4B97D2;
+                }
+              </style>
+              <g>
+                <g>
+                  <path class="st0" d="M19.3,45.48C8.66,45.48,0,36.35,0,25.12C0,13.9,8.66,4.77,19.3,4.77c0.97,0,1.75,0.83,1.75,1.85
+        s-0.79,1.85-1.75,1.85c-8.71,0-15.79,7.47-15.79,16.66s7.08,16.66,15.79,16.66c0.97,0,1.75,0.83,1.75,1.85
+        C21.06,44.65,20.27,45.48,19.3,45.48z"></path>
+                  <path class="st0" d="M19.3,39.93c-0.97,0-1.75-0.83-1.75-1.85s0.79-1.85,1.75-1.85c5.81,0,10.53-4.98,10.53-11.1
+        c0-6.12-4.72-11.1-10.53-11.1c-0.97,0-1.75-0.83-1.75-1.85s0.79-1.85,1.75-1.85c7.74,0,14.04,6.64,14.04,14.8
+        S27.04,39.93,19.3,39.93z"></path>
+                  <path class="st0" d="M17.55,33.45c-3.87,0-7.02-3.32-7.02-7.4c0-1.02,0.79-1.85,1.75-1.85s1.75,0.83,1.75,1.85
+        c0,2.04,1.57,3.7,3.51,3.7c1.93,0,3.51-1.66,3.51-3.7c0-1.02,0.79-1.85,1.75-1.85c0.97,0,1.75,0.83,1.75,1.85
+        C24.56,30.13,21.42,33.45,17.55,33.45z"></path>
+                </g>
+                <g>
+                  <path class="st0" d="M45.34,10.95v7.77h-2.05v-7.77H45.34z"></path>
+                  <path class="st0" d="M48.71,12.77c0.3-0.6,0.73-1.07,1.29-1.4c0.56-0.33,1.2-0.5,1.92-0.5c0.92,0,1.69,0.26,2.32,0.78
+        s1.03,1.22,1.21,2.11h-2.21c-0.13-0.29-0.32-0.52-0.55-0.67c-0.23-0.15-0.5-0.23-0.81-0.23c-0.47,0-0.85,0.18-1.13,0.53
+        s-0.42,0.83-0.42,1.43c0,0.6,0.14,1.08,0.42,1.44c0.28,0.36,0.66,0.53,1.13,0.53c0.31,0,0.58-0.08,0.81-0.23
+        c0.23-0.15,0.42-0.38,0.55-0.67h2.21c-0.18,0.89-0.58,1.59-1.21,2.11c-0.63,0.52-1.4,0.78-2.32,0.78c-0.72,0-1.37-0.17-1.92-0.5
+        c-0.56-0.33-0.99-0.8-1.29-1.4c-0.3-0.6-0.46-1.28-0.46-2.06C48.25,14.05,48.4,13.37,48.71,12.77z"></path>
+                  <path class="st0" d="M56.42,13.95c0.22-0.48,0.52-0.84,0.9-1.1c0.38-0.26,0.8-0.39,1.27-0.39c0.4,0,0.75,0.08,1.04,0.25
+        c0.29,0.17,0.52,0.4,0.68,0.68v-0.86h2.05v6.18h-2.05v-0.86c-0.16,0.29-0.39,0.51-0.68,0.68s-0.64,0.25-1.04,0.25
+        c-0.47,0-0.89-0.13-1.27-0.39s-0.68-0.63-0.9-1.11c-0.22-0.48-0.33-1.04-0.33-1.68C56.09,14.98,56.2,14.42,56.42,13.95z M60,14.68
+        c-0.21-0.23-0.46-0.34-0.76-0.34c-0.31,0-0.56,0.11-0.76,0.34s-0.3,0.54-0.3,0.94c0,0.4,0.1,0.71,0.3,0.94s0.46,0.35,0.76,0.35
+        c0.3,0,0.55-0.11,0.76-0.34c0.21-0.23,0.31-0.54,0.31-0.95C60.31,15.22,60.21,14.91,60,14.68z"></path>
+                  <path class="st0" d="M68.97,13.19c0.4,0.47,0.6,1.12,0.6,1.92v3.6h-2.05V15.4c0-0.35-0.09-0.63-0.26-0.83
+        c-0.17-0.2-0.41-0.3-0.7-0.3c-0.31,0-0.55,0.1-0.72,0.3s-0.26,0.48-0.26,0.83v3.32h-2.05v-6.18h2.05v0.88
+        c0.18-0.28,0.42-0.5,0.73-0.68c0.31-0.17,0.66-0.26,1.05-0.26C68.04,12.48,68.58,12.72,68.97,13.19z"></path>
+                  <path class="st0" d="M39.61,22.88c0.3-0.6,0.73-1.07,1.29-1.4c0.56-0.33,1.2-0.5,1.92-0.5c0.92,0,1.69,0.26,2.32,0.78
+        c0.63,0.52,1.03,1.22,1.21,2.11h-2.21c-0.13-0.29-0.32-0.52-0.55-0.67c-0.23-0.15-0.5-0.23-0.81-0.23c-0.47,0-0.85,0.18-1.13,0.53
+        s-0.42,0.83-0.42,1.43c0,0.6,0.14,1.08,0.42,1.44s0.66,0.53,1.13,0.53c0.31,0,0.58-0.08,0.81-0.23c0.23-0.15,0.42-0.38,0.55-0.67
+        h2.21c-0.18,0.89-0.58,1.59-1.21,2.11c-0.63,0.52-1.4,0.78-2.32,0.78c-0.72,0-1.37-0.17-1.92-0.5c-0.56-0.33-0.99-0.8-1.29-1.4
+        c-0.3-0.6-0.46-1.28-0.46-2.06C39.15,24.16,39.3,23.47,39.61,22.88z"></path>
+                  <path class="st0" d="M48.48,28.51c-0.46-0.26-0.83-0.62-1.09-1.1c-0.26-0.48-0.4-1.04-0.4-1.69c0-0.64,0.13-1.2,0.4-1.68
+        c0.27-0.48,0.63-0.84,1.1-1.1c0.46-0.26,0.99-0.39,1.57-0.39s1.11,0.13,1.57,0.39c0.46,0.26,0.83,0.62,1.1,1.1
+        c0.27,0.48,0.4,1.04,0.4,1.68c0,0.64-0.13,1.2-0.4,1.68c-0.27,0.48-0.64,0.85-1.1,1.11s-0.99,0.39-1.58,0.39
+        S48.94,28.77,48.48,28.51z M50.77,26.69c0.19-0.22,0.29-0.54,0.29-0.96s-0.1-0.74-0.29-0.96s-0.43-0.33-0.71-0.33
+        c-0.28,0-0.51,0.11-0.7,0.33c-0.19,0.22-0.28,0.54-0.28,0.96c0,0.43,0.09,0.75,0.27,0.97c0.18,0.22,0.41,0.33,0.7,0.33
+        S50.57,26.91,50.77,26.69z"></path>
+                  <path class="st0" d="M53.96,24.05c0.22-0.48,0.52-0.84,0.9-1.1c0.38-0.26,0.8-0.39,1.27-0.39c0.4,0,0.75,0.08,1.04,0.25
+        c0.29,0.17,0.52,0.4,0.68,0.68v-0.86h2.05v6.18h-2.05v-0.86c-0.16,0.29-0.39,0.51-0.68,0.68c-0.3,0.17-0.64,0.25-1.04,0.25
+        c-0.47,0-0.89-0.13-1.27-0.39s-0.68-0.63-0.9-1.11s-0.33-1.04-0.33-1.68C53.63,25.08,53.74,24.53,53.96,24.05z M57.55,24.79
+        c-0.21-0.23-0.46-0.34-0.76-0.34c-0.31,0-0.56,0.11-0.76,0.34c-0.2,0.22-0.3,0.54-0.3,0.94c0,0.4,0.1,0.71,0.3,0.94
+        s0.46,0.35,0.76,0.35c0.3,0,0.55-0.11,0.76-0.34c0.21-0.23,0.31-0.54,0.31-0.95C57.86,25.33,57.75,25.02,57.55,24.79z"></path>
+                  <path class="st0" d="M61.12,24.05c0.25-0.48,0.6-0.84,1.05-1.1c0.45-0.26,0.96-0.39,1.54-0.39c0.75,0,1.37,0.21,1.88,0.64
+        s0.84,1.03,0.98,1.8H64.4c-0.13-0.4-0.37-0.61-0.73-0.61c-0.26,0-0.46,0.11-0.61,0.34c-0.15,0.22-0.22,0.55-0.22,0.99
+        s0.08,0.76,0.22,0.99c0.15,0.23,0.35,0.34,0.61,0.34c0.37,0,0.61-0.2,0.73-0.61h2.17c-0.15,0.76-0.47,1.36-0.98,1.8
+        s-1.14,0.65-1.88,0.65c-0.58,0-1.09-0.13-1.54-0.39c-0.45-0.26-0.8-0.62-1.05-1.1c-0.25-0.48-0.38-1.04-0.38-1.69
+        C60.74,25.08,60.87,24.53,61.12,24.05z"></path>
+                  <path class="st0" d="M72.87,23.29c0.39,0.47,0.59,1.12,0.59,1.92v3.6h-2.05V25.5c0-0.35-0.09-0.63-0.26-0.83
+        c-0.17-0.2-0.41-0.3-0.7-0.3c-0.31,0-0.55,0.1-0.72,0.3s-0.26,0.48-0.26,0.83v3.32h-2.05v-8.16h2.05v2.86
+        c0.18-0.28,0.43-0.51,0.74-0.68c0.31-0.17,0.67-0.26,1.07-0.26C71.94,22.58,72.47,22.82,72.87,23.29z"></path>
+                  <path class="st0" d="M53.12,31.15l-2.59,5.3v2.47h-2.06v-2.47l-2.59-5.3h2.34l1.3,3l1.29-3H53.12z"></path>
+                  <path class="st0" d="M54.9,38.62c-0.46-0.26-0.83-0.62-1.09-1.1c-0.26-0.48-0.4-1.04-0.4-1.69c0-0.64,0.13-1.2,0.4-1.68
+        c0.27-0.48,0.63-0.84,1.1-1.1c0.46-0.26,0.99-0.39,1.57-0.39s1.11,0.13,1.57,0.39c0.46,0.26,0.83,0.62,1.1,1.1
+        c0.27,0.48,0.4,1.04,0.4,1.68c0,0.64-0.13,1.2-0.4,1.68c-0.27,0.48-0.64,0.85-1.1,1.11S57.06,39,56.48,39S55.37,38.87,54.9,38.62z
+        M57.19,36.79c0.19-0.22,0.29-0.54,0.29-0.96s-0.1-0.74-0.29-0.96s-0.43-0.33-0.71-0.33c-0.28,0-0.51,0.11-0.7,0.33
+        c-0.19,0.22-0.28,0.54-0.28,0.96c0,0.43,0.09,0.75,0.27,0.97c0.18,0.22,0.41,0.33,0.7,0.33S57,37.02,57.19,36.79z"></path>
+                  <path class="st0" d="M66.39,32.74v6.18h-2.06v-0.88c-0.17,0.28-0.41,0.51-0.72,0.68c-0.31,0.17-0.66,0.26-1.06,0.26
+        c-0.68,0-1.22-0.24-1.61-0.71c-0.39-0.47-0.59-1.12-0.59-1.93v-3.59h2.04v3.32c0,0.35,0.09,0.63,0.27,0.83s0.41,0.3,0.71,0.3
+        c0.3,0,0.54-0.1,0.71-0.3c0.17-0.2,0.26-0.48,0.26-0.83v-3.32H66.39z"></path>
+                </g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+            </svg>
+          </a>
+        </h1>
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">الرئيسية</a></li>
+          <li class="dropdown"><a href="#"><span style="padding: 3px;">عن</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="#about">عنا</a></li>
+              <li><a class="nav-link scrollto" href="#testimonials">التوصيات</a></li>
+              </li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#services">الخدمات</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">الأسعار</a></li>
+          <li><a class="nav-link scrollto" href="#coaches">المدربون</a></li>
+          <li><a class="nav-link scrollto" href="#contact">تواصل بنا</a></li>
+          <li class="dropdown"><a href="#"> <span style="padding: 3px;"> اللغة</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="index.html" dir="rtl" class="nav-link scrollto">English</a></li>
+              <li><a href="index-ar.html" class="nav-link scrollto">عربي</a></li>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links d-flex align-items-center">
+        <!--<a href="#" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>-->
+        <a href="https://www.facebook.com/Icancoachyouonline" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.linkedin.com/company/icancoachyouonline/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- Joining Form for Coaches --> 
+  <form class="join-form on" novalidate>
+    <div class="join-form-content p-4 d-flex gap-5">
+      <!-- Steps -->
+      <div class="steps">
+        <h4>1</h4>
+        <h4>2</h4>
+        <h4>3</h4>
+      </div>
+      <!-- Inputs -->
+      <div class="fields">
+        <div class="step choosing-btns">
+          <h2 class="text-center">Coach Informations</h2>
+          <div class="row">
+            <article>
+              <p>What's your name in English?</p>
+              <input type="text" name="en_name" placeholder="example: Ebrahim Anwar">
+            </article>
+            <article>
+              <p>What's your name in Arabic?</p>
+              <input type="text" name="ar_name" placeholder="مثال: إبراهيم أنور" style="direction: rtl;"/>
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>What's your WhatsApp number?</p>
+              <input type="text" name="whats_number" placeholder="example: +201099827398">
+            </article>
+            <article>
+              <p>Where are you located?</p>
+              <input type="text" name="location" placeholder="example: Egypt/Cairo">
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>What's your gender?</p>
+              <select name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </article>
+            <article>
+              <p>How old are you?</p>
+              <input type="number" name="age" placeholder="example: 20">
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>What's the name of your college/university?</p>
+              <input type="text" name="college" placeholder="example: Cairo University">
+            </article>
+            <article>
+              <p>Field of study?</p>
+              <input type="text" name="study_field" placeholder="example: Civil Engineering">
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>Graduation year?</p>
+              <input type="number" name="G_Year" placeholder="example: 2025">
+            </article>
+            <article>
+              <p>What is your Degree?</p>
+              <select name="degree">
+                <option value="bachelor">Bachelor</option>
+                <option value="master">Master</option>
+                <option value="dectorate">Dectorate</option>
+                <option value="other">Other</option>
+              </select>
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>What's the main email that you always open</p>
+              <input type="email" placeholder="email...">
+            </article>
+            <article class="d-flex flex-column gap-3">
+              <div>
+                <p>Which one of these options suits you for the coaching sessions?</p>
+                <label>
+                  <span>Online or offline it doesn't matter</span>
+                  <input type="radio" checked name="session_way" value="both" />
+                </label>
+                <label>
+                  <span>Online</span>
+                  <input type="radio" name="session_way" value="online" />
+                </label>
+                <label>
+                  <span>Offline</span>
+                  <input type="radio" name="session_way" value="offline" />
+                </label>
+                <label>
+                  <span>Other</span>
+                  <input type="radio" name="session_way" value="Other" />
+                </label>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="step choosing-btns">
+          <h2 class="text-center">Coach's Portfolio</h2>
+          <div class="row">
+            <article>
+              <p>What is the industry you can give coaching in?</p>
+              <label>
+                <span>Sales & Marketing</span>
+                <input type="checkbox" name="industry" value="Sales & Marketing" />
+              </label>
+              <label>
+                <span>Business Management</span>
+                <input type="checkbox" name="industry" value="Business Management" />
+              </label>
+              <label>
+                <span>Soft Skills</span>
+                <input type="checkbox" name="industry" value="Soft Skills" />
+              </label>
+              <label>
+                <span>Content & copy rights</span>
+                <input type="checkbox" name="industry" value="Content & copy rights" />
+              </label>
+              <label>
+                <span>HR</span>
+                <input type="checkbox" name="industry" value="HR" />
+              </label>
+              <label>
+                <span>Media, Photography & Film</span>
+                <input type="checkbox" name="industry" value="Media, Photography & Film" />
+              </label>
+              <label>
+                <span>Technology</span>
+                <input type="checkbox" name="industry" value="Technology" />
+              </label>
+              <label>
+                <span>HR</span>
+                <input type="checkbox" name="industry" value="HR" />
+              </label>
+              <label>
+                <span>programming</span>
+                <input type="checkbox" name="industry" value="programming" />
+              </label>
+              <label>
+                <span>Cyber security</span>
+                <input type="checkbox" name="industry" value="Cyber security" />
+              </label>
+              <label>
+                <span>operations</span>
+                <input type="checkbox" name="industry" value="operations" />
+              </label>
+              <label>
+                <span>Legal</span>
+                <input type="checkbox" name="industry" value="Legal" />
+              </label>
+              <label>
+                <span>Finance</span>
+                <input type="checkbox" name="industry" value="Finance" />
+              </label>
+              <label>
+                <span>Science & Productivity</span>
+                <input type="checkbox" name="industry" value="Science & Productivity" />
+              </label>
+              <label>
+                <span>Languages</span>
+                <input type="checkbox" name="industry" value="Languages" />
+              </label>
+              <label>
+                <span>Logistics</span>
+                <input type="checkbox" name="industry" value="Logistics" />
+              </label>
+              <label>
+                <span>Arts & Design</span>
+                <input type="checkbox" name="industry" value="Arts & Design" />
+              </label>
+              <label>
+                <span>Entrepreneurship</span>
+                <input type="checkbox" name="industry" value="Entrepreneurship" />
+              </label>
+              <label>
+                <span>Parenting & Relationships</span>
+                <input type="checkbox" name="industry" value="Parenting & Relationships" />
+              </label>
+              <label>
+                <span>Kids Development</span>
+                <input type="checkbox" name="industry" value="Kids Development" />
+              </label>
+              <label>
+                <span>Lifestyle & Health</span>
+                <input type="checkbox" name="industry" value="Lifestyle & Health" />
+              </label>
+              <label>
+                <span>Others</span>
+                <input type="checkbox" name="industry" value="Others" />
+              </label>
+            </article>
+            <article class="d-flex flex-column gap-4">
+              <div>
+                <p>How would you describe your job title?</p>
+                <label>
+                  <span>Indiviual Contributer - Self Employed</span>
+                  <input type="checkbox" name="jobTitle" value="Indiviual Contributer - Self Employed" />
+                </label>
+                <label>
+                  <span>Middle Manager</span>
+                  <input type="checkbox" name="jobTitle" value="Middle Manager" />
+                </label>
+                <label>
+                  <span>Senior Manager</span>
+                  <input type="checkbox" name="jobTitle" value="Senior Manager" />
+                </label>
+                <label>
+                  <span>Director/VP</span>
+                  <input type="checkbox" name="jobTitle" value="Director/VP" />
+                </label>
+                <label>
+                  <span>C-suite/Executive</span>
+                  <input type="checkbox" name="jobTitle" value="C-suite/Executive" />
+                </label>
+                <label>
+                  <span>Founder/Business Owner</span>
+                  <input type="checkbox" name="jobTitle" value="Founder/Business Owner" />
+                </label>
+                <label>
+                  <span>Others</span>
+                  <input type="checkbox" name="jobTitle" value="Others" />
+                </label>
+              </div>
+              <div>
+                <p>Do you have work experience or not (please mention if you have)</p>
+                <span class="example">For Example No or Yes, Marketing manager at Enactus</span>
+                <input type="text" name="picture_link" placeholder="image link drive for example.." />
+              </div>
+              <div>
+                <p>add your Profile Picture as a link. Please add the most professional photo you have</p>
+                <input type="text" name="picture_link" placeholder="image link drive for example.." />
+              </div>
+              <div>
+                <p>What's your Profile LinkedIn link?</p>
+                <span class="example">or Facebook or Instagram or twitter or YouTube or Behance (the most professional one)</span>
+                <span class="example">You can bring the link from <a href="https://www.linkedin.com" target="_blank">here </a></span>
+                <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
+              </div>
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>Write a summary you wish to display in the website?</p>
+              <p>Please add it in English for Example:-</p>
+              <span class="example">
+                Entrepreneurship, Programming, Sales & Marketing, Business Management, Technology, operations
+                Serial entrepreneur, 12 years of experience in business development, CEO & Co-founder of Elmawkaa Company LLC.
+              </span>
+              <textarea name="en_summary"></textarea>
+              <!-- <input type="text" placeholder="example: Ebrahim Anwar"> -->
+            </article>
+            <article class="d-flex flex-column gap-3">
+              <div>
+                <p>Add your CV link, if you have</p>
+                <span class="example">it should be PDF link from your google drive</span>
+                <input type="text" name="cv_link" placeholder="cv link drive for example.." />
+              </div>
+              <div>
+                <p>What's your English Language skills?</p>
+                <select name="en_lang">
+                  <option value="Native">Native</option>
+                  <option value="Fluent">Fluent</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Beginner">Beginner</option>
+                </select>
+              </div>
+              <div>
+                <p>Are you available/free for at least 2:3 hours every week?</p>
+                <label>
+                  <span>Yes</span>
+                  <input type="radio" name="coachTime" value="Yes" checked />
+                </label>
+                <label>
+                  <span>No</span>
+                  <input type="radio" name="coachTime" value="No" />
+                </label>
+                <label>
+                  <span>Maybe</span>
+                  <input type="radio" name="coachTime" value="Maybe" />
+                </label>
+                <label>
+                  <span>Other</span>
+                  <input type="radio" name="coachTime" value="Other" />
+                </label>
+              </div>
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>Write a summary you wish to display in the website?</p>
+              <p>Please add it in Arabic for Example:-</p>
+              <span class="example" style="direction: rtl;">
+                ريادة الأعمال ، البرمجة ، المبيعات والتسويق ، إدارة الأعمال ، التكنولوجيا ، العمليات
+                رائد أعمال ، 11 عامًا من الخبرة في تطوير الأعمال ، الرئيس التنفيذي والشريك المؤسس لشركة الموقع ( LLC ) واحدة من أفضل الشركات الناشئة نموًا في صناعة البناء والتشييد في مصر.
+              </span>
+              <textarea name="ar_summary"></textarea>
+              <!-- <input type="text" placeholder="example: Ebrahim Anwar"> -->
+            </article>
+            <article class="d-flex flex-column gap-3">
+              <div>
+                <p>What's your objective in life?</p>
+                <input type="text" name="coach_goal">
+              </div>
+              <div>
+                <p>Who is your role model?</p>
+                <input type="text" name="coach_goal" />
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="step choosing-btns">
+          <h2 class="text-center">Dealing With Us</h2>
+          <div class="row">
+            <article>
+              <p>What's your hourly rate for an hour coach session</p>
+              <span class="example">
+                For Example 500 EGP also we take 25% commission to be sustainable and for payment getaway's fees
+              </span>
+              <input type="text" placeholder="500 EGP" name="hourly_rate" />
+            </article>
+            <article>
+              <p>Please add your calendly.com link as we will send it to the clients after they pay</p>
+              <span class="example">
+                For Example:
+                <a href="https://calendly.com/waleed-abdelrahman/60min" target="_blank">
+                  https://calendly.com/waleed-abdelrahman/60min
+                </a>
+              </span>
+              <input type="text" placeholder="https://calendly.com/waleed-abdelrahman/60min" name="hourly_rate" />
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>Please add your bank account details or wallet details For Example:- </p>
+              <span class="example">
+                Bank Name: CIB | Commercial International bank of Egypt
+                Beneficiary Name: Ibrahim Anwar Mohamed Elsoufi Mahmoud Elashiri 
+                Beneficiary address: 13 st mosa mizar, Elfawal, Fayoum, Egypt
+                Phone number: 01026623085
+                Bank Address: Smart Village branch, Egypt.
+                Account Number: 100035645197
+                Swift code: CIBEEGCX119
+                IBAN: EG200010011900000100035645197
+                Or
+                Vodafone cash: 01026623085
+              </span>
+              <textarea name="ar_summary"></textarea>
+            </article>
+            <article class="d-flex flex-column gap-4">
+              <div>
+                <p>How did you hear about us?</p>
+                <label>
+                  <span>Google</span>
+                  <input type="radio" name="arrival_way" value="google" checked />
+                </label>
+                <label>
+                  <span>Facebook</span>
+                  <input type="radio" name="arrival_way" value="facebook" />
+                </label>
+                <label>
+                  <span>LinkedIn</span>
+                  <input type="radio" name="arrival_way" value="linkedIn" />
+                </label>
+                <label>
+                  <span>Friend</span>
+                  <input type="radio" name="arrival_way" value="friend" />
+                </label>
+                <label>
+                  <span>Other</span>
+                  <input type="radio" name="arrival_way" value="other" />
+                </label>
+              </div>
+              <div>
+                <textarea name="comment" placeholder="any comment..."></textarea>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="btns">
+          <button id="reset" type="reset">Reset Data</button>
+          <button id="prev" type="button">Previous</button>
+          <button id="next" type="button">Next</button>
+        </div>
+      </div>
+      <!-- Submitted Content -->
+      <div class="form-submitted">
+        <div class="submitted-content">
+          <i class="bi bi-check-circle-fill"></i>
+          <h3>Thank You!</h3>
+          <p>Your Submission has been reveived</p>
+        </div>
+      </div>
+    </div>
+    <!-- <i class="bi bi-x close-form"></i> -->
+    <button type="button" class="close-form">&#9932;</button>
+  </form>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+          <div>
+            <h1>نحن نقوم بتمكينك وليس فقط تدريبك.</h1>
+            <h2>
+              نحن فريق من المدربين الموهوبين الذين يقدمون للآخرين خططًا لتحقيق أهدافهم باستخدام الذكاء الاصطناعي.
+            </h2>
+            <script>
+              const apiKey = "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";
+              const model = "text-davinci-003";
+              const temperature = 0;
+              const maxTokens = 4060;
+              
+              function getResponse() {
+                var input = "Create a career path plan, how to start, and books & course that can help for"+ document.getElementById("input").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "https://api.openai.com/v1/completions");
+              
+                // Show the loading message
+                document.getElementById("response").innerHTML = "Browse the website, as this may take up to 30 seconds.";
+                document.getElementById("response").style.color = "blue";
+              
+                // Set up the request body with the given parameters
+                var requestBody = {
+                  "model": model,
+                  "prompt": input,
+                  "temperature": temperature,
+                  "max_tokens": maxTokens,
+                };
+              
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var popup = window.open("", "Popup", "width=400,height=300");
+                    var intro = "Assalamu Alaikum, Hope you have a wonderful day. Thanks for trusting our services, and we hope to help to reach your goals. AI engine answer based on you data: ";
+                    var ending = "\n\n For free 10 minutes call with a coach, Book from here https://icancoachyou.online/#pricing, and For detailed career path plan from an expert or senior in your field or meeting a coach just SUBSCRIBE through the same link. ";
+                    var formattedText = intro + response.choices[0].text.replace(/([.?!])\s*(?=[A-Z])/g, "$1\n") + ending;
+                    popup.document.write("<pre>" + formattedText + "</pre>");
+                    // Remove the loading message
+                    document.getElementById("response").innerHTML = "";
+                  }
+                };
+                xhr.send(JSON.stringify(requestBody));
+              
+              }
+              </script>
+            <style>
+              * {
+                box-sizing: border-box;
+              }
+              
+              input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+              }
+              
+              
+              </style>
+              <!-- Placeholder changing here -->
+            <input type="text" id="input" name="input" placeholder="اكتب هنا الوظيفة التي تحلم بها">
+            <br>
+            <br>
+            <button onclick="getResponse()" class="btn-get-started scrollto">احصل على خطة وظيفية في 30 ثانية بواسطة الذكاء الاصطناعي</button>
+            <br>
+            <div id="response">
+              تصفح الموقع ، فقد يستغرق ذلك ما يصل إلى 30 ثانية.
+            </div>
+            <br>
+            <a href="#pricing" class="btn-get-started scrollto">قابل مدرب</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+          <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Coaches Section ======= -->
+    <section id="coaches" class="team">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>المدربون</h2>
+              <p>
+                <q>إذا كنت تريد أن تذهب بسرعة ، اذهب بمفردك ، إذا كنت تريد الذهاب بعيدًا، فدعنا نذهب معًا.</q>
+                مثل أفريقي - مارتا جويترد
+              </p>
+              <br>
+              <a href="coaches-ar.html">تصفح المدربين</a>
+              <!-- <p>“If you want to go fast, go alone, if you want to go far, go together”. African Proverb – Martha Goedert.</p> -->
+            </div>
+    
+            <div class="row top-coaches" id="coaches-content">
+    
+              <!-- <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in">
+                  <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>إبراهيم أنور</h4>
+                    <span>المدرب عام</span>
+                    <div class="social">
+                      <a href="https://twitter.com/EbrahemAnwar" target="_blank"><i class="bi bi-twitter"></i></a>
+                      <a href="https://www.facebook.com/EbrahemAnwarMohamed" target="_blank"><i class="bi bi-facebook"></i></a>
+                      <a href="https://www.instagram.com/ebrahemanwar" target="_blank"><i class="bi bi-instagram"></i></a>
+                      <a href="https://www.linkedin.com/in/ebrahemanwar" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+          </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing section-bg">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>الأسعار</h2>
+              <p>السعر لا يمثل القيمة ولكنه سعر ينمو.</p>
+              <p>نتوقع أن تكون النتائج جاهزة لك في غضون الـ 24 ساعة القادمة.</p>
+            </div>
+    
+            <div class="row">
+    
+              <div class="col-lg-3 col-md-6">
+                <div class="box aos-init" data-aos="zoom-in">
+                  <h3>مجانا لفترة محدودة</h3>
+                  <h4 style="text-decoration: line-through">99.00</h4>
+                  <ul>
+                    <li class="na">كيف تبدأ مع الذكاء الاصطناعي</li>
+                    <li class="na">الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                    <li class="na">المسار الوظيفي من مدرب خبير</li>
+                    <li class="na">الدورات والأدوات والتطبيقات</li>
+                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                    <li>10 دقائق اتصال مع مدرب</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://calendly.com/icancoachyou/10min" target="_blank" class="btn-buy">احجز الآن</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                <div class="box featured aos-init" data-aos="zoom-in" data-aos-delay="100">
+                  <h3>احترافية</h3>
+                  <h4><sup>EGP</sup>199</h4>
+                  <ul>
+                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                    <li>المسار الوظيفي من مدرب خبير</li>
+                    <li>الدورات والأدوات والتطبيقات</li>
+                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                    <li>15 دقائق اتصال مع مدرب</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/QXA4584" target="_blank" class="btn-buy">اشتري الآن</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                <div class="box aos-init" data-aos="zoom-in" data-aos-delay="200">
+                  <h3>مرشد</h3>
+                  <h4><sup>EGP</sup>299</h4>
+                  <ul>
+                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                    <li>المسار الوظيفي من مدرب خبير</li>
+                    <li>الدورات والأدوات والتطبيقات</li>
+                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                    <li>30 دقائق اتصال مع مدرب</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/PCR8674" target="_blank" class="btn-buy">اشتري الآن</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                <div class="box aos-init" data-aos="zoom-in" data-aos-delay="300">
+                  <span class="advanced">متقدم</span>
+                  <h3>قابل المدرب</h3>
+                  <h4><sup>EGP</sup>499</h4>
+                  <ul>
+                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                    <li>المسار الوظيفي من مدرب خبير</li>
+                    <li>الدورات والأدوات والتطبيقات</li>
+                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                    <li>60 دقائق اتصال مع مدرب</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/TEI2614" target="_blank" class="btn-buy">اشتري الآن</a>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+    </section><!-- End Pricing Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title aos-init" data-aos="fade-up">
+          <h2>الخدمات</h2>
+          <p>يدور التدريب عبر الإنترنت حول مساعدة الآخرين على تحقيق هدف أو الوصول إلى تحول في حياتهم.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
+            <div class="icon-box icon-box-pink">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">تدريب 1 على 1</a></h4>
+              <p class="description">التدريب الفردي هو الخدمة الأكثر انتشارًا التي يقدمها المدربون عبر الإنترنت.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box icon-box-cyan">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">دورة أونلاين</a></h4>
+              <p class="description">يمكن اعتبار الدورات التدريبية عبر الإنترنت منتجات تدريب ، بدلاً من خدمات التدريب.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box icon-box-green">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">إيجاد المدرب المناسب</a></h4>
+              <p class="description">نحن نسعى جاهدين للتوفيق بين العميل والمدرب بناءً على أهداف العميل وأهدافه.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box icon-box-blue">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">بناء خطة مهنية</a></h4>
+              <p class="description">مطابقة مهاراتك ، وما إلى ذلك ، بالوظائف أو الوظائف الحالية. مطابقة أهداف حياتك المهنية مع احتياجاتك المالية.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container">
+
+        <div class="section-title aos-init" data-aos="fade-up">
+          <h2>موثوق به من قبل القادة</h2>
+          <p>لتنمية الثقة في العلاقة مع العميل ، يجب أن تكون الأولوية للتواصل الفعال في الوقت المناسب.</p>
+        </div>
+
+        <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in">
+              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="100">
+              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="150">
+              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="200">
+              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="250">
+              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="300">
+              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="350">
+              <img src="assets/img/clients/client-7.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="client-logo">
+              <img src="assets/img/clients/client-8.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="section-title aos-init" data-aos="fade-up">
+          <h2>الشهادات - التوصيات</h2>
+          <p>ما نوع الدليل الذي يمكنك تقديمه والذي يوضح أن شركتك ذكية بالفعل وموثوقة ومقنعة وفعالة؟ شهادة جيدة من العملاء السابقين.</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  أعتقد أنني محظوظ لوجودي في هذا التدريب ، لقد تعلمت الكثير.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-1.jfif" class="testimonial-img" alt="">
+                <h3>محمد عبدالفتاح</h3>
+                <h4>طالب علوم حاسب</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    كانت أروع ورشة عمل قمت بها
+                    منذ وقت طويل - كان مفيدًا جدًا لي ومساعدتي
+                    أتحدى نفسي للتعلم مرة أخرى
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-2.jfif" class="testimonial-img" alt="">
+                <h3>مصطفي لملوم</h3>
+                <h4>مهندس</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  لقد استفدت حقا في هذا التدريب
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="./I can coach you_files/testimonials-3" class="testimonial-img" alt="">
+                <h3>علا رضا</h3>
+                <h4>طالب علوم حاسب</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  أود أن أعرب عن امتناني لوقتك
+                  وجهودك معنا طوال فترة التدريب. لقد كان التدريب
+                  مفيدًا للغاية بالنسبة لي ، شخصيًا ومن الناحية التقنية أيضا
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-3.jfif" class="testimonial-img" alt="">
+                <h3>محمد عبدالكريم</h3>
+                <h4>طالب علوم حاسب</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-9 text-center text-lg-end">
+            <h3 class="">احصل على خطة وظيفية الآن</h3>
+            <p> 
+              يمكن لخطة وظيفية فعالة أن توجه حياتك المهنية بنجاح ، من العثور على وظيفتك الأولى إلى الاستمتاع بمهنة مجزية. من خلال التخطيط المهني الدقيق ، يمكنك اتخاذ خطوات لتقييم خياراتك المهنية ووضع خطة إستراتيجية لتحقيق أهدافك.
+            </p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#pricing">لنبدأ</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+          <div class="container">
+    
+            <div class="row">
+              <div class="col-lg-6" data-aos="zoom-in">
+                <img src="assets/img/about.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="col-lg-6 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                <div class="content pt-4 pt-lg-0">
+                  <h3>تعلم المزيد عنا</h3>
+                  <p class="fst-italic">
+                    نعتقد أن هناك طريقة أفضل للتعامل مع الأهداف وسد فجوة المهارات في السوق، ونطمح إلى إطلاق العنان لإمكانات 100 مليون متعلم فضولي من خلال تطوير المهارات المطلوبة لنمو السوق
+                  </p>
+                  <ul>
+                    <li><i class="bi bi-check-circle"></i> نحن هنا لمساعدتك على النمو. أطلق العنان لقدراتك.</li>
+                    <li><i class="bi bi-check-circle"></i> مصمم لمنحك أفضل خطة مدرب مهني لاحتياجاتك ..</li>
+                    <li><i class="bi bi-check-circle"></i> سواء كنت تفكر في خطواتك التالية ، أو تريد أن تصبح قائدًا أفضل، فلدينا الدعم المناسب لك.</li>
+                  </ul>
+                  <p>
+                    الحصول على الدعم المناسب الذي تحتاجه للتقدم في حياتك المهنية يغير قواعد اللعبة. ليس عليك أن تفعل ذلك بمفردك ، ونحن هنا لمساعدتك على التفكير في القرارات الكبيرة، وتطوير المهارات لتكون إنسانًا مؤثرًا.
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    </section><!-- End About Section -->
+    
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+          <div class="container">
+    
+            <div class="row">
+              <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
+                <ul class="nav nav-tabs flex-column">
+                  <li class="nav-item" data-aos="fade-up">
+                    <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                      <h4>كيف تبدأ</h4>
+                      <p>استنادًا إلى الذكاء الاصطناعي والمعلمين في المجالات التي تهتم بها، سنضع خطة حياتك المهنية المحددة.</p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="100">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                      <h4>الجدول الزمني للمسار الوظيفي</h4>
+                      <p>قائمة بالإجراءات المفيدة لضمان نجاح أكبر خلال المراحل الست من حياتك المهنية، بدءًا من الكلية وحتى تقاعدك.</p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="200">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                      <h4>ما يجب فعله و ما لا يجب فعله.</h4>
+                      <p>
+                        ماذا تفعل وما تفعل؟
+                        قواعد حول الإجراءات والأنشطة التي يجب أو لا ينبغي على الناس القيام بها أو المشاركة فيها.
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="300">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+                      <h4>مراجعة المحفظة</h4>
+                      <p>فرصة عظيمة لك لتقييم تقدمك نحو مستقبلك المالي.</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in">
+                <div class="tab-content">
+                  <div class="tab-pane active show" id="tab-1">
+                    <figure>
+                      <img src="assets/img/features-1.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-2">
+                    <figure>
+                      <img src="assets/img/features-2.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-3">
+                    <figure>
+                      <img src="assets/img/features-3.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-4">
+                    <figure>
+                      <img src="assets/img/features-4.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    </section><!-- End Features Section -->
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>أسئلة مكررة</h2>
+        </div>
+
+        <ul class="faq-list">
+
+          <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">ما هي خطة المسار الوظيفي؟ ولماذا تحتاجها؟<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                التخطيط الوظيفي هو العملية التي من خلالها يساعد كبار السن / المدربون / متخصصو الموارد البشرية المتقدمين في اختيار الأهداف المهنية وتحديد المسار لتحقيقها. الهدف الرئيسي من التخطيط الوظيفي هو مساعدة الطلاب / الموظفين / المتقدمين على إيجاد تطابق أفضل بين أهدافهم الشخصية والفرص المتاحة في السوق.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">كيف تتعامل مع النتائج؟ <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                تستند جميع النتائج إلى البيانات التي أضفتها في النموذج ، لذا يرجى التفكير والقراءة بعناية قبل اتخاذ أي خطوة.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-9 text-center text-lg-end">
+            <h3 class="">احصل على خطة وظيفية الآن</h3>
+            <p> 
+              يمكن لخطة وظيفية فعالة أن توجه حياتك المهنية بنجاح ، من العثور على وظيفتك الأولى إلى الاستمتاع بمهنة مجزية. من خلال التخطيط المهني الدقيق ، يمكنك اتخاذ خطوات لتقييم خياراتك المهنية ووضع خطة إستراتيجية لتحقيق أهدافك.
+            </p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#pricing">لنبدأ</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>تواصل معنا</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-right">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>موقع:</h4>
+                <p>
+                  171 التحرير، وسط البلد،
+                  محافظة القاهرة 11513 ،
+                  مصر
+                </p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>البريد الإلكتروني:</h4>
+                <p dir="ltr">coach@icancoachyou.online</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>اتصل بنا:</h4>
+                <p dir="ltr">+2 0111 11 97 906</p>
+              </div>
+            </div>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>يمكنني</h3>
+              <p>
+                171 التحرير، وسط البلد،
+                  محافظة القاهرة 11513 ،
+                  مصر<br>
+                <strong>رقمنا: </strong> +2 0111 11 97 906<br>
+                <strong>البريد الإلكتروني: </strong>coach@icancoachyou.online<br>
+              </p>
+              <div class="social-links mt-3">
+                <!--<a href="#" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a> -->
+                <a href="https://www.facebook.com/Icancoachyouonline" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/icancoachyouonline/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>شاهد أيضا</h4>
+            <ul>
+              <li><i class="bx bx-chevron-left"></i> <a href="#">الرئيسية</a></li>
+              <li><i class="bx bx-chevron-left"></i> <a href="#">عنا</a></li>
+              <li><i class="bx bx-chevron-left"></i> <a href="#">خدماتنا</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>خدماتنا</h4>
+            <ul>
+              <li><i class="bx bx-chevron-left"></i> <a href="#">التخطيط الوظيفي</a></li>
+              <li><i class="bx bx-chevron-left"></i> <a href="#">التدريب</a></li>
+            </ul>
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        <!-- &copy; Copyright <strong><span>I can coach you</span></strong>. All Rights Reserved -->
+        &copy; حقوق الطبع والنشر <strong><span>I can coach you</span></strong>. جميع الحقوق محفوظة
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/ -->
+        Designed by <a href="https://know-how.business/" target="_blank">know-how.business</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Output of fetching data fromdatabase -->
+  <script src="dist/output.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/multiple-steps-form.js"></script>
+
+</body>
+
+</html>
