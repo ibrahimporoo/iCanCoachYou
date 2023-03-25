@@ -280,7 +280,7 @@
               <div>
                 <p>Do you have work experience or not (please mention if you have)</p>
                 <span class="example">For Example No or Yes, Marketing manager at Enactus</span>
-                <input type="text" name="picture_link" placeholder="image link drive for example.." />
+                <input type="text" name="work_exp" placeholder="here..." />
               </div>
               <div>
                 <p>add your Profile Picture as a link. Please add the most professional photo you have</p>
@@ -290,7 +290,7 @@
                 <p>What's your Profile LinkedIn link?</p>
                 <span class="example">or Facebook or Instagram or twitter or YouTube or Behance (the most professional one)</span>
                 <span class="example">You can bring the link from <a href="https://www.linkedin.com" target="_blank">here </a></span>
-                <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
+                <input type="url" name="linkedIn_link" pattern="https://.*" placeholder="https://www.linkedin.com/username" />
               </div>
             </article>
           </div>
@@ -382,7 +382,7 @@
                   https://calendly.com/waleed-abdelrahman/60min
                 </a>
               </span>
-              <input type="text" placeholder="https://calendly.com/waleed-abdelrahman/60min" name="hourly_rate" />
+              <input type="text" placeholder="https://calendly.com/waleed-abdelrahman/60min" name="calendly_link" />
             </article>
           </div>
           <div class="row">
@@ -400,7 +400,7 @@
                 Or
                 Vodafone cash: 01026623085
               </span>
-              <textarea name="ar_summary"></textarea>
+              <textarea name="coach_bank_infos" placeholder="Type here..."></textarea>
             </article>
             <article class="d-flex flex-column gap-4">
               <div>
@@ -1035,7 +1035,7 @@
     </section><!-- End Team Section -->
 
      <!-- CV Review -->
-    <!-- loding modal -->
+    <!-- loading modal -->
     <div class="modal fade" id="lodingModal" tabindex="-1" role="dialog" aria-labelledby="lodingModalLabel"
       aria-hidden="true">
       <div class="modal-dialog col-md-3 ml-auto text-center">

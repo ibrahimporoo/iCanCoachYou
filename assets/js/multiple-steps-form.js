@@ -14,12 +14,16 @@ closeFormBtn.addEventListener('click', (e) => {
 	document.body.classList.toggle('hide-flow');
 	console.log(e.target)
 })
+// Patterns
+/* Any URL Pattern */ 
+let regex = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+let mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 // Multiple Steps Form
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
 const taps = document.querySelectorAll('.fields .step');
 const progSteps = document.querySelectorAll('.steps h4');
-let tapIndex = 0;
+let tapIndex = 2;
 showTap(tapIndex);
 
 
@@ -32,15 +36,9 @@ function formSubmit() {
 
 nextBtn.addEventListener('click', () => {
 	prevNext(1);
-	// stepIndex += 1;
-	// stepIndex = stepIndex >= steps.length ? 0 : steps.length - 1;
-	// showStep(stepIndex);
 });
 prevBtn.addEventListener('click', () => {
 	prevNext(-1);
-	// stepIndex -= 1;
-	// stepIndex = stepIndex < 0 ? steps.length - 1 : 0;
-	// showStep(stepIndex);
 });
 
 function showTap(tapIndex) {
@@ -99,6 +97,7 @@ function prevNext(n) {
 
 // Alert
 const sweetAlert = document.querySelector('#alert-container');
+const sweetAlertText = sweetAlert.querySelector('.text');
 const closeAlert = document.querySelector('#alert-container #close-alert');
 closeAlert.addEventListener('click', () => {
 	sweetAlert.classList.remove('on');
@@ -120,7 +119,6 @@ function isValid() {
 		}
 	}
 	if(tapIndex == 0) {
-		let mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 		console.log(currentInputs[8])
 		if(currentInputs[8].value.match(mailPattern)) {
 			currentInputs[8].classList.remove('invalid');
@@ -132,52 +130,103 @@ function isValid() {
 	}
 	if(tapIndex == 1) {
 		let validOne, validTwo, validThree;
+		sweetAlertText.innerHTML = '';
 		textareas = currentStep.querySelectorAll('textarea');
 		industryboxes = currentStep.querySelectorAll('input[name="industry"]:checked');
 		jobTitleboxes = currentStep.querySelectorAll('input[name="jobTitle"]:checked');
 		// Text Area
+		let first = true;
+		let second = true;
 		for(let i = 0;i < textareas.length; i++) {
 			// If There are any empty Input make it invalid
 			if (textareas[i].value.length) {
 				textareas[i].classList.remove("invalid");
-				validOne = true
 			} else {
-				validOne = false;
+				first = false;
+				second = false;
 				textareas[i].classList.add("invalid");
 			}
 		};
+		if(first && second) {
+			validOne = true;
+		} else {
+			validOne = false;
+		}
+		if(!validOne) {
+			let theText = document.createTextNode('Text Area have to be filled');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText);
+		}
 		// Industry and job title Boxes
 		if(industryboxes.length == 0 || jobTitleboxes.length == 0) {
 			validTwo = false;
+			let theText = document.createTextNode('You have to choose one or more from Industry and job title');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText);
 		} else {
 			validTwo = true;
 		}
 		// Linked In Profile URL
-		// let linkedInRegex = /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)/;
-		// let userLink = document.querySelector('input[name="linkedIn_link"]');
-		// if(!userLink.value.match(linkedInRegex)) {
-		// 	validThree = false;
-		// 	userLink.classList.add('invalid')
-		// } else {
-		// 	validThree = true;
-		// 	userLink.classList.remove('invalid')
-		// }
+		let userLink = document.querySelector('input[name="linkedIn_link"]');
+		if(!regex.test(userLink.value)) {
+			validThree = false;
+			userLink.classList.add('invalid');
+			let theText = document.createTextNode('Linked in profile url must to be valid');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText);
+		} else {
+			validThree = true;
+			userLink.classList.remove('invalid');
+		}
 		// Finally Validation
-		if(validOne == true && validTwo == true) {
+		if(validOne == true && validTwo == true && validThree == true) {
+			valid = true;
+		} else {
+			sweetAlert.classList.add('on');
+			valid = false;
+		}
+	}
+	if(tapIndex == 2) {
+		let validOne, validTwo;
+		sweetAlertText.innerHTML = '';
+		// Coach Hourly Rate
+		let calendlyURL = document.querySelector('input[name="calendly_link"]');
+		if(!regex.test(calendlyURL.value)) {
+			validOne = false;
+			calendlyURL.classList.add('invalid');
+			let theText = document.createTextNode('Calendly link is invalid!! please try to give us valid one.');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText);
+		} else {
+			validOne = true;
+			calendlyURL.classList.remove('invalid');
+		}
+		// Check validation of coach bank info
+		let coachBankInfos = document.querySelector('textarea[name="coach_bank_infos"]');
+		if(coachBankInfos.value.length) {
+			coachBankInfos.classList.remove('invalid');
+			validTwo = true;
+		} else {
+			coachBankInfos.classList.add('invalid');
+			validTwo = false;
+			let theText = document.createTextNode('Please Type Your bank Information.');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText);
+		}
+		// Finally Validation
+		if(validOne && validTwo) {
 			valid = true;
 		} else {
 			valid = false;
+			sweetAlert.classList.add('on');
 		}
-		// else {
-		// 	if((validOne == false && validTwo == false && validThree == true) || (validOne == false && validTwo == false && validThree == false)) {
-		// 		sweetAlert.classList.add('on');
-		// 	}
-		// 	if(validOne == true && validTwo == true && validThree == false) {
-		// 		sweetAlert.querySelector('.alert-title').innerText = 'Note That Linked In profile Link is Invalid!';
-		// 		sweetAlert.classList.add('on');
-		// 		console.log("Linked In Profile Checker")
-		// 	}
-		// }
+		console.log("Valid One => ", validOne)
+		console.log("Valid Two => ", validTwo)
 	}
 	return valid;
 }
