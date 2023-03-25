@@ -10,12 +10,22 @@
   <meta content="coaching, career path, career plan" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo1.svg" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="assets/css/multi.css">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,16 +35,107 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Firebase's JavaScript API to interact with Firebase services -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-app.js" integrity="sha512-KakHaWvNgg3Mo/LptevcdwXzAmSFCFHrsvRUIRbUb++of57rXmIPQiAmpEeqaEdvhVk0ljxT2FpQk+wvP+j5LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-app.js"
+    integrity="sha512-KakHaWvNgg3Mo/LptevcdwXzAmSFCFHrsvRUIRbUb++of57rXmIPQiAmpEeqaEdvhVk0ljxT2FpQk+wvP+j5LQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Fontawesome CSS File -->
   <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="assets/css/form-elements.css">
   <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/all.css">
   <!-- =======================================================
   * Template Name: Scaffold - v4.10.0
   * Template URL: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
-  ======================================================== -->    
+  ======================================================== -->
+  <script>
+    const apiKey = "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";
+    const model = "text-davinci-003";
+    const temperature = 0;
+    const maxTokens = 4060;
+    function getResponse(input) {
+      var cvInput = "I need a recommendation and how to enhance this resume to get a job and please the recruiter /n/n" + document.getElementById("cv-input").value;
+      var careerInput = "Create a career path planand mention how to start, time to reach the goal, books, certificates & courses that can help for" + document.getElementById("career-input").value;
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://api.openai.com/v1/completions");
+
+      // Set up the request body with the given parameters
+      if (input == 1) {
+        $('#lodingModal').modal({ backdrop: 'static', keyboard: false });
+        $("#lodingModal").modal("show");
+        // Show the loading message
+        // document.getElementById("response").innerHTML = "Browse the website, as this may take up to 30 seconds loading...";
+        // document.getElementById("response").style.color = "blue";
+        var requestBody = {
+          "model": model,
+          "prompt": careerInput,
+          "temperature": temperature,
+          "max_tokens": maxTokens,
+
+        };
+      } else if (input == 2) {
+        // Show the loading message
+        $('#lodingModal').modal({ backdrop: 'static', keyboard: false });
+        $("#lodingModal").modal("show");
+        var requestBody = {
+          "model": model,
+          "prompt": cvInput,
+          "temperature": temperature,
+          "max_tokens": 3000,
+        };
+      }
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var intro = "Assalamu Alaikum, Hope you have a wonderful day. \n \n Thanks for trusting our services, and we hope to help to reach your goals.\n \n AI engine answer based on your data: ";
+          var ending = "For detailed career path plan from an expert or senior in your field or meeting a coach just SUBSCRIBE her https://icancoachyou.online/#pricing. ";
+          var response = JSON.parse(xhr.responseText);
+          var formattedText = intro;
+          var lines = response.choices[0].text.split("\n");
+          for (var i = 0; i < lines.length; i++) {
+            var line = lines[i];
+            if (line.startsWith("# ")) {
+              // This line is a heading, bold it
+              line = "<strong>" + line.substring(2) + "</strong>";
+            } else if (line.startsWith(". ")) {
+              // This line is a numbered item, add a bullet point
+              line = "• " + line.substring(3);
+            }
+            formattedText += line + "<br>";
+          }
+          formattedText += ending;
+          document.getElementById("modal-body").innerHTML = formattedText;
+          if (input == 1) {
+            document.getElementById("modal-title").innerHTML = "You career path plan is ready";
+          } else {
+            if (input == 2) {
+              document.getElementById("modal-title").innerHTML = "The CV Recommendations";
+            }
+          }
+          $("#responseModal").modal("show");
+        }
+        // hide lodeing message 
+        if ($("#responseModal").modal("show")) {
+          $("#lodingModal").modal("hide");
+        }
+      };
+      xhr.send(JSON.stringify(requestBody));
+    }
+
+    function copyToClipboard() {
+      var copyText = document.getElementById("modal-body");
+      navigator.clipboard.writeText(copyText.innerText);
+    }
+
+  </script>
 </head>
 
 <body class="">
@@ -576,348 +677,6 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Modal ======= -->
-
-  <div class="modal fade" id="exampleModal-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header flex-column align-items-start">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          <h3 class="modal-title" id="exampleModalLabel">What Career Can I Coach?</h3>
-          <p>Fill in the form below to join us as an instructor:</p>
-        </div>
-        <div class="modal-body text-center">
-          <form class="registration-form">
-            <div class="form-group">
-
-              <p style="color: rgb(227, 30, 30); display:none; transition: 0.5s all;" class="text-start" id="valid3">
-                Please Enter Valid English Name</p>
-              <input value="" id="in1" type="text" class="border-circle border-blue col-12"
-                placeholder="Enter Your Name In English">
-            </div>
-
-            <div class="form-group">
-              <p style="color: rgb(227, 30, 30); display:none; transition: 0.5s all;" class="text-start" id="valid4">
-                Please Enter Valid Arabic Name</p>
-              <input id="in2" type="text" class="border-circle border-blue col-12"
-                placeholder="Enter Your Name In Arabic">
-            </div>
-
-            <div class="form-group">
-              <p style="color: rgb(227, 30, 30); display:none; transition: 0.5s all;" class="text-start" id="valid">
-                Please Enter Valid Email</p>
-              <input id="in3" type="text" class="border-circle border-blue col-12" placeholder="Enter Your Email">
-            </div>
-
-            <div class="form-group">
-              <p style="color: rgb(227, 30, 30); display:none; transition: 0.5s all;" class="text-start" id="valid2">
-                Please Enter Valid Egyptian Number</p>
-              <input id="in4" type="text" name="" class="border-circle border-blue col-12"
-                placeholder="Enter Your WhatsApp Number">
-            </div>
-
-            <div class="form-group">
-              <textarea name="form-about-yourself" placeholder="About yourself"
-                class="form-about-yourself col-12 form-control" id="in5"></textarea>
-            </div>
-
-            <div class="form-group">
-              <input id="in6" type="text" class="border-circle border-blue col-12" placeholder="Where are you located?">
-            </div>
-
-            <div class="form-group">
-
-              <input id="in7" type="number" class="col-12" placeholder="How old are you?" min="18">
-            </div>
-
-            <div class="form-group text-start">
-              <label class="required my-3 mr-2">What is Your Gender?</label>
-              <br>
-              <div class="flex-gender">
-                <input class="form-control" type="radio" name="gender" value="male"> Male
-                <br>
-                <input id="flex-gender-2" class="form-control" type="radio" name="gender" value="female"> Female
-              </div>
-            </div>
-
-            <button id="next_1" data-bs-target="#exampleModal-2" data-bs-toggle="modal" type="button"
-              class="btn btn-primary col-12">Next</button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-  <div class="modal fade" id="exampleModal-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header flex-column align-items-start">
-          <h5 class="modal-title" id="exampleModalLabel">What Career Can I Coach? <br> <span>2</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <form class="registration-form">
-            <div class="form-group">
-              <div id="myMultiselect" class="multiselect">
-                <div id="mySelectLabel" class="selectBox" onclick="toggleCheckboxArea()">
-                  <select class="form-select">
-                    <option>somevalue</option>
-                  </select>
-                  <div class="overSelect"></div>
-                </div>
-                <div id="mySelectOptions">
-                  <label><input type="checkbox" id="check1" onchange="checkboxStatusChange()"
-                      value="Individual Contributor" name="jobTitle" /> Individual Contributor</label>
-                  <label><input type="checkbox" id="check2" onchange="checkboxStatusChange()" value=" Middle Manager"
-                      name="jobTitle" /> Middle Manager</label>
-                  <label><input type="checkbox" id="check3" onchange="checkboxStatusChange()" value="Senior Manager"
-                      name="jobTitle" /> Senior Manager</label>
-                  <label><input type="checkbox" id="check4" onchange="checkboxStatusChange()" value="Director/VP"
-                      name="jobTitle" /> Director/VP</label>
-                  <label><input type="checkbox" id="check5" onchange="checkboxStatusChange()" value="C-suite/Executive"
-                      name="jobTitle" /> C-suite/Executive</label>
-                  <label><input type="checkbox" id="check6" onchange="checkboxStatusChange()"
-                      value="Founder/Business Owner" name="jobTitle" /> Founder/Business Owner</label>
-                  <label><input type="checkbox" id="check7" onchange="checkboxStatusChange()" value="Other"
-                      name="jobTitle" /> Other</label>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <input value="" id="in8" type="text" class="border-circle border-blue col-12"
-                placeholder="What's the name of your college/university?">
-            </div>
-
-            <div class="form-group">
-              <input value="" id="in9" type="text" class="border-circle border-blue col-12"
-                placeholder="Field of study">
-            </div>
-
-            <div class="form-group">
-              <input value="" id="in10" type="number" class="border-circle border-blue col-12" min="1990"
-                placeholder="Graduation Year">
-            </div>
-
-            <div class="form-group">
-              <select id="degr" class="form-select">
-                <option value="Bachelor" selected>Bachelor</option>
-                <option value="Master">Master</option>
-                <option value="Doctorate">Doctorate</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <button type="button" class="btn btn-secondary" id="bacc" data-bs-toggle="modal"
-              data-bs-target="#exampleModal-1">Back</button>
-            <button id="next_2" type="button" class="btn btn-primary" data-bs-toggle="modal"
-              data-bs-target="#exampleModal-3">Next</button>
-
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="exampleModal-3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header flex-column align-items-start">
-          <h5 class="modal-title" id="exampleModalLabel">What Career Can I Coach? <br> <span>3</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <form class="registration-form">
-
-            <div class="form-group">
-              <textarea class="col-12" name="" id="in11" placeholder="Write Work Experience"></textarea>
-            </div>
-
-
-
-            <div class="form-group">
-              <div id="myMultiselect2" class="multiselect">
-                <div id="mySelectLabel2" class="selectBox" onclick="toggleCheckboxArea2()">
-                  <select class="form-select">
-                    <option>Coaching</option>
-                  </select>
-                  <div class="overSelect"></div>
-                </div>
-                <div id="mySelectOptions2">
-
-                  <label><input type="checkbox" name="coachingg" id="check8" onchange="checkboxStatusChange()"
-                      value="Business Management" /> Business Management</label>
-                  <label><input type="checkbox" name="coachingg" id="check9" onchange="checkboxStatusChange()"
-                      value="Soft Skills" />
-                    Soft Skills</label>
-                  <label><input type="checkbox" name="coachingg" id="check10" onchange="checkboxStatusChange()"
-                      value="HR" /> HR</label>
-                  <label><input type="checkbox" name="coachingg" id="check11" onchange="checkboxStatusChange()"
-                      value="Finance" />
-                    Finance</label>
-                  <label><input type="checkbox" name="coachingg" id="check12" onchange="checkboxStatusChange()"
-                      value="Other" />
-                    Other</label>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <input class="col-12" id="in12" type="text" placeholder="LinkedIn Profile Link">
-            </div>
-
-            <div class="form-group">
-              <input class="col-12" id="in13" type="text" placeholder="Profile Picture Link">
-            </div>
-
-            <div class="form-group">
-              <input class="col-12" id="not1" type="text" placeholder="CV Link">
-            </div>
-
-            <div class="form-group">
-              <input class="col-12" id="not2" type="text" placeholder="Your Objective In Life">
-            </div>
-
-            <div class="form-group">
-              <input class="col-12" id="not3" type="text" placeholder="Your Role Model">
-            </div>
-
-            <div class="form-group">
-              <input class="col-12" id="in14" type="text"
-                placeholder="What's your hourly rate for an hour coach session?">
-            </div>
-
-            <button id="bacc" type="button" class="btn btn-secondary" data-bs-toggle="modal"
-              data-bs-target="#exampleModal-2">Back</button>
-            <button id="next_3" data-bs-toggle="modal" data-bs-target="#exampleModal-4" type="button"
-              class="btn btn-primary">Next</button>
-
-          </form>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="exampleModal-4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header flex-column align-items-start">
-          <h5 class="modal-title" id="exampleModalLabel">What Career Can I Coach? <br> <span>4</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <form class="registration-form">
-            <label class="required">Please add your bank account details or wallet details</label>
-            <p>For Example: Bank Name: CIB | Commercial International bank of Egypt
-              Beneficiary Name: Ibrahim Anwar Mohamed Elsoufi Mahmoud Elashiri
-              Beneficiary address: 13 st mosa mizar, Elfawal, Fayoum, Egypt
-              Phone number: 01026623085
-              Bank Address: Smart Village branch, Egypt.
-              Account Number: 100035645197
-              Swift code: CIBEEGCX119
-              IBAN: EG200010011900000100035645197
-              Or
-              Vodafone cash: 01026623085</p>
-
-            <div class="form-group">
-              <textarea class="col-12" id="text_area" style="height: 100px;"></textarea>
-            </div>
-
-            <div class="form-group">
-              <input class="col-12" type="text" name="" id="Calendly" placeholder="Calendly Link (If You Have)">
-            </div>
-
-            <button id="bacc" type="button" class="btn btn-secondary" data-bs-toggle="modal"
-              data-bs-target="#exampleModal-3">Back</button>
-            <button id="next_4" data-bs-toggle="modal" data-bs-target="#exampleModal-5" type="button"
-              class="btn btn-primary">Next</button>
-
-
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="exampleModal-5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header flex-column align-items-start">
-          <h5 class="modal-title" id="exampleModalLabel">What Career Can I Coach? <br> <span>5</span></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <form class="registration-form">
-
-            <label class="required">English Language skills</label>
-            <div class="form-group">
-              <select id="englishSkills" class="form-select">
-                <option value="Native" selected>Native</option>
-                <option value="Fluent">Fluent</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Beginner">Beginner</option>
-              </select>
-            </div>
-
-            <label class="required">Are you available at least 2 hours every week?</label>
-
-            <div class="form-group">
-              <select id="availability" class="form-select">
-                <option value="Yes" selected>Yes</option>
-                <option value="No">No</option>
-                <option value="Maybe">Maybe</option>
-              </select>
-            </div>
-
-            <label for="">Tell us about your experience in programming.</label>
-
-            <div class="form-group">
-              <select id="programming" class="form-select">
-                <option value="Excellent" selected>Excellent</option>
-                <option value="Very Good">Very Good</option>
-                <option value="Good">Good</option>
-                <option value="Fair">Fair</option>
-                <option value="Poor">Poor</option>
-                <option value="Nothing">Nothing</option>
-              </select>
-            </div>
-
-            <label for="">How did you hear about us?</label>
-
-            <div class="form-group">
-              <select id="aboutus" class="form-select">
-                <option value="Google" selected>Google</option>
-                <option value="Facebook">Facebook</option>
-                <option value="LinkedIn">LinkedIn</option>
-                <option value="Other">Other</option>
-
-              </select>
-            </div>
-
-            <button id="bacc" type="button" class="btn btn-secondary" data-bs-toggle="modal"
-              data-bs-target="#exampleModal-4">Back</button>
-            <button id="submit" data-bs-toggle="modal" data-bs-target="#exampleModal-5" type="button"
-              class="btn btn-primary">Submit</button>
-
-
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- End Modal -->
-
   <!-- ======= Hero Section ======= -->
   <section id="hero">
 
@@ -930,47 +689,6 @@
               just</span> coach you.
             </h1>
             <h2>We are a team of talented coaches who give others plans to reach their goals using AI.</h2>
-            <script>
-              const apiKey = "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";
-              const model = "text-davinci-003";
-              const temperature = 0;
-              const maxTokens = 4060;
-              
-              function getResponse() {
-                var input = "Create a career path plan, how to start, and books & course that can help for"+ document.getElementById("input").value;
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "https://api.openai.com/v1/completions");
-              
-                // Show the loading message
-                document.getElementById("response").innerHTML = "Browse the website, as this may take up to 30 seconds.";
-                document.getElementById("response").style.color = "blue";
-              
-                // Set up the request body with the given parameters
-                var requestBody = {
-                  "model": model,
-                  "prompt": input,
-                  "temperature": temperature,
-                  "max_tokens": maxTokens,
-                };
-              
-                xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
-                xhr.onreadystatechange = function() {
-                  if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    var popup = window.open("", "Popup", "width=400,height=300");
-                    var intro = "Assalamu Alaikum, Hope you have a wonderful day. Thanks for trusting our services, and we hope to help to reach your goals. AI engine answer based on you data: ";
-                    var ending = "\n\n For free 10 minutes call with a coach, Book from here https://icancoachyou.online/#pricing, and For detailed career path plan from an expert or senior in your field or meeting a coach just SUBSCRIBE through the same link. ";
-                    var formattedText = intro + response.choices[0].text.replace(/([.?!])\s*(?=[A-Z])/g, "$1\n") + ending;
-                    popup.document.write("<spanre>" + formattedText + "</pre>");
-                    // Remove the loading message
-                    document.getElementById("response").innerHTML = "";
-                  }
-                };
-                xhr.send(JSON.stringify(requestBody));
-              
-              }
-              </script>
             <style>
               * {
                 box-sizing: border-box;
@@ -983,8 +701,7 @@
                 border-radius: 4px;
                 resize: vertical;
               }
-
-              </style>
+            </style>
             <input type="text" id="input" name="input" placeholder="Write here your dream job">
             <br>
             <br>

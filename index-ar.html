@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 
 <head>
   <meta charset="utf-8">
@@ -14,28 +14,96 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+    crossorigin="anonymous"></script>
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">  
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Firebase's JavaScript API to interact with Firebase services -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-app.js" integrity="sha512-KakHaWvNgg3Mo/LptevcdwXzAmSFCFHrsvRUIRbUb++of57rXmIPQiAmpEeqaEdvhVk0ljxT2FpQk+wvP+j5LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-app.js"
+    integrity="sha512-KakHaWvNgg3Mo/LptevcdwXzAmSFCFHrsvRUIRbUb++of57rXmIPQiAmpEeqaEdvhVk0ljxT2FpQk+wvP+j5LQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <!-- CSS Arabic Styles -->
+  <link rel="stylesheet" href="assets/css/style-rtl.css">
   <!-- =======================================================
   * Template Name: Scaffold - v4.10.0
   * Template URL: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
-  ======================================================== -->    
+  ======================================================== -->
+
+
+  <script>
+    const apiKey = "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";
+    const model = "text-davinci-003";
+    const temperature = 0;
+    const maxTokens = 4060;
+
+    function getResponse() {
+      var input = "Create a career path planand mention how to start, time to reach the goal, books, certificates & courses that can help for" + document.getElementById("input").value;
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://api.openai.com/v1/completions");
+
+      // Show the loading message
+      document.getElementById("response").innerHTML = "تصفح الموقع ، فقد يستغرق ذلك ما يصل إلى 30 ثانية.";
+      document.getElementById("response").style.color = "blue";
+
+      // Set up the request body with the given parameters
+      var requestBody = {
+        "model": model,
+        "prompt": input,
+        "temperature": temperature,
+        "max_tokens": maxTokens,
+      };
+
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var intro = "Assalamu Alaikum, Hope you have a wonderful day. \n \n Thanks for trusting our services, and we hope to help to reach your goals.\n \n AI engine answer based on your data: ";
+          var ending = "\n For detailed career path plan from an expert or senior in your field or meeting a coach just SUBSCRIBE her https://icancoachyou.online/#pricing. ";
+          var response = JSON.parse(xhr.responseText);
+          var formattedText = intro;
+          var lines = response.choices[0].text.split("\n");
+          for (var i = 0; i < lines.length; i++) {
+            var line = lines[i];
+            if (line.startsWith("# ")) {
+              // This line is a heading, bold it
+              line = "<strong>" + line.substring(2) + "</strong>";
+            } else if (line.startsWith("1. ")) {
+              // This line is a numbered item, add a bullet point
+              line = "• " + line.substring(3);
+            }
+            formattedText += line + "<br>";
+          }
+          formattedText += ending;
+          document.getElementById("modal-body").innerHTML = formattedText;
+          $("#responseModal").modal("show");
+        }
+      };
+      xhr.send(JSON.stringify(requestBody));
+    }
+    function copyToClipboard() {
+      var copyText = document.getElementById("modal-body");
+      navigator.clipboard.writeText(copyText.innerText);
+    }
+  </script>
 </head>
 
 <body class="rtl">
@@ -52,130 +120,6 @@
       </p>
     </div>
   </div>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-
-      <div class="logo">
-        <h1>
-          <a href="index.html">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 74 51" style="enable-background:new 0 0 74 51;width: 100px" xml:space="preserve">
-              <style type="text/css">
-                .st0 {
-                  fill: #4B97D2;
-                }
-              </style>
-              <g>
-                <g>
-                  <path class="st0" d="M19.3,45.48C8.66,45.48,0,36.35,0,25.12C0,13.9,8.66,4.77,19.3,4.77c0.97,0,1.75,0.83,1.75,1.85
-        s-0.79,1.85-1.75,1.85c-8.71,0-15.79,7.47-15.79,16.66s7.08,16.66,15.79,16.66c0.97,0,1.75,0.83,1.75,1.85
-        C21.06,44.65,20.27,45.48,19.3,45.48z"></path>
-                  <path class="st0" d="M19.3,39.93c-0.97,0-1.75-0.83-1.75-1.85s0.79-1.85,1.75-1.85c5.81,0,10.53-4.98,10.53-11.1
-        c0-6.12-4.72-11.1-10.53-11.1c-0.97,0-1.75-0.83-1.75-1.85s0.79-1.85,1.75-1.85c7.74,0,14.04,6.64,14.04,14.8
-        S27.04,39.93,19.3,39.93z"></path>
-                  <path class="st0" d="M17.55,33.45c-3.87,0-7.02-3.32-7.02-7.4c0-1.02,0.79-1.85,1.75-1.85s1.75,0.83,1.75,1.85
-        c0,2.04,1.57,3.7,3.51,3.7c1.93,0,3.51-1.66,3.51-3.7c0-1.02,0.79-1.85,1.75-1.85c0.97,0,1.75,0.83,1.75,1.85
-        C24.56,30.13,21.42,33.45,17.55,33.45z"></path>
-                </g>
-                <g>
-                  <path class="st0" d="M45.34,10.95v7.77h-2.05v-7.77H45.34z"></path>
-                  <path class="st0" d="M48.71,12.77c0.3-0.6,0.73-1.07,1.29-1.4c0.56-0.33,1.2-0.5,1.92-0.5c0.92,0,1.69,0.26,2.32,0.78
-        s1.03,1.22,1.21,2.11h-2.21c-0.13-0.29-0.32-0.52-0.55-0.67c-0.23-0.15-0.5-0.23-0.81-0.23c-0.47,0-0.85,0.18-1.13,0.53
-        s-0.42,0.83-0.42,1.43c0,0.6,0.14,1.08,0.42,1.44c0.28,0.36,0.66,0.53,1.13,0.53c0.31,0,0.58-0.08,0.81-0.23
-        c0.23-0.15,0.42-0.38,0.55-0.67h2.21c-0.18,0.89-0.58,1.59-1.21,2.11c-0.63,0.52-1.4,0.78-2.32,0.78c-0.72,0-1.37-0.17-1.92-0.5
-        c-0.56-0.33-0.99-0.8-1.29-1.4c-0.3-0.6-0.46-1.28-0.46-2.06C48.25,14.05,48.4,13.37,48.71,12.77z"></path>
-                  <path class="st0" d="M56.42,13.95c0.22-0.48,0.52-0.84,0.9-1.1c0.38-0.26,0.8-0.39,1.27-0.39c0.4,0,0.75,0.08,1.04,0.25
-        c0.29,0.17,0.52,0.4,0.68,0.68v-0.86h2.05v6.18h-2.05v-0.86c-0.16,0.29-0.39,0.51-0.68,0.68s-0.64,0.25-1.04,0.25
-        c-0.47,0-0.89-0.13-1.27-0.39s-0.68-0.63-0.9-1.11c-0.22-0.48-0.33-1.04-0.33-1.68C56.09,14.98,56.2,14.42,56.42,13.95z M60,14.68
-        c-0.21-0.23-0.46-0.34-0.76-0.34c-0.31,0-0.56,0.11-0.76,0.34s-0.3,0.54-0.3,0.94c0,0.4,0.1,0.71,0.3,0.94s0.46,0.35,0.76,0.35
-        c0.3,0,0.55-0.11,0.76-0.34c0.21-0.23,0.31-0.54,0.31-0.95C60.31,15.22,60.21,14.91,60,14.68z"></path>
-                  <path class="st0" d="M68.97,13.19c0.4,0.47,0.6,1.12,0.6,1.92v3.6h-2.05V15.4c0-0.35-0.09-0.63-0.26-0.83
-        c-0.17-0.2-0.41-0.3-0.7-0.3c-0.31,0-0.55,0.1-0.72,0.3s-0.26,0.48-0.26,0.83v3.32h-2.05v-6.18h2.05v0.88
-        c0.18-0.28,0.42-0.5,0.73-0.68c0.31-0.17,0.66-0.26,1.05-0.26C68.04,12.48,68.58,12.72,68.97,13.19z"></path>
-                  <path class="st0" d="M39.61,22.88c0.3-0.6,0.73-1.07,1.29-1.4c0.56-0.33,1.2-0.5,1.92-0.5c0.92,0,1.69,0.26,2.32,0.78
-        c0.63,0.52,1.03,1.22,1.21,2.11h-2.21c-0.13-0.29-0.32-0.52-0.55-0.67c-0.23-0.15-0.5-0.23-0.81-0.23c-0.47,0-0.85,0.18-1.13,0.53
-        s-0.42,0.83-0.42,1.43c0,0.6,0.14,1.08,0.42,1.44s0.66,0.53,1.13,0.53c0.31,0,0.58-0.08,0.81-0.23c0.23-0.15,0.42-0.38,0.55-0.67
-        h2.21c-0.18,0.89-0.58,1.59-1.21,2.11c-0.63,0.52-1.4,0.78-2.32,0.78c-0.72,0-1.37-0.17-1.92-0.5c-0.56-0.33-0.99-0.8-1.29-1.4
-        c-0.3-0.6-0.46-1.28-0.46-2.06C39.15,24.16,39.3,23.47,39.61,22.88z"></path>
-                  <path class="st0" d="M48.48,28.51c-0.46-0.26-0.83-0.62-1.09-1.1c-0.26-0.48-0.4-1.04-0.4-1.69c0-0.64,0.13-1.2,0.4-1.68
-        c0.27-0.48,0.63-0.84,1.1-1.1c0.46-0.26,0.99-0.39,1.57-0.39s1.11,0.13,1.57,0.39c0.46,0.26,0.83,0.62,1.1,1.1
-        c0.27,0.48,0.4,1.04,0.4,1.68c0,0.64-0.13,1.2-0.4,1.68c-0.27,0.48-0.64,0.85-1.1,1.11s-0.99,0.39-1.58,0.39
-        S48.94,28.77,48.48,28.51z M50.77,26.69c0.19-0.22,0.29-0.54,0.29-0.96s-0.1-0.74-0.29-0.96s-0.43-0.33-0.71-0.33
-        c-0.28,0-0.51,0.11-0.7,0.33c-0.19,0.22-0.28,0.54-0.28,0.96c0,0.43,0.09,0.75,0.27,0.97c0.18,0.22,0.41,0.33,0.7,0.33
-        S50.57,26.91,50.77,26.69z"></path>
-                  <path class="st0" d="M53.96,24.05c0.22-0.48,0.52-0.84,0.9-1.1c0.38-0.26,0.8-0.39,1.27-0.39c0.4,0,0.75,0.08,1.04,0.25
-        c0.29,0.17,0.52,0.4,0.68,0.68v-0.86h2.05v6.18h-2.05v-0.86c-0.16,0.29-0.39,0.51-0.68,0.68c-0.3,0.17-0.64,0.25-1.04,0.25
-        c-0.47,0-0.89-0.13-1.27-0.39s-0.68-0.63-0.9-1.11s-0.33-1.04-0.33-1.68C53.63,25.08,53.74,24.53,53.96,24.05z M57.55,24.79
-        c-0.21-0.23-0.46-0.34-0.76-0.34c-0.31,0-0.56,0.11-0.76,0.34c-0.2,0.22-0.3,0.54-0.3,0.94c0,0.4,0.1,0.71,0.3,0.94
-        s0.46,0.35,0.76,0.35c0.3,0,0.55-0.11,0.76-0.34c0.21-0.23,0.31-0.54,0.31-0.95C57.86,25.33,57.75,25.02,57.55,24.79z"></path>
-                  <path class="st0" d="M61.12,24.05c0.25-0.48,0.6-0.84,1.05-1.1c0.45-0.26,0.96-0.39,1.54-0.39c0.75,0,1.37,0.21,1.88,0.64
-        s0.84,1.03,0.98,1.8H64.4c-0.13-0.4-0.37-0.61-0.73-0.61c-0.26,0-0.46,0.11-0.61,0.34c-0.15,0.22-0.22,0.55-0.22,0.99
-        s0.08,0.76,0.22,0.99c0.15,0.23,0.35,0.34,0.61,0.34c0.37,0,0.61-0.2,0.73-0.61h2.17c-0.15,0.76-0.47,1.36-0.98,1.8
-        s-1.14,0.65-1.88,0.65c-0.58,0-1.09-0.13-1.54-0.39c-0.45-0.26-0.8-0.62-1.05-1.1c-0.25-0.48-0.38-1.04-0.38-1.69
-        C60.74,25.08,60.87,24.53,61.12,24.05z"></path>
-                  <path class="st0" d="M72.87,23.29c0.39,0.47,0.59,1.12,0.59,1.92v3.6h-2.05V25.5c0-0.35-0.09-0.63-0.26-0.83
-        c-0.17-0.2-0.41-0.3-0.7-0.3c-0.31,0-0.55,0.1-0.72,0.3s-0.26,0.48-0.26,0.83v3.32h-2.05v-8.16h2.05v2.86
-        c0.18-0.28,0.43-0.51,0.74-0.68c0.31-0.17,0.67-0.26,1.07-0.26C71.94,22.58,72.47,22.82,72.87,23.29z"></path>
-                  <path class="st0" d="M53.12,31.15l-2.59,5.3v2.47h-2.06v-2.47l-2.59-5.3h2.34l1.3,3l1.29-3H53.12z"></path>
-                  <path class="st0" d="M54.9,38.62c-0.46-0.26-0.83-0.62-1.09-1.1c-0.26-0.48-0.4-1.04-0.4-1.69c0-0.64,0.13-1.2,0.4-1.68
-        c0.27-0.48,0.63-0.84,1.1-1.1c0.46-0.26,0.99-0.39,1.57-0.39s1.11,0.13,1.57,0.39c0.46,0.26,0.83,0.62,1.1,1.1
-        c0.27,0.48,0.4,1.04,0.4,1.68c0,0.64-0.13,1.2-0.4,1.68c-0.27,0.48-0.64,0.85-1.1,1.11S57.06,39,56.48,39S55.37,38.87,54.9,38.62z
-        M57.19,36.79c0.19-0.22,0.29-0.54,0.29-0.96s-0.1-0.74-0.29-0.96s-0.43-0.33-0.71-0.33c-0.28,0-0.51,0.11-0.7,0.33
-        c-0.19,0.22-0.28,0.54-0.28,0.96c0,0.43,0.09,0.75,0.27,0.97c0.18,0.22,0.41,0.33,0.7,0.33S57,37.02,57.19,36.79z"></path>
-                  <path class="st0" d="M66.39,32.74v6.18h-2.06v-0.88c-0.17,0.28-0.41,0.51-0.72,0.68c-0.31,0.17-0.66,0.26-1.06,0.26
-        c-0.68,0-1.22-0.24-1.61-0.71c-0.39-0.47-0.59-1.12-0.59-1.93v-3.59h2.04v3.32c0,0.35,0.09,0.63,0.27,0.83s0.41,0.3,0.71,0.3
-        c0.3,0,0.54-0.1,0.71-0.3c0.17-0.2,0.26-0.48,0.26-0.83v-3.32H66.39z"></path>
-                </g>
-              </g>
-              <g>
-              </g>
-              <g>
-              </g>
-              <g>
-              </g>
-              <g>
-              </g>
-              <g>
-              </g>
-            </svg>
-          </a>
-        </h1>
-      </div>
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">الرئيسية</a></li>
-          <li class="dropdown"><a href="#"><span style="padding: 3px;">عن</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a class="nav-link scrollto" href="#about">عنا</a></li>
-              <li><a class="nav-link scrollto" href="#testimonials">التوصيات</a></li>
-              </li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#services">الخدمات</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">الأسعار</a></li>
-          <li><a class="nav-link scrollto" href="#coaches">المدربون</a></li>
-          <li><a class="nav-link scrollto" href="#contact">تواصل بنا</a></li>
-          <li class="dropdown"><a href="#"> <span style="padding: 3px;"> اللغة</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="index.html" dir="rtl" class="nav-link scrollto">English</a></li>
-              <li><a href="index-ar.html" class="nav-link scrollto">عربي</a></li>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <div class="header-social-links d-flex align-items-center">
-        <!--<a href="#" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>-->
-        <a href="https://www.facebook.com/Icancoachyouonline" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.linkedin.com/company/icancoachyouonline/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
-
-    </div>
-  </header><!-- End Header -->
 
   <!-- Joining Form for Coaches --> 
   <form class="join-form" novalidate>
@@ -576,88 +520,188 @@
     <button type="button" class="close-form">&#9932;</button>
   </form>
 
+   <!-- ======= Header ======= -->
+   <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo">
+        <a class="navbar-brand" href="index.html">
+          <!-- <img src="/assets/img/logo1.svg" alt="logo" width="67" height="40"> -->
+
+          <?xml version="1.0" encoding="utf-8"?>
+          <!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 74 51" style="enable-background:new 0 0 74 51;" xml:space="preserve">
+            <style type="text/css">
+              .st0 {
+                fill: #4B97D2;
+              }
+            </style>
+            <g>
+              <g>
+                <path class="st0" d="M19.3,45.48C8.66,45.48,0,36.35,0,25.12C0,13.9,8.66,4.77,19.3,4.77c0.97,0,1.75,0.83,1.75,1.85
+			s-0.79,1.85-1.75,1.85c-8.71,0-15.79,7.47-15.79,16.66s7.08,16.66,15.79,16.66c0.97,0,1.75,0.83,1.75,1.85
+			C21.06,44.65,20.27,45.48,19.3,45.48z" />
+                <path class="st0" d="M19.3,39.93c-0.97,0-1.75-0.83-1.75-1.85s0.79-1.85,1.75-1.85c5.81,0,10.53-4.98,10.53-11.1
+			c0-6.12-4.72-11.1-10.53-11.1c-0.97,0-1.75-0.83-1.75-1.85s0.79-1.85,1.75-1.85c7.74,0,14.04,6.64,14.04,14.8
+			S27.04,39.93,19.3,39.93z" />
+                <path class="st0" d="M17.55,33.45c-3.87,0-7.02-3.32-7.02-7.4c0-1.02,0.79-1.85,1.75-1.85s1.75,0.83,1.75,1.85
+			c0,2.04,1.57,3.7,3.51,3.7c1.93,0,3.51-1.66,3.51-3.7c0-1.02,0.79-1.85,1.75-1.85c0.97,0,1.75,0.83,1.75,1.85
+			C24.56,30.13,21.42,33.45,17.55,33.45z" />
+              </g>
+              <g>
+                <path class="st0" d="M45.34,10.95v7.77h-2.05v-7.77H45.34z" />
+                <path class="st0" d="M48.71,12.77c0.3-0.6,0.73-1.07,1.29-1.4c0.56-0.33,1.2-0.5,1.92-0.5c0.92,0,1.69,0.26,2.32,0.78
+			s1.03,1.22,1.21,2.11h-2.21c-0.13-0.29-0.32-0.52-0.55-0.67c-0.23-0.15-0.5-0.23-0.81-0.23c-0.47,0-0.85,0.18-1.13,0.53
+			s-0.42,0.83-0.42,1.43c0,0.6,0.14,1.08,0.42,1.44c0.28,0.36,0.66,0.53,1.13,0.53c0.31,0,0.58-0.08,0.81-0.23
+			c0.23-0.15,0.42-0.38,0.55-0.67h2.21c-0.18,0.89-0.58,1.59-1.21,2.11c-0.63,0.52-1.4,0.78-2.32,0.78c-0.72,0-1.37-0.17-1.92-0.5
+			c-0.56-0.33-0.99-0.8-1.29-1.4c-0.3-0.6-0.46-1.28-0.46-2.06C48.25,14.05,48.4,13.37,48.71,12.77z" />
+                <path class="st0" d="M56.42,13.95c0.22-0.48,0.52-0.84,0.9-1.1c0.38-0.26,0.8-0.39,1.27-0.39c0.4,0,0.75,0.08,1.04,0.25
+			c0.29,0.17,0.52,0.4,0.68,0.68v-0.86h2.05v6.18h-2.05v-0.86c-0.16,0.29-0.39,0.51-0.68,0.68s-0.64,0.25-1.04,0.25
+			c-0.47,0-0.89-0.13-1.27-0.39s-0.68-0.63-0.9-1.11c-0.22-0.48-0.33-1.04-0.33-1.68C56.09,14.98,56.2,14.42,56.42,13.95z M60,14.68
+			c-0.21-0.23-0.46-0.34-0.76-0.34c-0.31,0-0.56,0.11-0.76,0.34s-0.3,0.54-0.3,0.94c0,0.4,0.1,0.71,0.3,0.94s0.46,0.35,0.76,0.35
+			c0.3,0,0.55-0.11,0.76-0.34c0.21-0.23,0.31-0.54,0.31-0.95C60.31,15.22,60.21,14.91,60,14.68z" />
+                <path class="st0" d="M68.97,13.19c0.4,0.47,0.6,1.12,0.6,1.92v3.6h-2.05V15.4c0-0.35-0.09-0.63-0.26-0.83
+			c-0.17-0.2-0.41-0.3-0.7-0.3c-0.31,0-0.55,0.1-0.72,0.3s-0.26,0.48-0.26,0.83v3.32h-2.05v-6.18h2.05v0.88
+			c0.18-0.28,0.42-0.5,0.73-0.68c0.31-0.17,0.66-0.26,1.05-0.26C68.04,12.48,68.58,12.72,68.97,13.19z" />
+                <path class="st0" d="M39.61,22.88c0.3-0.6,0.73-1.07,1.29-1.4c0.56-0.33,1.2-0.5,1.92-0.5c0.92,0,1.69,0.26,2.32,0.78
+			c0.63,0.52,1.03,1.22,1.21,2.11h-2.21c-0.13-0.29-0.32-0.52-0.55-0.67c-0.23-0.15-0.5-0.23-0.81-0.23c-0.47,0-0.85,0.18-1.13,0.53
+			s-0.42,0.83-0.42,1.43c0,0.6,0.14,1.08,0.42,1.44s0.66,0.53,1.13,0.53c0.31,0,0.58-0.08,0.81-0.23c0.23-0.15,0.42-0.38,0.55-0.67
+			h2.21c-0.18,0.89-0.58,1.59-1.21,2.11c-0.63,0.52-1.4,0.78-2.32,0.78c-0.72,0-1.37-0.17-1.92-0.5c-0.56-0.33-0.99-0.8-1.29-1.4
+			c-0.3-0.6-0.46-1.28-0.46-2.06C39.15,24.16,39.3,23.47,39.61,22.88z" />
+                <path class="st0" d="M48.48,28.51c-0.46-0.26-0.83-0.62-1.09-1.1c-0.26-0.48-0.4-1.04-0.4-1.69c0-0.64,0.13-1.2,0.4-1.68
+			c0.27-0.48,0.63-0.84,1.1-1.1c0.46-0.26,0.99-0.39,1.57-0.39s1.11,0.13,1.57,0.39c0.46,0.26,0.83,0.62,1.1,1.1
+			c0.27,0.48,0.4,1.04,0.4,1.68c0,0.64-0.13,1.2-0.4,1.68c-0.27,0.48-0.64,0.85-1.1,1.11s-0.99,0.39-1.58,0.39
+			S48.94,28.77,48.48,28.51z M50.77,26.69c0.19-0.22,0.29-0.54,0.29-0.96s-0.1-0.74-0.29-0.96s-0.43-0.33-0.71-0.33
+			c-0.28,0-0.51,0.11-0.7,0.33c-0.19,0.22-0.28,0.54-0.28,0.96c0,0.43,0.09,0.75,0.27,0.97c0.18,0.22,0.41,0.33,0.7,0.33
+			S50.57,26.91,50.77,26.69z" />
+                <path class="st0"
+                  d="M53.96,24.05c0.22-0.48,0.52-0.84,0.9-1.1c0.38-0.26,0.8-0.39,1.27-0.39c0.4,0,0.75,0.08,1.04,0.25
+			c0.29,0.17,0.52,0.4,0.68,0.68v-0.86h2.05v6.18h-2.05v-0.86c-0.16,0.29-0.39,0.51-0.68,0.68c-0.3,0.17-0.64,0.25-1.04,0.25
+			c-0.47,0-0.89-0.13-1.27-0.39s-0.68-0.63-0.9-1.11s-0.33-1.04-0.33-1.68C53.63,25.08,53.74,24.53,53.96,24.05z M57.55,24.79
+			c-0.21-0.23-0.46-0.34-0.76-0.34c-0.31,0-0.56,0.11-0.76,0.34c-0.2,0.22-0.3,0.54-0.3,0.94c0,0.4,0.1,0.71,0.3,0.94
+			s0.46,0.35,0.76,0.35c0.3,0,0.55-0.11,0.76-0.34c0.21-0.23,0.31-0.54,0.31-0.95C57.86,25.33,57.75,25.02,57.55,24.79z" />
+                <path class="st0" d="M61.12,24.05c0.25-0.48,0.6-0.84,1.05-1.1c0.45-0.26,0.96-0.39,1.54-0.39c0.75,0,1.37,0.21,1.88,0.64
+			s0.84,1.03,0.98,1.8H64.4c-0.13-0.4-0.37-0.61-0.73-0.61c-0.26,0-0.46,0.11-0.61,0.34c-0.15,0.22-0.22,0.55-0.22,0.99
+			s0.08,0.76,0.22,0.99c0.15,0.23,0.35,0.34,0.61,0.34c0.37,0,0.61-0.2,0.73-0.61h2.17c-0.15,0.76-0.47,1.36-0.98,1.8
+			s-1.14,0.65-1.88,0.65c-0.58,0-1.09-0.13-1.54-0.39c-0.45-0.26-0.8-0.62-1.05-1.1c-0.25-0.48-0.38-1.04-0.38-1.69
+			C60.74,25.08,60.87,24.53,61.12,24.05z" />
+                <path class="st0" d="M72.87,23.29c0.39,0.47,0.59,1.12,0.59,1.92v3.6h-2.05V25.5c0-0.35-0.09-0.63-0.26-0.83
+			c-0.17-0.2-0.41-0.3-0.7-0.3c-0.31,0-0.55,0.1-0.72,0.3s-0.26,0.48-0.26,0.83v3.32h-2.05v-8.16h2.05v2.86
+			c0.18-0.28,0.43-0.51,0.74-0.68c0.31-0.17,0.67-0.26,1.07-0.26C71.94,22.58,72.47,22.82,72.87,23.29z" />
+                <path class="st0" d="M53.12,31.15l-2.59,5.3v2.47h-2.06v-2.47l-2.59-5.3h2.34l1.3,3l1.29-3H53.12z" />
+                <path class="st0" d="M54.9,38.62c-0.46-0.26-0.83-0.62-1.09-1.1c-0.26-0.48-0.4-1.04-0.4-1.69c0-0.64,0.13-1.2,0.4-1.68
+			c0.27-0.48,0.63-0.84,1.1-1.1c0.46-0.26,0.99-0.39,1.57-0.39s1.11,0.13,1.57,0.39c0.46,0.26,0.83,0.62,1.1,1.1
+			c0.27,0.48,0.4,1.04,0.4,1.68c0,0.64-0.13,1.2-0.4,1.68c-0.27,0.48-0.64,0.85-1.1,1.11S57.06,39,56.48,39S55.37,38.87,54.9,38.62z
+			 M57.19,36.79c0.19-0.22,0.29-0.54,0.29-0.96s-0.1-0.74-0.29-0.96s-0.43-0.33-0.71-0.33c-0.28,0-0.51,0.11-0.7,0.33
+			c-0.19,0.22-0.28,0.54-0.28,0.96c0,0.43,0.09,0.75,0.27,0.97c0.18,0.22,0.41,0.33,0.7,0.33S57,37.02,57.19,36.79z" />
+                <path class="st0" d="M66.39,32.74v6.18h-2.06v-0.88c-0.17,0.28-0.41,0.51-0.72,0.68c-0.31,0.17-0.66,0.26-1.06,0.26
+			c-0.68,0-1.22-0.24-1.61-0.71c-0.39-0.47-0.59-1.12-0.59-1.93v-3.59h2.04v3.32c0,0.35,0.09,0.63,0.27,0.83s0.41,0.3,0.71,0.3
+			c0.3,0,0.54-0.1,0.71-0.3c0.17-0.2,0.26-0.48,0.26-0.83v-3.32H66.39z" />
+              </g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+          </svg>
+        </a>
+
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">الرئيسية</a></li>
+          <li class="dropdown"><a href="#"><span style="padding: 3px;">عنا</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="#about">عنا</a></li>
+              <li><a class="nav-link scrollto" href="#testimonials">شهادات العملاء</a></li>
+              <li><a class="nav-link scrollto" href="#services">الخدمات</a></li>
+              <li><a class="nav-link scrollto" href="#contact">تواصل معنا</a></li>
+          </li>
+        </ul>
+        </li>
+        <li><a class="nav-link scrollto" href="#coaches">المدربون</a></li>
+        <li><a class="nav-link scrollto" href="#pricing">الأسعار</a></li>
+        <li><a class="nav-link scrollto" href="https://forms.gle/1W6AujZQbFqUXdvR7" target="_blank">أنضم كمدرب</a></li>
+        <li class="dropdown"><a href="#"> <span style="padding: 3px;"> اللغة</span> <i
+              class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="index.html" dir="rtl" class="nav-link scrollto">English</a></li>
+            <li><a href="index-ar.html" class="nav-link scrollto">عربي</a></li>
+        </li>
+        </ul>
+        </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links d-flex align-items-center">
+        <!--<a href="#" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>-->
+        <a href="https://www.facebook.com/Icancoachyouonline" class="facebook" target="_blank"><i
+            class="bi bi-facebook"></i></a>
+        <a href="https://www.linkedin.com/company/icancoachyouonline/" target="_blank" class="linkedin"><i
+            class="bi bi-linkedin"></i></i></a>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
   <!-- ======= Hero Section ======= -->
   <section id="hero">
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
-          <div>
-            <h1>نحن نقوم بتمكينك وليس فقط تدريبك.</h1>
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center"
+          data-aos="fade-up">
+          <div style="text-align: right">
+            <h1>نحن نقوم <span class="color-blue">بتمكينك وليس فقط </span> تدريبك.</h1>
             <h2>
               نحن فريق من المدربين الموهوبين الذين يقدمون للآخرين خططًا لتحقيق أهدافهم باستخدام الذكاء الاصطناعي.
             </h2>
-            <script>
-              const apiKey = "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";
-              const model = "text-davinci-003";
-              const temperature = 0;
-              const maxTokens = 4060;
-              
-              function getResponse() {
-                var input = "Create a career path plan, how to start, and books & course that can help for"+ document.getElementById("input").value;
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "https://api.openai.com/v1/completions");
-              
-                // Show the loading message
-                document.getElementById("response").innerHTML = "Browse the website, as this may take up to 30 seconds.";
-                document.getElementById("response").style.color = "blue";
-              
-                // Set up the request body with the given parameters
-                var requestBody = {
-                  "model": model,
-                  "prompt": input,
-                  "temperature": temperature,
-                  "max_tokens": maxTokens,
-                };
-              
-                xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
-                xhr.onreadystatechange = function() {
-                  if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    var popup = window.open("", "Popup", "width=400,height=300");
-                    var intro = "Assalamu Alaikum, Hope you have a wonderful day. Thanks for trusting our services, and we hope to help to reach your goals. AI engine answer based on you data: ";
-                    var ending = "\n\n For free 10 minutes call with a coach, Book from here https://icancoachyou.online/#pricing, and For detailed career path plan from an expert or senior in your field or meeting a coach just SUBSCRIBE through the same link. ";
-                    var formattedText = intro + response.choices[0].text.replace(/([.?!])\s*(?=[A-Z])/g, "$1\n") + ending;
-                    popup.document.write("<pre>" + formattedText + "</pre>");
-                    // Remove the loading message
-                    document.getElementById("response").innerHTML = "";
-                  }
-                };
-                xhr.send(JSON.stringify(requestBody));
-              
-              }
-              </script>
-            <style>
-              * {
-                box-sizing: border-box;
-              }
-              
-              input[type=text], select, textarea {
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                resize: vertical;
-              }
-              
-              
-              </style>
-              <!-- Placeholder changing here -->
-            <input type="text" id="input" name="input" placeholder="اكتب هنا الوظيفة التي تحلم بها">
+
+            <!-- Placeholder changing here -->
+            <input type="text" id="input" class="col-lg-8" name="input"
+              placeholder=" اكتب هنا الوظيفة بالانجليزي التي تحلم بها" style=" background-color: transparent;
+            padding: 12px;
+            border: 1px solid #4898d3;
+            border-radius: 1000px;
+            resize: vertical;">
             <br>
             <br>
-            <button onclick="getResponse()" class="btn-get-started scrollto">احصل على خطة وظيفية في 30 ثانية بواسطة الذكاء الاصطناعي</button>
+            <button onclick="getResponse()" class="btn-get-started border-circle scrollto">احصل على خطة وظيفية في 30
+              ثانية بواسطة
+              الذكاء الاصطناعي</button>
             <br>
             <div id="response">
-              تصفح الموقع ، فقد يستغرق ذلك ما يصل إلى 30 ثانية.
             </div>
             <br>
-            <a href="#pricing" class="btn-get-started scrollto">قابل مدرب</a>
+            <a href="#pricing" class="btn-get-started border-circle scrollto">قابل مدرب</a>
           </div>
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+        <!-- <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
           <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+        </div> -->
+        <div class="modal" tabindex="-1" role="dialog" id="responseModal" style="direction: ltr">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">خطة المسار الوظيفي جاهزة</h5>
+                <button type="button" class="btn btn-primary" onclick="copyToClipboard()">نسخ إلى الحافظة</button>
+                </button>
+              </div>
+              <div class="modal-body" id="modal-body"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -668,22 +712,22 @@
 
     <!-- ======= Coaches Section ======= -->
     <section id="coaches" class="team">
-          <div class="container">
-    
-            <div class="section-title" data-aos="fade-up">
-              <h2>المدربون</h2>
-              <p>
-                <q>إذا كنت تريد أن تذهب بسرعة ، اذهب بمفردك ، إذا كنت تريد الذهاب بعيدًا، فدعنا نذهب معًا.</q>
-                مثل أفريقي - مارتا جويترد
-              </p>
-              <br>
-              <a href="coaches-ar.html">تصفح المدربين</a>
-              <!-- <p>“If you want to go fast, go alone, if you want to go far, go together”. African Proverb – Martha Goedert.</p> -->
-            </div>
-    
-            <div class="row top-coaches" id="coaches-content">
-    
-              <!-- <div class="col-lg-4 col-md-6">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>المدربون</h2>
+          <p>
+            <q>إذا كنت تريد أن تذهب بسرعة ، اذهب بمفردك ، إذا كنت تريد الذهاب بعيدًا، فدعنا نذهب معًا.</q>
+            مثل أفريقي - مارتا جويترد
+          </p>
+          <br>
+          <a href="coaches-ar.html">تصفح المدربين</a>
+          <!-- <p>“If you want to go fast, go alone, if you want to go far, go together”. African Proverb – Martha Goedert.</p> -->
+        </div>
+
+        <div class="row top-coaches" id="coaches-content">
+
+          <!-- <div class="col-lg-4 col-md-6">
                 <div class="member" data-aos="zoom-in">
                   <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
                   <div class="member-info">
@@ -699,97 +743,97 @@
                 </div>
               </div> -->
 
-          </div>
+        </div>
     </section><!-- End Team Section -->
 
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing section-bg">
-          <div class="container">
-    
-            <div class="section-title" data-aos="fade-up">
-              <h2>الأسعار</h2>
-              <p>السعر لا يمثل القيمة ولكنه سعر ينمو.</p>
-              <p>نتوقع أن تكون النتائج جاهزة لك في غضون الـ 24 ساعة القادمة.</p>
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>الأسعار</h2>
+          <p>السعر لا يمثل القيمة لأن القية أعلى بكثير.</p>
+          <p>نتوقع أن تكون النتائج جاهزة لك في غضون الـ 24 ساعة القادمة.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="box aos-init" data-aos="zoom-in">
+              <h3>مجانا لفترة محدودة</h3>
+              <h4 style="text-decoration: line-through">99.00</h4>
+              <ul>
+                <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                <li class="na">المسار الوظيفي من مدرب خبير</li>
+                <li class="na">الدورات والأدوات والتطبيقات</li>
+                <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                <li class="na">20 دقائق اتصال مع مدرب</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#hero" class="btn-buy">جرب الآن</a>
+              </div>
             </div>
-    
-            <div class="row">
-    
-              <div class="col-lg-3 col-md-6">
-                <div class="box aos-init" data-aos="zoom-in">
-                  <h3>مجانا لفترة محدودة</h3>
-                  <h4 style="text-decoration: line-through">99.00</h4>
-                  <ul>
-                    <li class="na">كيف تبدأ مع الذكاء الاصطناعي</li>
-                    <li class="na">الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
-                    <li class="na">المسار الوظيفي من مدرب خبير</li>
-                    <li class="na">الدورات والأدوات والتطبيقات</li>
-                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
-                    <li>10 دقائق اتصال مع مدرب</li>
-                  </ul>
-                  <div class="btn-wrap">
-                    <a href="https://calendly.com/icancoachyou/10min" target="_blank" class="btn-buy">احجز الآن</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-                <div class="box featured aos-init" data-aos="zoom-in" data-aos-delay="100">
-                  <h3>احترافية</h3>
-                  <h4><sup>EGP</sup>199</h4>
-                  <ul>
-                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
-                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
-                    <li>المسار الوظيفي من مدرب خبير</li>
-                    <li>الدورات والأدوات والتطبيقات</li>
-                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
-                    <li>15 دقائق اتصال مع مدرب</li>
-                  </ul>
-                  <div class="btn-wrap">
-                    <a href="https://easykash.net/QXA4584" target="_blank" class="btn-buy">اشتري الآن</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-                <div class="box aos-init" data-aos="zoom-in" data-aos-delay="200">
-                  <h3>مرشد</h3>
-                  <h4><sup>EGP</sup>299</h4>
-                  <ul>
-                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
-                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
-                    <li>المسار الوظيفي من مدرب خبير</li>
-                    <li>الدورات والأدوات والتطبيقات</li>
-                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
-                    <li>30 دقائق اتصال مع مدرب</li>
-                  </ul>
-                  <div class="btn-wrap">
-                    <a href="https://easykash.net/PCR8674" target="_blank" class="btn-buy">اشتري الآن</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-                <div class="box aos-init" data-aos="zoom-in" data-aos-delay="300">
-                  <span class="advanced">متقدم</span>
-                  <h3>قابل المدرب</h3>
-                  <h4><sup>EGP</sup>499</h4>
-                  <ul>
-                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
-                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
-                    <li>المسار الوظيفي من مدرب خبير</li>
-                    <li>الدورات والأدوات والتطبيقات</li>
-                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
-                    <li>60 دقائق اتصال مع مدرب</li>
-                  </ul>
-                  <div class="btn-wrap">
-                    <a href="https://easykash.net/TEI2614" target="_blank" class="btn-buy">اشتري الآن</a>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-    
           </div>
+
+          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+            <div class="box featured aos-init" data-aos="zoom-in" data-aos-delay="100">
+              <h3>احترافية</h3>
+              <h4><sup>EGP</sup>199</h4>
+              <ul>
+                <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                <li>المسار الوظيفي من مدرب خبير</li>
+                <li>الدورات والأدوات والتطبيقات</li>
+                <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                <li class="na">20 دقائق اتصال مع مدرب</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="https://easykash.net/QXA4584" target="_blank" class="btn-buy">اشتري الآن</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="box aos-init" data-aos="zoom-in" data-aos-delay="200">
+              <h3>مرشد</h3>
+              <h4><sup>EGP</sup>299</h4>
+              <ul>
+                <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                <li>المسار الوظيفي من مدرب خبير</li>
+                <li>الدورات والأدوات والتطبيقات</li>
+                <li>مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                <li>20 دقائق اتصال مع مدرب</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="https://easykash.net/PCR8674" target="_blank" class="btn-buy">اشتري الآن</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="box aos-init" data-aos="zoom-in" data-aos-delay="300">
+              <span class="advanced">متقدم</span>
+              <h3>قابل المدرب</h3>
+              <h4><sup>EGP</sup>499</h4>
+              <ul>
+                <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                <li>المسار الوظيفي من مدرب خبير</li>
+                <li>الدورات والأدوات والتطبيقات</li>
+                <li>مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                <li>40 دقائق اتصال مع مدرب</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="https://easykash.net/TEI2614" target="_blank" class="btn-buy">اشتري الآن</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </section><!-- End Pricing Section -->
 
     <!-- ======= Services Section ======= -->
@@ -810,15 +854,18 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
+            data-aos-delay="100">
             <div class="icon-box icon-box-cyan">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4 class="title"><a href="https://icancoachyou.online/">دورة أونلاين</a></h4>
-              <p class="description">يمكن اعتبار الدورات التدريبية عبر الإنترنت منتجات تدريب ، بدلاً من خدمات التدريب.</p>
+              <p class="description">يمكن اعتبار الدورات التدريبية عبر الإنترنت منتجات تدريب ، بدلاً من خدمات التدريب.
+              </p>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
+            data-aos-delay="200">
             <div class="icon-box icon-box-green">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
               <h4 class="title"><a href="https://icancoachyou.online/">إيجاد المدرب المناسب</a></h4>
@@ -826,11 +873,13 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
+            data-aos-delay="300">
             <div class="icon-box icon-box-blue">
               <div class="icon"><i class="bx bx-world"></i></div>
               <h4 class="title"><a href="https://icancoachyou.online/">بناء خطة مهنية</a></h4>
-              <p class="description">مطابقة مهاراتك ، وما إلى ذلك ، بالوظائف أو الوظائف الحالية. مطابقة أهداف حياتك المهنية مع احتياجاتك المالية.</p>
+              <p class="description">مطابقة مهاراتك ، وما إلى ذلك ، بالوظائف أو الوظائف الحالية. مطابقة أهداف حياتك
+                المهنية مع احتياجاتك المالية.</p>
             </div>
           </div>
 
@@ -838,7 +887,7 @@
 
       </div>
     </section><!-- End Services Section -->
-    
+
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
       <div class="container">
