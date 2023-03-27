@@ -47,6 +47,7 @@ textarea::-webkit-scrollbar-track,
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  /* background-color: #001d3d; */
 }
 
 body.hide-flow {
@@ -418,6 +419,13 @@ h6 {
   }
 }
 @media (max-width: 520px) {
+  .steps {
+    left: 12px;
+  }
+  .navbar-mobile ul, .join-form.on .join-form-content {
+    right: 0px !important;
+    left: 0px !important;
+  }
   .join-form-content .fields p {
     font-size: 12px;
   }
@@ -434,8 +442,11 @@ h6 {
     font-size: 16px;
   }
   .join-form-content .fields input, .join-form-content .fields select {
-    padding: 3px 7px;
-    font-size: 14px;
+    padding: 6px 5px;
+    font-size: 11px;
+  }
+  .join-form.on .join-form-content {
+    overflow-x: hidden;
   }
   .join-form-content .row {
     gap: 10px;
@@ -465,6 +476,10 @@ h6 {
   }
   .form-submitted .submitted-content p {
     font-size: 0.9rem;
+  }
+  .step article .example {
+    font-size: 12px;
+    padding: 4px 8px 12px;
   }
 }
 
@@ -765,7 +780,7 @@ h6 {
 */
 .mobile-nav-toggle,
 .close-form {
-  color: #364146;
+  color: white;
   font-size: 28px;
   cursor: pointer;
   display: none;
@@ -838,10 +853,17 @@ h6 {
 }
 
 .navbar-mobile a,
+.join-us,
 .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
   color: #364146;
+}
+
+@media (min-width: 992px) {
+  .join-us {
+    color: #fff;
+  }
 }
 
 .navbar-mobile a:hover,
@@ -2482,15 +2504,18 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-  padding: 15px 0;
-  background: #f4f6f7;
+  padding: 90px 0 20px;
+  background: #001d3d;
   min-height: 40px;
-  margin-top: 70px;
+  /* padding-top: 77px; */
+  background-image: url(../img/home-img.png);
+  background-size: cover;
 }
 
 .breadcrumbs h2 {
   font-size: 24px;
   font-weight: 600;
+  color: white;
 }
 
 .breadcrumbs ol {
@@ -2504,6 +2529,7 @@ section {
 
 .breadcrumbs ol li+li {
   padding-left: 10px;
+  color: white;
 }
 
 .breadcrumbs ol li+li::before {

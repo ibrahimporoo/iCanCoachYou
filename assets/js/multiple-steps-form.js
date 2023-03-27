@@ -4,6 +4,12 @@
 // Multi Step Form - Joining
 const joinForm = document.querySelector('.join-form');
 const joinUs = document.querySelector('.join-us');
+const navbar_mobile = document.querySelector('.mobile-nav-toggle');
+joinUs.onclick = () => {
+	// document.querySelector('#navbar').classList.toggle('navbar-mobile');
+	// navbar_mobile.classList.toggle('bi-list')
+	// navbar_mobile.classList.toggle('bi-x')
+};
 const closeFormBtn = document.querySelector('.close-form');
 document.querySelector('.join-us').addEventListener('click', _ => {
 	joinForm.classList.toggle('on');
@@ -12,7 +18,7 @@ document.querySelector('.join-us').addEventListener('click', _ => {
 closeFormBtn.addEventListener('click', (e) => {
 	joinForm.classList.toggle('on');
 	document.body.classList.toggle('hide-flow');
-	console.log(e.target)
+	console.log(e.target);
 })
 // Patterns
 /* Any URL Pattern */ 
@@ -225,8 +231,6 @@ function isValid() {
 			valid = false;
 			sweetAlert.classList.add('on');
 		}
-		console.log("Valid One => ", validOne)
-		console.log("Valid Two => ", validTwo)
 	}
 	return valid;
 }
