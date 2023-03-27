@@ -5,11 +5,13 @@
 const joinForm = document.querySelector('.join-form');
 const joinUs = document.querySelector('.join-us');
 const navbar_mobile = document.querySelector('.mobile-nav-toggle');
+/*
 joinUs.onclick = () => {
-	// document.querySelector('#navbar').classList.toggle('navbar-mobile');
-	// navbar_mobile.classList.toggle('bi-list')
-	// navbar_mobile.classList.toggle('bi-x')
+	document.querySelector('#navbar').classList.toggle('navbar-mobile');
+	navbar_mobile.classList.toggle('bi-list')
+	navbar_mobile.classList.toggle('bi-x')
 };
+*/
 const closeFormBtn = document.querySelector('.close-form');
 document.querySelector('.join-us').addEventListener('click', _ => {
 	joinForm.classList.toggle('on');
