@@ -14,18 +14,28 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+      integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+      crossorigin="anonymous"></script>
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">  
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Firebase's JavaScript API to interact with Firebase services -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-app.js" integrity="sha512-KakHaWvNgg3Mo/LptevcdwXzAmSFCFHrsvRUIRbUb++of57rXmIPQiAmpEeqaEdvhVk0ljxT2FpQk+wvP+j5LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-app.js"
+    integrity="sha512-KakHaWvNgg3Mo/LptevcdwXzAmSFCFHrsvRUIRbUb++of57rXmIPQiAmpEeqaEdvhVk0ljxT2FpQk+wvP+j5LQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -37,8 +47,9 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
+ 
   <script>
-    const apiKey = "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";
+    const apiKey = "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";
     const model = "text-davinci-003";
     const temperature = 0;
     const maxTokens = 4060;
@@ -50,7 +61,7 @@
 
       // Show the loading message
       document.getElementById("response").innerHTML = "تصفح الموقع ، فقد يستغرق ذلك ما يصل إلى 30 ثانية.";
-      document.getElementById("response").style.color = "blue";
+      document.getElementById("response").style.color = "#ffffffc2";
 
       // Set up the request body with the given parameters
       var requestBody = {
@@ -654,14 +665,20 @@
             <h2>
               نحن فريق من المدربين الموهوبين الذين يقدمون للآخرين خططًا لتحقيق أهدافهم باستخدام الذكاء الاصطناعي.
             </h2>
-
+            <style>
+              * {
+                box-sizing: border-box;
+              }
+              input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+              }
+            </style>
             <!-- Placeholder changing here -->
-            <input type="text" id="input" class="col-lg-8" name="input"
-              placeholder=" اكتب هنا الوظيفة بالانجليزي التي تحلم بها" style=" background-color: transparent;
-            padding: 12px;
-            border: 1px solid #4898d3;
-            border-radius: 1000px;
-            resize: vertical;">
+            <input type="text" id="input" class="col-lg-8" name="input" placeholder=" اكتب هنا الوظيفة بالانجليزي التي تحلم بها">
             <br>
             <br>
             <button onclick="getResponse()" class="btn-get-started border-circle scrollto">احصل على خطة وظيفية في 30
@@ -674,9 +691,7 @@
             <a href="#pricing" class="btn-get-started border-circle scrollto">قابل مدرب</a>
           </div>
         </div>
-        <!-- <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
-          <img src="assets/img/hero-img.png" class="img-fluid" alt="">
-        </div> -->
+        <!-- Modal -->
         <div class="modal" tabindex="-1" role="dialog" id="responseModal" style="direction: ltr">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
