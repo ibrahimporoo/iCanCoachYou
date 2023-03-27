@@ -88,154 +88,158 @@ function setSummary(summary) {
 	console.log(summary);
 }
 
-/* Hiding Filtered Boxes with select box */
-const inputFields = document.querySelectorAll('.input-field');
+window.onclick = () => {
+	if(document.body.classList.contains('coaches-html')) {
 
-// if click outside
-window.onclick = (e) => {
-	if(!e.target.classList.contains('filter-el')) {
-		inputFields.forEach(field => field.classList.remove('on'));
-	}
-};
+		/* Hiding Filtered Boxes with select box */
+		const inputFields = document.querySelectorAll('.input-field');
 
-inputFields.forEach(field => {
-	field.addEventListener('click', () => {
-		field.classList.toggle('on');
-	})
-});
+		// if click outside
+		window.onclick = (e) => {
+			if(!e.target.classList.contains('filter-el')) {
+				inputFields.forEach(field => field.classList.remove('on'));
+			}
+		};
 
-// Select Dropdown menues
-const byIndustry = document.querySelectorAll('.dropdown.by-industry li');
-const byCountry = document.querySelectorAll('.dropdown.by-country li');
-const byJobTitle = document.querySelectorAll('.dropdown.by-job-title li');
-// adding checked to the first item in the list
-checkTheElement(byIndustry, 'category');
-checkTheElement(byCountry, 'country');
-checkTheElement(byJobTitle, 'jobTitle');
+		inputFields.forEach(field => {
+			field.addEventListener('click', () => {
+				field.classList.toggle('on');
+			})
+		});
 
-function checkTheElement(el, filterBy) {
+		// Select Dropdown menues
+		const byIndustry = document.querySelectorAll('.dropdown.by-industry li');
+		const byCountry = document.querySelectorAll('.dropdown.by-country li');
+		const byJobTitle = document.querySelectorAll('.dropdown.by-job-title li');
+		// adding checked to the first item in the list
+		checkTheElement(byIndustry, 'category');
+		checkTheElement(byCountry, 'country');
+		checkTheElement(byJobTitle, 'jobTitle');
 
-	el.forEach(item => {
-
-		item.addEventListener('click', () => {
+		function checkTheElement(el, filterBy) {
 
 			el.forEach(item => {
-				if(item.classList.contains('on')) {
-					item.classList.remove('on');
-					item.querySelector('i').classList.remove('on');
-				}
+
+				item.addEventListener('click', () => {
+
+					el.forEach(item => {
+						if(item.classList.contains('on')) {
+							item.classList.remove('on');
+							item.querySelector('i').classList.remove('on');
+						}
+					});
+					
+					item.classList.add('on');
+					item.querySelector('i').classList.add('on');
+					
+					// Search the Item
+					let searchingVal = item.dataset.category;
+					if(searchingVal != 'all') {
+						switch(filterBy) {
+							case 'category':
+								filteredCoaches = coaches.filter( coach => {
+									if(coach.category.toLowerCase().indexOf(searchingVal) != -1) {
+										return coach;
+									}
+								})
+								showNewCoaches(filteredCoaches);
+								break;
+							case 'country':
+								filteredCoaches = coaches.filter( coach => {
+									if(coach.country.toLowerCase().indexOf(searchingVal) != -1) {
+										return coach;
+									}
+								})
+								showNewCoaches(filteredCoaches);
+								break;
+							case 'jobTitle':
+								filteredCoaches = coaches.filter( coach => {
+									if(coach.jobTitle.toLowerCase().indexOf(searchingVal) != -1) {
+										return coach;
+									}
+								})
+								showNewCoaches(filteredCoaches);
+								break;
+							default:
+								return coaches;
+						}
+					} else {
+						showNewCoaches(coaches);
+					}
+				})
 			});
-			
-			item.classList.add('on');
-			item.querySelector('i').classList.add('on');
-			
-			// Search the Item
-			let searchingVal = item.dataset.category;
-			if(searchingVal != 'all') {
-				switch(filterBy) {
-					case 'category':
-						filteredCoaches = coaches.filter( coach => {
-							if(coach.category.toLowerCase().indexOf(searchingVal) != -1) {
-								return coach;
-							}
-						})
-						showNewCoaches(filteredCoaches);
-						break;
-					case 'country':
-						filteredCoaches = coaches.filter( coach => {
-							if(coach.country.toLowerCase().indexOf(searchingVal) != -1) {
-								return coach;
-							}
-						})
-						showNewCoaches(filteredCoaches);
-						break;
-					case 'jobTitle':
-						filteredCoaches = coaches.filter( coach => {
-							if(coach.jobTitle.toLowerCase().indexOf(searchingVal) != -1) {
-								return coach;
-							}
-						})
-						showNewCoaches(filteredCoaches);
-						break;
-					default:
-						return coaches;
-				}
+
+		};
+
+		// Handle Events of searching and filtering when inputs changes
+
+		let searchField = document.getElementById('search-field');
+		let filteredCoaches = coaches;
+		let html_filtering_by_user = '';
+
+		// Handle User searching
+		searchField.addEventListener('keyup', () => {
+			let searchFieldValue = searchField.value.toLowerCase();
+			if(searchFieldValue !== '') {
+				filteredCoaches = coaches.filter( coach => {
+					if(
+						coach.category.toLowerCase().indexOf(searchFieldValue) != -1 ||
+						coach.name.toLowerCase().indexOf(searchFieldValue) != -1 ||
+						coach.jobTitle.toLowerCase().indexOf(searchFieldValue) != -1 ||
+						coach.country.toLowerCase().indexOf(searchFieldValue) != -1
+					) {
+						return coach;
+					}
+				})
+				showNewCoaches(filteredCoaches);
 			} else {
-				showNewCoaches(coaches);
-			}
+				return false
+			};
 		})
-	});
+		// Handle User Choosed Categories
 
-};
-
-// Handle Events of searching and filtering when inputs changes
-
-let searchField = document.getElementById('search-field');
-let filteredCoaches = coaches;
-let html_filtering_by_user = '';
-
-// Handle User searching
-searchField.addEventListener('keyup', () => {
-	let searchFieldValue = searchField.value.toLowerCase();
-	if(searchFieldValue !== '') {
-		filteredCoaches = coaches.filter( coach => {
-			if(
-				coach.category.toLowerCase().indexOf(searchFieldValue) != -1 ||
-				coach.name.toLowerCase().indexOf(searchFieldValue) != -1 ||
-				coach.jobTitle.toLowerCase().indexOf(searchFieldValue) != -1 ||
-				coach.country.toLowerCase().indexOf(searchFieldValue) != -1
-			) {
-				return coach;
-			}
-		})
-		showNewCoaches(filteredCoaches);
-	} else {
-		return false
-	};
-})
-// Handle User Choosed Categories
-
-function showNewCoaches(coaches) {
-	html_filtering_by_user = '';
-	coaches.map(coach => {
-		html_filtering_by_user += `
-		<div class="col-lg-4 col-md-6">
-			<div class="member" data-aos="zoom-in">
-				<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
-					<div class="member-info coaches pricing">
-						<div class='ps-3 pe-3'>
-							<h5>${coach.name}</h5>
-							<h4>${coach.jobTitle}</h4>
+		function showNewCoaches(coaches) {
+			html_filtering_by_user = '';
+			coaches.map(coach => {
+				html_filtering_by_user += `
+				<div class="col-lg-4 col-md-6">
+					<div class="member" data-aos="zoom-in">
+						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
+							<div class="member-info coaches pricing">
+								<div class='ps-3 pe-3'>
+									<h5>${coach.name}</h5>
+									<h4>${coach.jobTitle}</h4>
+								</div>
+								<span>${coach.pricing}</span>
+								<p class='detail-item mb-1 mt-1'>Details</p>
+								<span>${coach.category}</span>
+								<span>${coach.summary}</span>
+								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+								<div class="social">
+									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+								</div>
+								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+							</div>
 						</div>
-						<span>${coach.pricing}</span>
-						<p class='detail-item mb-1 mt-1'>Details</p>
-						<span>${coach.category}</span>
-						<span>${coach.summary}</span>
-						<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
-						<div class="social">
-							<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-						</div>
-						<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
 					</div>
 				</div>
-			</div>
-		</div>
-	`;
-	})
-	if(coaches.length > 0) {
-		coachesContent.innerHTML = html_filtering_by_user;
-	} else {
-		if(lang == 'ar') {
-			coachesContent.innerHTML = `
-				<h1 style='padding: 100px 0; text-align: center'>لا يوجد مدربون علي حسب اختيارك</h1>
 			`;
-		} else {
-			coachesContent.innerHTML = `
-			<h1 style='padding: 100px 0; text-align: center'>There are no Coaches according to your filtration</h1>
-			`;
-		}
+			})
+			if(coaches.length > 0) {
+				coachesContent.innerHTML = html_filtering_by_user;
+			} else {
+				if(lang == 'ar') {
+					coachesContent.innerHTML = `
+						<h1 style='padding: 100px 0; text-align: center'>لا يوجد مدربون علي حسب اختيارك</h1>
+					`;
+				} else {
+					coachesContent.innerHTML = `
+					<h1 style='padding: 100px 0; text-align: center'>There are no Coaches according to your filtration</h1>
+					`;
+				}
+			}
+		};
+
 	}
-};
-
-
+}
 
