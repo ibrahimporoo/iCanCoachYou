@@ -1,8 +1,8 @@
 import { initializeApp } from 'firebase/app'
 import {
-	getFirestore, collection, getDocs
+	getFirestore, collection, getDocs,
+	query, where
 } from 'firebase/firestore/lite';
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
@@ -15,12 +15,44 @@ const firebaseConfig = {
   measurementId: "G-G8FTTQ0EB2"
 };
 
-initializeApp(firebaseConfig)
-const db = getFirestore()
+initializeApp(firebaseConfig);
+const db = getFirestore();
 
 const lang = document.querySelector('html').lang; // get page's Lang to assign it to database
 
 const colRef = collection(db, 'coaches', 'languages', lang);
+
+// queries
+const cCompleted = query(colRef, where("appear", "==", true))
+const cBinding = query(colRef, where("appear", "==", false))
+
+// get collection data
+let completedCoaches = [];
+getDocs(cCompleted)
+  .then(snapshot => {
+    // console.log(snapshot.docs)
+    snapshot.docs.forEach(doc => {
+      completedCoaches.push({ ...doc.data(), id: doc.id })
+    })
+		console.log(completedCoaches);
+  })
+  .catch(err => {
+    console.log(err.message);
+  });
+
+// get collection data
+let inCompletedcoaches = [];
+getDocs(cBinding)
+  .then(snapshot => {
+    // console.log(snapshot.docs)
+    snapshot.docs.forEach(doc => {
+      inCompletedcoaches.push({ ...doc.data(), id: doc.id });
+    })
+		console.log(inCompletedcoaches);
+  })
+  .catch(err => {
+    console.log(err.message);
+  });
 
 // selecting the coaches Row in html file
 const coachesContent = document.getElementById('coaches-content');
@@ -84,10 +116,6 @@ getData().then(() => {
 	};
 });
 
-function setSummary(summary) {
-	console.log(summary);
-}
-
 window.onclick = () => {
 	if(document.body.classList.contains('coaches-html')) {
 
@@ -131,7 +159,6 @@ window.onclick = () => {
 					
 					item.classList.add('on');
 					item.querySelector('i').classList.add('on');
-					
 					// Search the Item
 					let searchingVal = item.dataset.category;
 					if(searchingVal != 'all') {
@@ -242,4 +269,5 @@ window.onclick = () => {
 
 	}
 }
+
 

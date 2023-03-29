@@ -13,5 +13,11 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'roadmap-output.js'
 	},
+	mode: 'development',
+	entry: './assets/js/multiple-steps-form.js',
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'multiple-steps-form.js'
+	},
 	watch: true
 }

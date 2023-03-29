@@ -345,16 +345,21 @@ h6 {
 .btns button#prev {
   display: none;
 }
-.btns button#next {
+.btns button#next,
+.btns button#submit {
   font-weight: bold;
   box-shadow: 0px 5px 15px 1px rgba(0 0 0/10%);
   background-color: #f3cb6ed4;
   color: white;
 }
-.btns button#next:hover {
+.btns button#next:hover,
+.btns button#submit:hover {
   background-color: #f3cc6e;
   box-shadow: 1px 1px 15px 3px rgba(0 0 0 / 5%);
   padding: 10px 25px;
+}
+.btns button#submit {
+  display: none;
 }
 .form-submitted {
   display: none;

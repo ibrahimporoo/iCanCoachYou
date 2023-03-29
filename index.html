@@ -136,7 +136,7 @@
           <div class="row">
             <article>
               <p>What's the main email that you always open</p>
-              <input type="email" placeholder="email...">
+              <input type="email" name="user_mail" placeholder="email...">
             </article>
             <article class="d-flex flex-column gap-3">
               <div>
@@ -294,13 +294,13 @@
               </div>
               <div>
                 <p>add your Profile Picture as a link. Please add the most professional photo you have</p>
-                <input type="text" name="picture_link" placeholder="image link drive for example.." />
+                <input type="url" name="picture_link" placeholder="image link drive for example.." />
               </div>
               <div>
                 <p>What's your Profile LinkedIn link?</p>
                 <span class="example">or Facebook or Instagram or twitter or YouTube or Behance (the most professional one)</span>
                 <span class="example">You can bring the link from <a href="https://www.linkedin.com" target="_blank">here </a></span>
-                <input type="url" name="linkedIn_link" pattern="https://.*" placeholder="https://www.linkedin.com/username" />
+                <input type="url" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
               </div>
             </article>
           </div>
@@ -365,11 +365,11 @@
             <article class="d-flex flex-column gap-3">
               <div>
                 <p>What's your objective in life?</p>
-                <input type="text" name="coach_goal">
+                <input type="text" name="coach_goal" />
               </div>
               <div>
                 <p>Who is your role model?</p>
-                <input type="text" name="coach_goal" />
+                <input type="text" name="coach_role_model">
               </div>
             </article>
           </div>
@@ -382,7 +382,7 @@
               <span class="example">
                 For Example 500 EGP also we take 25% commission to be sustainable and for payment getaway's fees
               </span>
-              <input type="text" placeholder="500 EGP" name="hourly_rate" />
+              <input type="number" placeholder="500" name="hourly_rate" />
             </article>
             <article>
               <p>Please add your calendly.com link as we will send it to the clients after they pay</p>
@@ -446,6 +446,7 @@
           <button id="reset" type="reset">Reset Data</button>
           <button id="prev" type="button">Previous</button>
           <button id="next" type="button">Next</button>
+          <button id="submit" type="submit">Submit</button>
         </div>
       </div>
       <!-- Submitted Content -->
@@ -453,7 +454,7 @@
         <div class="submitted-content">
           <i class="bi bi-check-circle-fill"></i>
           <h3>Thank You!</h3>
-          <p>Your Submission has been reveived</p>
+          <p>Your Submission has been received</p>
         </div>
       </div>
     </div>
@@ -571,8 +572,8 @@
               <li><a href="index-ar.html" dir="rtl" class="nav-link scrollto">عربي</a></li>
             </ul>
           </li>
-          <!-- <li class="join-us nav-link scrollto">Join as a coach</li> -->
-          <li><a class="nav-link scrollto" href="https://forms.gle/1W6AujZQbFqUXdvR7" target="_blank">Join as a coach</a></li>
+          <li class="join-us nav-link scrollto">Join as a coach</li>
+          <!-- <li><a class="nav-link scrollto" href="https://forms.gle/1W6AujZQbFqUXdvR7" target="_blank">Join as a coach</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -1344,7 +1345,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/multiple-steps-form.js"></script>
+  <script src="dist/multiple-steps-form.js"></script>
 </body>
 
 </html>

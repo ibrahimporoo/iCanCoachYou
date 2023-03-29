@@ -1,26 +1,232 @@
+/*
+	-----------------------
+	--- Start Firebase ----
+	-----------------------
+*/ 
 
+import { initializeApp } from 'firebase/app'
+import {
+  getFirestore, collection, getDocs,
+	addDoc,
+	query, where,
+	updateDoc
+} from 'firebase/firestore'
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDnpUv6FkAyt3eGai3AtCm65exvwFwvOyE",
+  authDomain: "collection-practice.firebaseapp.com",
+  projectId: "collection-practice",
+  storageBucket: "collection-practice.appspot.com",
+  messagingSenderId: "1054284320639",
+  appId: "1:1054284320639:web:5ad00474d208b0c1eed44a"
+};
+
+// init firebase
+initializeApp(firebaseConfig)
+
+// init services
+const db = getFirestore()
+
+// collection ref
+const arcolRef = collection(db, 'coaches', 'languages', 'ar')
+const encolRef = collection(db, 'coaches', 'languages', 'en')
+
+// queries
+const cCompleted = query(arcolRef, where("appear", "==", true))
+const cInProgress = query(encolRef, where("appear", "==", false))
+
+// get collection data
+let completedCoaches = [];
+getDocs(cCompleted)
+  .then(snapshot => {
+    // console.log(snapshot.docs)
+    snapshot.docs.forEach(doc => {
+      completedCoaches.push({ ...doc.data(), id: doc.id })
+    })
+  })
+  .catch(err => {
+    console.log(err.message);
+  })
+
+// get collection data
+let inProgressCoaches = [];
+getDocs(cInProgress)
+  .then(snapshot => {
+    // console.log(snapshot.docs)
+    snapshot.docs.forEach(doc => {
+      inProgressCoaches.push({ ...doc.data(), id: doc.id })
+    })
+  })
+  .catch(err => {
+    console.log(err.message);
+  })
 
 // Popup Multiple Steps Form Menu
 // Multi Step Form - Joining
 const joinForm = document.querySelector('.join-form');
 const joinUs = document.querySelector('.join-us');
-const navbar_mobile = document.querySelector('.mobile-nav-toggle');
+// Registering
+joinForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+	console.log("Submitted From Normal File");
+	let jobTitles = [];
+	let industries = [];
+	joinForm.querySelectorAll('[name="jobTitle"]:checked').forEach(input => {
+		jobTitles.push(input.value);
+	});
+	joinForm.querySelectorAll('[name="industry"]:checked').forEach(input => {
+		industries.push(input.value);
+	});
+	if(isValid()) {
+		console.log("كدا الحمدلله كله تمم.");
+		// Add Doc to Collection.
+		// Arabic Doc
+		addDoc(arcolRef, {
+			name: joinForm.ar_name.value,
+			gender: joinForm.gender.value,
+			age: joinForm.age.value,
+			country: joinForm.location.value.slice(0, joinForm.location.value.indexOf('/')),
+			city: joinForm.location.value.slice(joinForm.location.value.indexOf('/') + 1, ),
+			mail: joinForm.user_mail.value,
+			whats_number: joinForm.whats_number.value,
+			college: joinForm.college.value,
+			graduation_year: joinForm.G_Year.value,
+			SM_account: joinForm.linkedIn_link.value,
+			cv_link: joinForm.cv_link.value,
+			industry: industries,
+			jobTitle: jobTitles,
+			work_experience: joinForm.work_exp.value,
+			pricing: joinForm.hourly_rate.value,
+			english_skills: joinForm.en_lang.value,
+			summary: joinForm.ar_summary.value,
+			image: joinForm.picture_link.value,
+			coach_free_time: joinForm.coachTime.value,
+			coach_role_model: joinForm.coach_role_model.value,
+			coach_objective_life: joinForm.coach_goal.value,
+			coach_calendly_link: joinForm.calendly_link.value,
+			coach_bank_infos: joinForm.coach_bank_infos.value,
+			how_coach_arrived: joinForm.arrival_way.value,
+			coach_comment: joinForm.comment.value,
+			session_way: joinForm.session_way.value,
+			category: '',
+			paymentLink: '',
+			appear: false
+		});
+		// English Doc
+		addDoc(encolRef, {
+			name: joinForm.en_name.value,
+			gender: joinForm.gender.value,
+			age: joinForm.age.value,
+			country: joinForm.location.value.slice(0, joinForm.location.value.indexOf('/')),
+			city: joinForm.location.value.slice(joinForm.location.value.indexOf('/') + 1, ),
+			mail: joinForm.user_mail.value,
+			whats_number: joinForm.whats_number.value,
+			college: joinForm.college.value,
+			graduation_year: joinForm.G_Year.value,
+			SM_account: joinForm.linkedIn_link.value,
+			cv_link: joinForm.cv_link.value,
+			industry: industries,
+			jobTitle: jobTitles,
+			work_experience: joinForm.work_exp.value,
+			pricing: joinForm.hourly_rate.value,
+			english_skills: joinForm.en_lang.value,
+			summary: joinForm.en_summary.value,
+			image: joinForm.picture_link.value,
+			coach_free_time: joinForm.coachTime.value,
+			coach_role_model: joinForm.coach_role_model.value,
+			coach_objective_life: joinForm.coach_goal.value,
+			coach_calendly_link: joinForm.calendly_link.value,
+			coach_bank_infos: joinForm.coach_bank_infos.value,
+			how_coach_arrived: joinForm.arrival_way.value,
+			coach_comment: joinForm.comment.value,
+			session_way: joinForm.session_way.value,
+			category: '',
+			paymentLink: '',
+			appear: false
+		}).then(() => {
+			// Show To User That All Data was sent.
+			document.querySelector('.steps').style.cssText = 'display: none';
+			document.querySelector('.fields').classList.add('done');
+			document.querySelector('.form-submitted').classList.add('done');
+		})
+	}
+});
+
 /*
-joinUs.onclick = () => {
-	document.querySelector('#navbar').classList.toggle('navbar-mobile');
-	navbar_mobile.classList.toggle('bi-list')
-	navbar_mobile.classList.toggle('bi-x')
-};
+In the Future Looking
+let coachesContent = document.querySelector('.coaches-content .container');
+let bindingContent = document.querySelector('.binding .container');
+coachesContent.innerHTML = '';
+bindingContent.innerHTML = '';
+function fillHTML(coaches, completed = true) {
+	coaches.forEach(coach => {
+		if(completed) {
+			coachesContent.innerHTML += `
+				<article class="coach">
+					<h2 class="name">${coach.name}</h2>
+					<span class="job-title">${coach.jobTitle}</span>
+					<p class="job-desc">${coach.jobDesc ? coach.jobDesc : "No Description Yet"}</p>
+				</article>
+			`
+		} else {
+			bindingContent.innerHTML += `
+				<article class="coach">
+					<h2 class="name">${coach.name}</h2>
+					<span class="job-title">${coach.jobTitle}</span>
+					<p class="job-desc">${coach.jobDesc ? coach.jobDesc : "No Description Yet"}</p>
+					<button class="approve-btn" data-id="${coach.id}">Approve</button>
+				</article>
+			`
+		}
+	});
+	console.log(coaches)
+}
+
+window.onload = () => {
+	setTimeout(() => {
+		document.querySelectorAll('.approve-btn').forEach(btn => {
+			btn.addEventListener('click', (e) => {
+				// update(e.target.dataset.id)
+				update(e.target)
+			})
+		})
+	}, 200);
+}
+
+// Doc Updating 
+function update(element) {
+	console.log(element)
+	let docRef = doc(db, 'coaches', element.dataset.id)
+
+  updateDoc(docRef, {
+    appear: true
+  })
+  .then(() => {
+		element.parentElement.classList.add("updated");
+  })
+}
 */
+
+/*
+	-----------------------
+	--- End Firebase ----
+	-----------------------
+*/ 
+/*
+	---------------------------
+	--- Start Registration ----
+	---------------------------
+*/ 
+
+// Form show ,hide and user data entring.
 const closeFormBtn = document.querySelector('.close-form');
-document.querySelector('.join-us').addEventListener('click', _ => {
+joinUs.addEventListener('click', _ => {
 	joinForm.classList.toggle('on');
 	document.body.classList.toggle('hide-flow');
 })
 closeFormBtn.addEventListener('click', (e) => {
 	joinForm.classList.toggle('on');
 	document.body.classList.toggle('hide-flow');
-	console.log(e.target);
 })
 // Patterns
 /* Any URL Pattern */ 
@@ -29,18 +235,11 @@ let mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 // Multiple Steps Form
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
+const submitBtn = document.querySelector('#submit');
 const taps = document.querySelectorAll('.fields .step');
 const progSteps = document.querySelectorAll('.steps h4');
-let tapIndex = 2;
+let tapIndex = 0;
 showTap(tapIndex);
-
-
-function formSubmit() {
-	console.log("submit");
-	document.querySelector('.steps').style.cssText = 'display: none';
-	document.querySelector('.fields').classList.add('done');
-	document.querySelector('.form-submitted').classList.add('done');
-}
 
 nextBtn.addEventListener('click', () => {
 	prevNext(1);
@@ -65,20 +264,24 @@ function showTap(tapIndex) {
 			}
 		})
 		// Show Previous Btn
-		prevBtn.style.display = 'block'
+		prevBtn.style.display = 'block';
 	} else {
 		// Show That is no progress yet
 		progSteps.forEach(prog => {
 			prog.classList.remove('on');
 		})
 		// Hide Previous Btn
-		prevBtn.style.display = 'none'
+		prevBtn.style.display = 'none';
 	}
 	// Make Next Btn Submit if it's the last tap
 	if(tapIndex == taps.length - 1) {
-		nextBtn.innerHTML = "Submit"
+		nextBtn.innerHTML = "Submit";
+		nextBtn.style.display = "none";
+		submitBtn.style.display = "block";
 	} else {
 		nextBtn.innerHTML = "Next";
+		nextBtn.style.display = "block";
+		submitBtn.style.display = "none";
 	}
 };
 
@@ -89,7 +292,7 @@ function prevNext(n) {
 		tapIndex += n;
 		// If the last submit Form
 		if (tapIndex >= taps.length) {
-			formSubmit();
+			// formSubmit();
 			tapIndex = taps.length - 1;
 			return false;
 		}
@@ -112,7 +315,8 @@ closeAlert.addEventListener('click', () => {
 });
 sweetAlert.addEventListener('click', () => {
 	sweetAlert.classList.remove('on');
-})
+});
+// Form Validation
 function isValid() {
 	let valid = true;
 	let currentStep = document.querySelector('.fields .step.on');
@@ -137,11 +341,51 @@ function isValid() {
 		}
 	}
 	if(tapIndex == 1) {
-		let validOne, validTwo, validThree;
+		let tapValidation = false;
+		let validOne, validTwo, validThree, validFour, validFive;
 		sweetAlertText.innerHTML = '';
-		textareas = currentStep.querySelectorAll('textarea');
-		industryboxes = currentStep.querySelectorAll('input[name="industry"]:checked');
-		jobTitleboxes = currentStep.querySelectorAll('input[name="jobTitle"]:checked');
+		let textareas = currentStep.querySelectorAll('textarea');
+		let industryboxes = currentStep.querySelectorAll('input[name="industry"]:checked');
+		let jobTitleboxes = currentStep.querySelectorAll('input[name="jobTitle"]:checked');
+		let pictureLink = currentStep.querySelector('input[name="picture_link"]');
+		let cvLink = currentStep.querySelector('input[name="cv_link"]');
+		// Picture Link
+		if(!regex.test(pictureLink.value)) {
+			validFour = false;
+			pictureLink.classList.add('invalid');
+			let theText = document.createTextNode('picture url must to be valid.');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText);
+		} else {
+			validFour = true;
+			pictureLink.classList.remove('invalid');
+		}
+		// CV Link
+		if(!regex.test(cvLink.value)) {
+			validFive = false;
+			cvLink.classList.add('invalid');
+			let theText = document.createTextNode('cv url must to be valid.');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText);
+		} else {
+			validFive = true;
+			cvLink.classList.remove('invalid');
+		}
+		// Linked In Profile URL
+		let userLink = document.querySelector('input[name="linkedIn_link"]');
+		if(!regex.test(userLink.value)) {
+			validThree = false;
+			userLink.classList.add('invalid');
+			let theText = document.createTextNode('Linked in profile url must to be valid');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText);
+		} else {
+			validThree = true;
+			userLink.classList.remove('invalid');
+		}
 		// Text Area
 		let first = true;
 		let second = true;
@@ -161,7 +405,7 @@ function isValid() {
 			validOne = false;
 		}
 		if(!validOne) {
-			let theText = document.createTextNode('Text Area have to be filled');
+			let theText = document.createTextNode('Please, summarize what you wish to display in the website.');
 			let warnText = document.createElement('h3');
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
@@ -176,28 +420,26 @@ function isValid() {
 		} else {
 			validTwo = true;
 		}
-		// Linked In Profile URL
-		let userLink = document.querySelector('input[name="linkedIn_link"]');
-		if(!regex.test(userLink.value)) {
-			validThree = false;
-			userLink.classList.add('invalid');
-			let theText = document.createTextNode('Linked in profile url must to be valid');
-			let warnText = document.createElement('h3');
-			warnText.appendChild(theText);
-			sweetAlertText.appendChild(warnText);
-		} else {
-			validThree = true;
-			userLink.classList.remove('invalid');
-		}
 		// Finally Validation
-		if(validOne == true && validTwo == true && validThree == true) {
-			valid = true;
+		if(validOne && validTwo && validThree && validFour && validFive) {
+			tapValidation = true;
 		} else {
 			sweetAlert.classList.add('on');
-			valid = false;
+			tapValidation = false;
+			return ;
+		}
+		if(valid && tapValidation) {
+			return true;
+		} else {
+			let theText = document.createTextNode('Ensure that you have filled the data in the correct way.');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText)
+			sweetAlert.classList.add('on');
 		}
 	}
 	if(tapIndex == 2) {
+		let tapValidation = false;
 		let validOne, validTwo;
 		sweetAlertText.innerHTML = '';
 		// Coach Hourly Rate
@@ -228,11 +470,27 @@ function isValid() {
 		}
 		// Finally Validation
 		if(validOne && validTwo) {
-			valid = true;
+			tapValidation = true;
 		} else {
-			valid = false;
+			tapValidation = false;
+			sweetAlert.classList.add('on');
+			return
+		}
+		if(valid && tapValidation) {
+			return true;
+		} else {
+			let theText = document.createTextNode('Ensure that you have filled the data in the correct way.');
+			let warnText = document.createElement('h3');
+			warnText.appendChild(theText);
+			sweetAlertText.appendChild(warnText)
 			sweetAlert.classList.add('on');
 		}
 	}
 	return valid;
 }
+
+/*
+	---------------------------
+	--- End Registration ----
+	---------------------------
+*/ 
