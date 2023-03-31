@@ -19,5 +19,11 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'multiple-steps-form.js'
 	},
+	mode: 'development',
+	entry: './assets/js/deal-with-firebase.js',
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'deal-with-firebase-bundle.js'
+	},
 	watch: true
 }

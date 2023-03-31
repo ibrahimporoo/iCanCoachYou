@@ -7,9 +7,7 @@
 import { initializeApp } from 'firebase/app'
 import {
   getFirestore, collection, getDocs,
-	addDoc,
-	query, where,
-	updateDoc
+	addDoc
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -30,36 +28,6 @@ const db = getFirestore()
 // collection ref
 const arcolRef = collection(db, 'coaches', 'languages', 'ar')
 const encolRef = collection(db, 'coaches', 'languages', 'en')
-
-// queries
-const cCompleted = query(arcolRef, where("appear", "==", true))
-const cInProgress = query(encolRef, where("appear", "==", false))
-
-// get collection data
-let completedCoaches = [];
-getDocs(cCompleted)
-  .then(snapshot => {
-    // console.log(snapshot.docs)
-    snapshot.docs.forEach(doc => {
-      completedCoaches.push({ ...doc.data(), id: doc.id })
-    })
-  })
-  .catch(err => {
-    console.log(err.message);
-  })
-
-// get collection data
-let inProgressCoaches = [];
-getDocs(cInProgress)
-  .then(snapshot => {
-    // console.log(snapshot.docs)
-    snapshot.docs.forEach(doc => {
-      inProgressCoaches.push({ ...doc.data(), id: doc.id })
-    })
-  })
-  .catch(err => {
-    console.log(err.message);
-  })
 
 // Popup Multiple Steps Form Menu
 // Multi Step Form - Joining
