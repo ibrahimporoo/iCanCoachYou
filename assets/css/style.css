@@ -375,25 +375,28 @@ h6 {
   animation: fadeIn 0.3s forwards ease-in-out;
 }
 .form-submitted .submitted-content {
-  padding: 40px 80px;
-  border: 2px solid green;
+  padding: 15px 100px 100px;
   border-radius: 4px;
+  box-shadow: 2px 2px 10px 0 rgba(0 0 0 / 20%);
 }
 .form-submitted .submitted-content i {
   transition: .1s;
-  font-size: 2rem;
-  color: #008000bd;
+  font-size: 2.4rem;
+  opacity: 0.8;
+  color: #3dcc4a;
 }
 .form-submitted.done .submitted-content i {
   transition: 0.3s 0.2s;
   font-size: 7rem;
-  color: green;
+  opacity: 1;
 }
 .form-submitted .submitted-content h3 {
-  font-size: 4rem
+  font-size: 4rem;
+  color: #3dcc4a;
 }
 .form-submitted .submitted-content p {
   font-size: 1.2rem;
+  margin-bottom: 5px;
 }
 
 @media (max-width: 800px) {
@@ -417,7 +420,7 @@ h6 {
     padding: 30px 45px;
   }
   .form-submitted.done .submitted-content i {
-    font-size: 3rem;
+    font-size: 5rem;
   }
   .form-submitted .submitted-content h3 {
     font-size: 3rem
@@ -481,6 +484,9 @@ h6 {
   }
   .form-submitted .submitted-content p {
     font-size: 0.9rem;
+  }
+  .form-submitted .submitted-content span {
+    font-size: 0.8rem;
   }
   .step article .example {
     font-size: 12px;

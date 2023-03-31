@@ -1,4 +1,3 @@
-
 import { initializeApp } from 'firebase/app'
 import {
   getFirestore, collection, getDocs,
@@ -171,7 +170,6 @@ function fillInHTML(coaches, completed = true) {
 			`;
 		}
 	});
-	console.log(coaches);
 }
 let coachesAnswers;
 window.onload = () => {
