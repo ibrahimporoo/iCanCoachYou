@@ -110,6 +110,9 @@ h6 {
   padding: 5px;
   font-family: "Poppins", sans-serif;
 }
+.edit-ref {
+  display: none;
+}
 
 /*--------------------------------------------------------------
 # Alert
