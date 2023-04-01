@@ -214,7 +214,7 @@ window.onload = () => {
 				update(e.target, 'do-not-approve');
 			});
 		})
-	}, 1000)
+	}, 2000)
 }
 
 // Doc Updating 
