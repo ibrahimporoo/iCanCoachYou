@@ -61,6 +61,31 @@ getDocs(cPending)
 
 
 function fillInHTML(coaches, completed = true) {
+	// let html = document.createElement('div');
+	// let span = document.createElement('span');
+	// span.innerText = 'Industries:-';
+	// html.appendChild(span);
+	// coach.industry.map(industry => {
+	// 	let p = document.createElement('p');
+	// 	p.className = 'coach-answer';
+	// 	p.innerText = industry;
+	// 	html.appendChild(p);
+	// });
+	// coach.jobTitle.map(job => {
+	// 	let p = document.createElement('p');
+	// 	p.className = 'coach-answer';
+	// 	p.innerText = job;
+	// 	html.appendChild(p);
+	// });
+	// let html = document.createElement('div');
+	// html.className = 'job-title';
+	// coaches.forEach(coach => {
+	// 	coach.jobTitle.forEach(title => {
+	// 		let p = document.createElement('p');
+	// 		p.innerText = title;
+	// 		html.appendChild(p)
+	// 	});
+	// });
 	coaches.forEach(coach => {
 		if(completed) {
 			completedContent.innerHTML += `
@@ -70,6 +95,8 @@ function fillInHTML(coaches, completed = true) {
 						<div class="member-info">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
+								<span>ًCoach image url:- <a href="${coach.image}" target="_blank">image</a></span>
+								<p class="coach-answer">${coach.image}</p>
 								<span>ًWork Experience:-</span>
 								<p class="coach-answer">${coach.work_experience}</p>
 								<span>ًUniversity:-</span>
@@ -81,6 +108,8 @@ function fillInHTML(coaches, completed = true) {
 								<span>gender:-</span>
 								<p class="coach-answer">${coach.gender}</p>
 							</div>
+							<span>jobTitle:-</span>
+							<p class="coach-answer">${coach.jobTitle.map(job => job)}</p>
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -99,15 +128,16 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.coach_bank_infos}</p>
 							<span>English Skills:-</span>
 							<p class="coach-answer">${coach.english_skills}</p>
-							<div class="links">
-								<a href="${coach.coach_calendly_link}" target="_blank">Calendly</a>
-								<a href="${coach.cv_link}" target="_blank">Coach cv</a>
-							</div>
-							<div class="social">
-								<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-								<a href="https://wa.me/${coach.whats_number}" target="_blank"><i class="bi bi-whatsapp"></i></a>
-								<a href="mailto:${coach.mail}" target="_blank"><i class="bi bi-envelope"></i></a>
-							</div>
+							<span>Calendly Link:- <a href="${coach.coach_calendly_link}" target="_blank">Calendly</a></span>
+							<p class="coach-answer">${coach.coach_calendly_link}</p>
+							<span>CV Link:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-file-person-fill"></i></a></span>
+							<p class="coach-answer">${coach.cv_link}</p>
+							<span>Social Media Link:- <a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
+							<p class="coach-answer">${coach.SM_account}</p>
+							<span>Whats app number:- <a href="https://wa.me/${coach.whats_number}" target="_blank"><i class="bi bi-whatsapp"></i></a></span>
+							<p class="coach-answer">${coach.whats_number}</p>
+							<span>Coach mail:- <a href="mailto:${coach.mail}" target="_blank"><i class="bi bi-envelope"></i></a></span>
+							<p class="coach-answer">${coach.mail}</p>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
 							<button class="not-approve-btn" data-id="${coach.id}">don't approve</button>
@@ -115,6 +145,7 @@ function fillInHTML(coaches, completed = true) {
 					</div>
 				</div>
 			`;
+			completedContent.innerHTML += `<p>${coach.jobTitle[0]}</p>`;
 		} else {
 			pendingContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
@@ -123,6 +154,8 @@ function fillInHTML(coaches, completed = true) {
 						<div class="member-info">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
+								<span>ًCoach image url:- <a href="${coach.image}" target="_blank">image</a></span>
+								<p class="coach-answer">${coach.image}</p>
 								<span>ًWork Experience:-</span>
 								<p class="coach-answer">${coach.work_experience}</p>
 								<span>ًUniversity:-</span>
@@ -134,6 +167,8 @@ function fillInHTML(coaches, completed = true) {
 								<span>gender:-</span>
 								<p class="coach-answer">${coach.gender}</p>
 							</div>
+							<span>jobTitle:-</span>
+							<p class="coach-answer">${coach.jobTitle.map(job => job)}</p>
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -152,15 +187,16 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.coach_bank_infos}</p>
 							<span>English Skills:-</span>
 							<p class="coach-answer">${coach.english_skills}</p>
-							<div class="links">
-								<a href="${coach.coach_calendly_link}" target="_blank">Calendly</a>
-								<a href="${coach.cv_link}" target="_blank">Coach cv</a>
-							</div>
-							<div class="social">
-								<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-								<a href="https://wa.me/${coach.whats_number}" target="_blank"><i class="bi bi-whatsapp"></i></a>
-								<a href="mailto:${coach.mail}" target="_blank"><i class="bi bi-envelope"></i></a>
-							</div>
+							<span>Calendly Link:- <a href="${coach.coach_calendly_link}" target="_blank">Calendly</a></span>
+							<p class="coach-answer">${coach.coach_calendly_link}</p>
+							<span>CV Link:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-file-person-fill"></i></a></span>
+							<p class="coach-answer">${coach.cv_link}</p>
+							<span>Social Media Link:- <a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
+							<p class="coach-answer">${coach.SM_account}</p>
+							<span>Whats app number:- <a href="https://wa.me/${coach.whats_number}" target="_blank"><i class="bi bi-whatsapp"></i></a></span>
+							<p class="coach-answer">${coach.whats_number}</p>
+							<span>Coach mail:- <a href="mailto:${coach.mail}" target="_blank"><i class="bi bi-envelope"></i></a></span>
+							<p class="coach-answer">${coach.mail}</p>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
 							<button class="approve-btn" data-id="${coach.id}">approve</button>
@@ -225,21 +261,28 @@ function update(member, status) {
 		case "save":
 			updateDoc(docRef, {
 				name: coachesAnswers[0].innerText,
-				work_experience: coachesAnswers[1].innerText,
-				college: coachesAnswers[2].innerText,
-				graduation_year: coachesAnswers[3].innerText,
-				age: coachesAnswers[4].innerText,
-				gender: coachesAnswers[5].innerText,
-				pricing: coachesAnswers[6].innerText,
-				session_way: coachesAnswers[7].innerText,
-				summary: coachesAnswers[8].innerText,
-				country: coachesAnswers[9].innerText,
-				city: coachesAnswers[10].innerText,
-				coach_free_time: coachesAnswers[11].innerText,
-				coach_role_model: coachesAnswers[12].innerText,
-				coach_objective_life: coachesAnswers[13].innerText,
-				coach_bank_infos: coachesAnswers[14].innerText,
-				english_skills: coachesAnswers[15].innerText,
+				image: coachesAnswers[1].innerText,
+				work_experience: coachesAnswers[2].innerText,
+				college: coachesAnswers[3].innerText,
+				graduation_year: coachesAnswers[4].innerText,
+				age: coachesAnswers[5].innerText,
+				gender: coachesAnswers[6].innerText,
+				jobTitle: coachesAnswers[7].innerText,
+				industry: coachesAnswers[8].innerText,
+				pricing: coachesAnswers[9].innerText,
+				session_way: coachesAnswers[10].innerText,
+				summary: coachesAnswers[11].innerText,
+				country: coachesAnswers[12].innerText,
+				city: coachesAnswers[13].innerText,
+				coach_free_time: coachesAnswers[14].innerText,
+				coach_role_model: coachesAnswers[15].innerText,
+				coach_objective_life: coachesAnswers[16].innerText,
+				coach_bank_infos: coachesAnswers[17].innerText,
+				coach_calendly_link: coachesAnswers[18].innerText,
+				cv_link: coachesAnswers[19].innerText,
+				SM_account: coachesAnswers[20].innerText,
+				whats_number: coachesAnswers[21].innerText,
+				mail: coachesAnswers[22].innerText,
 			})
 			.then(() => {
 				alert("Updated in Firebase too.")

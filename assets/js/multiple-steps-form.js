@@ -36,7 +36,6 @@ const joinUs = document.querySelector('.join-us');
 // Registering
 joinForm.addEventListener('submit', (e) => {
 	e.preventDefault();
-	console.log("Submitted From Normal File");
 	let jobTitles = [];
 	let industries = [];
 	joinForm.querySelectorAll('[name="jobTitle"]:checked').forEach(input => {
@@ -46,7 +45,6 @@ joinForm.addEventListener('submit', (e) => {
 		industries.push(input.value);
 	});
 	if(isValid()) {
-		console.log("كدا الحمدلله كله تمم.");
 		// Add Doc to Collection.
 		// Arabic Doc
 		addDoc(arcolRef, {
