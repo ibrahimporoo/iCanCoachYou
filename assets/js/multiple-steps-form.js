@@ -36,14 +36,6 @@ const joinUs = document.querySelector('.join-us');
 // Registering
 joinForm.addEventListener('submit', (e) => {
 	e.preventDefault();
-	let jobTitles = [];
-	let industries = [];
-	joinForm.querySelectorAll('[name="jobTitle"]:checked').forEach(input => {
-		jobTitles.push(input.value);
-	});
-	joinForm.querySelectorAll('[name="industry"]:checked').forEach(input => {
-		industries.push(input.value);
-	});
 	if(isValid()) {
 		// Add Doc to Collection.
 		// Arabic Doc
@@ -59,10 +51,10 @@ joinForm.addEventListener('submit', (e) => {
 			graduation_year: joinForm.G_Year.value,
 			SM_account: joinForm.linkedIn_link.value,
 			cv_link: joinForm.cv_link.value,
-			industry: industries,
-			jobTitle: jobTitles,
+			industry: joinForm.industry.value,
+			jobTitle: joinForm.jobTitle.value,
 			work_experience: joinForm.work_exp.value,
-			pricing: joinForm.hourly_rate.value,
+			pricing: joinForm.hourly_rate.value + 'جنيه مصري',
 			english_skills: joinForm.en_lang.value,
 			summary: joinForm.ar_summary.value,
 			image: joinForm.picture_link.value,
@@ -74,13 +66,13 @@ joinForm.addEventListener('submit', (e) => {
 			how_coach_arrived: joinForm.arrival_way.value,
 			coach_comment: joinForm.comment.value,
 			session_way: joinForm.session_way.value,
-			category: '',
-			paymentLink: '',
+			category: joinForm.industry.value + joinForm.jobTitle.value,
+			paymentLink: 'default',
 			appear: false
 		});
 		// English Doc
 		addDoc(encolRef, {
-			name: joinForm.en_name.value,
+			name: joinForm.name.value,
 			gender: joinForm.gender.value,
 			age: joinForm.age.value,
 			country: joinForm.location.value.slice(0, joinForm.location.value.indexOf('/')),
@@ -91,12 +83,12 @@ joinForm.addEventListener('submit', (e) => {
 			graduation_year: joinForm.G_Year.value,
 			SM_account: joinForm.linkedIn_link.value,
 			cv_link: joinForm.cv_link.value,
-			industry: industries,
-			jobTitle: jobTitles,
+			industry: joinForm.industry.value,
+			jobTitle: joinForm.jobTitle.value,
 			work_experience: joinForm.work_exp.value,
-			pricing: joinForm.hourly_rate.value,
+			pricing: joinForm.hourly_rate.value + 'EGP',
 			english_skills: joinForm.en_lang.value,
-			summary: joinForm.en_summary.value,
+			summary: joinForm.summary.value,
 			image: joinForm.picture_link.value,
 			coach_free_time: joinForm.coachTime.value,
 			coach_role_model: joinForm.coach_role_model.value,
@@ -106,8 +98,8 @@ joinForm.addEventListener('submit', (e) => {
 			how_coach_arrived: joinForm.arrival_way.value,
 			coach_comment: joinForm.comment.value,
 			session_way: joinForm.session_way.value,
-			category: '',
-			paymentLink: '',
+			category: joinForm.industry.value,
+			paymentLink: 'default',
 			appear: false
 		}).then(() => {
 			// Show To User That All Data was sent.
@@ -255,8 +247,6 @@ function isValid() {
 		let validOne, validTwo, validThree, validFour, validFive;
 		sweetAlertText.innerHTML = '';
 		let textareas = currentStep.querySelectorAll('textarea');
-		let industryboxes = currentStep.querySelectorAll('input[name="industry"]:checked');
-		let jobTitleboxes = currentStep.querySelectorAll('input[name="jobTitle"]:checked');
 		let pictureLink = currentStep.querySelector('input[name="picture_link"]');
 		let cvLink = currentStep.querySelector('input[name="cv_link"]');
 		// Picture Link
@@ -319,16 +309,6 @@ function isValid() {
 			let warnText = document.createElement('h3');
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
-		}
-		// Industry and job title Boxes
-		if(industryboxes.length == 0 || jobTitleboxes.length == 0) {
-			validTwo = false;
-			let theText = document.createTextNode('You have to choose one or more from Industry and job title');
-			let warnText = document.createElement('h3');
-			warnText.appendChild(theText);
-			sweetAlertText.appendChild(warnText);
-		} else {
-			validTwo = true;
 		}
 		// Finally Validation
 		if(validOne && validTwo && validThree && validFour && validFive) {

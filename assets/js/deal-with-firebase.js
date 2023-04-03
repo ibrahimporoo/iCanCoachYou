@@ -61,31 +61,6 @@ getDocs(cPending)
 
 
 function fillInHTML(coaches, completed = true) {
-	// let html = document.createElement('div');
-	// let span = document.createElement('span');
-	// span.innerText = 'Industries:-';
-	// html.appendChild(span);
-	// coach.industry.map(industry => {
-	// 	let p = document.createElement('p');
-	// 	p.className = 'coach-answer';
-	// 	p.innerText = industry;
-	// 	html.appendChild(p);
-	// });
-	// coach.jobTitle.map(job => {
-	// 	let p = document.createElement('p');
-	// 	p.className = 'coach-answer';
-	// 	p.innerText = job;
-	// 	html.appendChild(p);
-	// });
-	// let html = document.createElement('div');
-	// html.className = 'job-title';
-	// coaches.forEach(coach => {
-	// 	coach.jobTitle.forEach(title => {
-	// 		let p = document.createElement('p');
-	// 		p.innerText = title;
-	// 		html.appendChild(p)
-	// 	});
-	// });
 	coaches.forEach(coach => {
 		if(completed) {
 			completedContent.innerHTML += `
@@ -108,8 +83,12 @@ function fillInHTML(coaches, completed = true) {
 								<span>gender:-</span>
 								<p class="coach-answer">${coach.gender}</p>
 							</div>
+							<span>Category:-</span>
+							<p class="coach-answer">${coach.category}</p>
 							<span>jobTitle:-</span>
-							<p class="coach-answer">${coach.jobTitle.map(job => job)}</p>
+							<p class="coach-answer">${coach.jobTitle}</p>
+							<span>industry:-</span>
+							<p class="coach-answer">${coach.industry}</p>
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -128,6 +107,8 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.coach_bank_infos}</p>
 							<span>English Skills:-</span>
 							<p class="coach-answer">${coach.english_skills}</p>
+							<span>Payment Link:- <a href="${coach.paymentLink}" target="_blank"><i class="bi bi-credit-card"></i></a></span>
+							<p class="coach-answer">${coach.paymentLink}</p>
 							<span>Calendly Link:- <a href="${coach.coach_calendly_link}" target="_blank">Calendly</a></span>
 							<p class="coach-answer">${coach.coach_calendly_link}</p>
 							<span>CV Link:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-file-person-fill"></i></a></span>
@@ -145,7 +126,6 @@ function fillInHTML(coaches, completed = true) {
 					</div>
 				</div>
 			`;
-			completedContent.innerHTML += `<p>${coach.jobTitle[0]}</p>`;
 		} else {
 			pendingContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
@@ -167,8 +147,12 @@ function fillInHTML(coaches, completed = true) {
 								<span>gender:-</span>
 								<p class="coach-answer">${coach.gender}</p>
 							</div>
+							<span>Category:-</span>
+							<p class="coach-answer">${coach.category}</p>
 							<span>jobTitle:-</span>
-							<p class="coach-answer">${coach.jobTitle.map(job => job)}</p>
+							<p class="coach-answer">${coach.jobTitle}</p>
+							<span>industry:-</span>
+							<p class="coach-answer">${coach.industry}</p>
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -187,6 +171,8 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.coach_bank_infos}</p>
 							<span>English Skills:-</span>
 							<p class="coach-answer">${coach.english_skills}</p>
+							<span>Payment Link:- <a href="${coach.paymentLink}" target="_blank"><i class="bi bi-credit-card"></i></a></span>
+							<p class="coach-answer">${coach.paymentLink}</p>
 							<span>Calendly Link:- <a href="${coach.coach_calendly_link}" target="_blank">Calendly</a></span>
 							<p class="coach-answer">${coach.coach_calendly_link}</p>
 							<span>CV Link:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-file-person-fill"></i></a></span>
@@ -199,7 +185,7 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.mail}</p>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
-							<button class="approve-btn" data-id="${coach.id}">approve</button>
+							<button class="not-approve-btn" data-id="${coach.id}">don't approve</button>
 						</div>
 					</div>
 				</div>
@@ -213,9 +199,6 @@ window.onload = () => {
 		// To Modify Coach's Infos.
 		document.querySelectorAll('.member .modify-btn').forEach(btn => {
 			btn.addEventListener('click', e => {
-				console.log(e.target);
-				console.log(e.target.parentElement);
-				console.log(e.target.parentElement.querySelectorAll('.coach-answer'));
 				e.target.parentElement.querySelectorAll('.coach-answer').forEach(p => {
 					p.classList.add('edit');
 					p.setAttribute('contenteditable', true);
@@ -225,9 +208,6 @@ window.onload = () => {
 		// To Save Coach's Infos.
 		document.querySelectorAll('.member .save').forEach(btn => {
 			btn.addEventListener('click', e => {
-				console.log(e.target);
-				console.log(e.target.parentElement);
-				console.log(e.target.parentElement.querySelectorAll('.coach-answer'));
 				coachesAnswers = e.target.parentElement.querySelectorAll('.coach-answer');
 				// Save Changes to every coach's answer.
 				coachesAnswers.forEach(p => {
@@ -251,7 +231,7 @@ window.onload = () => {
 			});
 		})
 	}, 2000)
-}
+};
 
 // Doc Updating 
 function update(member, status) {
@@ -267,22 +247,25 @@ function update(member, status) {
 				graduation_year: coachesAnswers[4].innerText,
 				age: coachesAnswers[5].innerText,
 				gender: coachesAnswers[6].innerText,
-				jobTitle: coachesAnswers[7].innerText,
-				industry: coachesAnswers[8].innerText,
-				pricing: coachesAnswers[9].innerText,
-				session_way: coachesAnswers[10].innerText,
-				summary: coachesAnswers[11].innerText,
-				country: coachesAnswers[12].innerText,
-				city: coachesAnswers[13].innerText,
-				coach_free_time: coachesAnswers[14].innerText,
-				coach_role_model: coachesAnswers[15].innerText,
-				coach_objective_life: coachesAnswers[16].innerText,
-				coach_bank_infos: coachesAnswers[17].innerText,
-				coach_calendly_link: coachesAnswers[18].innerText,
-				cv_link: coachesAnswers[19].innerText,
-				SM_account: coachesAnswers[20].innerText,
-				whats_number: coachesAnswers[21].innerText,
-				mail: coachesAnswers[22].innerText,
+				category: coachesAnswers[7].innerText,
+				jobTitle: coachesAnswers[8].innerText,
+				industry: coachesAnswers[9].innerText,
+				pricing: coachesAnswers[10].innerText,
+				session_way: coachesAnswers[11].innerText,
+				summary: coachesAnswers[12].innerText,
+				country: coachesAnswers[13].innerText,
+				city: coachesAnswers[14].innerText,
+				coach_free_time: coachesAnswers[15].innerText,
+				coach_role_model: coachesAnswers[16].innerText,
+				coach_objective_life: coachesAnswers[17].innerText,
+				coach_bank_infos: coachesAnswers[18].innerText,
+				english_skills: coachesAnswers[19].innerText,
+				paymentLink: coachesAnswers[20].innerText,
+				coach_calendly_link: coachesAnswers[21].innerText,
+				cv_link: coachesAnswers[22].innerText,
+				SM_account: coachesAnswers[23].innerText,
+				whats_number: coachesAnswers[24].innerText,
+				mail: coachesAnswers[25].innerText
 			})
 			.then(() => {
 				alert("Updated in Firebase too.")
@@ -308,4 +291,4 @@ function update(member, status) {
 			alert("Invalid Status!!");
 			break;
 	}
-}
+};
