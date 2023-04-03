@@ -206,7 +206,7 @@ function prevNext(n) {
 	} else {
 		return false;
 	}
-}
+};
 
 // Alert
 const sweetAlert = document.querySelector('#alert-container');
@@ -218,6 +218,8 @@ closeAlert.addEventListener('click', () => {
 sweetAlert.addEventListener('click', () => {
 	sweetAlert.classList.remove('on');
 });
+let arrowDirection = 'right';
+
 // Form Validation
 function isValid() {
 	let valid = true;
@@ -255,6 +257,9 @@ function isValid() {
 			pictureLink.classList.add('invalid');
 			let theText = document.createTextNode('picture url must to be valid.');
 			let warnText = document.createElement('h3');
+			let arrowIcon = document.createElement('i');
+			arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			warnText.appendChild(arrowIcon);
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
 		} else {
@@ -267,6 +272,9 @@ function isValid() {
 			cvLink.classList.add('invalid');
 			let theText = document.createTextNode('cv url must to be valid.');
 			let warnText = document.createElement('h3');
+			let arrowIcon = document.createElement('i');
+			arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			warnText.appendChild(arrowIcon);
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
 		} else {
@@ -278,8 +286,11 @@ function isValid() {
 		if(!regex.test(userLink.value)) {
 			validThree = false;
 			userLink.classList.add('invalid');
-			let theText = document.createTextNode('Linked in profile url must to be valid');
+			let theText = document.createTextNode('Linked in profile url must to be valid.');
 			let warnText = document.createElement('h3');
+			let arrowIcon = document.createElement('i');
+			arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			warnText.appendChild(arrowIcon);
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
 		} else {
@@ -307,6 +318,9 @@ function isValid() {
 		if(!validOne) {
 			let theText = document.createTextNode('Please, summarize what you wish to display in the website.');
 			let warnText = document.createElement('h3');
+			let arrowIcon = document.createElement('i');
+			arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			warnText.appendChild(arrowIcon);
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
 		}
@@ -323,8 +337,11 @@ function isValid() {
 		} else {
 			let theText = document.createTextNode('Ensure that you have filled the data in the correct way.');
 			let warnText = document.createElement('h3');
+			let arrowIcon = document.createElement('i');
+			arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			warnText.appendChild(arrowIcon);
 			warnText.appendChild(theText);
-			sweetAlertText.appendChild(warnText)
+			sweetAlertText.appendChild(warnText);
 			sweetAlert.classList.add('on');
 		}
 	}
@@ -339,6 +356,7 @@ function isValid() {
 			calendlyURL.classList.add('invalid');
 			let theText = document.createTextNode('Calendly link is invalid!! please try to give us valid one.');
 			let warnText = document.createElement('h3');
+			warnText.appendChild(arrowIcon);
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
 		} else {
@@ -355,6 +373,7 @@ function isValid() {
 			validTwo = false;
 			let theText = document.createTextNode('Please Type Your bank Information.');
 			let warnText = document.createElement('h3');
+			warnText.appendChild(arrowIcon);
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
 		}
@@ -371,6 +390,7 @@ function isValid() {
 		} else {
 			let theText = document.createTextNode('Ensure that you have filled the data in the correct way.');
 			let warnText = document.createElement('h3');
+			warnText.appendChild(arrowIcon);
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText)
 			sweetAlert.classList.add('on');
