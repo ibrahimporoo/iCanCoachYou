@@ -34,7 +34,6 @@ getDocs(cCompleted)
     snapshot.docs.forEach(doc => {
       completedCoaches.push({ ...doc.data(), id: doc.id })
     })
-		console.log(completedCoaches);
   })
   .catch(err => {
     console.log(err.message);
@@ -48,7 +47,6 @@ getDocs(cBinding)
     snapshot.docs.forEach(doc => {
       inCompletedcoaches.push({ ...doc.data(), id: doc.id });
     })
-		console.log(inCompletedcoaches);
   })
   .catch(err => {
     console.log(err.message);

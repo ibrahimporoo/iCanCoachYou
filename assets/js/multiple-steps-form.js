@@ -88,7 +88,7 @@ joinForm.addEventListener('submit', (e) => {
 			work_experience: joinForm.work_exp.value,
 			pricing: joinForm.hourly_rate.value + 'EGP',
 			english_skills: joinForm.en_lang.value,
-			summary: joinForm.summary.value,
+			summary: joinForm.en_summary.value,
 			image: joinForm.picture_link.value,
 			coach_free_time: joinForm.coachTime.value,
 			coach_role_model: joinForm.coach_role_model.value,
@@ -235,7 +235,6 @@ function isValid() {
 		}
 	}
 	if(tapIndex == 0) {
-		console.log(currentInputs[8])
 		if(currentInputs[8].value.match(mailPattern)) {
 			currentInputs[8].classList.remove('invalid');
 			valid = true;
@@ -246,29 +245,30 @@ function isValid() {
 	}
 	if(tapIndex == 1) {
 		let tapValidation = false;
-		let validOne, validTwo, validThree, validFour, validFive;
+		let validOne, validTwo, validThree, validFour;
 		sweetAlertText.innerHTML = '';
 		let textareas = currentStep.querySelectorAll('textarea');
 		let pictureLink = currentStep.querySelector('input[name="picture_link"]');
 		let cvLink = currentStep.querySelector('input[name="cv_link"]');
 		// Picture Link
 		if(!regex.test(pictureLink.value)) {
-			validFour = false;
+			validOne = false;
 			pictureLink.classList.add('invalid');
-			let theText = document.createTextNode('picture url must to be valid.');
-			let warnText = document.createElement('h3');
-			let arrowIcon = document.createElement('i');
-			arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
-			warnText.appendChild(arrowIcon);
-			warnText.appendChild(theText);
+			// let theText = document.createTextNode('picture url must to be valid.');
+			// let warnText = document.createElement('h3');
+			// let arrowIcon = document.createElement('i');
+			// arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			// warnText.appendChild(arrowIcon);
+			// warnText.appendChild(theText);
+			fillAlert('picture url must to be valid.');
 			sweetAlertText.appendChild(warnText);
 		} else {
-			validFour = true;
+			validOne = true;
 			pictureLink.classList.remove('invalid');
 		}
 		// CV Link
 		if(!regex.test(cvLink.value)) {
-			validFive = false;
+			validTwo = false;
 			cvLink.classList.add('invalid');
 			let theText = document.createTextNode('cv url must to be valid.');
 			let warnText = document.createElement('h3');
@@ -278,7 +278,7 @@ function isValid() {
 			warnText.appendChild(theText);
 			sweetAlertText.appendChild(warnText);
 		} else {
-			validFive = true;
+			validTwo = true;
 			cvLink.classList.remove('invalid');
 		}
 		// Linked In Profile URL
@@ -311,11 +311,11 @@ function isValid() {
 			}
 		};
 		if(first && second) {
-			validOne = true;
+			validFour = true;
 		} else {
-			validOne = false;
+			validFour = false;
 		}
-		if(!validOne) {
+		if(!validFour) {
 			let theText = document.createTextNode('Please, summarize what you wish to display in the website.');
 			let warnText = document.createElement('h3');
 			let arrowIcon = document.createElement('i');
@@ -325,7 +325,7 @@ function isValid() {
 			sweetAlertText.appendChild(warnText);
 		}
 		// Finally Validation
-		if(validOne && validTwo && validThree && validFour && validFive) {
+		if(validOne && validTwo && validThree && validFour) {
 			tapValidation = true;
 		} else {
 			sweetAlert.classList.add('on');
@@ -354,10 +354,13 @@ function isValid() {
 		if(!regex.test(calendlyURL.value)) {
 			validOne = false;
 			calendlyURL.classList.add('invalid');
-			let theText = document.createTextNode('Calendly link is invalid!! please try to give us valid one.');
-			let warnText = document.createElement('h3');
-			warnText.appendChild(arrowIcon);
-			warnText.appendChild(theText);
+			// let theText = document.createTextNode('Calendly link is invalid!! please try to give us valid one.');
+			// let warnText = document.createElement('h3');
+			// let arrowIcon = document.createElement('i');
+			// arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			// warnText.appendChild(arrowIcon);
+			// warnText.appendChild(theText);
+			fillAlert('Calendly link is invalid!! please try to give us valid one.');
 			sweetAlertText.appendChild(warnText);
 		} else {
 			validOne = true;
@@ -371,10 +374,13 @@ function isValid() {
 		} else {
 			coachBankInfos.classList.add('invalid');
 			validTwo = false;
-			let theText = document.createTextNode('Please Type Your bank Information.');
-			let warnText = document.createElement('h3');
-			warnText.appendChild(arrowIcon);
-			warnText.appendChild(theText);
+			// let theText = document.createTextNode('Please Type Your bank Information.');
+			// let warnText = document.createElement('h3');
+			// let arrowIcon = document.createElement('i');
+			// arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			// warnText.appendChild(arrowIcon);
+			// warnText.appendChild(theText);
+			fillAlert('Please Type Your bank Information.');
 			sweetAlertText.appendChild(warnText);
 		}
 		// Finally Validation
@@ -388,15 +394,28 @@ function isValid() {
 		if(valid && tapValidation) {
 			return true;
 		} else {
-			let theText = document.createTextNode('Ensure that you have filled the data in the correct way.');
-			let warnText = document.createElement('h3');
-			warnText.appendChild(arrowIcon);
-			warnText.appendChild(theText);
-			sweetAlertText.appendChild(warnText)
+			// let theText = document.createTextNode('Ensure that you have filled the data in the correct way.');
+			// let warnText = document.createElement('h3');
+			// let arrowIcon = document.createElement('i');
+			// arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+			// warnText.appendChild(arrowIcon);
+			// warnText.appendChild(theText);
+			// sweetAlertText.appendChild(warnText);
+			fillAlert('Ensure that you have filled the data in the correct way.');
 			sweetAlert.classList.add('on');
 		}
 	}
 	return valid;
+}
+
+function fillAlert(text) {
+	let theText = document.createTextNode(text);
+	let warnText = document.createElement('h3');
+	let arrowIcon = document.createElement('i');
+	arrowIcon.className = `bi bi-arrow-${arrowDirection}-short`;
+	warnText.appendChild(arrowIcon);
+	warnText.appendChild(theText);
+	sweetAlertText.appendChild(warnText);
 }
 
 /*
