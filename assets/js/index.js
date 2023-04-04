@@ -91,7 +91,7 @@ async function getData() {
 							<div class="social">
 								<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
 							</div>
-							<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+							<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
 						</div>
 					</div>
 				</div>
@@ -243,7 +243,7 @@ window.onclick = () => {
 								<div class="social">
 									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
 								</div>
-								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
 							</div>
 						</div>
 					</div>
