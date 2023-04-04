@@ -185,7 +185,7 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.mail}</p>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
-							<button class="not-approve-btn" data-id="${coach.id}">don't approve</button>
+							<button class="approve-btn" data-id="${coach.id}">approve</button>
 						</div>
 					</div>
 				</div>
