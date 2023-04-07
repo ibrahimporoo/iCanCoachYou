@@ -4,6 +4,7 @@ import {
 	query, where
 } from 'firebase/firestore/lite';
 
+// iCanCoachU Firebase...
 const firebaseConfig = {
   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
   authDomain: "elmawkaabeta.firebaseapp.com",
@@ -24,56 +25,43 @@ const colRef = collection(db, 'coaches', 'languages', lang);
 
 // queries
 const cCompleted = query(colRef, where("appear", "==", true))
-const cBinding = query(colRef, where("appear", "==", false))
 
 // get collection data
-let completedCoaches = [];
-getDocs(cCompleted)
-  .then(snapshot => {
-    // console.log(snapshot.docs)
-    snapshot.docs.forEach(doc => {
-      completedCoaches.push({ ...doc.data(), id: doc.id })
-    })
-  })
-  .catch(err => {
-    console.log(err.message);
-  });
-
-// get collection data
-let inCompletedcoaches = [];
-getDocs(cBinding)
-  .then(snapshot => {
-    // console.log(snapshot.docs)
-    snapshot.docs.forEach(doc => {
-      inCompletedcoaches.push({ ...doc.data(), id: doc.id });
-    })
-  })
-  .catch(err => {
-    console.log(err.message);
-  });
+// let completedCoaches = [];
+// getDocs(cCompleted)
+//   .then(snapshot => {
+//     // console.log(snapshot.docs)
+//     snapshot.docs.forEach(doc => {
+//       completedCoaches.push({ ...doc.data(), id: doc.id })
+//     })
+//   })
+//   .catch(err => {
+//     console.log(err.message);
+//   });
 
 // selecting the coaches Row in html file
 const coachesContent = document.getElementById('coaches-content');
-let coaches = []; // for fulling coaches in coaches page
+let completedCoaches = []; // for fulling coaches in coaches page
 let html = ''; // content that we put in html
 // let html_filtered_coaches = ''; // content that we put in html
 coachesContent.innerHTML = ''; // empty coaches content before getting data
 
 async function getData() {
 	// Fetching 'Getting' Data
-	await getDocs(colRef)
+	await getDocs(cCompleted)
 	.then((snapshot) => {
 		// Check if we in the home page or top coaches page
 		snapshot.docs.forEach((doc) => {
-			coaches.push({ ...doc.data(), id: doc.id });
-		})
-		coaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
+			completedCoaches.push({ ...doc.data(), id: doc.id });
+		});
+		console.log(completedCoaches);
+		completedCoaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
 		// in the index 'top coaches' page
 		if(coachesContent.classList.contains('top-coaches')) {
 			// Adding Content of Data coming from Firebase to HTML
-			coaches = coaches.filter(coach => coach.order <= 3)
+			completedCoaches = completedCoaches.filter(coach => coach.order <= 3)
 		}
-		coaches.map(coach => {
+		completedCoaches.map(coach => {
 			html += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
@@ -162,34 +150,34 @@ window.onclick = () => {
 					if(searchingVal != 'all') {
 						switch(filterBy) {
 							case 'category':
-								filteredCoaches = coaches.filter( coach => {
-									if(coach.category.toLowerCase().indexOf(searchingVal) != -1) {
+								filteredCoaches = completedCoaches.filter( coach => {
+									if(coach.category.toLowerCase().includes(searchingVal)) {
 										return coach;
 									}
 								})
 								showNewCoaches(filteredCoaches);
 								break;
 							case 'country':
-								filteredCoaches = coaches.filter( coach => {
-									if(coach.country.toLowerCase().indexOf(searchingVal) != -1) {
+								filteredCoaches = completedCoaches.filter( coach => {
+									if(coach.country.toLowerCase().includes(searchingVal)) {
 										return coach;
 									}
 								})
 								showNewCoaches(filteredCoaches);
 								break;
 							case 'jobTitle':
-								filteredCoaches = coaches.filter( coach => {
-									if(coach.jobTitle.toLowerCase().indexOf(searchingVal) != -1) {
+								filteredCoaches = completedCoaches.filter( coach => {
+									if(coach.jobTitle.toLowerCase().includes(searchingVal)) {
 										return coach;
 									}
 								})
 								showNewCoaches(filteredCoaches);
 								break;
 							default:
-								return coaches;
+								return completedCoaches;
 						}
 					} else {
-						showNewCoaches(coaches);
+						showNewCoaches(completedCoaches);
 					}
 				})
 			});
@@ -199,19 +187,19 @@ window.onclick = () => {
 		// Handle Events of searching and filtering when inputs changes
 
 		let searchField = document.getElementById('search-field');
-		let filteredCoaches = coaches;
+		let filteredCoaches = completedCoaches;
 		let html_filtering_by_user = '';
 
 		// Handle User searching
 		searchField.addEventListener('keyup', () => {
 			let searchFieldValue = searchField.value.toLowerCase();
 			if(searchFieldValue !== '') {
-				filteredCoaches = coaches.filter( coach => {
+				filteredCoaches = completedCoaches.filter( coach => {
 					if(
-						coach.category.toLowerCase().indexOf(searchFieldValue) != -1 ||
-						coach.name.toLowerCase().indexOf(searchFieldValue) != -1 ||
-						coach.jobTitle.toLowerCase().indexOf(searchFieldValue) != -1 ||
-						coach.country.toLowerCase().indexOf(searchFieldValue) != -1
+						coach.category.toLowerCase().includes(searchFieldValue) ||
+						coach.name.toLowerCase().includes(searchFieldValue) ||
+						coach.jobTitle.toLowerCase().includes(searchFieldValue) ||
+						coach.country.toLowerCase().includes(searchFieldValue)
 					) {
 						return coach;
 					}
@@ -266,6 +254,6 @@ window.onclick = () => {
 		};
 
 	}
-}
+};
 
 

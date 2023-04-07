@@ -8,6 +8,12 @@ module.exports = {
 		filename: 'roadmap-output.js'
 	},
 	mode: 'development',
+	entry: './assets/js/index.js',
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'output.js'
+	},
+	mode: 'development',
 	entry: './assets/js/multiple-steps-form.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -18,12 +24,6 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'deal-with-firebase-bundle.js'
-	},
-	mode: 'development',
-	entry: './assets/js/index.js',
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'output.js'
 	},
 	watch: true
 }

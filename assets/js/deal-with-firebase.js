@@ -18,7 +18,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig)
 
 // init services
-const db = getFirestore()
+const db = getFirestore();
 
 const lang = document.querySelector('html').lang; // get page's Lang to assign it to database
 // collection ref
@@ -107,6 +107,10 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.coach_bank_infos}</p>
 							<span>English Skills:-</span>
 							<p class="coach-answer">${coach.english_skills}</p>
+							<span>Rating:-</span>
+							<p class="coach-answer">${coach.rating}</p>
+							<span>Order:-</span>
+							<p class="coach-answer">${coach.order}</p>
 							<span>Payment Link:- <a href="${coach.paymentLink}" target="_blank"><i class="bi bi-credit-card"></i></a></span>
 							<p class="coach-answer">${coach.paymentLink}</p>
 							<span>Calendly Link:- <a href="${coach.coach_calendly_link}" target="_blank">Calendly</a></span>
@@ -171,6 +175,10 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.coach_bank_infos}</p>
 							<span>English Skills:-</span>
 							<p class="coach-answer">${coach.english_skills}</p>
+							<span>Rating:-</span>
+							<p class="coach-answer">${coach.rating}</p>
+							<span>Order:-</span>
+							<p class="coach-answer">${coach.order}</p>
 							<span>Payment Link:- <a href="${coach.paymentLink}" target="_blank"><i class="bi bi-credit-card"></i></a></span>
 							<p class="coach-answer">${coach.paymentLink}</p>
 							<span>Calendly Link:- <a href="${coach.coach_calendly_link}" target="_blank">Calendly</a></span>
@@ -260,12 +268,14 @@ function update(member, status) {
 				coach_objective_life: coachesAnswers[17].innerText,
 				coach_bank_infos: coachesAnswers[18].innerText,
 				english_skills: coachesAnswers[19].innerText,
-				paymentLink: coachesAnswers[20].innerText,
-				coach_calendly_link: coachesAnswers[21].innerText,
-				cv_link: coachesAnswers[22].innerText,
-				SM_account: coachesAnswers[23].innerText,
-				whats_number: coachesAnswers[24].innerText,
-				mail: coachesAnswers[25].innerText
+				rating: coachesAnswers[20].innerText,
+				order: coachesAnswers[21].innerText,
+				paymentLink: coachesAnswers[22].innerText,
+				coach_calendly_link: coachesAnswers[23].innerText,
+				cv_link: coachesAnswers[24].innerText,
+				SM_account: coachesAnswers[25].innerText,
+				whats_number: coachesAnswers[26].innerText,
+				mail: coachesAnswers[27].innerText
 			})
 			.then(() => {
 				alert("Updated in Firebase too.")
