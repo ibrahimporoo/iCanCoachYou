@@ -26,19 +26,6 @@ const colRef = collection(db, 'coaches', 'languages', lang);
 // queries
 const cCompleted = query(colRef, where("appear", "==", true))
 
-// get collection data
-// let completedCoaches = [];
-// getDocs(cCompleted)
-//   .then(snapshot => {
-//     // console.log(snapshot.docs)
-//     snapshot.docs.forEach(doc => {
-//       completedCoaches.push({ ...doc.data(), id: doc.id })
-//     })
-//   })
-//   .catch(err => {
-//     console.log(err.message);
-//   });
-
 // selecting the coaches Row in html file
 const coachesContent = document.getElementById('coaches-content');
 let completedCoaches = []; // for fulling coaches in coaches page
@@ -54,7 +41,6 @@ async function getData() {
 		snapshot.docs.forEach((doc) => {
 			completedCoaches.push({ ...doc.data(), id: doc.id });
 		});
-		console.log(completedCoaches);
 		completedCoaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
 		// in the index 'top coaches' page
 		if(coachesContent.classList.contains('top-coaches')) {
