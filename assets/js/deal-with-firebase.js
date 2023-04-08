@@ -1,9 +1,9 @@
-import { initializeApp } from 'firebase/app'
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import {
-  getFirestore, collection, getDocs,
+	getFirestore, collection, getDocs,
 	query, where,
 	updateDoc, doc
-} from 'firebase/firestore'
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 
 // iCanCoachU Firebase...
 const firebaseConfig = {
