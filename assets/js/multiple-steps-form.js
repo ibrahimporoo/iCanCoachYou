@@ -10,13 +10,16 @@ import {
 	addDoc
 } from 'firebase/firestore'
 
+// iCanCoachU Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyDnpUv6FkAyt3eGai3AtCm65exvwFwvOyE",
-  authDomain: "collection-practice.firebaseapp.com",
-  projectId: "collection-practice",
-  storageBucket: "collection-practice.appspot.com",
-  messagingSenderId: "1054284320639",
-  appId: "1:1054284320639:web:5ad00474d208b0c1eed44a"
+  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+  authDomain: "elmawkaabeta.firebaseapp.com",
+  databaseURL: "https://elmawkaabeta.firebaseio.com",
+  projectId: "elmawkaabeta",
+  storageBucket: "elmawkaabeta.appspot.com",
+  messagingSenderId: "808588970288",
+  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+  measurementId: "G-G8FTTQ0EB2"
 };
 
 // init firebase
