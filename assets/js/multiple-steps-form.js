@@ -3,13 +3,11 @@
 	--- Start Firebase ----
 	-----------------------
 */
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import { initializeApp } from 'firebase/app'
 import {
 	getFirestore, collection,
 	addDoc
- } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
-
+} from 'firebase/firestore'
 // iCanCoachU Firebase...
 const firebaseConfig = {
   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
