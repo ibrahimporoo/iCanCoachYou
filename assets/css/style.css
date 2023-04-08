@@ -1148,11 +1148,13 @@ h6 {
 	background-size: cover;
 	background-position: right top;
 	padding: 140px 0;
+	padding: 190px 0;
 }
 
 #hero h1 {
 	margin: 0 0 20px 0;
 	font-size: 48px;
+	font-size: 55px;
 	font-weight: 700;
 	line-height: 56px;
 	color: #fff;
@@ -1162,10 +1164,12 @@ h6 {
 	color: #fff;
 	margin-bottom: 30px;
 	font-size: 24px;
+	font-size: 28px;
 	font-weight: lighter;
 }
 
-#hero input[name="input"] {
+#hero input[name="input"],
+.roadmap input[name="input"] {
 	background-color: transparent;
 	border: 2px solid #ffffffa0;
 	max-width: 400px;
@@ -1178,38 +1182,45 @@ h6 {
 	transition: 0.2s;
 }
 
-#hero input::-webkit-input-placeholder {
+#hero input::-webkit-input-placeholder,
+.roadmap input::-webkit-input-placeholder {
 	color: #fff;
 	opacity: 0.8;
 }
 
-#hero input::-moz-placeholder {
+#hero input::-moz-placeholder,
+.roadmap input::-moz-placeholder {
 	color: #fff;
 	opacity: 0.8;
 }
 
-#hero input:-ms-input-placeholder {
+#hero input:-ms-input-placeholder,
+.roadmap input:-ms-input-placeholder {
 	color: #fff;
 	opacity: 0.8;
 }
 
-#hero input::-ms-input-placeholder {
+#hero input::-ms-input-placeholder,
+.roadmap input::-ms-input-placeholder {
 	color: #fff;
 	opacity: 0.8;
 }
 
-#hero input::placeholder {
+#hero input::placeholder,
+.roadmap input::placeholder {
 	color: #fff;
 	opacity: 0.8;
 }
 
-#hero input:focus {
+#hero input:focus,
+.roadmap input:focus {
 	color: #fff;
 	padding-left: 20px;
 	border: 2px solid #007ab7;
 }
 
-#hero .btn-get-started {
+#hero .btn-get-started,
+.roadmap .btn-get-started {
 	font-weight: 600;
 	font-size: 13px;
 	text-transform: uppercase;
@@ -1226,7 +1237,8 @@ h6 {
 	border: 0;
 }
 
-#hero .btn-get-started:hover {
+#hero .btn-get-started:hover,
+.roadmap .btn-get-started:hover {
 	background: #008bd1;
 }
 
@@ -1241,11 +1253,13 @@ h6 {
 @media (max-width: 992px) {
 	#hero h1 {
 		font-size: 32px;
+		font-size: 37px;
 		line-height: 40px;
 	}
 
 	#hero h2 {
 		font-size: 20px;
+		font-size: 24px;
 	}
 }
 
@@ -2213,8 +2227,10 @@ section {
 /*--------------------------------------------------------------
 # CV Reviews
 --------------------------------------------------------------*/
-.cv {
+.cv,
+.roadmap {
 	height: 600px;
+	height: 60vh;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-image: url(../img/image-2.jpg);
@@ -2368,6 +2384,7 @@ section {
 --------------------------------------------------------------*/
 .cv {
 	height: 600px;
+	height: 50vh;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-image: url(../img/cv-img.jpg);

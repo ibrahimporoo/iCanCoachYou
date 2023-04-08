@@ -8,10 +8,10 @@ module.exports = {
 		filename: 'output.js'
 	},
 	mode: 'development',
-	entry: './assets/js/roadmap-input.js',
+	entry: './assets/js/multiple-steps-form.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'roadmap-output.js'
+		filename: 'multiple-steps-form.js'
 	},
 	mode: 'development',
 	entry: './assets/js/deal-with-firebase.js',
@@ -20,10 +20,10 @@ module.exports = {
 		filename: 'deal-with-firebase-bundle.js'
 	},
 	mode: 'development',
-	entry: './assets/js/multiple-steps-form.js',
+	entry: './assets/js/roadmap-input.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'multiple-steps-form.js'
+		filename: 'roadmap-output.js'
 	},
 	watch: true
 }

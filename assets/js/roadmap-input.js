@@ -1,4 +1,5 @@
-const apiKey = "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";
+// const apiKey = "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";
+const apiKey = "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";
 const model = "text-davinci-003";
 const temperature = 0;
 const maxTokens = 4060;
