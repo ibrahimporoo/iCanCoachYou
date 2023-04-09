@@ -65,6 +65,19 @@ body.rtl {
 	direction: rtl;
 }
 
+body.rtl #hero,
+body.rtl #hero .container,
+body.rtl .cv,
+body.rtl .roadmap,
+body.rtl .cv .container,
+body.rtl .roadmap .container {
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+}
+
 ul {
 	list-style-type: none;
 }
