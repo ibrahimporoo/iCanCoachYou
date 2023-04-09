@@ -1036,6 +1036,7 @@ h6 {
 
 .join-form {
 	display: none;
+	direction: ltr;
 }
 
 .navbar-mobile,
