@@ -70,7 +70,9 @@ body.rtl #hero .container,
 body.rtl .cv,
 body.rtl .roadmap,
 body.rtl .cv .container,
-body.rtl .roadmap .container {
+body.rtl .roadmap .container,
+body.rtl .breadcrumbs,
+body.rtl .breadcrumbs .container {
 	transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg);
 	-moz-transform: rotateY(180deg);
@@ -2556,8 +2558,7 @@ section {
 	font-weight: 500;
 }
 
-.pricing .featured h4 span,
-.pricing .featured ul .na {
+.pricing .featured h4 span {
 	color: #fff;
 }
 .pricing .featured ul {
