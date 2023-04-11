@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import {
 	getFirestore, collection, getDocs,
-	query, where
+	query, where, doc
 } from 'firebase/firestore/lite';
 
 // iCanCoachU Firebase...
@@ -44,15 +44,15 @@ async function getData() {
 		completedCoaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
 		// in the index 'top coaches' page
 		if(coachesContent.classList.contains('top-coaches')) {
-			// Adding Content of Data coming from Firebase to HTML
-			completedCoaches = completedCoaches.filter(coach => coach.order <= 3)
-		}
+			// Just get coaches who has top order
+			completedCoaches = completedCoaches.filter(coach => coach.order <= 3);
+		};
 		completedCoaches.map(coach => {
 			html += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
 					<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
-						<div class="member-info coaches pricing">
+						<div class="member-info coaches pricing" data-i=${coach.id}>
 							<div class='ps-3 pe-3'>
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
@@ -66,6 +66,7 @@ async function getData() {
 								<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
 							</div>
 							<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
+							<button class='profile-btn'>VIEW PROFILE</button>
 						</div>
 					</div>
 				</div>
@@ -242,4 +243,28 @@ window.onclick = () => {
 	}
 };
 
+// Code for View Single Coach...
+function viewProfile(documentId, lang) {
+	sessionStorage.setItem('selectedCoach', documentId);
+	sessionStorage.setItem('lang', lang);
+	window.location.href = 'coach-profile.html';
+}
+window.onload = () => {
+	gettingProfileBtns();
+};
+function gettingProfileBtns() {
+	setTimeout(() => {
+		const profileBtns = document.querySelectorAll('.profile-btn');
+		if(profileBtns[0]) {
+				profileBtns.forEach(btn => {
+					btn.addEventListener('click', (e) => {
+						console.log(e.target.parentElement.dataset.i);
+						viewProfile(e.target.parentElement.dataset.i, lang);
+					});
+				});
+			} else {
+				gettingProfileBtns();
+			};
+	}, 4000);
+}
 

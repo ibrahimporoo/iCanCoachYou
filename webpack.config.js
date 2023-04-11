@@ -14,16 +14,22 @@ module.exports = {
 		filename: 'deal-with-firebase-bundle.js'
 	},
 	mode: 'development',
-	entry: './assets/js/index.js',
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'output.js'
-	},
-	mode: 'development',
 	entry: './assets/js/roadmap-input.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'roadmap-output.js'
+	},
+	mode: 'development',
+	entry: './assets/js/single-coach-profile.js',
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'single-coach-profile-bundle.js'
+	},
+	mode: 'development',
+	entry: './assets/js/index.js',
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'output.js'
 	},
 	watch: true
 }
