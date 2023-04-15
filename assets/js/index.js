@@ -66,7 +66,7 @@ async function getData() {
 								<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
 							</div>
 							<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
-							<button class='profile-btn'>VIEW PROFILE</button>
+							<button class='profile-btn' data-username=${coach.name.trim().replace(' ', '')}>VIEW PROFILE</button>
 						</div>
 					</div>
 				</div>
@@ -244,10 +244,10 @@ window.onclick = () => {
 };
 
 // Code for View Single Coach...
-function viewProfile(documentId, lang) {
+function viewProfile(documentId, lang, username) {
 	sessionStorage.setItem('selectedCoach', documentId);
 	sessionStorage.setItem('lang', lang);
-	window.location.href = 'coach-profile.html';
+	window.location.href = `coach-profile.html#${username}`;
 }
 window.onload = () => {
 	gettingProfileBtns();
@@ -259,7 +259,7 @@ function gettingProfileBtns() {
 				profileBtns.forEach(btn => {
 					btn.addEventListener('click', (e) => {
 						console.log(e.target.parentElement.dataset.i);
-						viewProfile(e.target.parentElement.dataset.i, lang);
+						viewProfile(e.target.parentElement.dataset.i, lang, e.target.dataset.username);
 					});
 				});
 			} else {

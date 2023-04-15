@@ -92,7 +92,98 @@
             </article>
             <article>
               <p>Where are you located?</p>
-              <input type="text" name="location" placeholder="example: Egypt/Cairo">
+              <div class="location">
+                <div class="d-flex align-items-center">
+                  <div class="col-8" style="padding-left: 2px;">
+                    <select id="country" name="country">
+                      <option value="">Select a country</option>
+                      <!-- Arab countries -->
+                      <optgroup label="Arab Countries">
+                        <option value="algeria">Algeria</option>
+                        <option value="bahrain">Bahrain</option>
+                        <option value="comoros">Comoros</option>
+                        <option value="djibouti">Djibouti</option>
+                        <option value="egypt">Egypt</option>
+                        <option value="iraq">Iraq</option>
+                        <option value="jordan">Jordan</option>
+                        <option value="kuwait">Kuwait</option>
+                        <option value="lebanon">Lebanon</option>
+                        <option value="libya">Libya</option>
+                        <option value="mauritania">Mauritania</option>
+                        <option value="morocco">Morocco</option>
+                        <option value="oman">Oman</option>
+                        <option value="palestine">Palestine</option>
+                        <option value="qatar">Qatar</option>
+                        <option value="saudi_arabia">Saudi Arabia</option>
+                        <option value="somalia">Somalia</option>
+                        <option value="sudan">Sudan</option>
+                        <option value="syria">Syria</option>
+                        <option value="tunisia">Tunisia</option>
+                        <option value="united_arab_emirates">United Arab Emirates</option>
+                        <option value="yemen">Yemen</option>
+                      </optgroup>
+                      <!-- USA countries -->
+                      <optgroup label="USA">
+                        <option value="united_states">United States</option>
+                      </optgroup>
+                      <!-- Europe countries -->
+                      <optgroup label="Europe">
+                        <option value="albania">Albania</option>
+                        <option value="andorra">Andorra</option>
+                        <option value="austria">Austria</option>
+                        <option value="belarus">Belarus</option>
+                        <option value="belgium">Belgium</option>
+                        <option value="bosnia_and_herzegovina">Bosnia and Herzegovina</option>
+                        <option value="bulgaria">Bulgaria</option>
+                        <option value="croatia">Croatia</option>
+                        <option value="cyprus">Cyprus</option>
+                        <option value="czech_republic">Czech Republic</option>
+                        <option value="denmark">Denmark</option>
+                        <option value="estonia">Estonia</option>
+                        <option value="finland">Finland</option>
+                        <option value="france">France</option>
+                        <option value="germany">Germany</option>
+                        <option value="greece">Greece</option>
+                        <option value="hungary">Hungary</option>
+                        <option value="iceland">Iceland</option>
+                        <option value="ireland">Ireland</option>
+                        <option value="italy">Italy</option>
+                        <option value="kosovo">Kosovo</option>
+                        <option value="latvia">Latvia</option>
+                        <option value="liechtenstein">Liechtenstein</option>
+                        <option value="lithuania">Lithuania</option>
+                        <option value="luxembourg">Luxembourg</option>
+                        <option value="malta">Malta</option>
+                        <option value="moldova">Moldova</option>
+                        <option value="monaco">Monaco</option>
+                        <option value="montenegro">Montenegro</option>
+                        <option value="netherlands">Netherlands</option>
+                        <option value="north_macedonia">North Macedonia</option>
+                        <option value="norway">Norway</option>
+                        <option value="poland">Poland</option>
+                        <option value="portugal">Portugal</option>
+                        <option value="romania">Romania</option>
+                        <option value="russia">Russia</option>
+                        <option value="san_marino">San Marino</option>
+                        <option value="serbia">Serbia</option>
+                        <option value="slovakia">Slovakia</option>
+                        <option value="slovenia">Slovenia</option>
+                        <option value="spain">Spain</option>
+                        <option value="sweden">Sweden</option>
+                        <option value="switzerland">Switzerland</option>
+                        <option value="ukraine">Ukraine</option>
+                        <option value="united_kingdom">United Kingdom</option>
+                        <option value="vatican_city">Vatican City</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  <div>
+                    <select id="city" name="city">
+                      <option value="">Select a city</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
             </article>
           </div>
           <div class="row">
@@ -134,9 +225,19 @@
             </article>
           </div>
           <div class="row">
-            <article>
-              <p>What's the main email that you always open</p>
-              <input type="email" name="user_mail" placeholder="email...">
+            <article class="d-flex flex-column gap-2">
+              <div>
+                <p>What's the main email that you always open</p>
+                <input type="email" name="user_mail" placeholder="email...">
+              </div>
+              <div>
+                <p>What's your objective in life?</p>
+                <input type="text" name="coach_goal" placeholder="what's your goal?" />
+              </div>
+              <div>
+                <p>Who is your role model?</p>
+                <input type="text" name="coach_role_model" placeholder="who changed you?">
+              </div>
             </article>
             <article class="d-flex flex-column gap-3">
               <div>
@@ -250,6 +351,56 @@
                 <span>Others</span>
                 <input type="radio" name="industry" value="Others" />
               </label>
+              <article class="d-flex flex-column gap-3" style="width: 100%;padding-top: 5px;">
+                <div>
+                  <p>What's your English Language skills?</p>
+                  <select name="en_lang">
+                    <option value="Native">Native</option>
+                    <option value="Fluent">Fluent</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Beginner">Beginner</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Are you available/free for at least 2:3 hours every week?</p>
+                  <label>
+                    <span>Yes</span>
+                    <input type="radio" name="coachTime" value="Yes" checked />
+                  </label>
+                  <label>
+                    <span>No</span>
+                    <input type="radio" name="coachTime" value="No" />
+                  </label>
+                  <label>
+                    <span>Maybe</span>
+                    <input type="radio" name="coachTime" value="Maybe" />
+                  </label>
+                  <label>
+                    <span>Other</span>
+                    <input type="radio" name="coachTime" value="Other" />
+                  </label>
+                </div>
+                <div>
+                  <p>Do you have work experience or not (please mention if you have)</p>
+                  <span class="example">For Example No or Yes, Marketing manager at Enactus</span>
+                  <textarea name="work_exp" placeholder="add your work experience here..."></textarea>
+                </div>
+                <div>
+                  <p>Work Experience Years* ?</p>
+                  <span class="example">if no type 0.</span>
+                  <input type="number" name="work_exp_years" placeholder="0">
+                </div>
+                <div>
+                  <p>Please add Keywords that describe your skills, job titles and industries.</p>
+                  <span class="example">To add one not that:-</span>
+                  <span class="example">every keyword should by ',' followed</span>
+                  <div id="tags-container">
+                    <span>Programming</span>
+                    <span>Languages</span>
+                  </div>
+                  <input type="text" id="tags-input" placeholder="Keyword,">
+                </div>
+              </article>
             </article>
             <article class="d-flex flex-column gap-4">
               <div>
@@ -284,89 +435,82 @@
                 </label>
               </div>
               <div>
-                <p>Do you have work experience or not (please mention if you have)</p>
-                <span class="example">For Example No or Yes, Marketing manager at Enactus</span>
-                <input type="text" name="work_exp" placeholder="here..." />
+                <p>Image file:</p>
+                <span class="example">add the highest professional image you have.</span>
+                <label for="image_file" class="file-label">
+                  <input type="file" id="image_file" name="image_file" accept="image/*" />
+                </label>
               </div>
               <div>
-                <p>add your Profile Picture as a link. Please add the most professional photo you have</p>
-                <input type="url" name="picture_link" placeholder="image link drive for example.." />
+                <p>Video file:</p>
+                <span class="example">add 1 minute video brief.</span>
+                <span class="example">When user visit your profile this video will be appear to him.</span>
+                <label for="video_file" class="file-label">
+                  <input type="file" id="video_file" name="video_file" accept="video/*" />
+                </label>
               </div>
               <div>
-                <p>What's your Profile LinkedIn link?</p>
-                <span class="example">or Facebook or Instagram or twitter or YouTube or Behance (the most professional one)</span>
+                <p>CV File:</p>
+                <span class="example">pdf or docx</span>
+                <label for="cv_file" class="file-label">
+                  <input type="file" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" />
+                </label>
+              </div>
+              <div>
+                <p>profile LinkedIn Link?</p>
                 <span class="example">You can bring the link from <a href="https://www.linkedin.com" target="_blank">here </a></span>
-                <input type="url" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
+                <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
+              </div>
+              <div>
+                <p>profile Instagram Link?</p>
+                <span class="example">You can bring the link from <a href="https://www.instagram.com" target="_blank">here </a></span>
+                <input type="text" name="instagram_link" placeholder="https://www.instagram.com/username" />
+              </div>
+              <div>
+                <p>profile Twitter link?</p>
+                <span class="example">You can bring the link from <a href="https://www.twitter.com" target="_blank">here</a></span>
+                <input type="text" name="twitter_link" placeholder="https://www.twitter.com/username" />
+              </div>
+              <div>
+                <p>profile Facebook link?</p>
+                <span class="example">optional</span>
+                <span class="example">You can bring the link from <a href="https://www.facebook.com" target="_blank">here</a></span>
+                <input type="text" name="fb_link" placeholder="https://www.facebook.com/username" />
+              </div>
+              <div>
+                <p>Youtube channel link?</p>
+                <span class="example">optional</span>
+                <span class="example">You can bring the link from <a href="https://www.youtube.com" target="_blank">here</a></span>
+                <input type="text" name="youtube_link" placeholder="https://www.youtube.com/username" />
+              </div>
+              <div>
+                <p>profile Tiktok link?</p>
+                <span class="example">You can bring the link from <a href="https://www.tiktok.com" target="_blank">here</a></span>
+                <span class="example">optional</span>
+                <input type="text" name="tiktok_link" placeholder="https://www.tiktok.com/username" />
               </div>
             </article>
           </div>
           <div class="row">
             <article>
               <p>Write a summary you wish to display in the website?</p>
-              <p>Please add it in English for Example:-</p>
-              <span class="example">
+              <span class="example" style="padding-left: 0;">Write as much as possible, as we need to show your skills, work experience and work life.</span>
+              <span class="example" style="padding-left: 0;">Please add it in English for Example:-</span>
+              <span class="example" style="font-size: 13px;">
                 Entrepreneurship, Programming, Sales & Marketing, Business Management, Technology, operations
                 Serial entrepreneur, 12 years of experience in business development, CEO & Co-founder of Elmawkaa Company LLC.
               </span>
-              <textarea name="en_summary"></textarea>
-              <!-- <input type="text" placeholder="example: Ebrahim Anwar"> -->
+              <textarea class="summarizations" name="en_summary" placeholder="Summarize here ..."></textarea>
             </article>
-            <article class="d-flex flex-column gap-3">
-              <div>
-                <p>Add your CV link, if you have</p>
-                <span class="example">it should be PDF link from your google drive</span>
-                <input type="text" name="cv_link" placeholder="cv link drive for example.." />
-              </div>
-              <div>
-                <p>What's your English Language skills?</p>
-                <select name="en_lang">
-                  <option value="Native">Native</option>
-                  <option value="Fluent">Fluent</option>
-                  <option value="Intermediate">Intermediate</option>
-                  <option value="Beginner">Beginner</option>
-                </select>
-              </div>
-              <div>
-                <p>Are you available/free for at least 2:3 hours every week?</p>
-                <label>
-                  <span>Yes</span>
-                  <input type="radio" name="coachTime" value="Yes" checked />
-                </label>
-                <label>
-                  <span>No</span>
-                  <input type="radio" name="coachTime" value="No" />
-                </label>
-                <label>
-                  <span>Maybe</span>
-                  <input type="radio" name="coachTime" value="Maybe" />
-                </label>
-                <label>
-                  <span>Other</span>
-                  <input type="radio" name="coachTime" value="Other" />
-                </label>
-              </div>
-            </article>
-          </div>
-          <div class="row">
             <article>
               <p>Write a summary you wish to display in the website?</p>
-              <p>Please add it in Arabic for Example:-</p>
-              <span class="example" style="direction: rtl;">
-                ريادة الأعمال ، البرمجة ، المبيعات والتسويق ، إدارة الأعمال ، التكنولوجيا ، العمليات
-                رائد أعمال ، 11 عامًا من الخبرة في تطوير الأعمال ، الرئيس التنفيذي والشريك المؤسس لشركة الموقع ( LLC ) واحدة من أفضل الشركات الناشئة نموًا في صناعة البناء والتشييد في مصر.
+              <span class="example" style="padding-left: 0;margin-bottom: 6px;">Write as much as possible, as we need to show your skills, work experience and work life.</span>
+              <span class="example" style="padding-left: 0px;margin-bottom: 10px;">Please add it in Arabic for Example:-</span>
+              <span class="example" style="direction: rtl;margin-bottom: 16px;;">
+                ريادة الأعمال، البرمجة، المبيعات والتسويق، إدارة الأعمال، التكنولوجيا، العمليات
+                رائد أعمال زو خبرة، خبرة 12 عامًا في تطوير الأعمال، الرئيس التنفيذي والمؤسس المشارك لشركة الموقع للتجارة. 
               </span>
-              <textarea name="ar_summary" style="direction: rtl;"></textarea>
-              <!-- <input type="text" placeholder="example: Ebrahim Anwar"> -->
-            </article>
-            <article class="d-flex flex-column gap-3">
-              <div>
-                <p>What's your objective in life?</p>
-                <input type="text" name="coach_goal" />
-              </div>
-              <div>
-                <p>Who is your role model?</p>
-                <input type="text" name="coach_role_model">
-              </div>
+              <textarea class="summarizations" name="ar_summary" style="direction: rtl;" placeholder="لخص هنا..."></textarea>
             </article>
           </div>
         </div>
@@ -374,21 +518,47 @@
           <h2 class="text-center">Dealing With Us</h2>
           <div class="row">
             <article>
-              <p>What's your hourly rate for an hour coach session</p>
-              <span class="example">
-                For Example 500 EGP also we take 25% commission to be sustainable and for payment getaway's fees
-              </span>
-              <input type="number" placeholder="500" name="hourly_rate" />
+              <div style="max-width: 390px">
+                <p>Please add your calendly.com link as we will send it to the clients after they pay</p>
+                <span class="example">
+                  For Example:
+                  <a href="https://calendly.com/waleed-abdelrahman/60min" target="_blank">
+                    https://calendly.com/waleed-abdelrahman/60min
+                  </a>
+                </span>
+              </div>
+              <input type="text" placeholder="https://calendly.com/waleed-abdelrahman/60min" name="calendly_link" />
             </article>
             <article>
-              <p>Please add your calendly.com link as we will send it to the clients after they pay</p>
-              <span class="example">
-                For Example:
-                <a href="https://calendly.com/waleed-abdelrahman/60min" target="_blank">
-                  https://calendly.com/waleed-abdelrahman/60min
-                </a>
+              <div style="max-width: 390px;">
+                <p>Please add Tidycal link</p>
+                <span class="example" style="margin-bottom: 7px;">
+                  if You don't have
+                  <a href="https://tidycal.com" target="_blank">
+                    make one
+                  </a>
+                </span>
+                <span class="example" style="margin-bottom: 10px;">- alternative link if you don't have calendly link</span>
+              </div>
+              <input type="text" placeholder="https://tidycal.com/waleed-abdelrahman/60min" name="tidycal_link" />
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>What's your hourly rate for an hour coach session in Egypt</p>
+              <span class="example">For example 500 EGP</span>
+              <span class="example" style="padding-left: 13px;">
+                - also we take 25% commission to be sustainable and for payment getaway's fees
               </span>
-              <input type="text" placeholder="https://calendly.com/waleed-abdelrahman/60min" name="calendly_link" />
+              <input type="number" placeholder="500" name="eg_hourly_rate" />
+            </article>
+            <article>
+              <p>What's your hourly rate for an hour coach session outside Egypt</p>
+              <span class="example">For example 1800 EGP</span>
+              <span class="example" style="padding-left: 13px;">
+                - also we take 25% commission to be sustainable and for payment getaway's fees
+              </span>
+              <input type="number" placeholder="1800" name="outside_eg_hourly_rate" />
             </article>
           </div>
           <div class="row">
@@ -433,7 +603,9 @@
                 </label>
               </div>
               <div>
-                <textarea name="comment" placeholder="any comment..."></textarea>
+                <p>You can send us any comment about anything you want to talk about</p>
+                <span class="example">- it will be great to give us your feedback.</span>
+                <textarea name="comment" placeholder="any comment..." style="min-height: 157px;"></textarea>
               </div>
             </article>
           </div>
@@ -1370,12 +1542,12 @@
 
   <!-- With Webpack -->
   <!-- Output of fetching data from database -->
-  <script src="dist/output.js"></script>
-  <script src="dist/roadmap-output.js"></script>
+  <script type="module" src="dist/output.js"></script>
+  <script type="module" src="dist/roadmap-output.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="dist/multiple-steps-form.js"></script>
+  <script type="module" src="dist/multiple-steps-form.js"></script>
 </body>
 
 </html>

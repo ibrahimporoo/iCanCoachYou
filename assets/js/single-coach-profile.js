@@ -1,7 +1,5 @@
 import { initializeApp } from 'firebase/app'
 import {
-	// getFirestore, collection, getDocs,
-	// query, where, doc
 	getFirestore, doc, getDoc
 } from 'firebase/firestore/lite';
 
@@ -25,11 +23,11 @@ async function fetchSingleCoach() {
 	const profileImg = document.querySelector('.profile-img');
 	const documentId = sessionStorage.getItem('selectedCoach');
 	const documentLang = sessionStorage.getItem('lang');
-	const docRef = doc(db, 'coaches', 'languages' ,documentLang ,documentId);
+	const docRef = doc(db, 'coaches', 'languages', documentLang, documentId);
 	const docSnap = await getDoc(docRef);
 	const coach = docSnap.data();
 	coachContainer.innerHTML = `
-		<div class="portfolio-info">
+		<div class="portfolio-info" id=${coach.name.trim().replace(' ', '')}>
 			<h3>${coach.name}</h3>
 			<ul>
 				<li><strong>Job title</strong>: ${coach.jobTitle}</li>
