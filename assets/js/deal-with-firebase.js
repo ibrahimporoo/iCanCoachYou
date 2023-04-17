@@ -6,24 +6,15 @@ import {
 } from 'firebase/firestore'
 
 // iCanCoachU Firebase...
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-//   authDomain: "elmawkaabeta.firebaseapp.com",
-//   databaseURL: "https://elmawkaabeta.firebaseio.com",
-//   projectId: "elmawkaabeta",
-//   storageBucket: "elmawkaabeta.appspot.com",
-//   messagingSenderId: "808588970288",
-//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-//   measurementId: "G-G8FTTQ0EB2"
-// };
-// Just Like iCanCoachU Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-  authDomain: "just-like-icancoachu.firebaseapp.com",
-  projectId: "just-like-icancoachu",
-  storageBucket: "just-like-icancoachu.appspot.com",
-  messagingSenderId: "415289518874",
-  appId: "1:415289518874:web:263bf9089765a2a312daa3"
+  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+  authDomain: "elmawkaabeta.firebaseapp.com",
+  databaseURL: "https://elmawkaabeta.firebaseio.com",
+  projectId: "elmawkaabeta",
+  storageBucket: "elmawkaabeta.appspot.com",
+  messagingSenderId: "808588970288",
+  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+  measurementId: "G-G8FTTQ0EB2"
 };
 
 // init firebase
@@ -155,7 +146,7 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.jobTitle}</p>
 							<span>industry:-</span>
 							<p class="coach-answer">${coach.industry}</p>
-							${coach.coach_working_life_tags.length && `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>`}
+							${coach.coach_working_life_tags && `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>`}
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -250,7 +241,7 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.jobTitle}</p>
 							<span>industry:-</span>
 							<p class="coach-answer">${coach.industry}</p>
-							${coach.coach_working_life_tags.length && `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>`}
+							${coach.coach_working_life_tags && `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>`}
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>

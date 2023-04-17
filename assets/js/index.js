@@ -24,7 +24,7 @@ const lang = document.querySelector('html').lang; // get page's Lang to assign i
 const colRef = collection(db, 'coaches', 'languages', lang);
 
 // queries
-const cCompleted = query(colRef, where("appear", "==", true))
+const cCompleted = query(colRef, where("appear", "==", true));
 
 // selecting the coaches Row in html file
 const coachesContent = document.getElementById('coaches-content');
@@ -57,16 +57,20 @@ async function getData() {
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
 							</div>
-							<span>${coach.pricing}</span>
+							${coach.pricing ? `<span>${coach.pricing}</span>`: `<span>${coach.pricing_in_egypt}</span>`}
 							<p class='detail-item mb-1 mt-1'>Details</p>
 							<span>${coach.category}</span>
-							<span>${coach.summary.length > 180 ? coach.summary.slice(0, 180) : coach.summary}</span>
+							${coach.summary.length > 180 ? `<span>${coach.summary.length.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
 							<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
 							<div class="social">
-								<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+								${coach.SM_account ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
+								${coach.instagram_account ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
+								${coach.twitter_account ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``}
+								${coach.facebook_account ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``}
+								${coach.youtube_account ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
+								${coach.tiktok_account ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
 							</div>
 							<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
-							<button class='profile-btn' data-username=${coach.name.trim().replace(' ', '')}>VIEW PROFILE</button>
 						</div>
 					</div>
 				</div>
@@ -78,7 +82,7 @@ async function getData() {
 		coachesContent.innerHTML = `<h1 style='padding: 100px 0; text-align: center'>No coaches till now</h1>`;
 	});
 };
-
+// <button class='profile-btn' data-username=${coach.name.trim().replace(' ', '')}>VIEW PROFILE</button>
 getData().then(() => {
 	if(coachesContent.classList.contains('top-coaches')) {
 		coachesContent.innerHTML = html;
@@ -205,18 +209,23 @@ window.onclick = () => {
 				<div class="col-lg-4 col-md-6">
 					<div class="member" data-aos="zoom-in">
 						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
-							<div class="member-info coaches pricing">
+							<div class="member-info coaches pricing" data-i=${coach.id}>
 								<div class='ps-3 pe-3'>
 									<h5>${coach.name}</h5>
 									<h4>${coach.jobTitle}</h4>
 								</div>
-								<span>${coach.pricing}</span>
+								${coach.pricing ? `<span>${coach.pricing}</span>`: `<span>${coach.pricing_in_egypt}</span>`}
 								<p class='detail-item mb-1 mt-1'>Details</p>
 								<span>${coach.category}</span>
-								<span>${coach.summary}</span>
+								${coach.summary.length > 180 ? `<span>${coach.summary.length.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
 								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
 								<div class="social">
-									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+									${coach.SM_account ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
+									${coach.instagram_account ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
+									${coach.twitter_account ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``}
+									${coach.facebook_account ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``}
+									${coach.youtube_account ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
+									${coach.tiktok_account ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
 								</div>
 								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
 							</div>
@@ -239,7 +248,7 @@ window.onclick = () => {
 				}
 			}
 		};
-
+// 								<button class='profile-btn' data-username=${coach.name.trim().replace(' ', '')}>VIEW PROFILE</button>
 	}
 };
 

@@ -3,16 +3,14 @@
 	--- Start Firebase ----
 	-----------------------
 */
-// // iCanCoachU Firebase...
+// // iCanCoachU Example Firebase...
 // const firebaseConfig = {
-//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-//   authDomain: "elmawkaabeta.firebaseapp.com",
-//   databaseURL: "https://elmawkaabeta.firebaseio.com",
-//   projectId: "elmawkaabeta",
-//   storageBucket: "elmawkaabeta.appspot.com",
-//   messagingSenderId: "808588970288",
-//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-//   measurementId: "G-G8FTTQ0EB2"
+//   apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+//   authDomain: "just-like-icancoachu.firebaseapp.com",
+//   projectId: "just-like-icancoachu",
+//   storageBucket: "just-like-icancoachu.appspot.com",
+//   messagingSenderId: "415289518874",
+//   appId: "1:415289518874:web:263bf9089765a2a312daa3"
 // };
 import { initializeApp } from 'firebase/app';
 import {
@@ -22,14 +20,16 @@ import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
 } from 'firebase/storage';
 
-// iCanCoachU Example Firebase...
+// iCanCoachU Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-  authDomain: "just-like-icancoachu.firebaseapp.com",
-  projectId: "just-like-icancoachu",
-  storageBucket: "just-like-icancoachu.appspot.com",
-  messagingSenderId: "415289518874",
-  appId: "1:415289518874:web:263bf9089765a2a312daa3"
+  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+  authDomain: "elmawkaabeta.firebaseapp.com",
+  databaseURL: "https://elmawkaabeta.firebaseio.com",
+  projectId: "elmawkaabeta",
+  storageBucket: "elmawkaabeta.appspot.com",
+  messagingSenderId: "808588970288",
+  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+  measurementId: "G-G8FTTQ0EB2"
 };
 
 // init services
@@ -149,8 +149,8 @@ joinForm.addEventListener('submit', async (e) => {
 			jobTitle: joinForm.jobTitle.value,
 			work_experience: joinForm.work_exp.value,
 			work_experience_years: joinForm.work_exp_years.value,
-			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' جنيه مصري',
-			pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' جنيه مصري',
+			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' EGP',
+			pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' USD',
 			english_skills: joinForm.en_lang.value,
 			order: document.querySelectorAll('.filtered-coaches > div').length,
 			rating: 5,
