@@ -1022,9 +1022,10 @@ button {
 /*--------------------------------------------------------------
 # Header Social Links
 --------------------------------------------------------------*/
-.header-social-links {
+/* .header-social-links {
 	margin: 0 0 0 30px;
-}
+	margin-inline-start: 30px;
+} */
 
 @media (max-width: 768px) {
 	.header-social-links {
@@ -1098,9 +1099,10 @@ button {
 
 .navbar a i,
 .navbar a:focus i {
-	font-size: 12px;
+	font-size: 16px;
 	line-height: 0;
-	margin-left: 5px;
+	/* margin-left: 5px; */
+	margin-inline-start: 5px;
 }
 
 .navbar a:hover,
