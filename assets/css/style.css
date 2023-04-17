@@ -175,6 +175,24 @@ button {
 	-o-transform: translate(-50%,-50%) rotate(0);
 	-webkit-transform: translate(-50%,-50%) rotate(0);
 }
+#tags-add-btn {
+	border: 2px solid gray;
+	padding: 4px 10px;
+	margin-top: 4px;
+	background-color: #212529;
+	color: white;
+	margin-left: -49px;
+	font-size: 14px;
+	border-radius: 4px;
+}
+@media (max-width: 520px) {
+	#tags-add-btn {
+		padding: 6px 10px;
+    font-size: 12px;
+    border-width: 1px;
+		margin-left: -43px;
+	}
+}
 
 @keyframes spin {
   to {
@@ -599,13 +617,26 @@ button {
 	flex-wrap: wrap;
 	gap: 4px;
 }
-.step article #tags-container span {
-	padding: 3px 14px;
-	margin-bottom: 2px;
+.step article #tags-container .tag-span {
+	margin-bottom: 3px;
 	background-color: #ed143dcf;
-	border-radius: 25px;
+	background-color: #147fedeb;
+	padding: 13px 13px 8px;
+	border-radius: 7px;
 	color: white;
-	font-size: 13px;
+	font-size: 12px;
+	position: relative;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-o-border-radius: 7px;
+}
+.step article #tags-container .tag-span button {
+	color: #eee;
+	font-size: 7px;
+	position: absolute;
+	top: 3px;
+	right: 2px;
 }
 .step article textarea {
 	max-width: 500px;

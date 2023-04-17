@@ -6,15 +6,24 @@ import {
 } from 'firebase/firestore'
 
 // iCanCoachU Firebase...
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+//   authDomain: "elmawkaabeta.firebaseapp.com",
+//   databaseURL: "https://elmawkaabeta.firebaseio.com",
+//   projectId: "elmawkaabeta",
+//   storageBucket: "elmawkaabeta.appspot.com",
+//   messagingSenderId: "808588970288",
+//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+//   measurementId: "G-G8FTTQ0EB2"
+// };
+// Just Like iCanCoachU Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-  authDomain: "elmawkaabeta.firebaseapp.com",
-  databaseURL: "https://elmawkaabeta.firebaseio.com",
-  projectId: "elmawkaabeta",
-  storageBucket: "elmawkaabeta.appspot.com",
-  messagingSenderId: "808588970288",
-  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-  measurementId: "G-G8FTTQ0EB2"
+  apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+  authDomain: "just-like-icancoachu.firebaseapp.com",
+  projectId: "just-like-icancoachu",
+  storageBucket: "just-like-icancoachu.appspot.com",
+  messagingSenderId: "415289518874",
+  appId: "1:415289518874:web:263bf9089765a2a312daa3"
 };
 
 // init firebase
@@ -41,6 +50,7 @@ getDocs(cCompleted)
     snapshot.docs.forEach(doc => {
       completedCoaches.push({ ...doc.data(), id: doc.id })
     })
+		console.log(completedCoaches);
 		completedContent.innerHTML = '';
 		fillInHTML(completedCoaches, true);
   })
@@ -54,7 +64,8 @@ getDocs(cPending)
   .then(snapshot => {
     snapshot.docs.forEach(doc => {
       pendingCoaches.push({ ...doc.data(), id: doc.id });
-    })
+    });
+		console.log(pendingCoaches);
 		pendingContent.innerHTML = '';
 		fillInHTML(pendingCoaches, false);
   })
@@ -62,9 +73,61 @@ getDocs(cPending)
     console.log(err.message);
   });
 
+// All Firebase Keys
+/*
+1age
+2appear
+3false
+4birthdate
+5"programming, Founder/Business Owner"
+6coach_bank_infos
+7coach_calendly_link
+8coach_comment
+9coach_free_time
+10coach_objective_life
+11coach_role_model
+12coach_tidycal_link
+13coach_working_life_tags
+14college
+15country
+16cvDownloadURL
+17english_skills
+18facebook_account
+19gender
+20graduation_year
+21how_coach_arrived
+22id
+23image
+24industry
+25instagram_account
+26jobTitle
+27linkedIn_account
+28mail
+29name
+30order
+31paymentLink
+32pricing_in_egypt
+33pricing_outside_egypt
+34rating
+35session_way
+36summary
+37tiktok_account
+38twitter_account
+39videoDownloadURL
+40whats_number
+41work_experience
+42work_experience_years
+43youtube_account
+*/
 
 function fillInHTML(coaches, completed = true) {
 	coaches.forEach(coach => {
+		if (coach.birthdate) { // To GEt Coach's Age If he entered the birthdate
+			let birthdate = new Date(coach.birthdate);
+			let ageInMilliseconds = Date.now() - birthdate.getTime();
+			const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25); // Account for leap years
+			coach.age = Math.floor(ageInYears);
+		}
 		if(completed) {
 			completedContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
@@ -73,7 +136,7 @@ function fillInHTML(coaches, completed = true) {
 						<div class="member-info">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
-								<span>ًCoach image url:- <a href="${coach.image}" target="_blank">image</a></span>
+								<span>ًCoach image url:- <a href="${coach.image}" target="_blank">Download Image</a></span>
 								<p class="coach-answer">${coach.image}</p>
 								<span>ًWork Experience:-</span>
 								<p class="coach-answer">${coach.work_experience}</p>
@@ -92,6 +155,7 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.jobTitle}</p>
 							<span>industry:-</span>
 							<p class="coach-answer">${coach.industry}</p>
+							${coach.coach_working_life_tags.length && `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>`}
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -99,9 +163,12 @@ function fillInHTML(coaches, completed = true) {
 							<span>job summary is:-</span>
 							<p class="coach-answer">${coach.summary}</p>
 							<span>location:-</span>
-							<p><span class="coach-answer">${coach.country}</span>/<span class="coach-answer">${coach.city}</span></p>
-							<span>coach free time:-</span>
-							<p class="coach-answer"${coach.coach_free_time}</p>
+							<div><p class="coach-answer">${coach.country}</p>/<p class="coach-answer">${coach.city}</p></div>
+							<br /><br />
+							<span>Is Coach available/free for at least 2:3 hours every week?:-</span>
+							<p class="coach-answer">${coach.coach_free_time}</p>
+							<span>How did coach hear about us?:-</span>
+							<p class="coach-answer"${coach.how_coach_arrived}</p>
 							<span>coach role model is:-</span>
 							<p class="coach-answer">${coach.coach_role_model}</p>
 							<span>coach objective life is:-</span>
@@ -118,22 +185,45 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.paymentLink}</p>
 							<span>Calendly Link:- <a href="${coach.coach_calendly_link}" target="_blank">Calendly</a></span>
 							<p class="coach-answer">${coach.coach_calendly_link}</p>
-							<span>CV Link:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-file-person-fill"></i></a></span>
-							<p class="coach-answer">${coach.cv_link}</p>
-							<span>Social Media Link:- <a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
-							<p class="coach-answer">${coach.SM_account}</p>
+							<span>Tidycal Link the alternative:- <a href="${coach.coach_tidycal_link}" target="_blank">Tidycal</a></span>
+							<p class="coach-answer">${coach.coach_tidycal_link}</p>
+							// --------- Accounts ------
+							${coach.SM_account? `<span>LinkedIn Profile Link:- <a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
+							<p class="coach-answer">${coach.SM_account}</p>` : `<span>LinkedIn Profile Link:- <a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
+							<p class="coach-answer">${coach.linkedIn_account}</p>` }
+							<span>Instagram Profile Link:- <a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a></span>
+							<p class="coach-answer">${coach.instagram_account}</p>
+							<span>Twitter Profile Link:- <a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a></span>
+							<p class="coach-answer">${coach.twitter_account}</p>
+							<span>Facebook Profile Link:- <a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a></span>
+							<p class="coach-answer">${coach.facebook_account}</p>
+							<span>Youtube Profile Link:- <a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a></span>
+							<p class="coach-answer">${coach.youtube_account}</p>
+							<span>Tiktok Profile Link:- <a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a></span>
+							<p class="coach-answer">${coach.tiktok_account}</p>
 							<span>Whats app number:- <a href="https://wa.me/${coach.whats_number}" target="_blank"><i class="bi bi-whatsapp"></i></a></span>
 							<p class="coach-answer">${coach.whats_number}</p>
 							<span>Coach mail:- <a href="mailto:${coach.mail}" target="_blank"><i class="bi bi-envelope"></i></a></span>
 							<p class="coach-answer">${coach.mail}</p>
+							${coach.cv_link? `<span>Coach CV:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-envelope"></i></a></span>
+							<p class="coach-answer">${coach.cv_link}</p>` : `<span>Coach CV:- <a href="${coach.cvDownloadURL}" target="_blank"><i class="bi bi-envelope"></i></a></span>
+							<p class="coach-answer">${coach.cvDownloadURL}</p>`}
+							<h4>Coach Video: <a href="${coach.videoDownloadURL}" target="_blank">Download Video</i></a></h4>
+							<div class='video-tag'>
+								<video controls width="100%" height="fit-content">
+									<source src="${coach.videoDownloadURL}" type="video/mp4">
+									<source src="${coach.videoDownloadURL}" type="video/webm">
+									<source src="${coach.videoDownloadURL}" type="video/ogg">
+									Your browser does not support the video tag.
+								</video>
+							</div>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
-							<button class="not-approve-btn" data-id="${coach.id}">don't approve</button>
+							<button class="not-approve-btn" data-id="${coach.id}">Don't approve</button>
 						</div>
 					</div>
 				</div>
-			`;
-		} else {
+			`} else {
 			pendingContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
 					<div class="member">
@@ -141,7 +231,7 @@ function fillInHTML(coaches, completed = true) {
 						<div class="member-info">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
-								<span>ًCoach image url:- <a href="${coach.image}" target="_blank">image</a></span>
+								<span>ًCoach image url:- <a href="${coach.image}" target="_blank">Download Image</a></span>
 								<p class="coach-answer">${coach.image}</p>
 								<span>ًWork Experience:-</span>
 								<p class="coach-answer">${coach.work_experience}</p>
@@ -160,6 +250,7 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.jobTitle}</p>
 							<span>industry:-</span>
 							<p class="coach-answer">${coach.industry}</p>
+							${coach.coach_working_life_tags.length && `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>`}
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -167,9 +258,12 @@ function fillInHTML(coaches, completed = true) {
 							<span>job summary is:-</span>
 							<p class="coach-answer">${coach.summary}</p>
 							<span>location:-</span>
-							<p><span class="coach-answer">${coach.country}</span>/<span class="coach-answer">${coach.city}</span></p>
-							<span>coach free time:-</span>
-							<p class="coach-answer"${coach.coach_free_time}</p>
+							<div><p class="coach-answer">${coach.country}</p>/<p class="coach-answer">${coach.city}</p></div>
+							<br /><br />
+							<span>Is Coach available/free for at least 2:3 hours every week?:-</span>
+							<p class="coach-answer">${coach.coach_free_time}</p>
+							<span>How did coach hear about us?:-</span>
+							<p class="coach-answer">${coach.how_coach_arrived}</p>
 							<span>coach role model is:-</span>
 							<p class="coach-answer">${coach.coach_role_model}</p>
 							<span>coach objective life is:-</span>
@@ -186,64 +280,83 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.paymentLink}</p>
 							<span>Calendly Link:- <a href="${coach.coach_calendly_link}" target="_blank">Calendly</a></span>
 							<p class="coach-answer">${coach.coach_calendly_link}</p>
-							<span>CV Link:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-file-person-fill"></i></a></span>
-							<p class="coach-answer">${coach.cv_link}</p>
-							<span>Social Media Link:- <a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
-							<p class="coach-answer">${coach.SM_account}</p>
+							<span>Tidycal Link the alternative:- <a href="${coach.coach_tidycal_link}" target="_blank">Tidycal</a></span>
+							<p class="coach-answer">${coach.coach_tidycal_link}</p>
+							// --------- Accounts ------
+							${coach.SM_account? `<span>LinkedIn Profile Link:- <a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
+							<p class="coach-answer">${coach.SM_account}</p>` : `<span>LinkedIn Profile Link:- <a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
+							<p class="coach-answer">${coach.linkedIn_account}</p>` }
+							<span>Instagram Profile Link:- <a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a></span>
+							<p class="coach-answer">${coach.instagram_account}</p>
+							<span>Twitter Profile Link:- <a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a></span>
+							<p class="coach-answer">${coach.twitter_account}</p>
+							<span>Facebook Profile Link:- <a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a></span>
+							<p class="coach-answer">${coach.facebook_account}</p>
+							<span>Youtube Profile Link:- <a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a></span>
+							<p class="coach-answer">${coach.youtube_account}</p>
+							<span>Tiktok Profile Link:- <a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a></span>
+							<p class="coach-answer">${coach.tiktok_account}</p>
 							<span>Whats app number:- <a href="https://wa.me/${coach.whats_number}" target="_blank"><i class="bi bi-whatsapp"></i></a></span>
 							<p class="coach-answer">${coach.whats_number}</p>
 							<span>Coach mail:- <a href="mailto:${coach.mail}" target="_blank"><i class="bi bi-envelope"></i></a></span>
 							<p class="coach-answer">${coach.mail}</p>
+							${coach.cv_link? `<span>Coach CV:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-envelope"></i></a></span>
+							<p class="coach-answer">${coach.cv_link}</p>` : `<span>Coach CV:- <a href="${coach.cvDownloadURL}" target="_blank"><i class="bi bi-envelope"></i></a></span>
+							<p class="coach-answer">${coach.cvDownloadURL}</p>`}
+							<span>Coach Video: <a href="${coach.videoDownloadURL}" target="_blank">Download Video</i></a></span>
+							<div class='video-tag'>
+								<video controls width="100%" height="fit-content">
+									<source src="${coach.videoDownloadURL}" type="video/mp4">
+									<source src="${coach.videoDownloadURL}" type="video/webm">
+									<source src="${coach.videoDownloadURL}" type="video/ogg">
+									Your browser does not support the video tag.
+								</video>
+							</div>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
-							<button class="approve-btn" data-id="${coach.id}">approve</button>
+							<button class="approve-btn" data-id="${coach.id}">Approve</button>
 						</div>
 					</div>
 				</div>
-			`;
-		}
-	});
+			`};
+});
 }
+/* The Better Code */
 let coachesAnswers;
-window.onload = () => {
-	setTimeout(() => {
-		// To Modify Coach's Infos.
-		document.querySelectorAll('.member .modify-btn').forEach(btn => {
-			btn.addEventListener('click', e => {
-				e.target.parentElement.querySelectorAll('.coach-answer').forEach(p => {
-					p.classList.add('edit');
-					p.setAttribute('contenteditable', true);
-				});
-			});
-		})
-		// To Save Coach's Infos.
-		document.querySelectorAll('.member .save').forEach(btn => {
-			btn.addEventListener('click', e => {
-				coachesAnswers = e.target.parentElement.querySelectorAll('.coach-answer');
-				// Save Changes to every coach's answer.
-				coachesAnswers.forEach(p => {
-					p.classList.remove('edit');
-					p.setAttribute('contenteditable', false);
-				});
-				// Updata Changes to firebase
-				update(e.target, 'save');
-			});
-		})
-		// Approve Coach
-		document.querySelectorAll('.approve-btn').forEach(btn => {
-			btn.addEventListener('click', e => {
-				update(e.target, 'approve');
-			});
-		})
-		// Don't Approve Coach
-		document.querySelectorAll('.not-approve-btn').forEach(btn => {
-			btn.addEventListener('click', e => {
-				update(e.target, 'do-not-approve');
-			});
-		})
-	}, 2000)
-};
+// Add event listener to the parent element's click event
+pendingContent.addEventListener('click', (e) => {
+  // Check if the clicked element is a button inside a card
 
+  if (e.target.matches('.member .modify-btn')) { // To Modify Coach's Infos.
+		e.target.parentElement.querySelectorAll('.coach-answer').forEach(p => {
+			p.classList.add('edit');
+			p.setAttribute('contenteditable', true);
+		});
+  }
+
+	if (e.target.matches('.member .save')) { // To Save Coach's Infos.
+		coachesAnswers = e.target.parentElement.querySelectorAll('.coach-answer');
+		// Save Changes to every coach's answer.
+		coachesAnswers.forEach(p => {
+			p.classList.remove('edit');
+			p.setAttribute('contenteditable', false);
+		});
+		// Updata Changes to firebase
+		update(e.target, 'save');
+	}
+
+	// Approve Coach
+	if (e.target.matches('.member .approve-btn')) {
+		update(e.target, 'approve');
+	}
+
+	// Don't Approve Coach
+	if (e.target.matches('.member .do-not-approve')) {
+		update(e.target, 'do-not-approve');
+	}
+
+});
+ 
 // Doc Updating 
 function update(member, status) {
 
@@ -267,18 +380,26 @@ function update(member, status) {
 				country: coachesAnswers[13].innerText,
 				city: coachesAnswers[14].innerText,
 				coach_free_time: coachesAnswers[15].innerText,
-				coach_role_model: coachesAnswers[16].innerText,
-				coach_objective_life: coachesAnswers[17].innerText,
-				coach_bank_infos: coachesAnswers[18].innerText,
-				english_skills: coachesAnswers[19].innerText,
-				rating: coachesAnswers[20].innerText,
-				order: coachesAnswers[21].innerText,
-				paymentLink: coachesAnswers[22].innerText,
-				coach_calendly_link: coachesAnswers[23].innerText,
-				cv_link: coachesAnswers[24].innerText,
-				SM_account: coachesAnswers[25].innerText,
-				whats_number: coachesAnswers[26].innerText,
-				mail: coachesAnswers[27].innerText
+				how_coach_arrived: coachesAnswers[16].innerText,
+				coach_role_model: coachesAnswers[17].innerText,
+				coach_objective_life: coachesAnswers[18].innerText,
+				coach_bank_infos: coachesAnswers[19].innerText,
+				english_skills: coachesAnswers[20].innerText,
+				rating: coachesAnswers[21].innerText,
+				order: coachesAnswers[22].innerText,
+				paymentLink: coachesAnswers[23].innerText,
+				coach_calendly_link: coachesAnswers[24].innerText,
+				coach_tidycal_link: coachesAnswers[25].innerText,
+				/* Till Now Okay */
+				linkedIn_account: coachesAnswers[26].innerText,
+				instagram_account: coachesAnswers[27].innerText,
+				twitter_account: coachesAnswers[28].innerText,
+				facebook_account: coachesAnswers[29].innerText,
+				youtube_account: coachesAnswers[30].innerText,
+				tiktok_account: coachesAnswers[31].innerText,
+				whats_number: coachesAnswers[32].innerText,
+				mail: coachesAnswers[33].innerText,
+				cvDownloadURL: coachesAnswers[34].innerText,
 			})
 			.then(() => {
 				alert("Updated in Firebase too.")

@@ -188,8 +188,9 @@
               </select>
             </article>
             <article>
-              <p>How old are you?</p>
-              <input type="number" name="age" placeholder="example: 20">
+              <p>Enter your birthdate:</p>
+              <input type="date" id="birthdate" name="birthdate" />
+              <!-- <input type="number" name="age" placeholder="example: 20"> -->
             </article>
           </div>
           <div class="row">
@@ -225,11 +226,11 @@
               </div>
               <div>
                 <p>What's your objective in life?</p>
-                <input type="text" name="coach_goal" placeholder="what's your goal?" />
+                <input class="unrequired" type="text" name="coach_goal" placeholder="what's your goal?" />
               </div>
               <div>
                 <p>Who is your role model?</p>
-                <input type="text" name="coach_role_model" placeholder="who changed you?">
+                <input class="unrequired" type="text" name="coach_role_model" placeholder="who changed you?">
               </div>
             </article>
             <article class="d-flex flex-column gap-3">
@@ -344,7 +345,7 @@
                 <span>Others</span>
                 <input type="radio" name="industry" value="Others" />
               </label>
-              <article class="d-flex flex-column gap-3" style="width: 100%;padding-top: 5px;">
+              <article class="d-flex flex-column gap-3" style="width: 100%;padding-top: 5px;max-width: 410px;">
                 <div>
                   <p>What's your English Language skills?</p>
                   <select name="en_lang">
@@ -386,12 +387,15 @@
                 <div>
                   <p>Please add Keywords that describe your skills, job titles and industries.</p>
                   <span class="example">To add one not that:-</span>
-                  <span class="example">every keyword should by ',' followed</span>
+                  <span class="example">add keyword then click add button</span>
                   <div id="tags-container">
                     <span>Programming</span>
                     <span>Languages</span>
                   </div>
-                  <input type="text" id="tags-input" placeholder="Keyword,">
+                  <div class="d-flex align-items-center position-relative">
+                    <input type="text" class="unrequired" id="tags-input" placeholder="Keyword," style="border-right: 0;"/>
+                    <button type="button" id="tags-add-btn">Add</button>
+                  </div>
                 </div>
               </article>
             </article>
@@ -439,55 +443,57 @@
                 <span class="example">add 1 minute video brief.</span>
                 <span class="example">When user visit your profile this video will be appear to him.</span>
                 <label for="video_file" class="file-label">
-                  <input type="file" id="video_file" name="video_file" accept="video/*" />
+                  <input type="file" class="unrequired" id="video_file" name="video_file" accept="video/*" />
                 </label>
               </div>
               <div>
                 <p>CV File:</p>
                 <span class="example">pdf or docx</span>
                 <label for="cv_file" class="file-label">
-                  <input type="file" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" />
+                  <input type="file" class="unrequired" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" />
                 </label>
               </div>
               <div>
-                <p>profile LinkedIn Link?</p>
+                <p>profile LinkedIn Link?*</p>
                 <span class="example">You can bring the link from <a href="https://www.linkedin.com" target="_blank">here </a></span>
                 <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
               </div>
               <div>
                 <p>profile Instagram Link?</p>
+                <span class="example">optional</span>
                 <span class="example">You can bring the link from <a href="https://www.instagram.com" target="_blank">here </a></span>
-                <input type="text" name="instagram_link" placeholder="https://www.instagram.com/username" />
+                <input type="text" class="unrequired" name="instagram_link" placeholder="https://www.instagram.com/username" />
               </div>
               <div>
                 <p>profile Twitter link?</p>
+                <span class="example">optional</span>
                 <span class="example">You can bring the link from <a href="https://www.twitter.com" target="_blank">here</a></span>
-                <input type="text" name="twitter_link" placeholder="https://www.twitter.com/username" />
+                <input type="text" class="unrequired" name="twitter_link" placeholder="https://www.twitter.com/username" />
               </div>
               <div>
                 <p>profile Facebook link?</p>
                 <span class="example">optional</span>
                 <span class="example">You can bring the link from <a href="https://www.facebook.com" target="_blank">here</a></span>
-                <input type="text" name="fb_link" placeholder="https://www.facebook.com/username" />
+                <input type="text" class="unrequired" name="fb_link" placeholder="https://www.facebook.com/username" />
               </div>
               <div>
                 <p>Youtube channel link?</p>
                 <span class="example">optional</span>
                 <span class="example">You can bring the link from <a href="https://www.youtube.com" target="_blank">here</a></span>
-                <input type="text" name="youtube_link" placeholder="https://www.youtube.com/username" />
+                <input type="text" class="unrequired" name="youtube_link" placeholder="https://www.youtube.com/username" />
               </div>
               <div>
                 <p>profile Tiktok link?</p>
                 <span class="example">You can bring the link from <a href="https://www.tiktok.com" target="_blank">here</a></span>
                 <span class="example">optional</span>
-                <input type="text" name="tiktok_link" placeholder="https://www.tiktok.com/username" />
+                <input type="text" class="unrequired" name="tiktok_link" placeholder="https://www.tiktok.com/username" />
               </div>
             </article>
           </div>
           <div class="row">
             <article>
               <p>Write a summary you wish to display in the website?</p>
-              <span class="example" style="padding-left: 0;">Write as much as possible, as we need to show your skills, work experience and work life.</span>
+              <span class="example" style="padding-left: 0;">Write as much as possible, as we need to show your skills, work experience and work life.It must contain at least 200 charachters.</span>
               <span class="example" style="padding-left: 0;">Please add it in English for Example:-</span>
               <span class="example" style="font-size: 13px;">
                 Entrepreneurship, Programming, Sales & Marketing, Business Management, Technology, operations
@@ -497,7 +503,7 @@
             </article>
             <article>
               <p>Write a summary you wish to display in the website?</p>
-              <span class="example" style="padding-left: 0;margin-bottom: 6px;">Write as much as possible, as we need to show your skills, work experience and work life.</span>
+              <span class="example" style="padding-left: 0;margin-bottom: 6px;">Write as much as possible, as we need to show your skills, work experience and work life.It must contain at least 200 charachters.</span>
               <span class="example" style="padding-left: 0px;margin-bottom: 10px;">Please add it in Arabic for Example:-</span>
               <span class="example" style="direction: rtl;margin-bottom: 16px;;">
                 ريادة الأعمال، البرمجة، المبيعات والتسويق، إدارة الأعمال، التكنولوجيا، العمليات
@@ -598,7 +604,7 @@
               <div>
                 <p>You can send us any comment about anything you want to talk about</p>
                 <span class="example">- it will be great to give us your feedback.</span>
-                <textarea name="comment" placeholder="any comment..." style="min-height: 157px;"></textarea>
+                <textarea name="comment" class="unrequired" placeholder="any comment..." style="min-height: 157px;"></textarea>
               </div>
             </article>
           </div>
@@ -1106,11 +1112,11 @@
 
   <!-- With Webpack -->
   <!-- Output of fetching data fromdatabase -->
-  <script src="dist/output.js"></script>
+  <script type="module" src="dist/output.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="dist/multiple-steps-form.js"></script>
+  <script type="module" src="dist/multiple-steps-form-bundle.js"></script>
 
 
 </body>

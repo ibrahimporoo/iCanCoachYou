@@ -22,31 +22,6 @@ import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
 } from 'firebase/storage';
 
-/* Immediatly Handling with Inputs */ 
-const tagsContainer = document.getElementById('tags-container');
-const tagsInput = document.getElementById('tags-input');
-let coachTags = [];
-tagsContainer.innerHTML = '';
-
-tagsInput.addEventListener('keyup', event => {
-	event.preventDefault();
-	console.log(event.key);
-	if (event.key === ',') {
-		// tagSpan.innerText = event.target.value.trim().slice(0, event.target.value.trim().indexOf(','));
-		coachTags.push(event.target.value.trim().slice(0, event.target.value.trim().indexOf(',')));
-		coachTags = [...new Set(coachTags)];
-		tagsContainer.innerHTML = '';
-		console.log(coachTags);
-		coachTags.forEach(tag => {
-			let tagSpan = document.createElement('span');
-			tagSpan.innerText = tag;
-			tagsContainer.appendChild(tagSpan);
-		});
-		console.log('Enter key was pressed in the input field');
-		event.target.value = '';
-	}
-});
-
 // iCanCoachU Example Firebase...
 const firebaseConfig = {
   apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
@@ -71,127 +46,137 @@ const encolRef = collection(db, 'coaches', 'languages', 'en');
 const joinForm = document.querySelector('.join-form');
 const joinUs = document.querySelector('.join-us');
 // Registering
-joinForm.addEventListener('submit', (e) => {
+joinForm.addEventListener('submit', async (e) => {
 	e.preventDefault();
 	if(isValid()) {
+		/* Show to user that the data are being send */
+		reloadButton();
 		const imageFile = joinForm.image_file.files[0];
+		const imageFilePath = `images/${imageFile.name}`;
+		const imageStorageRef = ref(storage, imageFilePath);
+
+		const imageUploadTask = uploadBytesResumable(imageStorageRef, imageFile);
+
+		let videoDownloadURL = '';
+		let cvDownloadURL = '';
+
 		const videoFile = joinForm.video_file.files[0];
 		const cvFile = joinForm.cv_file.files[0];
 
-		const imageFilePath = `images/${imageFile.name}`;
-  	const videoFilePath = `videos/${videoFile.name}`;
-  	const cvFilePath = `videos/${cvFile.name}`;
+		if(videoFile) {
+			const videoFilePath = `videos/${videoFile.name}`;
+			const videoStorageRef = ref(storage, videoFilePath);
+			const videoUploadTask = uploadBytesResumable(videoStorageRef, videoFile);
+			await videoUploadTask;
+			videoDownloadURL = await getDownloadURL(videoStorageRef);
+		}
 
-		const imageStorageRef = ref(storage, imageFilePath);
-  	const videoStorageRef = ref(storage, videoFilePath);
-  	const cvStorageRef = ref(storage, cvFilePath);
+		if (cvFile) {
+			const cvFilePath = `cvs/${cvFile.name}`;
+			const cvStorageRef = ref(storage, cvFilePath);
+			const cvUploadTask = uploadBytesResumable(cvStorageRef, cvFile);
+			await cvUploadTask;
+			cvDownloadURL = await getDownloadURL(cvStorageRef);
+		}
 
-		const imageUploadTask = uploadBytesResumable(imageStorageRef, imageFile);
-  	const videoUploadTask = uploadBytesResumable(videoStorageRef, videoFile);
-  	const cvUploadTask = uploadBytesResumable(cvStorageRef, cvFile);
+		await imageUploadTask;
+		const imageURL = await getDownloadURL(imageStorageRef);
 
-		reloadButton();
-
-		Promise.all([imageUploadTask, videoUploadTask, cvUploadTask]).then(async () => {
-			const imageURL = await getDownloadURL(imageStorageRef);
-			const videoURL = await getDownloadURL(videoStorageRef);
-			const cvURL = await getDownloadURL(cvStorageRef);
-
-			await addDoc(arcolRef, {
-				name: joinForm.ar_name.value,
-				gender: joinForm.gender.value,
-				age: joinForm.age.value,
-				country: joinForm.country.value,
-				city: joinForm.city.value,
-				mail: joinForm.user_mail.value,
-				whats_number: joinForm.whats_number.value,
-				college: joinForm.college.value,
-				graduation_year: joinForm.G_Year.value,
-				linkedIn_account: joinForm.linkedIn_link.value,
-				instagram_account: joinForm.instagram_link.value,
-				twitter_account: joinForm.twitter_link.value,
-				facebook_account: joinForm.fb_link.value,
-				youtube_account: joinForm.youtube_link.value,
-				tiktok_account: joinForm.tiktok_link.value,
-				industry: joinForm.industry.value,
-				jobTitle: joinForm.jobTitle.value,
-				work_experience: joinForm.work_exp.value,
-				work_experience_years: joinForm.work_exp_years.value,
-				pricing_in_egypt: joinForm.eg_hourly_rate.value + ' جنيه مصري',
-				pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' جنيه مصري',
-				english_skills: joinForm.en_lang.value,
-				order: document.querySelectorAll('.filtered-coaches > div').length,
-				rating: 5,
-				summary: joinForm.ar_summary.value,
-				coach_working_life_tags: coachTags,
-				coach_free_time: joinForm.coachTime.value,
-				coach_role_model: joinForm.coach_role_model.value,
-				coach_objective_life: joinForm.coach_goal.value,
-				coach_calendly_link: joinForm.calendly_link.value,
-				coach_tidycal_link: joinForm.tidycal_link.value,
-				coach_bank_infos: joinForm.coach_bank_infos.value,
-				how_coach_arrived: joinForm.arrival_way.value,
-				coach_comment: joinForm.comment.value,
-				session_way: joinForm.session_way.value,
-				category: joinForm.industry.value + ", " + joinForm.jobTitle.value,
-				paymentLink: 'default',
-				imageURL,
-				videoURL,
-				cvURL,
-				appear: false,
-			});
-			await addDoc(encolRef, {
-				name: joinForm.en_name.value,
-				gender: joinForm.gender.value,
-				age: joinForm.age.value,
-				country: joinForm.country.value,
-				city: joinForm.city.value,
-				mail: joinForm.user_mail.value,
-				whats_number: joinForm.whats_number.value,
-				college: joinForm.college.value,
-				graduation_year: joinForm.G_Year.value,
-				linkedIn_account: joinForm.linkedIn_link.value,
-				instagram_account: joinForm.instagram_link.value,
-				twitter_account: joinForm.twitter_link.value,
-				facebook_account: joinForm.fb_link.value,
-				youtube_account: joinForm.youtube_link.value,
-				tiktok_account: joinForm.tiktok_link.value,
-				industry: joinForm.industry.value,
-				jobTitle: joinForm.jobTitle.value,
-				work_experience: joinForm.work_exp.value,
-				work_experience_years: joinForm.work_exp_years.value,
-				pricing_in_egypt: joinForm.eg_hourly_rate.value + ' جنيه مصري',
-				pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' جنيه مصري',
-				english_skills: joinForm.en_lang.value,
-				order: document.querySelectorAll('.filtered-coaches > div').length,
-				rating: 5,
-				summary: joinForm.en_summary.value,
-				coach_working_life_tags: coachTags,
-				coach_free_time: joinForm.coachTime.value,
-				coach_role_model: joinForm.coach_role_model.value,
-				coach_objective_life: joinForm.coach_goal.value,
-				coach_calendly_link: joinForm.calendly_link.value,
-				coach_tidycal_link: joinForm.tidycal_link.value,
-				coach_bank_infos: joinForm.coach_bank_infos.value,
-				how_coach_arrived: joinForm.arrival_way.value,
-				coach_comment: joinForm.comment.value,
-				session_way: joinForm.session_way.value,
-				category: joinForm.industry.value + ", " + joinForm.jobTitle.value,
-				paymentLink: 'default',
-				imageURL,
-				videoURL,
-				cvURL,
-				appear: false,
-			}).then(() => {
-				document.querySelector('.steps').style.cssText = 'display: none';
-				document.querySelector('.fields').classList.add('done');
-				document.querySelector('.form-submitted').classList.add('done');
-				clearInterval(btnReloadingInterval);
-			})
-			console.log('Files uploaded successfully');
-		}).catch((error) => {
-			console.error('Upload failed:', error);
+		/* Some Form Values */
+		const countryVal = joinForm.country.value.charAt(0).toUpperCase() + joinForm.country.value.slice(1, ).toLowerCase();
+		await addDoc(arcolRef, {
+			name: joinForm.ar_name.value,
+			gender: joinForm.gender.value,
+			// age: joinForm.age.value,
+			birthdate: joinForm.birthdate.value,
+			country: countryVal,
+			city: joinForm.city.value,
+			mail: joinForm.user_mail.value,
+			whats_number: joinForm.whats_number.value,
+			college: joinForm.college.value,
+			graduation_year: joinForm.G_Year.value,
+			linkedIn_account: joinForm.linkedIn_link.value,
+			instagram_account: joinForm.instagram_link.value,
+			twitter_account: joinForm.twitter_link.value,
+			facebook_account: joinForm.fb_link.value,
+			youtube_account: joinForm.youtube_link.value,
+			tiktok_account: joinForm.tiktok_link.value,
+			industry: joinForm.industry.value,
+			jobTitle: joinForm.jobTitle.value,
+			work_experience: joinForm.work_exp.value,
+			work_experience_years: joinForm.work_exp_years.value,
+			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' جنيه مصري',
+			pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' جنيه مصري',
+			english_skills: joinForm.en_lang.value,
+			order: document.querySelectorAll('.filtered-coaches > div').length,
+			rating: 5,
+			summary: joinForm.ar_summary.value,
+			coach_working_life_tags: coachTags,
+			coach_free_time: joinForm.coachTime.value,
+			coach_role_model: joinForm.coach_role_model.value,
+			coach_objective_life: joinForm.coach_goal.value,
+			coach_calendly_link: joinForm.calendly_link.value,
+			coach_tidycal_link: joinForm.tidycal_link.value,
+			coach_bank_infos: joinForm.coach_bank_infos.value,
+			how_coach_arrived: joinForm.arrival_way.value,
+			coach_comment: joinForm.comment.value,
+			session_way: joinForm.session_way.value,
+			category: joinForm.industry.value + ", " + joinForm.jobTitle.value,
+			paymentLink: 'default',
+			image: imageURL,
+			cv_link: cvDownloadURL,
+			videoDownloadURL,
+			appear: false,
 		});
+		await addDoc(encolRef, {
+			name: joinForm.en_name.value,
+			gender: joinForm.gender.value,
+			// age: joinForm.age.value,
+			birthdate: joinForm.birthdate.value,
+			country: countryVal,
+			city: joinForm.city.value,
+			mail: joinForm.user_mail.value,
+			whats_number: joinForm.whats_number.value,
+			college: joinForm.college.value,
+			graduation_year: joinForm.G_Year.value,
+			linkedIn_account: joinForm.linkedIn_link.value,
+			instagram_account: joinForm.instagram_link.value,
+			twitter_account: joinForm.twitter_link.value,
+			facebook_account: joinForm.fb_link.value,
+			youtube_account: joinForm.youtube_link.value,
+			tiktok_account: joinForm.tiktok_link.value,
+			industry: joinForm.industry.value,
+			jobTitle: joinForm.jobTitle.value,
+			work_experience: joinForm.work_exp.value,
+			work_experience_years: joinForm.work_exp_years.value,
+			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' جنيه مصري',
+			pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' جنيه مصري',
+			english_skills: joinForm.en_lang.value,
+			order: document.querySelectorAll('.filtered-coaches > div').length,
+			rating: 5,
+			summary: joinForm.en_summary.value,
+			coach_working_life_tags: coachTags,
+			coach_free_time: joinForm.coachTime.value,
+			coach_role_model: joinForm.coach_role_model.value,
+			coach_objective_life: joinForm.coach_goal.value,
+			coach_calendly_link: joinForm.calendly_link.value,
+			coach_tidycal_link: joinForm.tidycal_link.value,
+			coach_bank_infos: joinForm.coach_bank_infos.value,
+			how_coach_arrived: joinForm.arrival_way.value,
+			coach_comment: joinForm.comment.value,
+			session_way: joinForm.session_way.value,
+			category: joinForm.industry.value + ", " + joinForm.jobTitle.value,
+			paymentLink: 'default',
+			image: imageURL,
+			cv_link: cvDownloadURL,
+			videoDownloadURL,
+			appear: false,
+		}).then(() => {
+			document.querySelector('.steps').style.cssText = 'display: none';
+			document.querySelector('.fields').classList.add('done');
+			document.querySelector('.form-submitted').classList.add('done');
+			clearInterval(btnReloadingInterval);
+		})
 	};
 });
 /*
@@ -219,6 +204,7 @@ closeFormBtn.addEventListener('click', _ => {
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
 const submitBtn = document.querySelector('#submit');
+// const tagsAddingBtn = document.querySelector('#tags-add-btn');
 const taps = document.querySelectorAll('.fields .step');
 const progSteps = document.querySelectorAll('.steps h4');
 let tapIndex = 0;
@@ -226,7 +212,9 @@ showTap(tapIndex);
 // Patterns
 let mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-nextBtn.addEventListener('click', () => {
+nextBtn.addEventListener('click', (e) => {
+	console.log("Its Next Button")
+	e.preventDefault();
 	prevNext(1);
 });
 prevBtn.addEventListener('click', () => {
@@ -234,6 +222,7 @@ prevBtn.addEventListener('click', () => {
 });
 
 function showTap(tapIndex) {
+
 	taps.forEach(tap => {
 		tap.classList.remove('on');
 	})
@@ -291,6 +280,64 @@ function prevNext(n) {
 	}
 };
 
+/* Immediatly Handling with Inputs */ 
+const tagsContainer = document.getElementById('tags-container');
+const tagsInput = document.getElementById('tags-input');
+const tagsAddingBtn = document.getElementById('tags-add-btn');
+let coachTags = [];
+tagsContainer.innerHTML = '';
+tagsInput.addEventListener('focus', () => {
+	// tagsAddingBtn.setAttribute('type', "submit");
+	submitBtn.setAttribute('type', "button");
+});
+tagsInput.addEventListener('blur', () => {
+	// tagsAddingBtn.setAttribute('type', "button");
+	submitBtn.setAttribute('type', "submit");
+});
+tagsInput.addEventListener('keyup', e => {
+	if(e.key == "Enter") {
+		addTag();
+	}
+})
+tagsAddingBtn.addEventListener('click', addTag);
+function addTag() {
+	if (tagsInput.value) {
+		coachTags.push(tagsInput.value);
+    coachTags = [...new Set(coachTags)];
+    tagsContainer.innerHTML = '';
+		
+    coachTags.forEach((tag, index) => {
+			let tagSpan = document.createElement('span');
+      tagSpan.className = "tag-span";
+      tagSpan.innerText = tag;
+			
+      let removeSpanBtn = document.createElement('button');
+      removeSpanBtn.setAttribute('type', 'button');
+      removeSpanBtn.innerText = '⛌';
+      removeSpanBtn.addEventListener('click', (e) => {
+				coachTags.splice(index, 1);
+				tagSpan.remove();
+				removeSpanBtn.remove();
+
+				console.log("REMOVESPAN WORKS");
+      });
+			
+      tagSpan.appendChild(removeSpanBtn);
+      tagsContainer.appendChild(tagSpan);
+    });
+
+		console.log(coachTags);
+    tagsInput.value = '';
+  } else {
+    tagsInput.classList.add('invalid');
+    tagsInput.value = 'Enter a value first, then add';
+    setTimeout(() => {
+			tagsInput.classList.remove('invalid');
+			tagsInput.value = '';
+    }, 1000);
+  }
+}
+
 // Alert...
 const sweetAlert = document.querySelector('#alert-container');
 const sweetAlertText = sweetAlert.querySelector('.text');
@@ -307,8 +354,9 @@ let arrowDirection = 'right';
 function isValid() {
 	let valid = true;
 	let currentStep = document.querySelector('.fields .step.on');
-	const currentInputs = Array.from(currentStep.querySelectorAll('input:not(#tags-input), select, textarea:not([name="comment"])'));
+	const currentInputs = Array.from(currentStep.querySelectorAll('input:not(.unrequired), select, textarea:not(.unrequired)'));
 	console.log(currentInputs);
+	/* Check All Targeted Input Fields */
 	for(let i = 0;i < currentInputs.length; i++) {
 		// If There is any empty Input make it invalid
 		if (currentInputs[i].value.length) {
@@ -352,20 +400,20 @@ function isValid() {
 		}
 		// Video File
 		let videoFile = currentStep.querySelector('input[name="video_file"]');
-		if(!videoFile.files[0]) {
+		if(videoFile.length && !videoFile.files[0]) {
 			validTwo = false;
 			videoFile.classList.add('invalid');
-			fillAlert('Attach 1 minute or more brief about your working life.');
+			fillAlert('Attach 1 minute valid brief Video');
 		} else {
 			validTwo = true;
 			videoFile.classList.remove('invalid');
 		}
 		// cv File
 		let cvFile = currentStep.querySelector('input[name="cv_file"]');
-		if(!cvFile.files[0]) {
+		if(cvFile.length && !cvFile.files[0]) {
 			validThree = false;
 			cvFile.classList.add('invalid');
-			fillAlert('Attach Your cv file.');
+			fillAlert('Attach valid cv file.');
 		} else {
 			validThree = true;
 			cvFile.classList.remove('invalid');
@@ -384,7 +432,7 @@ function isValid() {
 		// Instagram Profile URL
 		let instagramLink = currentStep.querySelector('input[name="instagram_link"]');
 		let instagramRegex = /^(https?:\/\/)?(www\.)?instagram.com\/[a-zA-Z0-9_\-]+\/?$/;
-		if(!instagramRegex.test(instagramLink.value)) {
+		if(instagramLink.value.length && !instagramRegex.test(instagramLink.value)) {
 			validFive = false;
 			instagramLink.classList.add('invalid');
 			fillAlert('instagram profile url must to be valid.');
@@ -395,7 +443,7 @@ function isValid() {
 		// Twitter Profile URL
 		let twitterLink = currentStep.querySelector('input[name="twitter_link"]');
 		let twitterRegex = /^(https?:\/\/)?(www\.)?twitter.com\/[a-zA-Z0-9_]{1,15}\/?$/;
-		if(!twitterRegex.test(twitterLink.value)) {
+		if(twitterLink.value.length && !twitterRegex.test(twitterLink.value)) {
 			validSix = false;
 			twitterLink.classList.add('invalid');
 			fillAlert('Twitter profile url must to be valid.');
@@ -406,7 +454,7 @@ function isValid() {
 		// Facebook Profile URL
 		let fbLink = currentStep.querySelector('input[name="fb_link"]');
 		let fbRegex = /^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/;
-		if(!fbRegex.test(fbLink.value)) {
+		if(fbLink.value.length && !fbRegex.test(fbLink.value)) {
 			validSeven = false;
 			fbLink.classList.add('invalid');
 			fillAlert('Facebook profile url must to be valid.');
@@ -417,7 +465,7 @@ function isValid() {
 		// Youtube Profile URL
 		let youtubeLink = currentStep.querySelector('input[name="youtube_link"]');
 		let youtubeRegex = /^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/;;
-		if(!youtubeRegex.test(youtubeLink.value)) {
+		if(youtubeLink.value.length && !youtubeRegex.test(youtubeLink.value)) {
 			validEight = false;
 			youtubeLink.classList.add('invalid');
 			fillAlert('Youtube profile url must to be valid.');
@@ -428,7 +476,7 @@ function isValid() {
 		// Tiktok Profile URL
 		let tiktokLink = currentStep.querySelector('input[name="tiktok_link"]');
 		let tiktokRegex = /^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/;
-		if(!tiktokRegex.test(tiktokLink.value)) {
+		if(tiktokLink.value.length && !tiktokRegex.test(tiktokLink.value)) {
 			validNine = false;
 			tiktokLink.classList.add('invalid');
 			fillAlert('Tiktok profile url must to be valid.');
@@ -484,15 +532,40 @@ function isValid() {
 		}
 	}
 	if(tapIndex == 2) {
-		let tapValidation = false;
-		let validOne, validTwo;
+		// let tapValidation = false;
+		valid= true;
+		let validOne;
 		sweetAlertText.innerHTML = '';
 		// Scheduling Systems Inputs Check.
 		let calendlyURL = currentStep.querySelector('input[name="calendly_link"]');
 		let tidycalURL = currentStep.querySelector('input[name="tidycal_link"]');
 		const calendlyRegex = /https:\/\/calendly\.com\/[a-zA-Z0-9_-]+(?:\?.*)?/;
 		const tydicalRegex = /https:\/\/tidycal\.com\/[a-zA-Z0-9_-]+(?:\/[a-zA-Z0-9_-]+)*/;
-		if(calendlyURL.value.length) {
+		/*
+			- 1 0, 1 1, 0 1, 0 0
+		*/ 
+		if(calendlyURL.value.length && tidycalURL.value.length) { // 1 1
+			let message = '';
+			if(!calendlyRegex.test(calendlyURL.value)) {
+				validOne = false;
+				calendlyURL.classList.add('invalid');
+				message += 'Calendly link is invalid!';
+				// fillAlert('Calendly link is invalid! please try to give us valid one.');
+			} else {
+				validOne = true;
+				calendlyURL.classList.remove('invalid');
+			}
+			if(!tydicalRegex.test(tidycalURL.value)) {
+				validOne = false;
+				tidycalURL.classList.add('invalid');
+				// fillAlert('Tidycal link is invalid! please try to give us valid one.');
+				message += 'Tidycal link is invalid!';
+			} else {
+				validOne = true;
+				tidycalURL.classList.remove('invalid');
+			}
+			fillAlert(message);
+		} else if(calendlyURL.value.length && !tidycalURL.value.length) { // 1 0
 			if(!calendlyRegex.test(calendlyURL.value)) {
 				validOne = false;
 				calendlyURL.classList.add('invalid');
@@ -502,57 +575,36 @@ function isValid() {
 				calendlyURL.classList.remove('invalid');
 			}
 			tidycalURL.classList.remove('invalid');
-		} else {
-			if(tidycalURL.value.length) {
-				if(!tydicalRegex.test(tidycalURL.value)) {
-					validOne = false;
-					tidycalURL.classList.add('invalid');
-					fillAlert('Tidycal link is invalid! please try to give us valid one.');
-				} else {
-					validOne = true;
-					tidycalURL.classList.remove('invalid');
-				}
-				calendlyURL.classList.remove('invalid');
-			} else {
+		} else if(!calendlyURL.value.length && tidycalURL.value.length) { // 0 1
+			if(!tydicalRegex.test(tidycalURL.value)) {
 				validOne = false;
-				fillAlert('You have to make an one "Scheduling System" at least make one on calendly or tidycal platforms');
+				tidycalURL.classList.add('invalid');
+				fillAlert('Tidycal link is invalid! please try to give us valid one.');
+			} else {
+				validOne = true;
+				tidycalURL.classList.remove('invalid');
 			}
+			calendlyURL.classList.remove('invalid');
+		} else { // 0 0
+			validOne = false;
+			fillAlert('You have to make an one "Scheduling System" at least make one on calendly or tidycal platforms');
 		}
-		// Check validation of coach bank info
-		let coachBankInfos = document.querySelector('textarea[name="coach_bank_infos"]');
-		if(coachBankInfos.value.length) {
-			coachBankInfos.classList.remove('invalid');
-			validTwo = true;
-		} else {
-			coachBankInfos.classList.add('invalid');
-			validTwo = false;
-			fillAlert('Please Type Your bank Information.');
-		}
-		// Comment Area
-		// let validThree = true;
-		// currentStep.querySelector('textarea[name="comment"]').classList.remove('invalid');
 		// Finally Validation
-		if(validOne && validTwo) {
-			tapValidation = true;
-			// Check of current Inputs are filled with valid data.
-			currentInputs.forEach(inputField => {
-				if(inputField.classList.contains('invalid')) {
-					valid = false;
-				} else {
-					valid = true;
-				}
-			})
-		} else {
-			tapValidation = false;
-			sweetAlert.classList.add('on');
-			return;
-		}
-
-		if(valid && tapValidation) {
+		// Check of current Inputs are filled with valid data.
+		currentInputs.forEach(inputField => {
+			if(inputField.classList.contains('invalid')) {
+				valid = false;
+				return;
+			}
+		});
+		if(valid && validOne) {
 			return true;
 		} else {
 			fillAlert('Ensure that you have filled the data in the correct way.');
+			console.log("Valid", valid);
+			// console.log("Tap Validation", tapValidation);
 			sweetAlert.classList.add('on');
+			return;
 		}
 	}
 	return valid;
