@@ -3,7 +3,7 @@ import {
   getFirestore, collection, getDocs,
 	query, where,
 	updateDoc, doc
-} from 'firebase/firestore'
+} from 'firebase/firestore';
 
 // iCanCoachU Firebase...
 const firebaseConfig = {
@@ -309,7 +309,7 @@ function fillInHTML(coaches, completed = true) {
 						</div>
 					</div>
 				</div>
-			`};
+		`};
 });
 }
 /* The Better Code */
