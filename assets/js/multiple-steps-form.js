@@ -2,6 +2,15 @@
 	-----------------------
 	--- Start Firebase ----
 	-----------------------
+	// iCanCoachU Example Firebase...
+	const firebaseConfig = {
+		apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+		authDomain: "just-like-icancoachu.firebaseapp.com",
+		projectId: "just-like-icancoachu",
+		storageBucket: "just-like-icancoachu.appspot.com",
+		messagingSenderId: "415289518874",
+		appId: "1:415289518874:web:263bf9089765a2a312daa3"
+	};
 */
 import { initializeApp } from 'firebase/app';
 import {
@@ -11,26 +20,18 @@ import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
 } from 'firebase/storage';
 
-// // iCanCoachU Firebase...
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-//   authDomain: "elmawkaabeta.firebaseapp.com",
-//   databaseURL: "https://elmawkaabeta.firebaseio.com",
-//   projectId: "elmawkaabeta",
-//   storageBucket: "elmawkaabeta.appspot.com",
-//   messagingSenderId: "808588970288",
-//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-//   measurementId: "G-G8FTTQ0EB2"
-// };
-// iCanCoachU Example Firebase...
+// iCanCoachU Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-  authDomain: "just-like-icancoachu.firebaseapp.com",
-  projectId: "just-like-icancoachu",
-  storageBucket: "just-like-icancoachu.appspot.com",
-  messagingSenderId: "415289518874",
-  appId: "1:415289518874:web:263bf9089765a2a312daa3"
+  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+  authDomain: "elmawkaabeta.firebaseapp.com",
+  databaseURL: "https://elmawkaabeta.firebaseio.com",
+  projectId: "elmawkaabeta",
+  storageBucket: "elmawkaabeta.appspot.com",
+  messagingSenderId: "808588970288",
+  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+  measurementId: "G-G8FTTQ0EB2"
 };
+
 // Page Language
 let lang = document.querySelector('html').lang;
 // init services
@@ -356,7 +357,7 @@ closeAlert.addEventListener('click', () => {
 sweetAlert.addEventListener('click', () => {
 	sweetAlert.classList.remove('on');
 });
-let arrowDirection = 'right';
+let arrowDirection = lang == 'en'? 'right' : 'left';
 
 // Form Validation
 function isValid() {
@@ -400,7 +401,11 @@ function isValid() {
 		if(!pictureFile.files[0]) {
 			validOne = false;
 			pictureFile.classList.add('invalid');
-			fillAlert('Attach your professional picture file.');
+			if(lang == 'en') {
+				fillAlert('Attach your professional picture file.');
+			} else {
+				fillAlert('أرفق ملف الصورة الاحترافي الخاص بك.');
+			}
 		} else {
 			validOne = true;
 			pictureFile.classList.remove('invalid');
@@ -411,7 +416,11 @@ function isValid() {
 		if(videoFile.length && !videoFile.files[0]) {
 			validTwo = false;
 			videoFile.classList.add('invalid');
-			fillAlert('Attach 1 minute valid brief Video');
+			if(lang == 'en') {
+				fillAlert('Attach 1 minute valid brief Video');
+			} else {
+				fillAlert('إرفاق مقطع فيديو موجز صالح لمدة دقيقة واحدة');
+			}
 		} else {
 			validTwo = true;
 			videoFile.classList.remove('invalid');
@@ -421,7 +430,11 @@ function isValid() {
 		if(cvFile.length && !cvFile.files[0]) {
 			validThree = false;
 			cvFile.classList.add('invalid');
-			fillAlert('Attach valid cv file.');
+			if(lang == 'en') {
+				fillAlert('Attach valid cv file.');
+			} else {
+				fillAlert('إرفاق ملف سيرة ذاتية صالح.');
+			}
 		} else {
 			validThree = true;
 			cvFile.classList.remove('invalid');
@@ -432,7 +445,11 @@ function isValid() {
 		if(!linkedInRegex.test(linkedInLink.value)) {
 			validFour = false;
 			linkedInLink.classList.add('invalid');
-			fillAlert('Linked in profile url must to be valid.');
+			if(lang == 'en') {
+				fillAlert('Linked in profile url must to be valid.');
+			} else {
+				fillAlert('يجب أن يكون عنوان url لملف تعريف Linkedin صالحًا.');
+			}
 		} else {
 			validFour = true;
 			linkedInLink.classList.remove('invalid');
@@ -443,7 +460,11 @@ function isValid() {
 		if(instagramLink.value.length && !instagramRegex.test(instagramLink.value)) {
 			validFive = false;
 			instagramLink.classList.add('invalid');
-			fillAlert('instagram profile url must to be valid.');
+			if(lang == 'en') {
+				fillAlert('instagram profile url must to be valid.');
+			} else {
+				fillAlert('يجب أن يكون عنوان url لملف تعريف instagram صالحًا.');
+			}
 		} else {
 			validFive = true;
 			instagramLink.classList.remove('invalid');
@@ -454,7 +475,11 @@ function isValid() {
 		if(twitterLink.value.length && !twitterRegex.test(twitterLink.value)) {
 			validSix = false;
 			twitterLink.classList.add('invalid');
-			fillAlert('Twitter profile url must to be valid.');
+			if(lang == 'en') {
+				fillAlert('Twitter profile url must to be valid.');
+			} else {
+				fillAlert('يجب أن يكون عنوان url لملف تعريف Twitter صالحًا.');
+			}
 		} else {
 			validSix = true;
 			twitterLink.classList.remove('invalid');
@@ -465,7 +490,11 @@ function isValid() {
 		if(fbLink.value.length && !fbRegex.test(fbLink.value)) {
 			validSeven = false;
 			fbLink.classList.add('invalid');
-			fillAlert('Facebook profile url must to be valid.');
+			if(lang == 'en') {
+				fillAlert('Facebook profile url must to be valid.');
+			} else {
+				fillAlert('يجب أن يكون عنوان url لملف تعريف Facebook صالحًا.');
+			}
 		} else {
 			validSeven = true;
 			fbLink.classList.remove('invalid');
@@ -476,7 +505,11 @@ function isValid() {
 		if(youtubeLink.value.length && !youtubeRegex.test(youtubeLink.value)) {
 			validEight = false;
 			youtubeLink.classList.add('invalid');
-			fillAlert('Youtube profile url must to be valid.');
+			if(lang == 'en') {
+				fillAlert('Youtube profile url must to be valid.');
+			} else {
+				fillAlert('يجب أن يكون عنوان url لملف تعريف Youtube صالحًا.');
+			}
 		} else {
 			validEight = true;
 			youtubeLink.classList.remove('invalid');
@@ -487,7 +520,11 @@ function isValid() {
 		if(tiktokLink.value.length && !tiktokRegex.test(tiktokLink.value)) {
 			validNine = false;
 			tiktokLink.classList.add('invalid');
-			fillAlert('Tiktok profile url must to be valid.');
+			if(lang == 'en') {
+				fillAlert('Tiktok profile url must to be valid.');
+			} else {
+				fillAlert('يجب أن يكون عنوان url لملف تعريف Tiktok صالحًا.');
+			}
 		} else {
 			validNine = true;
 			tiktokLink.classList.remove('invalid');
@@ -500,7 +537,11 @@ function isValid() {
 		} else {
 			validTags = false;
 			tagsInput.classList.add('invalid');
-			fillAlert('We need one tag at least that describe your job');
+			if(lang == 'en') {
+				fillAlert('We need one tag at least that describe your job');
+			} else {
+				fillAlert('نحتاج إلى علامة واحدة على الأقل تصف وظيفتك');
+			}
 		}
 		// Summarizations
 		let textareas = currentStep.querySelectorAll('.summarizations');
@@ -522,7 +563,11 @@ function isValid() {
 			validTen = false;
 		}
 		if(!validTen) {
-			fillAlert('We need from you a long brief about your work, experience, companies and working life 200 charachters at least');
+			if(lang == 'en') {
+				fillAlert('We need from you a long brief about your work, experience, companies and working life 200 charachters at least');
+			} else {
+				fillAlert('نحتاج منك نبذة طويلة عن عملك وخبرتك وشركاتك وحياتك العملية 200 حرف على الأقل');
+			}
 		}
 		// Finally Validation
 		if(validTags && validOne && validTwo && validThree && validFour && validFive && validSix && validSeven && validEight && validNine && validTen) {
@@ -535,7 +580,11 @@ function isValid() {
 		if(valid && tapValidation) {
 			return true;
 		} else {
-			fillAlert('Ensure that you have filled the data in the correct way.')
+			if(lang == 'en') {
+				fillAlert('Ensure that you have filled the data in the correct way.')
+			} else {
+				fillAlert('تأكد من أنك ملأت البيانات بالطريقة الصحيحة.')
+			}
 			sweetAlert.classList.add('on');
 		}
 	}
@@ -549,16 +598,12 @@ function isValid() {
 		let tidycalURL = currentStep.querySelector('input[name="tidycal_link"]');
 		const calendlyRegex = /https:\/\/calendly\.com\/[a-zA-Z0-9_-]+(?:\?.*)?/;
 		const tydicalRegex = /https:\/\/tidycal\.com\/[a-zA-Z0-9_-]+(?:\/[a-zA-Z0-9_-]+)*/;
-		/*
-			- 1 0, 1 1, 0 1, 0 0
-		*/ 
 		if(calendlyURL.value.length && tidycalURL.value.length) { // 1 1
 			let message = '';
 			if(!calendlyRegex.test(calendlyURL.value)) {
 				validOne = false;
 				calendlyURL.classList.add('invalid');
 				message += 'Calendly link is invalid!';
-				// fillAlert('Calendly link is invalid! please try to give us valid one.');
 			} else {
 				validOne = true;
 				calendlyURL.classList.remove('invalid');
@@ -566,18 +611,23 @@ function isValid() {
 			if(!tydicalRegex.test(tidycalURL.value)) {
 				validOne = false;
 				tidycalURL.classList.add('invalid');
-				// fillAlert('Tidycal link is invalid! please try to give us valid one.');
 				message += 'Tidycal link is invalid!';
 			} else {
 				validOne = true;
 				tidycalURL.classList.remove('invalid');
 			}
-			fillAlert(message);
+			if(lang == 'en') { // to be continued
+				fillAlert(message);
+			}
 		} else if(calendlyURL.value.length && !tidycalURL.value.length) { // 1 0
 			if(!calendlyRegex.test(calendlyURL.value)) {
 				validOne = false;
 				calendlyURL.classList.add('invalid');
-				fillAlert('Calendly link is invalid! please try to give us valid one.');
+				if(lang == 'en') {
+					fillAlert('Calendly link is invalid! please try to give us valid one.');
+				} else {
+					fillAlert('عنوان calnedly link غير صالح! من فضلك حاول أن تعطينا واحدا صالحا.');
+				}
 			} else {
 				validOne = true;
 				calendlyURL.classList.remove('invalid');
@@ -587,7 +637,11 @@ function isValid() {
 			if(!tydicalRegex.test(tidycalURL.value)) {
 				validOne = false;
 				tidycalURL.classList.add('invalid');
-				fillAlert('Tidycal link is invalid! please try to give us valid one.');
+				if(lang == 'en') {
+					fillAlert('Tidycal link is invalid! please try to give us valid one.');
+				} else {
+					fillAlert('عنوان tidycal link غير صالح! من فضلك حاول أن تعطينا واحدا صالحا.');
+				}
 			} else {
 				validOne = true;
 				tidycalURL.classList.remove('invalid');
@@ -595,7 +649,11 @@ function isValid() {
 			calendlyURL.classList.remove('invalid');
 		} else { // 0 0
 			validOne = false;
-			fillAlert('You have to make an one "Scheduling System" at least make one on calendly or tidycal platforms');
+			if(lang == 'en') {
+				fillAlert('You have to make an one "Scheduling System" at least make one on calendly or tidycal platforms');
+			} else {
+				fillAlert('عليك أن تصنع "نظام جدولة" واحد على الأقل على منصات مناسبة أو متدرجة');
+			}
 		}
 		// Finally Validation
 		// Check of current Inputs are filled with valid data.
@@ -608,7 +666,11 @@ function isValid() {
 		if(valid && validOne) {
 			return true;
 		} else {
-			fillAlert('Ensure that you have filled the data in the correct way.');
+			if(lang == 'en') {
+				fillAlert('Ensure that you have filled the data in the correct way.');
+			} else {
+				fillAlert('تأكد من أنك ملأت البيانات بالطريقة الصحيحة.');
+			}
 			console.log("Valid", valid);
 			// console.log("Tap Validation", tapValidation);
 			sweetAlert.classList.add('on');

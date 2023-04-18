@@ -364,8 +364,8 @@ button {
 	transition: 0.2s;
 }
 .steps h4.on {
-	border: 4px solid #f3cc6e;
-	color: rebeccapurple;
+	border: 4px solid #009cea;
+	color: #009cea;
 	margin-bottom: 40px;
 	font-weight: bold;
 	-webkit-transition: 0.3s;
@@ -376,7 +376,7 @@ button {
 	content: "";
 	width: 0px;
 	height: 0px;
-	background-color: #f3cc6e;
+	background-color: #009cea;
 	position: absolute;
 	top: 100%;
 	-webkit-transition: 0.3s 0s;
@@ -705,11 +705,12 @@ button {
 	-webkit-box-shadow: 0px 5px 15px 1px rgba(0 0 0/10%);
 	box-shadow: 0px 5px 15px 1px rgba(0 0 0/10%);
 	background-color: #f3cb6ed4;
+	background-color: #009cea;
 	color: white;
 }
 .btns button#next:hover,
 .btns button#submit:hover {
-	background-color: #f3cc6e;
+	background-color: #007ab7;
 	-webkit-box-shadow: 1px 1px 15px 3px rgba(0 0 0 / 5%);
 	box-shadow: 1px 1px 15px 3px rgba(0 0 0 / 5%);
 	padding: 10px 25px;

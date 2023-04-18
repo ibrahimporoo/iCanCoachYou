@@ -42,17 +42,17 @@
 
 <body class="coaches-html">
 
- <!-- Static Elements -->
- <div id="alert-container">
-  <div id="alert">
-    <i class="alert-icon bi bi-exclamation-diamond-fill"></i>
-    <div class="text">
-      <h3>Hello!</h3>
+  <!-- Static Elements -->
+  <div id="alert-container">
+    <div id="alert">
+      <i class="alert-icon bi bi-exclamation-diamond-fill"></i>
+      <div class="text">
+        <h3>Hello!</h3>
+      </div>
+      <p>
+        <button id="close-alert">OK</button>
+      </p>
     </div>
-    <p>
-      <button id="close-alert">OK</button>
-    </p>
-  </div>
   </div>
 
   <!-- Joining Form for Coaches -->
@@ -75,7 +75,7 @@
             </article>
             <article>
               <p>What's your name in Arabic?</p>
-              <input type="text" name="ar_name" placeholder="مثال: إبراهيم أنور" style="direction: rtl;"/>
+              <input type="text" name="ar_name" placeholder="مثال: إبراهيم أنور" style="direction: rtl;" />
             </article>
           </div>
           <div class="row">
@@ -190,7 +190,6 @@
             <article>
               <p>Enter your birthdate:</p>
               <input type="date" id="birthdate" name="birthdate" />
-              <!-- <input type="number" name="age" placeholder="example: 20"> -->
             </article>
           </div>
           <div class="row">
@@ -393,7 +392,8 @@
                     <span>Languages</span>
                   </div>
                   <div class="d-flex align-items-center position-relative">
-                    <input type="text" class="unrequired" id="tags-input" placeholder="Keyword," style="border-right: 0;"/>
+                    <input type="text" class="unrequired" id="tags-input" placeholder="Keyword,"
+                      style="border-right: 0;" />
                     <button type="button" id="tags-add-btn">Add</button>
                   </div>
                 </div>
@@ -455,61 +455,77 @@
               </div>
               <div>
                 <p>profile LinkedIn Link?*</p>
-                <span class="example">You can bring the link from <a href="https://www.linkedin.com" target="_blank">here </a></span>
+                <span class="example">You can bring the link from <a href="https://www.linkedin.com"
+                    target="_blank">here </a></span>
                 <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
               </div>
               <div>
                 <p>profile Instagram Link?</p>
                 <span class="example">optional</span>
-                <span class="example">You can bring the link from <a href="https://www.instagram.com" target="_blank">here </a></span>
-                <input type="text" class="unrequired" name="instagram_link" placeholder="https://www.instagram.com/username" />
+                <span class="example">You can bring the link from <a href="https://www.instagram.com"
+                    target="_blank">here </a></span>
+                <input type="text" class="unrequired" name="instagram_link"
+                  placeholder="https://www.instagram.com/username" />
               </div>
               <div>
                 <p>profile Twitter link?</p>
                 <span class="example">optional</span>
-                <span class="example">You can bring the link from <a href="https://www.twitter.com" target="_blank">here</a></span>
-                <input type="text" class="unrequired" name="twitter_link" placeholder="https://www.twitter.com/username" />
+                <span class="example">You can bring the link from <a href="https://www.twitter.com"
+                    target="_blank">here</a></span>
+                <input type="text" class="unrequired" name="twitter_link"
+                  placeholder="https://www.twitter.com/username" />
               </div>
               <div>
                 <p>profile Facebook link?</p>
                 <span class="example">optional</span>
-                <span class="example">You can bring the link from <a href="https://www.facebook.com" target="_blank">here</a></span>
+                <span class="example">You can bring the link from <a href="https://www.facebook.com"
+                    target="_blank">here</a></span>
                 <input type="text" class="unrequired" name="fb_link" placeholder="https://www.facebook.com/username" />
               </div>
               <div>
                 <p>Youtube channel link?</p>
                 <span class="example">optional</span>
-                <span class="example">You can bring the link from <a href="https://www.youtube.com" target="_blank">here</a></span>
-                <input type="text" class="unrequired" name="youtube_link" placeholder="https://www.youtube.com/username" />
+                <span class="example">You can bring the link from <a href="https://www.youtube.com"
+                    target="_blank">here</a></span>
+                <input type="text" class="unrequired" name="youtube_link"
+                  placeholder="https://www.youtube.com/username" />
               </div>
               <div>
                 <p>profile Tiktok link?</p>
-                <span class="example">You can bring the link from <a href="https://www.tiktok.com" target="_blank">here</a></span>
+                <span class="example">You can bring the link from <a href="https://www.tiktok.com"
+                    target="_blank">here</a></span>
                 <span class="example">optional</span>
-                <input type="text" class="unrequired" name="tiktok_link" placeholder="https://www.tiktok.com/username" />
+                <input type="text" class="unrequired" name="tiktok_link"
+                  placeholder="https://www.tiktok.com/username" />
               </div>
             </article>
           </div>
           <div class="row">
             <article>
               <p>Write a summary you wish to display in the website?</p>
-              <span class="example" style="padding-left: 0;">Write as much as possible, as we need to show your skills, work experience and work life.It must contain at least 200 charachters.</span>
+              <span class="example" style="padding-left: 0;">Write as much as possible, as we need to show your skills,
+                work experience and work life.It must contain at least 200 charachters.</span>
               <span class="example" style="padding-left: 0;">Please add it in English for Example:-</span>
               <span class="example" style="font-size: 13px;">
                 Entrepreneurship, Programming, Sales & Marketing, Business Management, Technology, operations
-                Serial entrepreneur, 12 years of experience in business development, CEO & Co-founder of Elmawkaa Company LLC.
+                Serial entrepreneur, 12 years of experience in business development, CEO & Co-founder of Elmawkaa
+                Company LLC.
               </span>
               <textarea class="summarizations" name="en_summary" placeholder="Summarize here ..."></textarea>
             </article>
             <article>
               <p>Write a summary you wish to display in the website?</p>
-              <span class="example" style="padding-left: 0;margin-bottom: 6px;">Write as much as possible, as we need to show your skills, work experience and work life.It must contain at least 200 charachters.</span>
-              <span class="example" style="padding-left: 0px;margin-bottom: 10px;">Please add it in Arabic for Example:-</span>
+              <span class="example" style="padding-left: 0;margin-bottom: 6px;">Write as much as possible, as we need to
+                show your skills, work experience and work life.It must contain at least 200 charachters.</span>
+              <span class="example" style="padding-left: 0px;margin-bottom: 10px;">Please add it in Arabic for
+                Example:-</span>
               <span class="example" style="direction: rtl;margin-bottom: 16px;;">
                 ريادة الأعمال، البرمجة، المبيعات والتسويق، إدارة الأعمال، التكنولوجيا، العمليات
-                رائد أعمال زو خبرة، خبرة 12 عامًا في تطوير الأعمال، الرئيس التنفيذي والمؤسس المشارك لشركة الموقع للتجارة. 
+                رائد أعمال زو خبرة، خبرة 12 عامًا في تطوير الأعمال، الرئيس التنفيذي والمؤسس المشارك لشركة الموقع
+                للتجارة.
               </span>
-              <textarea class="summarizations" name="ar_summary" style="direction: rtl;" placeholder="لخص هنا..."></textarea>
+              <textarea class="summarizations" name="ar_summary" style="direction: rtl;"
+                placeholder="لخص هنا..."></textarea>
             </article>
           </div>
         </div>
@@ -518,9 +534,9 @@
           <div class="row">
             <article>
               <div style="max-width: 390px">
-                <p>Please add your calendly.com link as we will send it to the clients after they pay</p>
+                <p>Please add your calendly.com link as we will send it to customers after they pay</p>
                 <span class="example">
-                  For Example:
+                  for example:
                   <a href="https://calendly.com/waleed-abdelrahman/60min" target="_blank">
                     https://calendly.com/waleed-abdelrahman/60min
                   </a>
@@ -530,14 +546,10 @@
             </article>
             <article>
               <div style="max-width: 390px;">
-                <p>Please add Tidycal link</p>
-                <span class="example" style="margin-bottom: 7px;">
-                  if You don't have
-                  <a href="https://tidycal.com" target="_blank">
-                    make one
-                  </a>
-                </span>
-                <span class="example" style="margin-bottom: 10px;">- alternative link if you don't have calendly link</span>
+                <p>or add tidycal link</p>
+                <span class="example" style="margin-bottom: 9px;">if you don't have calendly account<span>
+                <span class="example" style="margin-bottom: 10px;">- alternative link if you don't have calendly
+                  link</span>
               </div>
               <input type="text" placeholder="https://tidycal.com/waleed-abdelrahman/60min" name="tidycal_link" />
             </article>
@@ -547,17 +559,17 @@
               <p>What's your hourly rate for an hour coach session in Egypt</p>
               <span class="example">For example 500 EGP</span>
               <span class="example" style="padding-left: 13px;">
-                - also we take 25% commission to be sustainable and for payment getaway's fees
+                - also we take 25% commission to be sustainable and for payment getaway's fees with minimum commission 150 EGP, for example, if you add 150 EGP, we will take it all.
               </span>
               <input type="number" placeholder="500" name="eg_hourly_rate" />
             </article>
             <article>
-              <p>What's your hourly rate for an hour coach session outside Egypt</p>
-              <span class="example">For example 1800 EGP</span>
+              <p>What's your hourly rate for an hour coach session outside Egypt (in USD)</p>
+              <span class="example">For example 70 USD</span>
               <span class="example" style="padding-left: 13px;">
-                - also we take 25% commission to be sustainable and for payment getaway's fees
+                - also we take 25% commission to be sustainable and for payment getaway's fees with minimum commission 5 USD, for example, if you add 5 USD, we will take it all.
               </span>
-              <input type="number" placeholder="1800" name="outside_eg_hourly_rate" />
+              <input type="number" placeholder="70" name="outside_eg_hourly_rate" />
             </article>
           </div>
           <div class="row">
@@ -565,7 +577,7 @@
               <p>Please add your bank account details or wallet details For Example:- </p>
               <span class="example">
                 Bank Name: CIB | Commercial International bank of Egypt
-                Beneficiary Name: Ibrahim Anwar Mohamed Elsoufi Mahmoud Elashiri 
+                Beneficiary Name: Ibrahim Anwar Mohamed Elsoufi Mahmoud Elashiri
                 Beneficiary address: 13 st mosa mizar, Elfawal, Fayoum, Egypt
                 Phone number: 01026623085
                 Bank Address: Smart Village branch, Egypt.
@@ -604,7 +616,8 @@
               <div>
                 <p>You can send us any comment about anything you want to talk about</p>
                 <span class="example">- it will be great to give us your feedback.</span>
-                <textarea name="comment" class="unrequired" placeholder="any comment..." style="min-height: 157px;"></textarea>
+                <textarea name="comment" class="unrequired" placeholder="any comment..."
+                  style="min-height: 157px;"></textarea>
               </div>
             </article>
           </div>
@@ -621,7 +634,7 @@
           <i class="bi bi-check-circle-fill"></i>
           <h3>Thank You!</h3>
           <p>Your Submission has been received</p>
-          <p>We will contact you whithin 3 days.</p>
+          <p>We will contact you whithin 7 days.</p>
         </div>
       </div>
     </div>

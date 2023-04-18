@@ -3,7 +3,7 @@ import {
 	getFirestore, collection, getDocs
 } from 'firebase/firestore/lite';
 
-
+// iCanCoachU Firebase...
 const firebaseConfig = {
   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
   authDomain: "elmawkaabeta.firebaseapp.com",
