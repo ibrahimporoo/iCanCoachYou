@@ -751,7 +751,7 @@ button {
 	transition: 0.1s;
 	font-size: 2.4rem;
 	opacity: 0.8;
-	color: #3dcc4a;
+	color: #009cea;
 }
 .form-submitted.done .submitted-content i {
 	-webkit-transition: 0.3s 0.2s;
@@ -759,10 +759,12 @@ button {
 	transition: 0.3s 0.2s;
 	font-size: 7rem;
 	opacity: 1;
+	-moz-transition: 0.3s 0.2s;
+	-ms-transition: 0.3s 0.2s;
 }
 .form-submitted .submitted-content h3 {
 	font-size: 4rem;
-	color: #3dcc4a;
+	color: #009cea;
 }
 .form-submitted .submitted-content p {
 	font-size: 1.2rem;
@@ -2895,6 +2897,8 @@ section {
 .contact .info {
 	width: 100%;
 	background: #fff;
+	padding: 25px;
+	border-radius: 4px;
 }
 /* .contact .info i {
   font-size: 32px;

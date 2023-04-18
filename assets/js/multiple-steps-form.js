@@ -3,15 +3,6 @@
 	--- Start Firebase ----
 	-----------------------
 */
-// // iCanCoachU Example Firebase...
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-//   authDomain: "just-like-icancoachu.firebaseapp.com",
-//   projectId: "just-like-icancoachu",
-//   storageBucket: "just-like-icancoachu.appspot.com",
-//   messagingSenderId: "415289518874",
-//   appId: "1:415289518874:web:263bf9089765a2a312daa3"
-// };
 import { initializeApp } from 'firebase/app';
 import {
 	getFirestore, collection, addDoc
@@ -60,7 +51,6 @@ joinForm.addEventListener('submit', async (e) => {
 	e.preventDefault();
 	if(isValid()) {
 		/* Show to user that the data are being send */
-		reloadButton();
 		const imageFile = joinForm.image_file.files[0];
 		const imageFilePath = `images/${imageFile.name}`;
 		const imageStorageRef = ref(storage, imageFilePath);
@@ -89,9 +79,10 @@ joinForm.addEventListener('submit', async (e) => {
 			cvDownloadURL = await getDownloadURL(cvStorageRef);
 		}
 
+		reloadButton();
+
 		await imageUploadTask;
 		const imageURL = await getDownloadURL(imageStorageRef);
-
 		/* Some Form Values */
 		const countryVal = joinForm.country.value.charAt(0).toUpperCase() + joinForm.country.value.slice(1, ).toLowerCase();
 		await addDoc(arcolRef, {
@@ -217,7 +208,7 @@ const submitBtn = document.querySelector('#submit');
 // const tagsAddingBtn = document.querySelector('#tags-add-btn');
 const taps = document.querySelectorAll('.fields .step');
 const progSteps = document.querySelectorAll('.steps h4');
-let tapIndex = 1;
+let tapIndex = 0;
 showTap(tapIndex);
 // Patterns
 let mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -648,9 +639,13 @@ function reloadButton() {
 		submitBtn.innerHTML += '.';
 		count++;
 		if(count >= 4) {
-			submitBtn.innerHTML = '<span class="spinner"></span> Sending';
+			if(lang == 'en') {
+				submitBtn.innerHTML = '<span class="spinner"></span> Sending';
+			} else {
+				submitBtn.innerHTML = '<span class="spinner"></span> قيد الارسال';
+			}
 		}
-	}, 800);
+	}, 1000);
 }
 
 /*
