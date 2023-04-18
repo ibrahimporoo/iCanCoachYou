@@ -184,6 +184,13 @@ button {
 	margin-left: -49px;
 	font-size: 14px;
 	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+.en-field #tags-add-btn {
+	margin-left: -58px;
 }
 @media (max-width: 520px) {
 	#tags-add-btn {
@@ -191,6 +198,9 @@ button {
     font-size: 12px;
     border-width: 1px;
 		margin-left: -43px;
+	}
+	.en-field #tags-add-btn {
+		margin-left: -32px;
 	}
 }
 
@@ -1223,7 +1233,14 @@ button {
 
 .join-form {
 	display: none;
+}
+.join-form .en-field {
 	direction: ltr;
+}
+.join-form .first .en-field {
+	display: flex;
+	flex-direction: column;
+	align-items: end;
 }
 
 .navbar-mobile,
@@ -1268,14 +1285,17 @@ button {
 .navbar-mobile a,
 .join-us,
 .navbar-mobile a:focus {
-	padding: 10px 20px;
 	font-size: 15px;
 	color: #364146;
+	padding: 10px 20px;
 }
 
 @media (min-width: 992px) {
 	.join-us {
 		color: #fff;
+	}
+	.join-us {
+		padding: 10px 0 10px 22px;
 	}
 }
 

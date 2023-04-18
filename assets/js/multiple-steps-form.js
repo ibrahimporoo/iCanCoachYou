@@ -20,18 +20,28 @@ import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
 } from 'firebase/storage';
 
-// iCanCoachU Firebase...
+// // iCanCoachU Firebase...
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+//   authDomain: "elmawkaabeta.firebaseapp.com",
+//   databaseURL: "https://elmawkaabeta.firebaseio.com",
+//   projectId: "elmawkaabeta",
+//   storageBucket: "elmawkaabeta.appspot.com",
+//   messagingSenderId: "808588970288",
+//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+//   measurementId: "G-G8FTTQ0EB2"
+// };
+// iCanCoachU Example Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-  authDomain: "elmawkaabeta.firebaseapp.com",
-  databaseURL: "https://elmawkaabeta.firebaseio.com",
-  projectId: "elmawkaabeta",
-  storageBucket: "elmawkaabeta.appspot.com",
-  messagingSenderId: "808588970288",
-  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-  measurementId: "G-G8FTTQ0EB2"
+  apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+  authDomain: "just-like-icancoachu.firebaseapp.com",
+  projectId: "just-like-icancoachu",
+  storageBucket: "just-like-icancoachu.appspot.com",
+  messagingSenderId: "415289518874",
+  appId: "1:415289518874:web:263bf9089765a2a312daa3"
 };
-
+// Page Language
+let lang = document.querySelector('html').lang;
 // init services
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
@@ -207,13 +217,13 @@ const submitBtn = document.querySelector('#submit');
 // const tagsAddingBtn = document.querySelector('#tags-add-btn');
 const taps = document.querySelectorAll('.fields .step');
 const progSteps = document.querySelectorAll('.steps h4');
-let tapIndex = 0;
+let tapIndex = 1;
 showTap(tapIndex);
 // Patterns
 let mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
 nextBtn.addEventListener('click', (e) => {
-	console.log("Its Next Button")
+	console.log("Its Next Button");
 	e.preventDefault();
 	prevNext(1);
 });
@@ -249,11 +259,19 @@ function showTap(tapIndex) {
 	}
 	// Make Next Btn Submit if it's the last tap
 	if(tapIndex == taps.length - 1) {
-		nextBtn.innerHTML = "Submit";
+		if(lang == 'en') {
+			nextBtn.innerHTML = "Submit";
+		} else {
+			nextBtn.innerHTML = "أرسل";
+		}
 		nextBtn.style.display = "none";
 		submitBtn.style.display = "block";
 	} else {
-		nextBtn.innerHTML = "Next";
+		if(lang == 'en') {
+			nextBtn.innerHTML = "Next";
+		} else {
+			nextBtn.innerHTML = "التالي";
+		}
 		nextBtn.style.display = "block";
 		submitBtn.style.display = "none";
 	}
@@ -330,7 +348,6 @@ function addTag() {
     tagsInput.value = '';
   } else {
     tagsInput.classList.add('invalid');
-    tagsInput.value = 'Enter a value first, then add';
     setTimeout(() => {
 			tagsInput.classList.remove('invalid');
 			tagsInput.value = '';
@@ -621,7 +638,11 @@ function fillAlert(text) {
 }
 let btnReloadingInterval;
 function reloadButton() {
-	submitBtn.innerHTML = '<span class="spinner"></span> Sending';
+	if(lang == 'en') {
+		submitBtn.innerHTML = '<span class="spinner"></span> Sending';
+	} else {
+		submitBtn.innerHTML = '<span class="spinner"></span> قيد الارسال';
+	}
 	let count = 1
 	btnReloadingInterval = setInterval(() => {
 		submitBtn.innerHTML += '.';

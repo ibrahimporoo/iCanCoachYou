@@ -406,3 +406,31 @@
     <!-- <i class="bi bi-x close-form"></i> -->
     <button type="button" class="close-form">&#9932;</button>
   </form>
+
+<!-- HTML I want to put -->
+<div class="col-lg-4 col-md-6">
+  <div class="member" data-aos="zoom-in">
+    <div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
+      <div class="member-info coaches pricing" data-i=${coach.id}>
+        <div class='ps-3 pe-3'>
+          <h5>${coach.name}</h5>
+          <h4>${coach.jobTitle}</h4>
+        </div>
+        ${coach.pricing ? `<span>${coach.pricing}</span>`: `<span>${coach.pricing_in_egypt}</span>`}
+        <p class='detail-item mb-1 mt-1'>Details</p>
+        <span>${coach.category}</span>
+        ${coach.summary.length > 180 ? `<span>${coach.summary.length.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
+        <span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+        <div class="social">
+          ${coach.SM_account ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
+          ${coach.instagram_account ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
+          ${coach.twitter_account ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``}
+          ${coach.facebook_account ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``}
+          ${coach.youtube_account ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
+          ${coach.tiktok_account ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
+        </div>
+        <a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>

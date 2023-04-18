@@ -199,7 +199,7 @@ function fillInHTML(coaches, completed = true) {
 							${coach.cv_link? `<span>Coach CV:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-envelope"></i></a></span>
 							<p class="coach-answer">${coach.cv_link}</p>` : `<span>Coach CV:- <a href="${coach.cvDownloadURL}" target="_blank"><i class="bi bi-envelope"></i></a></span>
 							<p class="coach-answer">${coach.cvDownloadURL}</p>`}
-							<h4>Coach Video: <a href="${coach.videoDownloadURL}" target="_blank">Download Video</i></a></h4>
+							<span>Coach Video: <a href="${coach.videoDownloadURL}" target="_blank">Download Video</i></a></span>
 							<div class='video-tag'>
 								<video controls width="100%" height="fit-content">
 									<source src="${coach.videoDownloadURL}" type="video/mp4">
