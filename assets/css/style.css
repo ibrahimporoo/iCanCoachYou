@@ -655,8 +655,9 @@ button {
 	font-size: 15px;
 	min-height: 180px;
 	outline: 0;
-	/* min-height: 160px; */
 	resize: vertical;
+	width: 100%;
+	border-radius: 6px;
 }
 .btns {
 	display: -webkit-box;
@@ -1940,6 +1941,22 @@ section {
 	list-style: none;
 	padding: 0;
 	font-size: 15px;
+}
+.portfolio-details .portfolio-info .schedule {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	background-color: #02dc94;
+	background-image: linear-gradient(to right,var(--tw-gradient-stops));
+	--tw-gradient-from: #02dc94;
+	--tw-gradient-to: #14fdb0;
+	--tw-gradient-stops: #02dc94,var(--tw-gradient-to, rgba(255, 255, 255, 0));
+	--tw-gradient-stops: #02dc94,#14fdb0;
+	box-shadow: 0 2px 8px 0 rgba(185,200,217,.5);
+	color: #fff;
+	margin-block: 20px 5px;
 }
 
 .portfolio-details .portfolio-info ul li + li {

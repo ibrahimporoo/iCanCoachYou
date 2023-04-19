@@ -3,16 +3,25 @@ import {
 	getFirestore, collection, getDocs
 } from 'firebase/firestore/lite';
 
+// // Just Like iCanCoachU Firebase...
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+//   authDomain: "just-like-icancoachu.firebaseapp.com",
+//   projectId: "just-like-icancoachu",
+//   storageBucket: "just-like-icancoachu.appspot.com",
+//   messagingSenderId: "415289518874",
+//   appId: "1:415289518874:web:263bf9089765a2a312daa3"
+// };
 // iCanCoachU Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-  authDomain: "elmawkaabeta.firebaseapp.com",
-  databaseURL: "https://elmawkaabeta.firebaseio.com",
-  projectId: "elmawkaabeta",
-  storageBucket: "elmawkaabeta.appspot.com",
-  messagingSenderId: "808588970288",
-  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-  measurementId: "G-G8FTTQ0EB2"
+	apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+	authDomain: "elmawkaabeta.firebaseapp.com",
+	databaseURL: "https://elmawkaabeta.firebaseio.com",
+	projectId: "elmawkaabeta",
+	storageBucket: "elmawkaabeta.appspot.com",
+	messagingSenderId: "808588970288",
+	appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+	measurementId: "G-G8FTTQ0EB2"
 };
 
 initializeApp(firebaseConfig)
@@ -37,16 +46,16 @@ async function getData() {
 		})
 		coaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
 		// in the index 'top coaches' page
-		if(coachesContent.classList.contains('top-coaches')) {
-			// Adding Content of Data coming from Firebase to HTML
-			coaches = coaches.filter(coach => coach.order <= 3);
-			coaches = coaches.length > 3 ? coaches.slice(0, 3) : coaches;
-		}
+		// if(coachesContent.classList.contains('top-coaches')) {
+		// 	// Adding Content of Data coming from Firebase to HTML
+		// 	coaches = coaches.filter(coach => coach.order <= 3);
+		// 	coaches = coaches.length > 3 ? coaches.slice(0, 3) : coaches;
+		// }
 		coaches.map(coach => {
 			html += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
-					<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
 						<div class="member-info coaches pricing" data-i=${coach.id}>
 							<div class='ps-3 pe-3'>
 								<h5>${coach.name}</h5>
@@ -58,14 +67,15 @@ async function getData() {
 							${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
 							<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
 							<div class="social">
-								${coach.SM_account ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
-								${coach.instagram_account ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
-								${coach.twitter_account ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``}
-								${coach.facebook_account ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``}
-								${coach.youtube_account ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
-								${coach.tiktok_account ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
+								${/^(https?:\/\/)?(www\.)?linkedin.com\/(company\/[a-zA-Z0-9_\-]+|in\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.SM_account) ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
+								${/^(https?:\/\/)?(www\.)?instagram.com\/[a-zA-Z0-9_\-]+\/?$/.test(coach.instagram_account) ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
+								${/^(https?:\/\/)?(www\.)?twitter.com\/[a-zA-Z0-9_]{1,15}\/?$/.test(coach.twitter_account) ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``}
+								${/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/.test(coach.facebook_account) ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``}
+								${/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
+								${/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
 							</div>
 							<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
+							<button class='profile-btn' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
 						</div>
 					</div>
 				</div>
@@ -88,7 +98,6 @@ getData().then(() => {
 	};
 });
 
-
 /* Input Filters */
 if(document.body.classList.contains('coaches-html')) {
 	/* Hiding Filtered Boxes with select box */
@@ -96,7 +105,7 @@ if(document.body.classList.contains('coaches-html')) {
 
 	// if click outside
 	window.onclick = (e) => {
-		if(!e.target.classList.contains('filter-el')) {
+		if(!e.target.matches('filter-el')) {
 			inputFields.forEach(field => field.classList.remove('on'));
 		}
 	};
@@ -197,9 +206,8 @@ if(document.body.classList.contains('coaches-html')) {
 			return false
 		};
 	})
+
 	// Handle User Choosed Categories
-
-
 
 	function showNewCoaches(coaches) {
 		html_filtering_by_user = '';
@@ -207,21 +215,27 @@ if(document.body.classList.contains('coaches-html')) {
 			html_filtering_by_user += `
 				<div class="col-lg-4 col-md-6">
 					<div class="member" data-aos="zoom-in">
-						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
-							<div class="member-info coaches pricing">
+						<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
+							<div class="member-info coaches pricing" data-i=${coach.id}>
 								<div class='ps-3 pe-3'>
 									<h5>${coach.name}</h5>
 									<h4>${coach.jobTitle}</h4>
 								</div>
-								<span>${coach.pricing}</span>
+								${coach.pricing ? `<span>${coach.pricing}</span>`: `<span>${coach.pricing_in_egypt}</span>`}
 								<p class='detail-item mb-1 mt-1'>Details</p>
 								<span>${coach.category}</span>
-								<span>${coach.summary}</span>
+								${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
 								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
 								<div class="social">
-									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+									${coach.SM_account ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
+									${coach.instagram_account ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
+									${coach.twitter_account ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``}
+									${coach.facebook_account ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``}
+									${coach.youtube_account ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
+									${coach.tiktok_account ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
 								</div>
-								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
+								<button class='profile-btn' data-uName=${coach.name.trim().replace(' ', '')}>VIEW PROFILE</button>
 							</div>
 						</div>
 					</div>
@@ -242,4 +256,18 @@ if(document.body.classList.contains('coaches-html')) {
 			}
 		}
 	};
+}
+
+
+// Code for View Single Coach...
+function viewProfile(documentId, lang, username) {
+	sessionStorage.setItem('selectedCoach', documentId);
+	sessionStorage.setItem('lang', lang);
+	window.location.href = `coach-profile.html#${username}`;
+}
+window.onclick = (e) => {
+	if(e.target.matches('.profile-btn')) {
+		// console.log(e.target.dataset.uname);
+		viewProfile(e.target.parentElement.dataset.i, lang, e.target.dataset.uname);
+	}
 }

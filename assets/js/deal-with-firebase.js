@@ -26,7 +26,6 @@ const firebaseConfig = {
   measurementId: "G-G8FTTQ0EB2"
 };
 
-
 // init firebase
 initializeApp(firebaseConfig)
 
@@ -144,7 +143,7 @@ function fillInHTML(coaches, completed = true) {
 			completedContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
 					<div class="member">
-						<div class="pic"><img src=${coach.image} class="img-fluid" alt="Coach Image"></div>
+						<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
 						<div class="member-info">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
@@ -167,7 +166,10 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.jobTitle}</p>
 							<span>industry:-</span>
 							<p class="coach-answer">${coach.industry}</p>
-							${coach.coach_working_life_tags && `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>`}
+							${
+								Array.isArray(coach.coach_working_life_tags)? `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>` :
+								``
+							}
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -240,7 +242,7 @@ function fillInHTML(coaches, completed = true) {
 			pendingContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
 					<div class="member">
-						<div class="pic"><img src=${coach.image} class="img-fluid" alt="Coach Image"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
 						<div class="member-info">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
@@ -263,7 +265,10 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.jobTitle}</p>
 							<span>industry:-</span>
 							<p class="coach-answer">${coach.industry}</p>
-							${coach.coach_working_life_tags && `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>`}
+							${
+								Array.isArray(coach.coach_working_life_tags)? `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>` :
+								``
+							}
 							<span>hourly rate:-</span>
 							<p class="coach-answer">${coach.pricing}</p>
 							<span>session way:-</span>
@@ -371,7 +376,7 @@ window.addEventListener('click', (e) => {
 
 });
  
-// Doc Updating 
+// Doc Updating.
 function update(member, status) {
 
 	let docRef = doc(db, 'coaches', 'languages', lang, member.dataset.id);
@@ -438,5 +443,5 @@ function update(member, status) {
 		default:
 			alert("Invalid Status!!");
 			break;
-	}
+	};
 };

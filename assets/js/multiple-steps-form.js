@@ -301,7 +301,6 @@ const tagsAddingBtn = document.getElementById('tags-add-btn');
 let coachTags = [];
 tagsContainer.innerHTML = '';
 tagsInput.addEventListener('focus', () => {
-	// tagsAddingBtn.setAttribute('type', "submit");
 	submitBtn.setAttribute('type', "button");
 });
 tagsInput.addEventListener('blur', () => {
@@ -503,7 +502,7 @@ function isValid() {
 		}
 		// Youtube Profile URL
 		let youtubeLink = currentStep.querySelector('input[name="youtube_link"]');
-		let youtubeRegex = /^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/;;
+		let youtubeRegex = /^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/;
 		if(youtubeLink.value.length && !youtubeRegex.test(youtubeLink.value)) {
 			validEight = false;
 			youtubeLink.classList.add('invalid');
