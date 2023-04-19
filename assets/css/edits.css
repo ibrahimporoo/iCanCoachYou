@@ -501,6 +501,24 @@ h6 {
 	cursor: pointer;
 	font-size: 20px;
 	padding: 0px 5px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+.member .timestamp {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background-color: #001d3d;
+	color: white;
+	padding: 6px 12px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	font-size: 13px;
 }
 
 .member .save {

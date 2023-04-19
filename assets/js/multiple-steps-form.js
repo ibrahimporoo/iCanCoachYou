@@ -2,19 +2,20 @@
 	-----------------------
 	--- Start Firebase ----
 	-----------------------
-	// iCanCoachU Example Firebase...
-	const firebaseConfig = {
-		apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-		authDomain: "just-like-icancoachu.firebaseapp.com",
-		projectId: "just-like-icancoachu",
-		storageBucket: "just-like-icancoachu.appspot.com",
-		messagingSenderId: "415289518874",
-		appId: "1:415289518874:web:263bf9089765a2a312daa3"
-	};
 */
+// // iCanCoachU Example Firebase...
+// const firebaseConfig = {
+// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+// 	authDomain: "just-like-icancoachu.firebaseapp.com",
+// 	projectId: "just-like-icancoachu",
+// 	storageBucket: "just-like-icancoachu.appspot.com",
+// 	messagingSenderId: "415289518874",
+// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
+// };
 import { initializeApp } from 'firebase/app';
 import {
-	getFirestore, collection, addDoc
+	getFirestore, collection, addDoc,
+	serverTimestamp
 } from 'firebase/firestore';
 import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
@@ -33,6 +34,7 @@ const firebaseConfig = {
 };
 
 // Page Language
+
 let lang = document.querySelector('html').lang;
 // init services
 const app = initializeApp(firebaseConfig);
@@ -129,6 +131,7 @@ joinForm.addEventListener('submit', async (e) => {
 			cv_link: cvDownloadURL,
 			videoDownloadURL,
 			appear: false,
+			createdAt: serverTimestamp()
 		});
 		await addDoc(encolRef, {
 			name: joinForm.en_name.value,
@@ -173,6 +176,7 @@ joinForm.addEventListener('submit', async (e) => {
 			cv_link: cvDownloadURL,
 			videoDownloadURL,
 			appear: false,
+			createdAt: serverTimestamp()
 		}).then(() => {
 			document.querySelector('.steps').style.cssText = 'display: none';
 			document.querySelector('.fields').classList.add('done');
@@ -329,14 +333,12 @@ function addTag() {
 				tagSpan.remove();
 				removeSpanBtn.remove();
 
-				console.log("REMOVESPAN WORKS");
       });
 			
       tagSpan.appendChild(removeSpanBtn);
       tagsContainer.appendChild(tagSpan);
     });
 
-		console.log(coachTags);
     tagsInput.value = '';
   } else {
     tagsInput.classList.add('invalid');

@@ -1,3 +1,12 @@
+// // iCanCoachU Example Firebase...
+// const firebaseConfig = {
+// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+// 	authDomain: "just-like-icancoachu.firebaseapp.com",
+// 	projectId: "just-like-icancoachu",
+// 	storageBucket: "just-like-icancoachu.appspot.com",
+// 	messagingSenderId: "415289518874",
+// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
+// };
 import { initializeApp } from 'firebase/app'
 import {
   getFirestore, collection, getDocs,
@@ -16,6 +25,7 @@ const firebaseConfig = {
   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
   measurementId: "G-G8FTTQ0EB2"
 };
+
 
 // init firebase
 initializeApp(firebaseConfig)
@@ -41,7 +51,6 @@ getDocs(cCompleted)
     snapshot.docs.forEach(doc => {
       completedCoaches.push({ ...doc.data(), id: doc.id })
     })
-		console.log(completedCoaches);
 		completedContent.innerHTML = '';
 		fillInHTML(completedCoaches, true);
   })
@@ -56,7 +65,6 @@ getDocs(cPending)
     snapshot.docs.forEach(doc => {
       pendingCoaches.push({ ...doc.data(), id: doc.id });
     });
-		console.log(pendingCoaches);
 		pendingContent.innerHTML = '';
 		fillInHTML(pendingCoaches, false);
   })
@@ -113,11 +121,24 @@ getDocs(cPending)
 
 function fillInHTML(coaches, completed = true) {
 	coaches.forEach(coach => {
+		let date_string;
 		if (coach.birthdate) { // To GEt Coach's Age If he entered the birthdate
 			let birthdate = new Date(coach.birthdate);
 			let ageInMilliseconds = Date.now() - birthdate.getTime();
 			const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25); // Account for leap years
 			coach.age = Math.floor(ageInYears);
+		}
+		if(coach.createdAt) {
+			console.log(coach.createdAt);
+			// Replacing these values with your own timestamp values
+			let seconds = coach.createdAt.seconds;
+			let nanoseconds = coach.createdAt.nanoseconds;
+			// Converting the timestamp to milliseconds
+			let milliseconds = seconds * 1000 + nanoseconds / 1000000;
+			// Creating a new Date object with the milliseconds
+			let date = new Date(milliseconds);
+			// Formatting the date and time as a string
+			date_string = date.toLocaleString();
 		}
 		if(completed) {
 			completedContent.innerHTML += `
@@ -211,6 +232,7 @@ function fillInHTML(coaches, completed = true) {
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
 							<button class="not-approve-btn" data-id="${coach.id}">Don't approve</button>
+							${date_string ? `<span class="timestamp">${date_string}<span>`: ''}
 						</div>
 					</div>
 				</div>
@@ -306,6 +328,7 @@ function fillInHTML(coaches, completed = true) {
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
 							<button class="approve-btn" data-id="${coach.id}">Approve</button>
+							${date_string ? `<span class="timestamp">${date_string}<span>`: ''}
 						</div>
 					</div>
 				</div>
@@ -315,9 +338,9 @@ function fillInHTML(coaches, completed = true) {
 /* The Better Code */
 let coachesAnswers;
 // Add event listener to the parent element's click event
-pendingContent.addEventListener('click', (e) => {
-  // Check if the clicked element is a button inside a card
+window.addEventListener('click', (e) => {
 
+  // Check if the clicked element is a button inside a card
   if (e.target.matches('.member .modify-btn')) { // To Modify Coach's Infos.
 		e.target.parentElement.querySelectorAll('.coach-answer').forEach(p => {
 			p.classList.add('edit');
@@ -342,7 +365,7 @@ pendingContent.addEventListener('click', (e) => {
 	}
 
 	// Don't Approve Coach
-	if (e.target.matches('.member .do-not-approve')) {
+	if (e.target.matches('.member .not-approve-btn')) {
 		update(e.target, 'do-not-approve');
 	}
 
