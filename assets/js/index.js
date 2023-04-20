@@ -3,26 +3,26 @@ import {
 	getFirestore, collection, getDocs
 } from 'firebase/firestore/lite';
 
-// // Just Like iCanCoachU Firebase...
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-//   authDomain: "just-like-icancoachu.firebaseapp.com",
-//   projectId: "just-like-icancoachu",
-//   storageBucket: "just-like-icancoachu.appspot.com",
-//   messagingSenderId: "415289518874",
-//   appId: "1:415289518874:web:263bf9089765a2a312daa3"
-// };
-// iCanCoachU Firebase...
+// Just Like iCanCoachU Firebase...
 const firebaseConfig = {
-	apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-	authDomain: "elmawkaabeta.firebaseapp.com",
-	databaseURL: "https://elmawkaabeta.firebaseio.com",
-	projectId: "elmawkaabeta",
-	storageBucket: "elmawkaabeta.appspot.com",
-	messagingSenderId: "808588970288",
-	appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-	measurementId: "G-G8FTTQ0EB2"
+  apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+  authDomain: "just-like-icancoachu.firebaseapp.com",
+  projectId: "just-like-icancoachu",
+  storageBucket: "just-like-icancoachu.appspot.com",
+  messagingSenderId: "415289518874",
+  appId: "1:415289518874:web:263bf9089765a2a312daa3"
 };
+// // iCanCoachU Firebase...
+// const firebaseConfig = {
+// 	apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+// 	authDomain: "elmawkaabeta.firebaseapp.com",
+// 	databaseURL: "https://elmawkaabeta.firebaseio.com",
+// 	projectId: "elmawkaabeta",
+// 	storageBucket: "elmawkaabeta.appspot.com",
+// 	messagingSenderId: "808588970288",
+// 	appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+// 	measurementId: "G-G8FTTQ0EB2"
+// };
 
 initializeApp(firebaseConfig)
 const db = getFirestore()

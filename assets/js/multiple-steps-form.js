@@ -20,7 +20,15 @@ import {
 import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
 } from 'firebase/storage';
-
+// // iCanCoachU Example Firebase...
+// const firebaseConfig = {
+// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+// 	authDomain: "just-like-icancoachu.firebaseapp.com",
+// 	projectId: "just-like-icancoachu",
+// 	storageBucket: "just-like-icancoachu.appspot.com",
+// 	messagingSenderId: "415289518874",
+// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
+// };
 // iCanCoachU Firebase...
 const firebaseConfig = {
   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
@@ -105,8 +113,9 @@ joinForm.addEventListener('submit', async (e) => {
 			facebook_account: joinForm.fb_link.value,
 			youtube_account: joinForm.youtube_link.value,
 			tiktok_account: joinForm.tiktok_link.value,
-			industry: joinForm.industry.value,
-			jobTitle: joinForm.jobTitle.value,
+			industry: joinForm.industry.value.split(',')[1],
+			jobTitle: joinForm.jobTitle.value.split(',')[1],
+			category: joinForm.industry.value.split(',')[1] + ", " + joinForm.jobTitle.value.split(',')[1],
 			work_experience: joinForm.work_exp.value,
 			work_experience_years: joinForm.work_exp_years.value,
 			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' جنيه مصري',
@@ -125,7 +134,6 @@ joinForm.addEventListener('submit', async (e) => {
 			how_coach_arrived: joinForm.arrival_way.value,
 			coach_comment: joinForm.comment.value,
 			session_way: joinForm.session_way.value,
-			category: joinForm.industry.value + ", " + joinForm.jobTitle.value,
 			paymentLink: 'default',
 			image: imageURL,
 			cv_link: cvDownloadURL,
@@ -150,8 +158,9 @@ joinForm.addEventListener('submit', async (e) => {
 			facebook_account: joinForm.fb_link.value,
 			youtube_account: joinForm.youtube_link.value,
 			tiktok_account: joinForm.tiktok_link.value,
-			industry: joinForm.industry.value,
-			jobTitle: joinForm.jobTitle.value,
+			industry: joinForm.industry.value.split(',')[0],
+			jobTitle: joinForm.jobTitle.value.split(',')[0],
+			category: joinForm.industry.value.split(',')[0] + ", " + joinForm.jobTitle.value.split(',')[0],
 			work_experience: joinForm.work_exp.value,
 			work_experience_years: joinForm.work_exp_years.value,
 			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' EGP',
@@ -170,7 +179,6 @@ joinForm.addEventListener('submit', async (e) => {
 			how_coach_arrived: joinForm.arrival_way.value,
 			coach_comment: joinForm.comment.value,
 			session_way: joinForm.session_way.value,
-			category: joinForm.industry.value + ", " + joinForm.jobTitle.value,
 			paymentLink: 'default',
 			image: imageURL,
 			cv_link: cvDownloadURL,

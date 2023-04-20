@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ibrahimporoo/i-can-coach-you#readme",
   "dependencies": {
-    "firebase": "^9.15.0"
+    "firebase": "^9.20.0"
   },
   "devDependencies": {
     "webpack": "^5.75.0",

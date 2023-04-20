@@ -1,3 +1,10 @@
+
+import { initializeApp } from 'firebase/app'
+import {
+  getFirestore, collection, getDocs,
+	query, where,
+	updateDoc, doc
+} from 'firebase/firestore';
 // // iCanCoachU Example Firebase...
 // const firebaseConfig = {
 // 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
@@ -7,13 +14,6 @@
 // 	messagingSenderId: "415289518874",
 // 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
 // };
-import { initializeApp } from 'firebase/app'
-import {
-  getFirestore, collection, getDocs,
-	query, where,
-	updateDoc, doc
-} from 'firebase/firestore';
-
 // iCanCoachU Firebase...
 const firebaseConfig = {
   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
@@ -50,6 +50,7 @@ getDocs(cCompleted)
     snapshot.docs.forEach(doc => {
       completedCoaches.push({ ...doc.data(), id: doc.id })
     })
+		console.log("Completed, ", completedCoaches);
 		completedContent.innerHTML = '';
 		fillInHTML(completedCoaches, true);
   })
@@ -61,9 +62,10 @@ getDocs(cCompleted)
 let pendingCoaches = [];
 getDocs(cPending)
   .then(snapshot => {
-    snapshot.docs.forEach(doc => {
+		snapshot.docs.forEach(doc => {
       pendingCoaches.push({ ...doc.data(), id: doc.id });
     });
+		console.log("Pending, ", pendingCoaches);
 		pendingContent.innerHTML = '';
 		fillInHTML(pendingCoaches, false);
   })
@@ -144,7 +146,7 @@ function fillInHTML(coaches, completed = true) {
 				<div class="col-lg-4 col-md-6">
 					<div class="member">
 						<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
-						<div class="member-info">
+						<div class="member-info edits">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
 								<span>ًCoach image url:- <a href="${coach.image}" target="_blank">Download Image</a></span>
@@ -171,7 +173,7 @@ function fillInHTML(coaches, completed = true) {
 								``
 							}
 							<span>hourly rate:-</span>
-							<p class="coach-answer">${coach.pricing}</p>
+							${coach.pricing_in_egypt ? `<p class="coach-answer">${coach.pricing_in_egypt}</p>` : `<p class="coach-answer">${coach.pricing}</p>`}
 							<span>session way:-</span>
 							<p class="coach-answer">${coach.session_way}</p>
 							<span>job summary is:-</span>
@@ -233,7 +235,7 @@ function fillInHTML(coaches, completed = true) {
 							</div>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
-							<button class="not-approve-btn" data-id="${coach.id}">Don't approve</button>
+							<button class="not-approve-btn" data-id="${coach.id}">Approve</button>
 							${date_string ? `<span class="timestamp">${date_string}<span>`: ''}
 						</div>
 					</div>
@@ -243,7 +245,7 @@ function fillInHTML(coaches, completed = true) {
 				<div class="col-lg-4 col-md-6">
 					<div class="member">
 					<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
-						<div class="member-info">
+						<div class="member-info edits">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
 								<span>ًCoach image url:- <a href="${coach.image}" target="_blank">Download Image</a></span>
@@ -270,7 +272,7 @@ function fillInHTML(coaches, completed = true) {
 								``
 							}
 							<span>hourly rate:-</span>
-							<p class="coach-answer">${coach.pricing}</p>
+							${coach.pricing_in_egypt ? `<p class="coach-answer">${coach.pricing_in_egypt}</p>` : `<p class="coach-answer">${coach.pricing}</p>`}
 							<span>session way:-</span>
 							<p class="coach-answer">${coach.session_way}</p>
 							<span>job summary is:-</span>
@@ -332,7 +334,7 @@ function fillInHTML(coaches, completed = true) {
 							</div>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
-							<button class="approve-btn" data-id="${coach.id}">Approve</button>
+							<button class="not-approve-btn" data-id="${coach.id}">Don't approve</button>
 							${date_string ? `<span class="timestamp">${date_string}<span>`: ''}
 						</div>
 					</div>
@@ -348,6 +350,7 @@ window.addEventListener('click', (e) => {
   // Check if the clicked element is a button inside a card
   if (e.target.matches('.member .modify-btn')) { // To Modify Coach's Infos.
 		e.target.parentElement.querySelectorAll('.coach-answer').forEach(p => {
+			e.target.parentElement.classList.add("show");
 			p.classList.add('edit');
 			p.setAttribute('contenteditable', true);
 		});
@@ -355,6 +358,7 @@ window.addEventListener('click', (e) => {
 
 	if (e.target.matches('.member .save')) { // To Save Coach's Infos.
 		coachesAnswers = e.target.parentElement.querySelectorAll('.coach-answer');
+		e.target.parentElement.classList.remove("show");
 		// Save Changes to every coach's answer.
 		coachesAnswers.forEach(p => {
 			p.classList.remove('edit');
@@ -375,11 +379,22 @@ window.addEventListener('click', (e) => {
 	}
 
 });
- 
+
+// function updateSingle(id) {
+// 	const colRef = doc(db, 'coaches', 'languages', lang, id);
+// 	updateDoc(colRef, {
+// 		createdAt: serverTimestamp(),
+// 		age: 12
+// 	}).then(() => {
+// 		console.log("Updated");
+// 	})
+// }
+
 // Doc Updating.
 function update(member, status) {
 
 	let docRef = doc(db, 'coaches', 'languages', lang, member.dataset.id);
+
 	switch(status) {
 		case "save":
 			updateDoc(docRef, {
@@ -421,7 +436,7 @@ function update(member, status) {
 				cvDownloadURL: coachesAnswers[34].innerText,
 			})
 			.then(() => {
-				alert("Updated in Firebase too.")
+				alert("Updated in Firebase too.");
 			});
 			break;
 		case 'approve':
@@ -445,3 +460,85 @@ function update(member, status) {
 			break;
 	};
 };
+
+
+/*
+// Doc Updating.
+function update(member, status) {
+	// collection refs
+	const arColRef = collection(db, 'coaches', 'languages', 'ar');
+	const enColRef = collection(db, 'coaches', 'languages', 'en');
+	
+	// Queries Defining
+	let docRef, arQuery, enQuery;
+	// Queries Assigning
+	if(member.dataset.id) {
+		docRef = doc(db, 'coaches', 'languages', lang, member.dataset.id);
+		arQuery = query(arColRef, where("whats_number", "==", member.dataset.id));
+		enQuery = query(enColRef, where("whats_number", "==", member.dataset.id));
+	} else {
+		docRef = doc(db, 'coaches', 'languages', lang, member.dataset.createdAt);
+		arQuery = query(arColRef, where("createdAt", "==", member.dataset.createdAt));
+		enQuery = query(enColRef, where("createdAt", "==", member.dataset.createdAt));
+	}
+
+	switch(status) {
+		case "save":
+			enQuery.onSnapshot()
+				.then((enQuerySnapshot) => {
+					const batch = db.batch();
+					enQuerySnapshot.forEach((doc) => {
+						const docRef = doc.ref;
+						batch.update(docRef, updateFields);
+					});
+					return batch.commit();
+				})
+				.then(() => {
+					// Wait for the first batch commit to complete before moving on to the next one
+					return arQuery.get();
+				})
+				.then((arQuerySnapshot) => {
+					const batch = db.batch();
+					arQuerySnapshot.forEach((doc) => {
+						const docRef = doc.ref;
+						batch.update(docRef, updateFields);
+					});
+					return batch.commit();
+				})
+				.then(() => {
+					// Both batches have been committed successfully
+					alert('Updated in Firebase too.');
+				})
+				.catch((error) => {
+					console.error('Error updating document:', error);
+					alert('Error updating document. Please try again later.');
+				});
+			break;
+		case 'approve':
+			updateDoc(enQuery, {
+				appear: true
+			})
+			updateDoc(arQuery, {
+				appear: true
+			})
+			.then(() => {
+				alert("The Coach will Appear in the page.");
+			});
+			break;
+			case 'do-not-approve':
+				updateDoc(enQuery, {
+					appear: false
+				})
+				updateDoc(arQuery, {
+					appear: false
+				})
+				.then(() => {
+					alert("Coach as in progress status putting.");
+				});
+				break;
+		default:
+			alert("Invalid Status!!");
+			break;
+	};
+};
+*/ 
