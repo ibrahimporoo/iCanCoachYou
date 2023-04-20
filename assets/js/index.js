@@ -46,11 +46,11 @@ async function getData() {
 		})
 		coaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
 		// in the index 'top coaches' page
-		// if(coachesContent.classList.contains('top-coaches')) {
-		// 	// Adding Content of Data coming from Firebase to HTML
-		// 	coaches = coaches.filter(coach => coach.order <= 3);
-		// 	coaches = coaches.length > 3 ? coaches.slice(0, 3) : coaches;
-		// }
+		if(coachesContent.classList.contains('top-coaches')) {
+			// Adding Content of Data coming from Firebase to HTML
+			coaches = coaches.filter(coach => coach.order <= 3);
+			coaches = coaches.length > 3 ? coaches.slice(0, 3) : coaches;
+		}
 		coaches.map(coach => {
 			html += `
 			<div class="col-lg-4 col-md-6">
