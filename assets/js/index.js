@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import {
-	getFirestore, collection, getDocs
+	getFirestore, collection, getDocs,
+	query, where,
 } from 'firebase/firestore/lite';
 
 // // iCanCoachU Example Firebase...
@@ -29,6 +30,9 @@ const db = getFirestore()
 const lang = document.querySelector('html').lang; // get page's Lang to assign it to database
 const colRef = collection(db, 'coaches', 'languages', lang);
 
+// queries
+const qCompleted = query(colRef, where("appear", "==", true))
+
 // selecting the coaches Row in html file
 const coachesContent = document.getElementById('coaches-content');
 let coaches = []; // for fulling coaches in coaches page
@@ -38,7 +42,7 @@ coachesContent.innerHTML = ''; // empty coaches content before getting data
 
 async function getData() {
 	// Fetching 'Getting' Data
-	await getDocs(colRef)
+	await getDocs(qCompleted)
 	.then((snapshot) => {
 		// Check if we in the home page or top coaches page
 		snapshot.docs.forEach((doc) => {
