@@ -141,11 +141,12 @@ function fillInHTML(coaches, completed = true) {
 			// Formatting the date and time as a string
 			date_string = date.toLocaleString();
 		}
+		/* <div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div> */
 		if(completed) {
 			completedContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
 					<div class="member">
-						<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
 						<div class="member-info edits">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
@@ -235,7 +236,7 @@ function fillInHTML(coaches, completed = true) {
 							</div>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
-							<button class="not-approve-btn" data-id="${coach.id}">Approve</button>
+							<button class="not-approve-btn" data-id="${coach.id}">Don't Approve</button>
 							${date_string ? `<span class="timestamp">${date_string}<span>`: ''}
 						</div>
 					</div>
@@ -244,7 +245,7 @@ function fillInHTML(coaches, completed = true) {
 			pendingContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
 					<div class="member">
-					<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
 						<div class="member-info edits">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
@@ -334,7 +335,7 @@ function fillInHTML(coaches, completed = true) {
 							</div>
 							<i class="bi bi-gear-fill modify-btn"></i>
 							<i class="bi bi-check2-square save" data-id="${coach.id}"></i>
-							<button class="not-approve-btn" data-id="${coach.id}">Don't approve</button>
+							<button class="approve-btn" data-id="${coach.id}">approve</button>
 							${date_string ? `<span class="timestamp">${date_string}<span>`: ''}
 						</div>
 					</div>
