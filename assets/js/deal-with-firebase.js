@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app'
 import {
   getFirestore, collection, getDocs,
 	query, where,
-	updateDoc, doc
+	updateDoc, doc, deleteDoc
 } from 'firebase/firestore';
 // // iCanCoachU Example Firebase...
 // const firebaseConfig = {
@@ -244,8 +244,8 @@ function fillInHTML(coaches, completed = true) {
 			`} else {
 			pendingContent.innerHTML += `
 				<div class="col-lg-4 col-md-6">
-					<div class="member">
-					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
+					<div class="member position-relative">
+						<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
 						<div class="member-info edits">
 							<div class="">
 								<h5 class="text-center coach-answer">${coach.name}</h5>
@@ -338,6 +338,7 @@ function fillInHTML(coaches, completed = true) {
 							<button class="approve-btn" data-id="${coach.id}">approve</button>
 							${date_string ? `<span class="timestamp">${date_string}<span>`: ''}
 						</div>
+						<button class="delete-btn" data-id="${coach.id}">X</button>
 					</div>
 				</div>
 		`};
@@ -379,6 +380,11 @@ window.addEventListener('click', (e) => {
 		update(e.target, 'do-not-approve');
 	}
 
+	// Don't Approve Coach
+	if (e.target.matches('.delete-btn')) {
+		update(e.target, 'delete');
+	}
+
 });
 
 // function updateSingle(id) {
@@ -392,13 +398,13 @@ window.addEventListener('click', (e) => {
 // }
 
 // Doc Updating.
-function update(member, status) {
+async function update(member, status) {
 
 	let docRef = doc(db, 'coaches', 'languages', lang, member.dataset.id);
 
 	switch(status) {
 		case "save":
-			updateDoc(docRef, {
+			await updateDoc(docRef, {
 				name: coachesAnswers[0].innerText,
 				image: coachesAnswers[1].innerText,
 				work_experience: coachesAnswers[2].innerText,
@@ -441,20 +447,26 @@ function update(member, status) {
 			});
 			break;
 		case 'approve':
-			updateDoc(docRef, {
+			await updateDoc(docRef, {
 				appear: true
 			})
 			.then(() => {
 				alert("The Coach will Appear in the page.");
 			});
 			break;
-			case 'do-not-approve':
-				updateDoc(docRef, {
-					appear: false
-				})
+		case 'do-not-approve':
+			await updateDoc(docRef, {
+				appear: false
+			})
+			.then(() => {
+				alert("Coach as in progress status putting.");
+			});
+			break;
+		case 'delete':
+			await deleteDoc(docRef)
 				.then(() => {
-					alert("Coach as in progress status putting.");
-				});
+					alert("Deleted!!");
+				})
 				break;
 		default:
 			alert("Invalid Status!!");

@@ -588,7 +588,8 @@ span.coach-answer {
 	margin-inline: 10px;
 }
 .member .approve-btn,
-.member .not-approve-btn {
+.member .not-approve-btn,
+.delete-btn {
 	display: block;
 	padding: 6px 12px;
 	border-radius: 4px;
@@ -610,6 +611,14 @@ span.coach-answer {
 	transform: scale(1.05);
 	-moz-transform: scale(1.05);
 	-o-transform: scale(1.05);
+}
+.delete-btn {
+	background: red;
+	top: 0;
+	right: 10px;
+	position: absolute;
+	border-radius: 25px;
+	border: 2px solid white;
 }
 .member #tags-container {
 	display: flex;
@@ -639,5 +648,4 @@ span.coach-answer {
 	height: 100%;
 	object-fit: cover;
 }
-
 /* .member .coach-answer. */
