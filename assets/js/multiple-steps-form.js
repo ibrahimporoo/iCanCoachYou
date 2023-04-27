@@ -1,17 +1,3 @@
-/*
-	-----------------------
-	--- Start Firebase ----
-	-----------------------
-*/
-// // iCanCoachU Example Firebase...
-// const firebaseConfig = {
-// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-// 	authDomain: "just-like-icancoachu.firebaseapp.com",
-// 	projectId: "just-like-icancoachu",
-// 	storageBucket: "just-like-icancoachu.appspot.com",
-// 	messagingSenderId: "415289518874",
-// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
-// };
 import { initializeApp } from 'firebase/app';
 import {
 	getFirestore, collection, addDoc,
@@ -20,26 +6,26 @@ import {
 import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
 } from 'firebase/storage';
-// // iCanCoachU Example Firebase...
-// const firebaseConfig = {
-// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-// 	authDomain: "just-like-icancoachu.firebaseapp.com",
-// 	projectId: "just-like-icancoachu",
-// 	storageBucket: "just-like-icancoachu.appspot.com",
-// 	messagingSenderId: "415289518874",
-// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
-// };
-// iCanCoachU Firebase...
+// iCanCoachU Example Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-  authDomain: "elmawkaabeta.firebaseapp.com",
-  databaseURL: "https://elmawkaabeta.firebaseio.com",
-  projectId: "elmawkaabeta",
-  storageBucket: "elmawkaabeta.appspot.com",
-  messagingSenderId: "808588970288",
-  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-  measurementId: "G-G8FTTQ0EB2"
+	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+	authDomain: "just-like-icancoachu.firebaseapp.com",
+	projectId: "just-like-icancoachu",
+	storageBucket: "just-like-icancoachu.appspot.com",
+	messagingSenderId: "415289518874",
+	appId: "1:415289518874:web:263bf9089765a2a312daa3"
 };
+// // iCanCoachU Firebase...
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+//   authDomain: "elmawkaabeta.firebaseapp.com",
+//   databaseURL: "https://elmawkaabeta.firebaseio.com",
+//   projectId: "elmawkaabeta",
+//   storageBucket: "elmawkaabeta.appspot.com",
+//   messagingSenderId: "808588970288",
+//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+//   measurementId: "G-G8FTTQ0EB2"
+// };
 
 // Page Language
 
@@ -63,37 +49,32 @@ joinForm.addEventListener('submit', async (e) => {
 	if(isValid()) {
 		/* Show to user that the data are being send */
 		const imageFile = joinForm.image_file.files[0];
-		const imageFilePath = `images/${imageFile.name}`;
-		const imageStorageRef = ref(storage, imageFilePath);
-
-		const imageUploadTask = uploadBytesResumable(imageStorageRef, imageFile);
-
-		let videoDownloadURL = '';
-		let cvDownloadURL = '';
-
-		const videoFile = joinForm.video_file.files[0];
 		const cvFile = joinForm.cv_file.files[0];
 
-		if(videoFile) {
-			const videoFilePath = `videos/${videoFile.name}`;
-			const videoStorageRef = ref(storage, videoFilePath);
-			const videoUploadTask = uploadBytesResumable(videoStorageRef, videoFile);
-			await videoUploadTask;
-			videoDownloadURL = await getDownloadURL(videoStorageRef);
+		let imageURL = '';
+		let cvDownloadURL = '';
+
+		if (imageFile) {
+			const compressedImageFile = await compressFileIfNeeded(imageFile);
+			const imageFilePath = `images/${imageFile.name}`;
+			const imageStorageRef = ref(storage, imageFilePath);
+			const imageUploadTask = uploadBytesResumable(imageStorageRef, compressedImageFile);
+			await imageUploadTask;
+			imageURL = await getDownloadURL(imageStorageRef);
 		}
 
 		if (cvFile) {
+			const compressedCvFile = await compressFileIfNeeded(cvFile);
 			const cvFilePath = `cvs/${cvFile.name}`;
 			const cvStorageRef = ref(storage, cvFilePath);
-			const cvUploadTask = uploadBytesResumable(cvStorageRef, cvFile);
+			const cvUploadTask = uploadBytesResumable(cvStorageRef, compressedCvFile);
 			await cvUploadTask;
 			cvDownloadURL = await getDownloadURL(cvStorageRef);
 		}
 
+
 		reloadButton();
 
-		await imageUploadTask;
-		const imageURL = await getDownloadURL(imageStorageRef);
 		/* Some Form Values */
 		const countryVal = joinForm.country.value.charAt(0).toUpperCase() + joinForm.country.value.slice(1, ).toLowerCase();
 		await addDoc(arcolRef, {
@@ -135,9 +116,9 @@ joinForm.addEventListener('submit', async (e) => {
 			coach_comment: joinForm.comment.value,
 			session_way: joinForm.session_way.value,
 			paymentLink: 'default',
+			videoDownloadURL: joinForm.video_link.value,
 			image: imageURL,
 			cv_link: cvDownloadURL,
-			videoDownloadURL,
 			appear: false,
 			createdAt: serverTimestamp()
 		});
@@ -180,9 +161,9 @@ joinForm.addEventListener('submit', async (e) => {
 			coach_comment: joinForm.comment.value,
 			session_way: joinForm.session_way.value,
 			paymentLink: 'default',
+			videoDownloadURL: joinForm.video_link.value,
 			image: imageURL,
 			cv_link: cvDownloadURL,
-			videoDownloadURL,
 			appear: false,
 			createdAt: serverTimestamp()
 		}).then(() => {
@@ -302,7 +283,32 @@ function prevNext(n) {
 	}
 };
 
-/* Immediatly Handling with Inputs */ 
+/* Immediatly Handling with Inputs */
+/* Compressing Files if needed */
+async function compressFileIfNeeded(file) {
+	return new Promise(async (resolve, reject) => {
+		if (file.size > 1000000 && file.type.startsWith("image/")) {
+			const imageURL = URL.createObjectURL(file);
+			const image = new Image();
+			image.src = imageURL;
+			image.onload = () => {
+				const canvas = document.createElement('canvas');
+				const ctx = canvas.getContext('2d');
+				const maxSize = 1000;
+				const ratio = Math.min(maxSize / image.width, maxSize / image.height);
+				canvas.width = image.width * ratio;
+				canvas.height = image.height * ratio;
+				ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+				canvas.toBlob((compressedBlob) => {
+					resolve(new File([compressedBlob], file.name, { type: file.type }));
+				}, file.type, 0.7);
+			};
+		} else {
+			resolve(file);
+		}
+	});
+}
+/* Tags Input */
 const tagsContainer = document.getElementById('tags-container');
 const tagsInput = document.getElementById('tags-input');
 const tagsAddingBtn = document.getElementById('tags-add-btn');
@@ -403,7 +409,7 @@ function isValid() {
 	};
 	if(tapIndex == 1) {
 		let tapValidation = false;
-		let validOne, validTwo, validThree, validFour, validFive, validSix, validSeven, validEight, validNine, validTen, validTags;
+		let validOne, validThree, validFour, validFive, validSix, validSeven, validEight, validNine, validTen, validTags;
 		sweetAlertText.innerHTML = '';
 		// Picture File
 		let pictureFile = currentStep.querySelector('input[name="image_file"]');
@@ -420,20 +426,20 @@ function isValid() {
 			pictureFile.classList.remove('invalid');
 			console.log(pictureFile.files);
 		}
-		// Video File
-		let videoFile = currentStep.querySelector('input[name="video_file"]');
-		if(videoFile.length && !videoFile.files[0]) {
-			validTwo = false;
-			videoFile.classList.add('invalid');
-			if(lang == 'en') {
-				fillAlert('Attach 1 minute valid brief Video');
-			} else {
-				fillAlert('إرفاق مقطع فيديو موجز صالح لمدة دقيقة واحدة');
-			}
-		} else {
-			validTwo = true;
-			videoFile.classList.remove('invalid');
-		}
+		// // Video File
+		// let videoFile = currentStep.querySelector('input[name="video_file"]');
+		// if(videoFile.length && !videoFile.files[0]) {
+		// 	validTwo = false;
+		// 	videoFile.classList.add('invalid');
+		// 	if(lang == 'en') {
+		// 		fillAlert('Attach 1 minute valid brief Video');
+		// 	} else {
+		// 		fillAlert('إرفاق مقطع فيديو موجز صالح لمدة دقيقة واحدة');
+		// 	}
+		// } else {
+		// 	validTwo = true;
+		// 	videoFile.classList.remove('invalid');
+		// }
 		// cv File
 		let cvFile = currentStep.querySelector('input[name="cv_file"]');
 		if(cvFile.length && !cvFile.files[0]) {
@@ -579,7 +585,7 @@ function isValid() {
 			}
 		}
 		// Finally Validation
-		if(validTags && validOne && validTwo && validThree && validFour && validFive && validSix && validSeven && validEight && validNine && validTen) {
+		if(validTags && validOne && validThree && validFour && validFive && validSix && validSeven && validEight && validNine && validTen) {
 			tapValidation = true;
 		} else {
 			sweetAlert.classList.add('on');

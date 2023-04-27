@@ -10,8 +10,8 @@
   <meta content="coaching, career path, career plan" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/logo1.svg" rel="icon">
-  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <!-- <link href="assets/img/logo1.svg" rel="icon"> -->
+  <link rel="icon" type="image/x-icon" href="assets/img/logo1.svg">
 
   <!-- Google Fonts -->
   <link
@@ -38,6 +38,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Template Main CSS File -->
+  <link rel="preload" href="myfont.woff2" as="font" type="font/woff2" crossorigin>
   <link href="assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
@@ -291,87 +292,87 @@
                 <p>What is the industry you can give coaching in?</p>
                 <label>
                   <span>Sales & Marketing</span>
-                  <input type="radio" name="industry" value="Sales & Marketing" checked />
+                  <input type="radio" name="industry" value="Sales & Marketing, المبيعات والتسويق" checked />
                 </label>
                 <label>
                   <span>Business Management</span>
-                  <input type="radio" name="industry" value="Business Management" />
+                  <input type="radio" name="industry" value="Business Management, ادارة اعمال" />
                 </label>
                 <label>
                   <span>Soft Skills</span>
-                  <input type="radio" name="industry" value="Soft Skills" />
+                  <input type="radio" name="industry" value="Soft Skills, المهارات الشخصية" />
                 </label>
                 <label>
                   <span>Content & copy rights</span>
-                  <input type="radio" name="industry" value="Content & copy rights" />
+                  <input type="radio" name="industry" value="Content & copy rights, المحتوى وحقوق النسخ" />
                 </label>
                 <label>
                   <span>HR</span>
-                  <input type="radio" name="industry" value="HR" />
+                  <input type="radio" name="industry" value="HR, الموارد البشرية" />
                 </label>
                 <label>
                   <span>Media, Photography & Film</span>
-                  <input type="radio" name="industry" value="Media, Photography & Film" />
+                  <input type="radio" name="industry" value="Media, Photography & Film, وسائل الإعلام والتصوير والسينما" />
                 </label>
                 <label>
                   <span>Technology</span>
-                  <input type="radio" name="industry" value="Technology" />
+                  <input type="radio" name="industry" value="Technology, التكنولوجيا" />
                 </label>
                 <label>
                   <span>programming</span>
-                  <input type="radio" name="industry" value="programming" />
+                  <input type="radio" name="industry" value="programming, البرمجة" />
                 </label>
                 <label>
                   <span>Cyber security</span>
-                  <input type="radio" name="industry" value="Cyber security" />
+                  <input type="radio" name="industry" value="Cyber security, الأمن الإلكتروني" />
                 </label>
                 <label>
                   <span>operations</span>
-                  <input type="radio" name="industry" value="operations" />
+                  <input type="radio" name="industry" value="operations, العمليات" />
                 </label>
                 <label>
                   <span>Legal</span>
-                  <input type="radio" name="industry" value="Legal" />
+                  <input type="radio" name="industry" value="Legal, القانوني" />
                 </label>
                 <label>
                   <span>Finance</span>
-                  <input type="radio" name="industry" value="Finance" />
+                  <input type="radio" name="industry" value="Finance, التمويل" />
                 </label>
                 <label>
                   <span>Science & Productivity</span>
-                  <input type="radio" name="industry" value="Science & Productivity" />
+                  <input type="radio" name="industry" value="Science & Productivity, العلم والإنتاجية" />
                 </label>
                 <label>
                   <span>Languages</span>
-                  <input type="radio" name="industry" value="Languages" />
+                  <input type="radio" name="industry" value="Languages, اللغات" />
                 </label>
                 <label>
                   <span>Logistics</span>
-                  <input type="radio" name="industry" value="Logistics" />
+                  <input type="radio" name="industry" value="Logistics, الخدمات اللوجستية" />
                 </label>
                 <label>
                   <span>Arts & Design</span>
-                  <input type="radio" name="industry" value="Arts & Design" />
+                  <input type="radio" name="industry" value="Arts & Design, الفنون والتصميم" />
                 </label>
                 <label>
                   <span>Entrepreneurship</span>
-                  <input type="radio" name="industry" value="Entrepreneurship" />
+                  <input type="radio" name="industry" value="Entrepreneurship, ريادة الأعمال" />
                 </label>
                 <label>
                   <span>Parenting & Relationships</span>
-                  <input type="radio" name="industry" value="Parenting & Relationships" />
+                  <input type="radio" name="industry" value="Parenting & Relationships, الأبوة والأمومة والعلاقات" />
                 </label>
                 <label>
                   <span>Kids Development</span>
-                  <input type="radio" name="industry" value="Kids Development" />
+                  <input type="radio" name="industry" value="Kids Development, تنمية الاطفال" />
                 </label>
                 <label>
                   <span>Lifestyle & Health</span>
-                  <input type="radio" name="industry" value="Lifestyle & Health" />
+                  <input type="radio" name="industry" value="Lifestyle & Health, نمط الحياة والصحة" />
                 </label>
                 <label>
                   <span>Others</span>
-                  <input type="radio" name="industry" value="Others" />
+                  <input type="radio" name="industry" value="Others, أخري" />
                 </label>
               </div>
               <article class="d-flex flex-column gap-3" style="width: 100%;padding-top: 5px;max-width: 410px;">
@@ -433,31 +434,31 @@
                 <p>How would you describe your job title?</p>
                 <label>
                   <span>Indiviual Contributer - Self Employed</span>
-                  <input type="radio" checked name="jobTitle" value="Indiviual Contributer - Self Employed" />
+                  <input type="radio" checked name="jobTitle" value="Indiviual Contributer - Self Employed, مساهم فردي - صاحب عمل خاص" />
                 </label>
                 <label>
                   <span>Middle Manager</span>
-                  <input type="radio" name="jobTitle" value="Middle Manager" />
+                  <input type="radio" name="jobTitle" value="Middle Manager, مدير أوسط" />
                 </label>
                 <label>
                   <span>Senior Manager</span>
-                  <input type="radio" name="jobTitle" value="Senior Manager" />
+                  <input type="radio" name="jobTitle" value="Senior Manager, مدير مرشد" />
                 </label>
                 <label>
                   <span>Director/VP</span>
-                  <input type="radio" name="jobTitle" value="Director/VP" />
+                  <input type="radio" name="jobTitle" value="Director/VP, مخرج / نائب الرئيس" />
                 </label>
                 <label>
                   <span>C-suite/Executive</span>
-                  <input type="radio" name="jobTitle" value="C-suite/Executive" />
+                  <input type="radio" name="jobTitle" value="C-suite/Executive, الإدارة التنفيذية" />
                 </label>
                 <label>
                   <span>Founder/Business Owner</span>
-                  <input type="radio" name="jobTitle" value="Founder/Business Owner" />
+                  <input type="radio" name="jobTitle" value="Founder/Business Owner, مؤسس / صاحب عمل" />
                 </label>
                 <label>
                   <span>Others</span>
-                  <input type="radio" name="jobTitle" value="Others" />
+                  <input type="radio" name="jobTitle" value="Others, أخري" />
                 </label>
               </div>
               <div class="en-field">
@@ -468,6 +469,15 @@
                 </label>
               </div>
               <div class="en-field">
+                <p>Video Link:</p>
+                <span class="example">add 1 minute video brief.</span>
+                <span class="example">When user visit your profile this video will be appear to him.</span>
+                <span class="example">Any Video Link like <a href="https://youtu.be/VB4YfOm-3Zw"
+                  target="_blank">here</a></span>
+                  <input type="text" class="unrequired" id="video_link" name="video_link" placeholder="Any Social Media Link..." />
+              </div>
+              <!--
+              <div>
                 <p>Video file:</p>
                 <span class="example">add 1 minute video brief.</span>
                 <span class="example">When user visit your profile this video will be appear to him.</span>
@@ -475,6 +485,7 @@
                   <input type="file" class="unrequired" id="video_file" name="video_file" accept="video/*" />
                 </label>
               </div>
+              -->
               <div class="en-field">
                 <p>CV File:</p>
                 <span class="example">pdf or docx</span>

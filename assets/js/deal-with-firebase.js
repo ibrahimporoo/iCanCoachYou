@@ -5,26 +5,26 @@ import {
 	query, where,
 	updateDoc, doc, deleteDoc
 } from 'firebase/firestore';
-// // iCanCoachU Example Firebase...
-// const firebaseConfig = {
-// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-// 	authDomain: "just-like-icancoachu.firebaseapp.com",
-// 	projectId: "just-like-icancoachu",
-// 	storageBucket: "just-like-icancoachu.appspot.com",
-// 	messagingSenderId: "415289518874",
-// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
-// };
-// iCanCoachU Firebase...
+// iCanCoachU Example Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-  authDomain: "elmawkaabeta.firebaseapp.com",
-  databaseURL: "https://elmawkaabeta.firebaseio.com",
-  projectId: "elmawkaabeta",
-  storageBucket: "elmawkaabeta.appspot.com",
-  messagingSenderId: "808588970288",
-  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-  measurementId: "G-G8FTTQ0EB2"
+	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+	authDomain: "just-like-icancoachu.firebaseapp.com",
+	projectId: "just-like-icancoachu",
+	storageBucket: "just-like-icancoachu.appspot.com",
+	messagingSenderId: "415289518874",
+	appId: "1:415289518874:web:263bf9089765a2a312daa3"
 };
+// // iCanCoachU Firebase...
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+//   authDomain: "elmawkaabeta.firebaseapp.com",
+//   databaseURL: "https://elmawkaabeta.firebaseio.com",
+//   projectId: "elmawkaabeta",
+//   storageBucket: "elmawkaabeta.appspot.com",
+//   messagingSenderId: "808588970288",
+//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+//   measurementId: "G-G8FTTQ0EB2"
+// };
 
 // init firebase
 initializeApp(firebaseConfig)
@@ -173,8 +173,10 @@ function fillInHTML(coaches, completed = true) {
 								Array.isArray(coach.coach_working_life_tags)? `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>` :
 								``
 							}
-							<span>hourly rate:-</span>
+							<span>hourly rate in EG:-</span>
 							${coach.pricing_in_egypt ? `<p class="coach-answer">${coach.pricing_in_egypt}</p>` : `<p class="coach-answer">${coach.pricing}</p>`}
+							<span>hourly rate outside EG:-</span>
+							<p class="coach-answer">${coach.pricing_outside_egypt}</p>
 							<span>session way:-</span>
 							<p class="coach-answer">${coach.session_way}</p>
 							<span>job summary is:-</span>
@@ -225,7 +227,8 @@ function fillInHTML(coaches, completed = true) {
 							${coach.cv_link? `<span>Coach CV:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-envelope"></i></a></span>
 							<p class="coach-answer">${coach.cv_link}</p>` : `<span>Coach CV:- <a href="${coach.cvDownloadURL}" target="_blank"><i class="bi bi-envelope"></i></a></span>
 							<p class="coach-answer">${coach.cvDownloadURL}</p>`}
-							<span>Coach Video: <a href="${coach.videoDownloadURL}" target="_blank">Download Video</i></a></span>
+							<span>Coach's Video Link:- <a href="${coach.videoDownloadURL}" target="_blank">visit</a></span>
+							<p class="coach-answer">${coach.videoDownloadURL}</p>
 							<div class='video-tag'>
 								<video controls width="100%" height="fit-content">
 									<source src="${coach.videoDownloadURL}" type="video/mp4">
@@ -272,8 +275,10 @@ function fillInHTML(coaches, completed = true) {
 								Array.isArray(coach.coach_working_life_tags)? `<span>Coach Tags:-</span><div id="tags-container">${coach.coach_working_life_tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>` :
 								``
 							}
-							<span>hourly rate:-</span>
+							<span>hourly rate in EG:-</span>
 							${coach.pricing_in_egypt ? `<p class="coach-answer">${coach.pricing_in_egypt}</p>` : `<p class="coach-answer">${coach.pricing}</p>`}
+							<span>hourly rate outside EG:-</span>
+							<p class="coach-answer">${coach.pricing_outside_egypt}</p>
 							<span>session way:-</span>
 							<p class="coach-answer">${coach.session_way}</p>
 							<span>job summary is:-</span>
@@ -324,7 +329,8 @@ function fillInHTML(coaches, completed = true) {
 							${coach.cv_link? `<span>Coach CV:- <a href="${coach.cv_link}" target="_blank"><i class="bi bi-envelope"></i></a></span>
 							<p class="coach-answer">${coach.cv_link}</p>` : `<span>Coach CV:- <a href="${coach.cvDownloadURL}" target="_blank"><i class="bi bi-envelope"></i></a></span>
 							<p class="coach-answer">${coach.cvDownloadURL}</p>`}
-							<span>Coach Video: <a href="${coach.videoDownloadURL}" target="_blank">Download Video</i></a></span>
+							<span>Coach's Video Link:- <a href="${coach.videoDownloadURL}" target="_blank">visit</a></span>
+							<p class="coach-answer">${coach.videoDownloadURL}</p>
 							<div class='video-tag'>
 								<video controls width="100%" height="fit-content">
 									<source src="${coach.videoDownloadURL}" type="video/mp4">
@@ -415,32 +421,34 @@ async function update(member, status) {
 				category: coachesAnswers[7].innerText,
 				jobTitle: coachesAnswers[8].innerText,
 				industry: coachesAnswers[9].innerText,
-				pricing: coachesAnswers[10].innerText,
-				session_way: coachesAnswers[11].innerText,
-				summary: coachesAnswers[12].innerText,
-				country: coachesAnswers[13].innerText,
-				city: coachesAnswers[14].innerText,
-				coach_free_time: coachesAnswers[15].innerText,
-				how_coach_arrived: coachesAnswers[16].innerText,
-				coach_role_model: coachesAnswers[17].innerText,
-				coach_objective_life: coachesAnswers[18].innerText,
-				coach_bank_infos: coachesAnswers[19].innerText,
-				english_skills: coachesAnswers[20].innerText,
-				rating: coachesAnswers[21].innerText,
-				order: coachesAnswers[22].innerText,
-				paymentLink: coachesAnswers[23].innerText,
-				coach_calendly_link: coachesAnswers[24].innerText,
-				coach_tidycal_link: coachesAnswers[25].innerText,
+				pricing_in_egypt: coachesAnswers[10].innerText,
+				pricing_outside_egypt: coachesAnswers[11].innerText,
+				session_way: coachesAnswers[12].innerText,
+				summary: coachesAnswers[13].innerText,
+				country: coachesAnswers[14].innerText,
+				city: coachesAnswers[15].innerText,
+				coach_free_time: coachesAnswers[16].innerText,
+				how_coach_arrived: coachesAnswers[17].innerText,
+				coach_role_model: coachesAnswers[18].innerText,
+				coach_objective_life: coachesAnswers[19].innerText,
+				coach_bank_infos: coachesAnswers[20].innerText,
+				english_skills: coachesAnswers[21].innerText,
+				rating: coachesAnswers[22].innerText,
+				order: coachesAnswers[23].innerText,
+				paymentLink: coachesAnswers[24].innerText,
+				coach_calendly_link: coachesAnswers[25].innerText,
+				coach_tidycal_link: coachesAnswers[26].innerText,
 				/* Till Now Okay */
-				linkedIn_account: coachesAnswers[26].innerText,
-				instagram_account: coachesAnswers[27].innerText,
-				twitter_account: coachesAnswers[28].innerText,
-				facebook_account: coachesAnswers[29].innerText,
-				youtube_account: coachesAnswers[30].innerText,
-				tiktok_account: coachesAnswers[31].innerText,
-				whats_number: coachesAnswers[32].innerText,
-				mail: coachesAnswers[33].innerText,
-				cvDownloadURL: coachesAnswers[34].innerText,
+				linkedIn_account: coachesAnswers[27].innerText,
+				instagram_account: coachesAnswers[28].innerText,
+				twitter_account: coachesAnswers[29].innerText,
+				facebook_account: coachesAnswers[30].innerText,
+				youtube_account: coachesAnswers[31].innerText,
+				tiktok_account: coachesAnswers[32].innerText,
+				whats_number: coachesAnswers[33].innerText,
+				mail: coachesAnswers[34].innerText,
+				cvDownloadURL: coachesAnswers[35].innerText,
+				videoDownloadURL: coachesAnswers[36].innerText,
 			})
 			.then(() => {
 				alert("Updated in Firebase too.");

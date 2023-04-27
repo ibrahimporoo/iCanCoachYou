@@ -132,7 +132,15 @@ h6 {
 	font-family: "Poppins-ExtraBold";
 	src: url(/assets/fonts/Poppins-ExtraBold.ttf) format("truetype");
 	font-weight: bold;
+	font-display: swap;
 }
+/*
+@font-face {
+  font-family: MyFont;
+  src: url(myfont.woff2) format('woff2');
+  font-display: swap;
+}
+*/
 .poppins-font {
 	font-family: "Poppins", sans-serif;
 }
@@ -1055,6 +1063,10 @@ button {
 	-o-transition: 0.3s;
 	transition: 0.3s;
 	padding-left: 10px;
+}
+.header-social-links.profile a {
+	color: #4b97d2;
+	font-size: 18px;
 }
 
 .header-social-links a:hover {
@@ -3145,12 +3157,13 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-	padding: 90px 0 20px;
+	padding: 90px 0 220px;
 	background: #001d3d;
 	min-height: 40px;
 	/* padding-top: 77px; */
 	background-image: url(../img/home-img.png);
 	background-size: cover;
+	overflow: visible;
 }
 
 .breadcrumbs h2 {
@@ -3181,6 +3194,88 @@ section {
 	padding-right: 10px;
 	color: #4c5c63;
 	content: "/";
+}
+
+.back {
+	margin-block-start: 150px;
+	padding: 20px 0;
+}
+
+.back a {
+	/* background: rebeccapurple; */
+	background-color: #009cea;
+	padding: 8px;
+	width: fit-content;
+	color: white;
+	font-weight: 500;
+	border-radius: 4px;
+}
+
+.coache-profile .container {
+	background-color: #009cea;
+	padding: 50px;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	height: 30vh;
+}
+
+.coache-profile .img-holder {
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	overflow: hidden;
+	top: calc(100% - 125px);
+	left: 10%;
+	border: 2px solid #EEE;
+	margin-right: 20px;
+	position: relative;
+	left: 0;
+	bottom: -40px;
+}
+
+.coache-profile .img-holder img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.coache-profile .coache-info {
+	color: white;
+	font-weight: bold;
+	letter-spacing: -2px;
+
+}
+.coache-profile .coache-info h3 {
+	letter-spacing: 0;
+	font-size: 20px;
+}
+.coache-profile .coache-info a {
+	box-shadow: 0 2px 8px 0 rgba(185,200,217,.5);
+	color: #74747e;
+	background-color: #fff;
+	width: 33px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	font-size: 18px;
+	transition: 0.1s;
+	-webkit-transition: 0.1s;
+	-moz-transition: 0.1s;
+	-ms-transition: 0.1s;
+	-o-transition: 0.1s;
+}
+.coache-profile .coache-info a:hover {
+	transition: 0.3s;
+	filter: brightness(85%);
+	-webkit-filter: brightness(85%);
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
 }
 
 /*--------------------------------------------------------------

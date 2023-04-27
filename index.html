@@ -10,7 +10,8 @@
   <meta content="coaching, career path, career plan" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/logo1.svg" rel="icon">
+  <!-- <link href="assets/img/logo1.svg" rel="icon"> -->
+  <link rel="icon" type="image/x-icon" href="assets/img/logo1.svg">
 
   <!-- Google Fonts -->
   <link
@@ -38,6 +39,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Template Main CSS File -->
+  <link rel="preload" href="myfont.woff2" as="font" type="font/woff2" crossorigin>
   <link href="assets/css/style.css" rel="stylesheet">
 
   <!-- Google Tag Manager -->
@@ -467,6 +469,15 @@
                 </label>
               </div>
               <div>
+                <p>Video Link:</p>
+                <span class="example">add 1 minute video brief.</span>
+                <span class="example">When user visit your profile this video will be appear to him.</span>
+                <span class="example">Any Video Link like <a href="https://youtu.be/VB4YfOm-3Zw"
+                  target="_blank">here</a></span>
+                <input type="text" class="unrequired" id="video_link" name="video_link" placeholder="Any Social Media Link..." />
+              </div>
+              <!--
+              <div>
                 <p>Video file:</p>
                 <span class="example">add 1 minute video brief.</span>
                 <span class="example">When user visit your profile this video will be appear to him.</span>
@@ -474,6 +485,7 @@
                   <input type="file" class="unrequired" id="video_file" name="video_file" accept="video/*" />
                 </label>
               </div>
+              -->
               <div>
                 <p>CV File:</p>
                 <span class="example">pdf or docx</span>
