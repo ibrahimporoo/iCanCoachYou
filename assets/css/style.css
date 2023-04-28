@@ -3197,14 +3197,13 @@ section {
 }
 
 .back {
-	margin-block-start: 150px;
+	margin-block-start: 120px;
 	padding: 20px 0;
 }
 
 .back a {
-	/* background: rebeccapurple; */
 	background-color: #009cea;
-	padding: 8px;
+	padding: 5px 14px;
 	width: fit-content;
 	color: white;
 	font-weight: 500;
@@ -3213,13 +3212,14 @@ section {
 
 .coache-profile .container {
 	background-color: #009cea;
-	padding: 50px;
+	/* padding: 50px; */
+	padding: 50px 50px 0px;
 	border-radius: 6px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	-ms-border-radius: 6px;
 	-o-border-radius: 6px;
-	height: 30vh;
+	/* height: 30vh; */
 }
 
 .coache-profile .img-holder {
@@ -3245,29 +3245,41 @@ section {
 	color: white;
 	font-weight: bold;
 	letter-spacing: -2px;
-
 }
+
+.coache-profile .coache-info h1 {
+	font-weight: bold;
+	font-size: 36px;
+}
+
 .coache-profile .coache-info h3 {
 	letter-spacing: 0;
-	font-size: 20px;
+	font-size: 18px;
+	margin-bottom: 10px;
 }
+
 .coache-profile .coache-info a {
 	box-shadow: 0 2px 8px 0 rgba(185,200,217,.5);
 	color: #74747e;
 	background-color: #fff;
-	width: 33px;
+	width: 35px;
 	height: 35px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	font-size: 18px;
+	font-size: 17px;
 	transition: 0.1s;
 	-webkit-transition: 0.1s;
 	-moz-transition: 0.1s;
 	-ms-transition: 0.1s;
 	-o-transition: 0.1s;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
 }
+
 .coache-profile .coache-info a:hover {
 	transition: 0.3s;
 	filter: brightness(85%);
@@ -3276,6 +3288,108 @@ section {
 	-moz-transition: 0.3s;
 	-ms-transition: 0.3s;
 	-o-transition: 0.3s;
+}
+
+.coache-profile .coache-tags {
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 20px 5px;
+	letter-spacing: 0;
+	flex-wrap: wrap;
+	max-width: 840px;
+}
+
+.coache-profile .coache-tags span {
+	font-weight: bold;
+	padding: 8px 12px;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	-ms-border-radius: 12px;
+	-o-border-radius: 12px;
+	border: 2px solid #eeeeee4a;
+	font-size: 12px;
+}
+
+.about-coache {
+	padding-top: 60px;
+}
+
+.about-coache span {
+	color: #009cea;
+	font-size: 20px;
+	margin-bottom: 30px;
+	display: block;
+}
+
+.about-coache p {
+
+}
+@media (max-width: 992px) {
+	.coache-profile .img-holder {
+		width: 180px;
+    height: 180px;
+    bottom: -150px;
+	}
+	.coache-profile .coache-tags {
+    max-width: 400px;
+	}
+}
+
+@media (max-width: 768px) {
+	.coache-profile {
+		padding: 0 10px;
+	}
+	.back {
+    padding: 20px 10px;
+	}
+	.coache-profile .coache-info h1 {
+    font-size: 27px;
+    letter-spacing: 1px;
+	}
+	.coache-profile .coache-info h3 {
+    font-size: 13px;
+	}
+	.coache-profile .coache-info a {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+	}
+	.coache-profile .coache-tags span {
+    padding: 5px 8px;
+    /* font-size: 9px; */
+	}
+	.coache-profile .container {
+    padding: 50px 50px 120px;
+	}
+	.coache-profile .img-holder {
+    width: 220px;
+    height: 220px;
+    left: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+	}
+}
+
+@media (max-width: 400px) {
+	.coache-profile .coache-info h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+	}
+	.coache-profile .img-holder {
+    width: 160px;
+    height: 160px;
+		bottom: -90px;
+	}
+}
+
+@media (max-width: 320px) {
+	.coache-profile .container {
+		padding: 20px 20px 120px;
+	}
 }
 
 /*--------------------------------------------------------------

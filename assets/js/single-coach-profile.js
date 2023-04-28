@@ -27,15 +27,65 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 async function fetchSingleCoach() {
-	const coachContainer = document.getElementById('coach-container');
-	const profileImg = document.querySelector('.profile-img');
-	const profileVideo = document.querySelector('.video-tag');
-	const bookBtn = document.querySelector('.book-btn');
+	/* Selecting Elements */
+	const coachImage = document.getElementById("coach-image");
+	const coachName = document.getElementById("coach-name");
+	const coachJobTitle = document.getElementById("coach-job-title");
+	const coachSmIcons = document.getElementById("coach-sm-icons");
+	const coachTags = document.querySelector(".coache-tags");
+	const coachSummary = document.getElementById("coach-summary");
+	/* Getting The Choosed Coach */
 	const documentId = sessionStorage.getItem('selectedCoach');
 	const documentLang = sessionStorage.getItem('lang');
 	const docRef = doc(db, 'coaches', 'languages', documentLang, documentId);
 	const docSnap = await getDoc(docRef);
 	const coach = docSnap.data();
+	//	Coach Image
+	let theImage = document.createElement('img');
+	theImage.src = coach.image;
+	theImage.alt = coach.name;
+	theImage.setAttribute("target", "_blank");
+	coachImage.innerHTML = '';
+	coachImage.appendChild(theImage);
+	//	Coach Name
+	coachName.innerText = coach.name;
+	//	Coach job title
+	coachJobTitle.innerText = coach.jobTitle;
+	//	Coach SM Icons
+	coachSmIcons.innerHTML = `
+		${
+			/^(https?:\/\/)?(www\.)?linkedin.com\/(company\/[a-zA-Z0-9_\-]+|in\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.SM_account) ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`
+		}
+		${
+			/^(https?:\/\/)?(www\.)?instagram.com\/[a-zA-Z0-9_\-]+\/?$/.test(coach.instagram_account) ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``
+		}
+		${
+			/^(https?:\/\/)?(www\.)?twitter.com\/[a-zA-Z0-9_]{1,15}\/?$/.test(coach.twitter_account) ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``
+		}
+		${
+			/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/.test(coach.facebook_account) ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``
+		}
+		${
+			/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``
+		}
+		${
+			/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``
+		}
+	`
+	// Coach Tags
+	coachTags.innerHTML = `
+		${
+			Array.isArray(coach.coach_working_life_tags)
+				? coach.coach_working_life_tags
+						.join(",")
+						.split(",")
+						.map((tag) => `${tag.trim() != ''? `<span>${tag}</span>`: ``}`)
+						.join("")
+				: ""
+		}
+	`;
+	coachSummary.innerText = coach.summary;
+	/*
 	coachContainer.innerHTML = `
 		<div class="portfolio-info" id=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>
 			<h3>${coach.name}</h3>
@@ -98,6 +148,7 @@ async function fetchSingleCoach() {
 		}
 	`;
 	bookBtn.innerHTML = `<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>`
+	*/
 }
 
 fetchSingleCoach();
