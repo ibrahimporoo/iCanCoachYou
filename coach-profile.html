@@ -184,10 +184,8 @@
     <div class="coache-profile">
       <div class="container d-flex gap-2 position-relative">
         <div class="img-holder" id="coach-image">
-          <!-- 
-            <img class="" src="http://drive.google.com/uc?export=view&amp;id=1xO7xDFaPNwQrJZxuNGSGOOwMeF9hJjyE"
-            alt="Mohamed Abdelsattar" />
-          -->
+          <!-- <img class="" src="http://drive.google.com/uc?export=view&amp;id=1xO7xDFaPNwQrJZxuNGSGOOwMeF9hJjyE"
+          alt="Mohamed Abdelsattar" /> -->
         </div>
         <div class="coache-info">
           <h1 class="m-0" id="coach-name">
@@ -196,15 +194,45 @@
           <h3 class=""  id="coach-job-title">
             <!-- Front End Developer -->
           </h3>
-          <div class="align-items-center d-flex gap-2 social w-100" id="coach-sm-icons">
-            <!--
-              <a title="visit" href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-              <a title="visit" href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>
-              <a title="visit" href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>
-              <a title="visit" href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>
-              <a title="visit" href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>
-              <a title="visit" href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>
-            -->
+          <div class="d-flex align-items-center justify-content-sm-between flex-sm-row flex-column gap-sm-0 gap-3">
+            <div class="align-items-center d-flex gap-2 social" id="coach-sm-icons">
+              
+              <!--
+                <a title="visit" href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a title="visit" href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a title="visit" href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>
+                <a title="visit" href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a title="visit" href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>
+                <a title="visit" href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>
+              -->
+  
+            </div>
+            <div class="schedule">
+              <!--
+                <a href="${coach.coach_calendly_link}" target="_blank" class="position-relative">
+                  <i class="bi bi-calendar2"></i>Book and scheduling meeting <i class="position-absolute link-arrow bi bi-box-arrow-up-right"></i>
+                </a>
+              -->
+            </div>
+          </div>
+          <div class="coache-details d-flex gap-5 mb-3 mt-3">
+            <div id="coach-price" class="d-flex align-items-center gap-2">
+              <!--
+                <i class="bi bi-cash-stack"></i>
+                2000 EGP
+                <span>
+                  per session
+                </span>
+              -->
+            </div>
+            <div class="location">
+              <span id="coach-location" class="d-flex align-items-center gap-2"">
+                <!--
+                  <i class="bi bi-geo-alt"></i>
+                  Egypt / Mansoura 
+                -->
+              </span>
+            </div>
           </div>
           <div class="coache-tags">
             <!--
@@ -215,23 +243,67 @@
               <span>Communication Skills</span>
               <span>Any Skill</span>
               <span>Coaching</span>
+              <span>Programming</span>
+              <span>Tech</span>
+              <span>Languages</span>
+              <span>Soft Skills</span>
+              <span>Communication Skills</span>
+              <span>Any Skill</span>
+              <span>Coaching</span>
             -->
           </div>
         </div>
+        
       </div>
     </div>
 
     <section class="about-coache">
-      <div class="container pt-5">
+      <div class="container pt-5" id="about-container">
+      <!-- 
         <span>About Me</span>
-        <p id="coach-summary">
-          <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid velit adipisci sapiente repellat saepe distinctio id facere accusantium animi consequuntur?
+        <div id="coach-summary">
 
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique optio doloribus, et impedit ea tempore repellendus voluptatum odio deleniti voluptas.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid velit adipisci sapiente repellat saepe distinctio id facere accusantium animi consequuntur?
+            <p class="mb-2"><strong>I have Studied at Cairo University in the field of Computer Engineering and my graduation year is 2024.</strong></p>
+            
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid velit adipisci sapiente repellat saepe distinctio id facere accusantium animi consequuntur?
+            
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique optio doloribus, et impedit ea tempore repellendus voluptatum odio deleniti voluptas.
 
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique optio doloribus, et impedit ea tempore repellendus voluptatum odio deleniti voluptas. -->
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid velit adipisci sapiente repellat saepe distinctio id facere accusantium animi consequuntur?
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique optio doloribus, et impedit ea tempore repellendus voluptatum odio deleniti voluptas.
+
+            <p class="mb-2">I am giving coaching in <strong>Sales & Marketing</strong>.</p>
+
+            <p class="mb-1 mt-1"><strong>So my role model is Muhammad, the Messenger of God.</strong></p>
+            <p class="mb-2"><strong>My Goal is "Teaching much people and being a helpful person."</strong></p>
+
+        </div>
+
+        <span>Work Experience</span>
+
+        <div id="work-exp">
+
+          <p>Yes, I worked a lot in much companies like Vf, Amazon, We.</p>
+
+        </div>
+
+        <span>My Sessions Way</span>
+        <p>
+          Currently I can teach you online.
         </p>
+
+
+        <div class="achievements-cards p-4 mt-5">
+          <div class="box d-flex align-items-center gap-1">
+            <img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" />
+            <div class="text d-flex flex-column gap-1 p-2">
+              <h3>17</h3>
+              <p>Years of Experience</p>
+            </div>
+          </div>
+        </div>
+      -->
       </div>
     </section>
 

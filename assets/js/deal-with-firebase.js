@@ -89,6 +89,7 @@ getDocs(cPending)
 12coach_tidycal_link
 13coach_working_life_tags
 14college
+15 - study_field
 15country
 16cvDownloadURL
 17english_skills
@@ -156,6 +157,8 @@ function fillInHTML(coaches, completed = true) {
 								<p class="coach-answer">${coach.work_experience}</p>
 								<span>ًUniversity:-</span>
 								<p class="coach-answer">${coach.college}</p>
+								<span>ًField of Study:-</span>
+								<p class="coach-answer">${coach.study_field}</p>
 								<span>Graduation year:-</span>
 								<p class="coach-answer">${coach.graduation_year}</p>
 								<span>age:-</span>
@@ -258,6 +261,8 @@ function fillInHTML(coaches, completed = true) {
 								<p class="coach-answer">${coach.work_experience}</p>
 								<span>ًUniversity:-</span>
 								<p class="coach-answer">${coach.college}</p>
+								<span>ًField of Study:-</span>
+								<p class="coach-answer">${coach.study_field}</p>
 								<span>Graduation year:-</span>
 								<p class="coach-answer">${coach.graduation_year}</p>
 								<span>age:-</span>
@@ -415,40 +420,41 @@ async function update(member, status) {
 				image: coachesAnswers[1].innerText,
 				work_experience: coachesAnswers[2].innerText,
 				college: coachesAnswers[3].innerText,
-				graduation_year: coachesAnswers[4].innerText,
-				age: coachesAnswers[5].innerText,
-				gender: coachesAnswers[6].innerText,
-				category: coachesAnswers[7].innerText,
-				jobTitle: coachesAnswers[8].innerText,
-				industry: coachesAnswers[9].innerText,
-				pricing_in_egypt: coachesAnswers[10].innerText,
-				pricing_outside_egypt: coachesAnswers[11].innerText,
-				session_way: coachesAnswers[12].innerText,
-				summary: coachesAnswers[13].innerText,
-				country: coachesAnswers[14].innerText,
-				city: coachesAnswers[15].innerText,
-				coach_free_time: coachesAnswers[16].innerText,
-				how_coach_arrived: coachesAnswers[17].innerText,
-				coach_role_model: coachesAnswers[18].innerText,
-				coach_objective_life: coachesAnswers[19].innerText,
-				coach_bank_infos: coachesAnswers[20].innerText,
-				english_skills: coachesAnswers[21].innerText,
-				rating: coachesAnswers[22].innerText,
-				order: coachesAnswers[23].innerText,
-				paymentLink: coachesAnswers[24].innerText,
-				coach_calendly_link: coachesAnswers[25].innerText,
-				coach_tidycal_link: coachesAnswers[26].innerText,
+				study_field: coachesAnswers[4].innerText,
+				graduation_year: coachesAnswers[5].innerText,
+				age: coachesAnswers[6].innerText,
+				gender: coachesAnswers[7].innerText,
+				category: coachesAnswers[8].innerText,
+				jobTitle: coachesAnswers[9].innerText,
+				industry: coachesAnswers[10].innerText,
+				pricing_in_egypt: coachesAnswers[11].innerText,
+				pricing_outside_egypt: coachesAnswers[12].innerText,
+				session_way: coachesAnswers[13].innerText,
+				summary: coachesAnswers[14].innerText,
+				country: coachesAnswers[15].innerText,
+				city: coachesAnswers[16].innerText,
+				coach_free_time: coachesAnswers[17].innerText,
+				how_coach_arrived: coachesAnswers[18].innerText,
+				coach_role_model: coachesAnswers[19].innerText,
+				coach_objective_life: coachesAnswers[20].innerText,
+				coach_bank_infos: coachesAnswers[21].innerText,
+				english_skills: coachesAnswers[22].innerText,
+				rating: coachesAnswers[23].innerText,
+				order: coachesAnswers[24].innerText,
+				paymentLink: coachesAnswers[25].innerText,
+				coach_calendly_link: coachesAnswers[26].innerText,
+				coach_tidycal_link: coachesAnswers[27].innerText,
 				/* Till Now Okay */
-				linkedIn_account: coachesAnswers[27].innerText,
-				instagram_account: coachesAnswers[28].innerText,
-				twitter_account: coachesAnswers[29].innerText,
-				facebook_account: coachesAnswers[30].innerText,
-				youtube_account: coachesAnswers[31].innerText,
-				tiktok_account: coachesAnswers[32].innerText,
-				whats_number: coachesAnswers[33].innerText,
-				mail: coachesAnswers[34].innerText,
-				cvDownloadURL: coachesAnswers[35].innerText,
-				videoDownloadURL: coachesAnswers[36].innerText,
+				linkedIn_account: coachesAnswers[28].innerText,
+				instagram_account: coachesAnswers[29].innerText,
+				twitter_account: coachesAnswers[30].innerText,
+				facebook_account: coachesAnswers[31].innerText,
+				youtube_account: coachesAnswers[32].innerText,
+				tiktok_account: coachesAnswers[33].innerText,
+				whats_number: coachesAnswers[34].innerText,
+				mail: coachesAnswers[35].innerText,
+				cvDownloadURL: coachesAnswers[36].innerText,
+				videoDownloadURL: coachesAnswers[37].innerText,
 			})
 			.then(() => {
 				alert("Updated in Firebase too.");

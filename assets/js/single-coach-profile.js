@@ -33,7 +33,11 @@ async function fetchSingleCoach() {
 	const coachJobTitle = document.getElementById("coach-job-title");
 	const coachSmIcons = document.getElementById("coach-sm-icons");
 	const coachTags = document.querySelector(".coache-tags");
-	const coachSummary = document.getElementById("coach-summary");
+	const coachSchedule = document.querySelector(".schedule");
+	const aboutContainer = document.getElementById("about-container");
+	const coachLocation = document.getElementById("coach-location");
+	const coachPrice = document.getElementById("coach-price");
+
 	/* Getting The Choosed Coach */
 	const documentId = sessionStorage.getItem('selectedCoach');
 	const documentLang = sessionStorage.getItem('lang');
@@ -51,6 +55,14 @@ async function fetchSingleCoach() {
 	coachName.innerText = coach.name;
 	//	Coach job title
 	coachJobTitle.innerText = coach.jobTitle;
+	//	Coach Scheduling System
+	let theScheduleTag = document.createElement('a');
+	theScheduleTag.href = /https:\/\/calendly\.com\/[a-zA-Z0-9_-]+(?:\?.*)?/.test(coach.coach_calendly_link) ?
+	coach.coach_calendly_link : /https:\/\/tidycal\.com\/[a-zA-Z0-9_-]+(?:\/[a-zA-Z0-9_-]+)*/.test(coach.coach_tidycal_link) ?
+	coach.coach_tidycal_link : ``;
+	theScheduleTag.setAttribute('target', '_blank');
+	theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and scheduling meeting`
+	coachSchedule.appendChild(theScheduleTag);
 	//	Coach SM Icons
 	coachSmIcons.innerHTML = `
 		${
@@ -71,7 +83,7 @@ async function fetchSingleCoach() {
 		${
 			/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``
 		}
-	`
+	`;
 	// Coach Tags
 	coachTags.innerHTML = `
 		${
@@ -84,7 +96,63 @@ async function fetchSingleCoach() {
 				: ""
 		}
 	`;
-	coachSummary.innerText = coach.summary;
+	// About Coach
+	aboutContainer.innerHTML = `
+	<span>About Me</span>
+	<div>
+			${
+				coach.college && coach.study_field && coach.graduation_year ? 
+				`<p class="mb-2"><strong>I have Studied at ${coach.college} in the field of ${coach.study_field} and my graduation year is ${coach.graduation_year}.</strong></p>` : ``
+			}
+			<p>
+				${coach.summary}
+			</p>
+			<p class="mb-2">I am giving coaching in <strong>${coach.industry}</strong>.</p>
+			${coach.coach_role_model ? `<p class="mb-1 mt-1"><strong>${coach.coach_role_model}.</strong></p>` : ``}
+			${coach.coach_objective_life? `<p class="mb-2"><strong>My Goal is "${coach.coach_objective_life}"</strong></p>` : ``}
+	</div>
+
+	${
+		coach.work_experience_years > 0?
+		`
+		<span>Work Experience</span>
+
+		<div id="work-exp">
+	
+			<p>${coach.work_experience}</p>
+	
+		</div>
+		` : ``
+	}
+
+	<span>My Sessions Way</span>
+	<p>
+		Currently I can teach you ${coach.session_way == 'both'? 'Online or Offline according to your needs.' : coach.session_way}
+	</p>
+
+	${
+		coach.work_experience_years > 0?
+		`
+		<div class="achievements-cards p-4 mt-5">
+			<div class="box d-flex align-items-center gap-1">
+				<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" />
+				<div class="text d-flex flex-column gap-1 p-2">
+					<h3>${coach.work_experience_years}</h3>
+					<p>Years of Experience</p>
+				</div>
+			</div>
+		</div>
+		` : ``
+	}
+	
+	`;
+	// Coach Location
+	coachLocation.innerHTML = `<i class="bi bi-geo-alt"></i> ${coach.country} / ${coach.city}`;
+	// Coach Price
+	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack"></i> ${coach.pricing_in_egypt} <span>per session</span>` :
+	`<i class="bi bi-cash-stack"></i> ${coach.pricing} <span>per session</span>`;
+	;
+	// coachSummary.innerText = coach.summary;
 	/*
 	coachContainer.innerHTML = `
 		<div class="portfolio-info" id=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>
