@@ -55,14 +55,20 @@ async function fetchSingleCoach() {
 	coachName.innerText = coach.name;
 	//	Coach job title
 	coachJobTitle.innerText = coach.jobTitle;
+	
+	// 
+	// theScheduleTag.href = /https:\/\/calendly\.com\/[a-zA-Z0-9_-]+(?:\?.*)?/.test(coach.coach_calendly_link) ?
+	// coach.coach_calendly_link : /https:\/\/tidycal\.com\/[a-zA-Z0-9_-]+(?:\/[a-zA-Z0-9_-]+)*/.test(coach.coach_tidycal_link) ?
+	// coach.coach_tidycal_link : ``;
+	//
 	//	Coach Scheduling System
+	if(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(coach.paymentLink)) {
 	let theScheduleTag = document.createElement('a');
-	theScheduleTag.href = /https:\/\/calendly\.com\/[a-zA-Z0-9_-]+(?:\?.*)?/.test(coach.coach_calendly_link) ?
-	coach.coach_calendly_link : /https:\/\/tidycal\.com\/[a-zA-Z0-9_-]+(?:\/[a-zA-Z0-9_-]+)*/.test(coach.coach_tidycal_link) ?
-	coach.coach_tidycal_link : ``;
+	theScheduleTag.href = coach.paymentLink;
 	theScheduleTag.setAttribute('target', '_blank');
-	theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and scheduling meeting`
-	coachSchedule.appendChild(theScheduleTag);
+	theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and scheduling a meeting`;
+		coachSchedule.appendChild(theScheduleTag);
+	}
 	//	Coach SM Icons
 	coachSmIcons.innerHTML = `
 		${
@@ -107,13 +113,13 @@ async function fetchSingleCoach() {
 			<p>
 				${coach.summary}
 			</p>
-			<p class="mb-2">I am giving coaching in <strong>${coach.industry}</strong>.</p>
-			${coach.coach_role_model ? `<p class="mb-1 mt-1"><strong>${coach.coach_role_model}.</strong></p>` : ``}
-			${coach.coach_objective_life? `<p class="mb-2"><strong>My Goal is "${coach.coach_objective_life}"</strong></p>` : ``}
+			${typeof coach.industry == 'string' ? `<p class="mb-3">I can coach you in <strong>${coach.industry}</strong>.</p>` : ``}
+			${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong>"${coach.coach_role_model}".</strong></p>` : ``}
+			${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong>"${coach.coach_objective_life}"</strong></p>` : ``}
 	</div>
 
 	${
-		coach.work_experience.length > 10?
+		typeof coach.work_experience === 'string' ?
 		`
 		<span>Work Experience</span>
 
@@ -125,13 +131,20 @@ async function fetchSingleCoach() {
 		` : ``
 	}
 
-	<span>My Sessions Way</span>
-	<p>
-		Currently I can teach you ${coach.session_way == 'both'? 'Online or Offline according to your needs.' : coach.session_way}
-	</p>
 
 	${
-		coach.work_experience_years > 0?
+		typeof coach.session_way === 'string' ?
+		`
+		<span>My Sessions Way</span>
+		<p>
+			Currently I can teach you ${coach.session_way == 'both'? 'Online or Offline according to your needs.' : coach.session_way}
+		</p>
+		` : ``
+	}
+	
+
+	${
+		!isNaN(Number(coach.work_experience_years)) && coach.work_experience_years > 0 ?
 		`
 		<div class="achievements-cards p-4 mt-5">
 			<div class="box d-flex align-items-center gap-1">
@@ -149,8 +162,8 @@ async function fetchSingleCoach() {
 	// Coach Location
 	coachLocation.innerHTML = `<i class="bi bi-geo-alt"></i> ${coach.country} / ${coach.city}`;
 	// Coach Price
-	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack me-2"></i> ${coach.pricing_in_egypt} <span>per session</span>` :
-	`<i class="bi bi-cash-stack me-2"></i> ${coach.pricing} <span>per session</span>`;
+	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack me-2"></i> ${coach.pricing_in_egypt} <span>per hour</span>` :
+	`<i class="bi bi-cash-stack me-2"></i> ${coach.pricing} <span>per hour</span>`;
 }
 
 fetchSingleCoach();

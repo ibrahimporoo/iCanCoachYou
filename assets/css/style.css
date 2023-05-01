@@ -3449,6 +3449,7 @@ section {
 
 .about-coache {
 	padding-top: 60px;
+	color: #74747e;
 }
 
 .about-coache span {
@@ -3549,7 +3550,6 @@ section {
 	.coache-profile .coache-tags span {
     padding: 5px 8px;
 	}
-
 }
 
 @media (max-width: 420px) {
@@ -3562,17 +3562,25 @@ section {
     height: 160px;
 		bottom: -90px;
 	}
-	.coache-profile .coache-details #coach-price {
-    font-size: 15px;
-	}
-	.coache-profile .coache-details #coach-price span {
-    font-size: 8px;
-	}
-}
-
-@media (max-width: 320px) {
 	.coache-profile .container {
 		padding: 20px 20px 120px;
+	}
+	.coache-profile .container .schedule a {
+    font-size: 8px;
+	}
+	.coache-profile .coache-details #coach-price span {
+    font-size: 6px;
+	}
+	#coach-location {
+		font-size: 11px;
+	}
+	.coache-profile .coache-details #coach-price {
+    font-size: 13px;
+	}
+}
+@media (max-width: 315px) {
+	#coach-location {
+		font-size: 8px;
 	}
 }
 
