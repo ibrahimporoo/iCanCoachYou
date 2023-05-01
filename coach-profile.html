@@ -158,7 +158,7 @@
     </div>
   </header><!-- End Header -->
 
-  <main id="main">
+  <main id="main" class="position-relative" style="height: 80vh;">
 
     <!-- ======= Breadcrumbs ======= -->
     <!-- <section id="breadcrumbs" class="breadcrumbs">
@@ -171,8 +171,17 @@
       </div>
     </section> -->
     <!-- End Breadcrumbs -->
-   
-    <section class="back">
+
+    <div id="bgLoading">
+      <div class="loading-container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+    </div>
+
+    <section class="back after-loading">
       <div class="container p-0">
         <a href="coaches.html" class="d-flex align-items-center gap-1">
           <i class="bi bi-chevron-left"></i>
@@ -181,11 +190,24 @@
       </div>
     </section>
 
-    <div class="coache-profile">
-      <div class="container d-flex gap-2 position-relative">
-        <div class="img-holder" id="coach-image">
-          <!-- <img class="" src="http://drive.google.com/uc?export=view&amp;id=1xO7xDFaPNwQrJZxuNGSGOOwMeF9hJjyE"
-          alt="Mohamed Abdelsattar" /> -->
+    <div class="coache-profile after-loading">
+      <div class="container d-flex gap-4 position-relative">
+        <div class="img-schedule-container d-flex flex-column-reverse align-items-center align-items-lg-stretch flex-lg-column gap-4">
+          <div class="img-holder" id="coach-image">
+            <!--
+              <img class="" src="http://drive.google.com/uc?export=view&amp;id=1xO7xDFaPNwQrJZxuNGSGOOwMeF9hJjyE"
+              alt="Mohamed Abdelsattar" />
+            -->
+          </div>
+          <div class="schedule">
+
+          <!--
+            <a href="${coach.coach_calendly_link}" target="_blank" class="position-relative">
+              <i class="bi bi-calendar2"></i>Book and scheduling meeting <i class="position-absolute link-arrow bi bi-box-arrow-up-right"></i>
+            </a>
+          -->
+
+          </div>
         </div>
         <div class="coache-info">
           <h1 class="m-0" id="coach-name">
@@ -194,7 +216,8 @@
           <h3 class=""  id="coach-job-title">
             <!-- Front End Developer -->
           </h3>
-          <div class="d-flex align-items-center justify-content-sm-between flex-sm-row flex-column gap-sm-0 gap-3">
+          <!-- <div class="d-flex align-items-center justify-content-sm-between flex-sm-row flex-column gap-sm-0 gap-3"> -->
+          <div class="d-flex align-items-center justify-content-center gap-2 d-lg-block">
             <div class="align-items-center d-flex gap-2 social" id="coach-sm-icons">
               
               <!--
@@ -207,13 +230,17 @@
               -->
   
             </div>
-            <div class="schedule">
-              <!--
-                <a href="${coach.coach_calendly_link}" target="_blank" class="position-relative">
-                  <i class="bi bi-calendar2"></i>Book and scheduling meeting <i class="position-absolute link-arrow bi bi-box-arrow-up-right"></i>
-                </a>
-              -->
-            </div>
+            <!--
+                <div class="schedule">
+
+                
+                  <a href="${coach.coach_calendly_link}" target="_blank" class="position-relative">
+                    <i class="bi bi-calendar2"></i>Book and scheduling meeting <i class="position-absolute link-arrow bi bi-box-arrow-up-right"></i>
+                  </a>
+              
+
+              </div>
+            -->
           </div>
           <div class="coache-details d-flex gap-5 mb-3 mt-3">
             <div id="coach-price" class="d-flex align-items-center gap-2">
@@ -225,12 +252,14 @@
                 </span>
               -->
             </div>
-            <div class="location">
-              <span id="coach-location" class="d-flex align-items-center gap-2"">
+            <div class="location d-flex align-items-center">
+              <span id="coach-location" class="d-flex align-items-center gap-1">
+
                 <!--
                   <i class="bi bi-geo-alt"></i>
                   Egypt / Mansoura 
                 -->
+
               </span>
             </div>
           </div>
@@ -259,6 +288,7 @@
 
     <section class="about-coache">
       <div class="container pt-5" id="about-container">
+
       <!-- 
         <span>About Me</span>
         <div id="coach-summary">
@@ -304,7 +334,8 @@
           </div>
         </div>
       -->
-      </div>
+
+    </div>
     </section>
 
     <!-- ======= Portfolio Details Section ======= -->

@@ -2260,6 +2260,10 @@ section {
 	#filtered-form .input-field p {
 		font-size: 11px;
 	}
+	#filtered-form .dropdown {
+		left: 5px;
+    min-width: 150px;
+	}
 }
 
 #filtered-form input:focus,
@@ -2272,6 +2276,7 @@ section {
 	top: calc(100% + 10px);
 	opacity: 1;
 }
+/* End Of Filters Fields */
 
 .team {
 	background: url("../img/team-bg.jpg") center center no-repeat;
@@ -2334,6 +2339,7 @@ section {
 	margin-top: -50px;
 	position: relative;
 	z-index: 20;
+	height: 430px;
 }
 
 .team .member .member-info .details li {
@@ -2395,7 +2401,7 @@ section {
 	font-size: 16px;
 	margin: 0 2px;
 }
-
+/* 
 .team .member-info .profile-btn {
 	font-size: 12px;
 	color: rebeccapurple;
@@ -2409,8 +2415,8 @@ section {
 	-ms-transition: 0.1s;
 	-o-transition: 0.1s;
 	font-weight: bold;
-}
-
+} */
+/* 
 .team .member-info .profile-btn:hover {
 	border-radius: 4px;
 	transition: 0.2s;
@@ -2423,7 +2429,7 @@ section {
 	-moz-border-radius: 4px;
 	-ms-border-radius: 4px;
 	-o-border-radius: 4px;
-}
+} */
 
 @media (max-width: 992px) {
 	.team .member {
@@ -2617,7 +2623,6 @@ section {
 .modal button.btn:focus {
 	outline: 0;
 	opacity: 0.6;
-
 	color: #fff;
 }
 
@@ -2625,7 +2630,6 @@ section {
 .modal button.btn.active:focus {
 	outline: 0;
 	opacity: 0.6;
-
 	color: #fff;
 }
 
@@ -3142,9 +3146,10 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-	padding: 90px 0 220px;
+	/* padding: 90px 0 220px; */
+	padding: 110px 0 50px;
 	background: #001d3d;
-	min-height: 40px;
+	/* min-height: 40px; */
 	/* padding-top: 77px; */
 	background-image: url(../img/home-img.png);
 	background-size: cover;
@@ -3181,6 +3186,81 @@ section {
 	content: "/";
 }
 
+/* After Loading */
+.after-loading {
+	visibility: hidden;
+}
+
+/* ==================== LOADING PAGE ==================== */
+
+#bgLoading {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(70px);
+	transition: 1s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.loading-container {
+	width: 110px;
+	height: 110px;
+	margin: auto;
+	transition: 0.7s;
+	-webkit-transition: 0.7s;
+	-moz-transition: 0.7s;
+	-ms-transition: 0.7s;
+	-o-transition: 0.7s;
+}
+
+.loading-container .item {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 5px solid #0d6efd;
+	border-radius: 50%;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	animation: spin 2s ease infinite;
+	-webkit-animation: spin 2s ease infinite;
+}
+
+.loading-container .item:nth-child(1) {
+	width: 50px;
+	height: 50px;
+}
+
+.loading-container .item:nth-child(2) {
+	width: 70px;
+	height: 70px;
+	animation-delay: 0.1s;
+}
+
+.loading-container .item:nth-child(3) {
+	width: 90px;
+	height: 90px;
+	animation-delay: 0.2s;
+}
+
+.loading-container .item:nth-child(4) {
+	width: 110px;
+	height: 110px;
+	animation-delay: 0.3s;
+}
+
+@keyframes spin {
+	50% {
+			transform: translate(-50%, -50%) rotate(180deg);
+	}
+	100% {
+			transform: translate(-50%, -50%) rotate(0deg);
+	}
+}
+
+/* Before Loading */
 .back {
 	margin-block-start: 120px;
 	padding: 20px 0;
@@ -3210,13 +3290,12 @@ section {
 	height: 250px;
 	border-radius: 50%;
 	overflow: hidden;
-	top: calc(100% - 125px);
-	left: 10%;
 	border: 2px solid #EEE;
+	/* position: relative;
+	left: 10%;
 	margin-right: 20px;
-	position: relative;
 	left: 0;
-	bottom: -40px;
+	bottom: -40px; */
 }
 
 .coache-profile .img-holder img {
@@ -3407,15 +3486,29 @@ section {
 
 @media (max-width: 992px) {
 	.coache-profile .container {
-		padding: 30px 30px 125px;
+		/* padding: 30px 30px 125px;
+		 */
+    padding: 30px 30px 175px;
+		flex-direction: column-reverse;
+	}
+	.img-schedule-container {
+		position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -110px;
+	}
+	.coache-profile .coache-details {
+    justify-content: center;
 	}
 	.coache-profile .coache-tags {
     max-width: 100%;
+		justify-content: center;
 	}
 	.coache-profile .img-holder {
     width: 220px;
     height: 220px;
     margin-right: 0px;
+		/* 
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -3423,6 +3516,7 @@ section {
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
+		*/
 	}
 	.coache-profile .coache-info {
     text-align: center;
@@ -3458,7 +3552,7 @@ section {
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
 	.coache-profile .coache-info h1 {
     font-size: 25px;
     letter-spacing: 1px;
@@ -3467,6 +3561,12 @@ section {
     width: 160px;
     height: 160px;
 		bottom: -90px;
+	}
+	.coache-profile .coache-details #coach-price {
+    font-size: 15px;
+	}
+	.coache-profile .coache-details #coach-price span {
+    font-size: 8px;
 	}
 }
 

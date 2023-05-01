@@ -78,8 +78,7 @@ async function getData() {
 								${/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
 								${/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
 							</div>
-							<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
-							<button class='profile-btn' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
+							<button class='profile-btn btn-buy mt-2' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
 						</div>
 					</div>
 				</div>
@@ -91,6 +90,7 @@ async function getData() {
 		coachesContent.innerHTML = `<h1 style='padding: 100px 0; text-align: center'>No coaches till now</h1>`;
 	});
 };
+// <a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
 
 
 getData().then(() => {
@@ -239,14 +239,14 @@ if(document.body.classList.contains('coaches-html')) {
 									${/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
 									${/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
 								</div>
-								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
-								<button class='profile-btn' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
+								<button class='profile-btn btn-buy mt-2' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
 							</div>
 						</div>
 					</div>
 				</div>
 		`;
-		})
+		});
+		// <a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
 		if(coaches.length > 0) {
 			coachesContent.innerHTML = html_filtering_by_user;
 		} else {

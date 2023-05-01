@@ -113,13 +113,13 @@ async function fetchSingleCoach() {
 	</div>
 
 	${
-		coach.work_experience_years > 0?
+		coach.work_experience.length > 10?
 		`
 		<span>Work Experience</span>
 
 		<div id="work-exp">
-	
-			<p>${coach.work_experience}</p>
+			
+			<p>${coach.work_experience.replaceAll('Yes,', '').replaceAll('yes,', '').replaceAll('yes', '').replaceAll('Yes', '')}</p>
 	
 		</div>
 		` : ``
@@ -149,77 +149,28 @@ async function fetchSingleCoach() {
 	// Coach Location
 	coachLocation.innerHTML = `<i class="bi bi-geo-alt"></i> ${coach.country} / ${coach.city}`;
 	// Coach Price
-	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack"></i> ${coach.pricing_in_egypt} <span>per session</span>` :
-	`<i class="bi bi-cash-stack"></i> ${coach.pricing} <span>per session</span>`;
-	;
-	// coachSummary.innerText = coach.summary;
-	/*
-	coachContainer.innerHTML = `
-		<div class="portfolio-info" id=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>
-			<h3>${coach.name}</h3>
-			<ul>
-				<li><strong>Job title</strong>: ${coach.jobTitle}</li>
-				<li><strong>Industry</strong>: ${coach.industry}</li>
-				<li><strong>Category</strong>: ${coach.category}</li>
-				${
-					coach.pricing ? `<li><strong>Pricing</strong>: ${coach.pricing}</li>`: `<li><strong>Pricing</strong>: ${coach.pricing_in_egypt}</li>`
-				}
-				<div class="align-items-center d-flex pt-3 gap-2 social w-100">
-					${
-						/^(https?:\/\/)?(www\.)?linkedin.com\/(company\/[a-zA-Z0-9_\-]+|in\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.SM_account) ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`
-					}
-					${
-						/^(https?:\/\/)?(www\.)?instagram.com\/[a-zA-Z0-9_\-]+\/?$/.test(coach.instagram_account) ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``
-					}
-					${
-						/^(https?:\/\/)?(www\.)?twitter.com\/[a-zA-Z0-9_]{1,15}\/?$/.test(coach.twitter_account) ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``
-					}
-					${
-						/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/.test(coach.facebook_account) ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``
-					}
-					${
-						/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``
-					}
-					${
-						/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``
-					}
-				</div>
-				<div>
-					${
-						Array.isArray(coach.coach_working_life_tags) ?
-						coach.coach_working_life_tags.map(tag => `<span>${tag}</span>`).join('')
-						: ``
-					}
-				</div>
-				${coach.coach_calendly_link? `<span><a href="${coach.coach_calendly_link}" target="_blank" class="schedule"><i class="bi bi-calendar2"></i>Schedule Interview</a></span>` : `<span><a href="${coach.coach_tidycal_link}" target="_blank" class="schedule"><i class="bi bi-calendar2"></i>Schedule Interview</a></span>`}
-		<div class="portfolio-description">
-			<h2>About me</h2>
-			<p>${coach.summary}</p>
-			${
-			coach.work_experience?
-			`<h2>Work Experience</h2><p>${coach.work_experience}</p>`: ``
-			}
-		</div>
-	`;
-	profileImg.innerHTML = `<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>`;
-	profileVideo.innerHTML = `
-			${
-			/^(ftp|http|https):\/\/[^ "]+$/.test(coach.videoDownloadURL)? 
-			`<video controls style="width: 100%;object-fit: cover;margin-top: 30px;border-radius: 6px;" onerror="console.log('Video error occurred'); this.remove();"
-			oncanplaythrough="this.isLoaded = true;"
-			onloadstart="this.isLoaded = false;">
-				<source src="${coach.videoDownloadURL}" type="video/mp4">
-				<source src="${coach.videoDownloadURL}" type="video/webm">
-				<source src="${coach.videoDownloadURL}" type="video/ogg">
-				Your browser does not support the video tag.
-			</video>`: ``
-		}
-	`;
-	bookBtn.innerHTML = `<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>`
-	*/
+	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack me-2"></i> ${coach.pricing_in_egypt} <span>per session</span>` :
+	`<i class="bi bi-cash-stack me-2"></i> ${coach.pricing} <span>per session</span>`;
 }
 
 fetchSingleCoach();
+
+const bgLoading = document.getElementById('bgLoading');
+const bgLoadingCont = document.querySelector('#bgLoading .loading-container');
+const afterLoadings = document.querySelectorAll('.after-loading');
+window.onload = () => {
+	setTimeout(function() {
+			bgLoadingCont.style.opacity = "0";
+			setTimeout(function() {
+					bgLoadingCont.style.display = "none";
+					bgLoading.style.display = "none";
+					document.getElementById('main').style.height = "fit-content";
+					afterLoadings.forEach(afterLoading => {
+						afterLoading.style.visibility = "visible";
+					})
+			}, 800)
+	}, 500)
+}
 
 // setTimeout(() => {
 // 	const video = document.querySelector('video');
