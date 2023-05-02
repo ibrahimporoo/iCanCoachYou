@@ -111,7 +111,7 @@
           <div class="row">
             <article>
               <p>What's your WhatsApp number?</p>
-              <input type="text" name="whats_number" placeholder="example: +201099827398">
+              <input type="text" name="whats_number" placeholder="example: +201099825108">
             </article>
             <article>
               <p>Where are you located?</p>
@@ -253,14 +253,6 @@
                 <p>What's the main email that you always open</p>
                 <input type="email" name="user_mail" placeholder="email...">
               </div>
-              <div>
-                <p>What's your objective in life?</p>
-                <input class="unrequired" type="text" name="coach_goal" placeholder="what's your goal?" />
-              </div>
-              <div>
-                <p>Who is your role model?</p>
-                <input class="unrequired" type="text" name="coach_role_model" placeholder="who changed you?">
-              </div>
             </article>
             <article class="d-flex flex-column gap-3">
               <div>
@@ -284,6 +276,32 @@
               </div>
             </article>
           </div>
+          <div class="row">
+            <article>
+              <p>What's your objective in life?</p>
+              <!-- <span class="example">optional</span> -->
+              <span class="example">note that we will show it to users</span>
+              <input class="unrequired" type="text" name="coach_goal" placeholder="Speak about your goal..." />
+            </article>
+            <article>
+              <p>What's your objective in life? (in arabic)</p>
+              <span class="example">note that we will show it to users</span>
+              <input class="unrequired" type="text" name="ar_coach_goal" placeholder="تحدث عن هدفك هنا ..." style="direction: rtl;"/>
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>Who is your role model?</p>
+              <!-- <span class="example">optional</span> -->
+              <span class="example">note that we will show it to users</span>
+              <input class="unrequired" type="text" name="coach_role_model" placeholder="Speak about your role model...">
+            </article>
+            <article>
+              <p>Who is your role model? (in arabic)</p>
+              <span class="example">note that we will show it to users</span>
+              <input class="unrequired" type="text" name="ar_coach_role_model" placeholder="تحدث عن قدوتك هنا..." style="direction: rtl;">
+            </article>
+          </div>
         </div>
         <div class="step choosing-btns">
           <h2 class="text-center">Coach's Portfolio</h2>
@@ -292,88 +310,88 @@
               <p>What is the industry you can give coaching in?</p>
               <label>
                 <span>Sales & Marketing</span>
-                <input type="radio" name="industry" value="Sales & Marketing, المبيعات والتسويق" checked />
+                <input type="radio" name="industry" value="Sales Marketing $ المبيعات والتسويق" checked />
               </label>
               <label>
                 <span>Business Management</span>
-                <input type="radio" name="industry" value="Business Management, ادارة اعمال" />
+                <input type="radio" name="industry" value="Business Management $ ادارة اعمال" />
               </label>
               <label>
                 <span>Soft Skills</span>
-                <input type="radio" name="industry" value="Soft Skills, المهارات الشخصية" />
+                <input type="radio" name="industry" value="Soft Skills $ المهارات الشخصية" />
               </label>
               <label>
                 <span>Content & copy rights</span>
-                <input type="radio" name="industry" value="Content & copy rights, المحتوى وحقوق النسخ" />
+                <input type="radio" name="industry" value="Content copy rights $ المحتوى وحقوق النسخ" />
               </label>
               <label>
                 <span>HR</span>
-                <input type="radio" name="industry" value="HR, الموارد البشرية" />
+                <input type="radio" name="industry" value="HR $ الموارد البشرية" />
               </label>
               <label>
                 <span>Media, Photography & Film</span>
-                <input type="radio" name="industry" value="Media, Photography & Film, وسائل الإعلام والتصوير والسينما" />
+                <input type="radio" name="industry" value="Media, Photography and Film $ وسائل الإعلام والتصوير والسينما" />
               </label>
               <label>
                 <span>Technology</span>
-                <input type="radio" name="industry" value="Technology, التكنولوجيا" />
+                <input type="radio" name="industry" value="Technology $ التكنولوجيا" />
               </label>
               <label>
                 <span>programming</span>
-                <input type="radio" name="industry" value="programming, البرمجة" />
+                <input type="radio" name="industry" value="programming $ البرمجة" />
               </label>
               <label>
                 <span>Cyber security</span>
-                <input type="radio" name="industry" value="Cyber security, الأمن الإلكتروني" />
+                <input type="radio" name="industry" value="Cyber security $ الأمن الإلكتروني" />
               </label>
               <label>
                 <span>operations</span>
-                <input type="radio" name="industry" value="operations, العمليات" />
+                <input type="radio" name="industry" value="operations $ العمليات" />
               </label>
               <label>
                 <span>Legal</span>
-                <input type="radio" name="industry" value="Legal, القانوني" />
+                <input type="radio" name="industry" value="Legal $ القانوني" />
               </label>
               <label>
                 <span>Finance</span>
-                <input type="radio" name="industry" value="Finance, التمويل" />
+                <input type="radio" name="industry" value="Finance $ التمويل" />
               </label>
               <label>
                 <span>Science & Productivity</span>
-                <input type="radio" name="industry" value="Science & Productivity, العلم والإنتاجية" />
+                <input type="radio" name="industry" value="Science and Productivity $ العلم والإنتاجية" />
               </label>
               <label>
                 <span>Languages</span>
-                <input type="radio" name="industry" value="Languages, اللغات" />
+                <input type="radio" name="industry" value="Languages $ اللغات" />
               </label>
               <label>
                 <span>Logistics</span>
-                <input type="radio" name="industry" value="Logistics, الخدمات اللوجستية" />
+                <input type="radio" name="industry" value="Logistics $ الخدمات اللوجستية" />
               </label>
               <label>
                 <span>Arts & Design</span>
-                <input type="radio" name="industry" value="Arts & Design, الفنون والتصميم" />
+                <input type="radio" name="industry" value="Arts and Design $ الفنون والتصميم" />
               </label>
               <label>
                 <span>Entrepreneurship</span>
-                <input type="radio" name="industry" value="Entrepreneurship, ريادة الأعمال" />
+                <input type="radio" name="industry" value="Entrepreneurship $ ريادة الأعمال" />
               </label>
               <label>
                 <span>Parenting & Relationships</span>
-                <input type="radio" name="industry" value="Parenting & Relationships, الأبوة والأمومة والعلاقات" />
+                <input type="radio" name="industry" value="Parenting and Relationships $ الأبوة والأمومة والعلاقات" />
               </label>
               <label>
                 <span>Kids Development</span>
-                <input type="radio" name="industry" value="Kids Development, تنمية الاطفال" />
+                <input type="radio" name="industry" value="Kids Development $ تنمية الاطفال" />
               </label>
               <label>
                 <span>Lifestyle & Health</span>
-                <input type="radio" name="industry" value="Lifestyle & Health, نمط الحياة والصحة" />
+                <input type="radio" name="industry" value="Lifestyle and Health $ نمط الحياة والصحة" />
               </label>
-              <label>
+              <!-- <label>
                 <span>Others</span>
-                <input type="radio" name="industry" value="Others, أخري" />
-              </label>
+                <input type="radio" name="industry" value="Others $ أخري" />
+              </label> -->
               <article class="d-flex flex-column gap-3" style="width: 100%;padding-top: 5px;max-width: 410px;">
                 <div>
                   <p>What's your English Language skills?</p>
@@ -405,8 +423,21 @@
                 </div>
                 <div>
                   <p>Do you have work experience or not (please mention if you have)</p>
-                  <span class="example">For Example No or Yes, Marketing manager at Enactus</span>
+                  <span class="example">For Example No or speak about your experience, as we show it to users as follows:</span>
+                  <!-- <span class="example">I have some experiences as a Marketing manager at Enactus</span> -->
+                  <span class="example">
+                    my expertise lies in managing several things at company. I specialize in leading a team, who are responsible for the Marketing of the companies. as i worked as a Marketing Manager at Enactus.
+                  </span>
                   <textarea name="work_exp" placeholder="add your work experience here..."></textarea>
+                </div>
+                <div>
+                  <p>Add your work experience again in arabic</p>
+                  <span class="example">For Example No or speak about your experience, as we show it to users as follows:</span>
+                  <!-- <span class="example">I have some experiences as a Marketing manager at Enactus</span> -->
+                  <span class="example" style="direction: rtl;">
+                    خبرتي تكمن في إدارة العديد من الأشياء في الشركة. أنا متخصص في قيادة الفريق المسؤول عن تسويق الشركات. حيث عملت كمدير تسويق في Enactus.
+                  </span>
+                  <textarea name="ar_work_exp" placeholder="تحدث عن خبراتك العملية ..." style="direction: rtl;"></textarea>
                 </div>
                 <div>
                   <p>Work Experience Years* ?</p>
@@ -434,36 +465,38 @@
                 <p>How would you describe your job title?</p>
                 <label>
                   <span>Indiviual Contributer - Self Employed</span>
-                  <input type="radio" checked name="jobTitle" value="Indiviual Contributer - Self Employed, مساهم فردي - صاحب عمل خاص" />
+                  <input type="radio" checked name="jobTitle" value="Indiviual Contributer - Self Employed $ مساهم فردي - صاحب عمل خاص" />
                 </label>
                 <label>
                   <span>Middle Manager</span>
-                  <input type="radio" name="jobTitle" value="Middle Manager, مدير أوسط" />
+                  <input type="radio" name="jobTitle" value="Middle Manager $ مدير أوسط" />
                 </label>
                 <label>
                   <span>Senior Manager</span>
-                  <input type="radio" name="jobTitle" value="Senior Manager, مدير مرشد" />
+                  <input type="radio" name="jobTitle" value="Senior Manager $ مدير مرشد" />
                 </label>
                 <label>
                   <span>Director/VP</span>
-                  <input type="radio" name="jobTitle" value="Director/VP, مخرج / نائب الرئيس" />
+                  <input type="radio" name="jobTitle" value="Director/VP $ مخرج / نائب الرئيس" />
                 </label>
                 <label>
                   <span>C-suite/Executive</span>
-                  <input type="radio" name="jobTitle" value="C-suite/Executive, الإدارة التنفيذية" />
+                  <input type="radio" name="jobTitle" value="C-suite/Executive $ الإدارة التنفيذية" />
                 </label>
                 <label>
                   <span>Founder/Business Owner</span>
-                  <input type="radio" name="jobTitle" value="Founder/Business Owner, مؤسس / صاحب عمل" />
+                  <input type="radio" name="jobTitle" value="Founder/Business Owner $ مؤسس / صاحب عمل" />
                 </label>
-                <label>
+                <!-- <label>
                   <span>Others</span>
-                  <input type="radio" name="jobTitle" value="Others, أخري" />
-                </label>
+                  <input type="radio" name="jobTitle" value="Others $ أخري" />
+                </label> -->
               </div>
               <div>
                 <p>Image file:</p>
                 <span class="example">add the highest professional image you have.</span>
+                <span class="example">Upload a high quality image as follows:</span>
+                <img width="50%" src="assets/img/team/team-1.jpg" alt="Ebraheem Anwar">
                 <label for="image_file" class="file-label">
                   <input type="file" id="image_file" name="image_file" accept="image/*" />
                 </label>

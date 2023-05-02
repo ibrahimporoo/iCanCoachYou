@@ -268,7 +268,11 @@ if(document.body.classList.contains('coaches-html')) {
 function viewProfile(documentId, lang, username) {
 	sessionStorage.setItem('selectedCoach', documentId);
 	sessionStorage.setItem('lang', lang);
-	window.location.href = `coach-profile.html#${username}`;
+	if(lang == 'en') {
+		window.location.href = `coach-profile.html#${username}`;
+	} else {
+		window.location.href = `coach-profile-ar.html#${username}`;
+	}
 }
 window.onclick = (e) => {
 	if(e.target.matches('.profile-btn')) {

@@ -5,26 +5,26 @@ import {
 	query, where,
 	updateDoc, doc, deleteDoc
 } from 'firebase/firestore';
-// iCanCoachU Example Firebase...
-const firebaseConfig = {
-	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-	authDomain: "just-like-icancoachu.firebaseapp.com",
-	projectId: "just-like-icancoachu",
-	storageBucket: "just-like-icancoachu.appspot.com",
-	messagingSenderId: "415289518874",
-	appId: "1:415289518874:web:263bf9089765a2a312daa3"
-};
-// // iCanCoachU Firebase...
+// // iCanCoachU Example Firebase...
 // const firebaseConfig = {
-//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-//   authDomain: "elmawkaabeta.firebaseapp.com",
-//   databaseURL: "https://elmawkaabeta.firebaseio.com",
-//   projectId: "elmawkaabeta",
-//   storageBucket: "elmawkaabeta.appspot.com",
-//   messagingSenderId: "808588970288",
-//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-//   measurementId: "G-G8FTTQ0EB2"
+// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+// 	authDomain: "just-like-icancoachu.firebaseapp.com",
+// 	projectId: "just-like-icancoachu",
+// 	storageBucket: "just-like-icancoachu.appspot.com",
+// 	messagingSenderId: "415289518874",
+// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
 // };
+// iCanCoachU Firebase...
+const firebaseConfig = {
+  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+  authDomain: "elmawkaabeta.firebaseapp.com",
+  databaseURL: "https://elmawkaabeta.firebaseio.com",
+  projectId: "elmawkaabeta",
+  storageBucket: "elmawkaabeta.appspot.com",
+  messagingSenderId: "808588970288",
+  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+  measurementId: "G-G8FTTQ0EB2"
+};
 
 // init firebase
 initializeApp(firebaseConfig)
@@ -209,7 +209,6 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.coach_calendly_link}</p>
 							<span>Tidycal Link the alternative:- <a href="${coach.coach_tidycal_link}" target="_blank">Tidycal</a></span>
 							<p class="coach-answer">${coach.coach_tidycal_link}</p>
-							// --------- Accounts ------
 							${coach.SM_account? `<span>LinkedIn Profile Link:- <a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
 							<p class="coach-answer">${coach.SM_account}</p>` : `<span>LinkedIn Profile Link:- <a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
 							<p class="coach-answer">${coach.linkedIn_account}</p>` }
@@ -313,7 +312,6 @@ function fillInHTML(coaches, completed = true) {
 							<p class="coach-answer">${coach.coach_calendly_link}</p>
 							<span>Tidycal Link the alternative:- <a href="${coach.coach_tidycal_link}" target="_blank">Tidycal</a></span>
 							<p class="coach-answer">${coach.coach_tidycal_link}</p>
-							// --------- Accounts ------
 							${coach.SM_account? `<span>LinkedIn Profile Link:- <a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
 							<p class="coach-answer">${coach.SM_account}</p>` : `<span>LinkedIn Profile Link:- <a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
 							<p class="coach-answer">${coach.linkedIn_account}</p>` }
@@ -371,7 +369,7 @@ window.addEventListener('click', (e) => {
 
 	if (e.target.matches('.member .save')) { // To Save Coach's Infos.
 		coachesAnswers = e.target.parentElement.querySelectorAll('.coach-answer');
-		e.target.parentElement.classList.remove("show");
+		// e.target.parentElement.classList.remove("show");
 		// Save Changes to every coach's answer.
 		coachesAnswers.forEach(p => {
 			p.classList.remove('edit');
@@ -397,16 +395,6 @@ window.addEventListener('click', (e) => {
 	}
 
 });
-
-// function updateSingle(id) {
-// 	const colRef = doc(db, 'coaches', 'languages', lang, id);
-// 	updateDoc(colRef, {
-// 		createdAt: serverTimestamp(),
-// 		age: 12
-// 	}).then(() => {
-// 		console.log("Updated");
-// 	})
-// }
 
 // Doc Updating.
 async function update(member, status) {
@@ -487,85 +475,3 @@ async function update(member, status) {
 			break;
 	};
 };
-
-
-/*
-// Doc Updating.
-function update(member, status) {
-	// collection refs
-	const arColRef = collection(db, 'coaches', 'languages', 'ar');
-	const enColRef = collection(db, 'coaches', 'languages', 'en');
-	
-	// Queries Defining
-	let docRef, arQuery, enQuery;
-	// Queries Assigning
-	if(member.dataset.id) {
-		docRef = doc(db, 'coaches', 'languages', lang, member.dataset.id);
-		arQuery = query(arColRef, where("whats_number", "==", member.dataset.id));
-		enQuery = query(enColRef, where("whats_number", "==", member.dataset.id));
-	} else {
-		docRef = doc(db, 'coaches', 'languages', lang, member.dataset.createdAt);
-		arQuery = query(arColRef, where("createdAt", "==", member.dataset.createdAt));
-		enQuery = query(enColRef, where("createdAt", "==", member.dataset.createdAt));
-	}
-
-	switch(status) {
-		case "save":
-			enQuery.onSnapshot()
-				.then((enQuerySnapshot) => {
-					const batch = db.batch();
-					enQuerySnapshot.forEach((doc) => {
-						const docRef = doc.ref;
-						batch.update(docRef, updateFields);
-					});
-					return batch.commit();
-				})
-				.then(() => {
-					// Wait for the first batch commit to complete before moving on to the next one
-					return arQuery.get();
-				})
-				.then((arQuerySnapshot) => {
-					const batch = db.batch();
-					arQuerySnapshot.forEach((doc) => {
-						const docRef = doc.ref;
-						batch.update(docRef, updateFields);
-					});
-					return batch.commit();
-				})
-				.then(() => {
-					// Both batches have been committed successfully
-					alert('Updated in Firebase too.');
-				})
-				.catch((error) => {
-					console.error('Error updating document:', error);
-					alert('Error updating document. Please try again later.');
-				});
-			break;
-		case 'approve':
-			updateDoc(enQuery, {
-				appear: true
-			})
-			updateDoc(arQuery, {
-				appear: true
-			})
-			.then(() => {
-				alert("The Coach will Appear in the page.");
-			});
-			break;
-			case 'do-not-approve':
-				updateDoc(enQuery, {
-					appear: false
-				})
-				updateDoc(arQuery, {
-					appear: false
-				})
-				.then(() => {
-					alert("Coach as in progress status putting.");
-				});
-				break;
-		default:
-			alert("Invalid Status!!");
-			break;
-	};
-};
-*/ 

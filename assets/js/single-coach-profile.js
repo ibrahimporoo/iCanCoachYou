@@ -25,7 +25,7 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 const db = getFirestore();
-
+const lang = document.querySelector('html').lang; // get page's Lang.
 async function fetchSingleCoach() {
 	/* Selecting Elements */
 	const coachImage = document.getElementById("coach-image");
@@ -66,7 +66,10 @@ async function fetchSingleCoach() {
 	let theScheduleTag = document.createElement('a');
 	theScheduleTag.href = coach.paymentLink;
 	theScheduleTag.setAttribute('target', '_blank');
-	theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and scheduling a meeting`;
+	theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and schedule a meeting`;
+	if(lang == 'ar') {
+		theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>حجز وتحديد موعد اجتماع`;
+	}
 		coachSchedule.appendChild(theScheduleTag);
 	}
 	//	Coach SM Icons
@@ -114,8 +117,8 @@ async function fetchSingleCoach() {
 				${coach.summary}
 			</p>
 			${typeof coach.industry == 'string' ? `<p class="mb-3">I can coach you in <strong>${coach.industry}</strong>.</p>` : ``}
-			${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong>"${coach.coach_role_model}".</strong></p>` : ``}
-			${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong>"${coach.coach_objective_life}"</strong></p>` : ``}
+			${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong class="ms-1">${coach.coach_role_model.replaceAll('.', '')}.</strong></p>` : ``}
+			${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong class="ms-1">${coach.coach_objective_life.replaceAll('.', '')}.</strong></p>` : ``}
 	</div>
 
 	${
@@ -162,8 +165,12 @@ async function fetchSingleCoach() {
 	// Coach Location
 	coachLocation.innerHTML = `<i class="bi bi-geo-alt"></i> ${coach.country} / ${coach.city}`;
 	// Coach Price
-	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack me-2"></i> ${coach.pricing_in_egypt} <span>per hour</span>` :
-	`<i class="bi bi-cash-stack me-2"></i> ${coach.pricing} <span>per hour</span>`;
+	let priceTime = "per hour";
+	if(lang == 'ar') {
+		priceTime = "للساعة";
+	}
+	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack me-2"></i> ${coach.pricing_in_egypt} <span>${priceTime}</span>` :
+	`<i class="bi bi-cash-stack me-2"></i> ${coach.pricing} <span>${priceTime}</span>`;
 }
 
 fetchSingleCoach();

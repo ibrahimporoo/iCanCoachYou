@@ -780,7 +780,11 @@ button {
 	font-size: 1.2rem;
 	margin-bottom: 5px;
 }
-
+@media (max-width: 900px) {
+	.file-label input[type='file'] {
+    max-width: 280px;
+	}
+}
 @media (max-width: 800px) {
 	.join-form-content .fields input,
 	.join-form-content .fields select,

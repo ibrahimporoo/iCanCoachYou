@@ -252,14 +252,14 @@
                 <p>ما هو البريد الإلكتروني الرئيسي الذي تفتحه دائمًا؟</p>
                 <input type="email" name="user_mail" placeholder="email..." style="direction: ltr;">
               </div>
-              <div>
+              <!-- <div>
                 <p>ما هو هدفك في الحياة؟</p>
                 <input class="unrequired" type="text" name="coach_goal" placeholder="مثال: أن تكون مدربًا رائعًا" />
               </div>
               <div>
                 <p>من هو قدوتك؟</p>
                 <input class="unrequired" type="text" name="coach_role_model" placeholder="من غيرك الى الافضل؟">
-              </div>
+              </div> -->
             </article>
             <article class="d-flex flex-column gap-3">
               <div>
@@ -283,6 +283,32 @@
               </div>
             </article>
           </div>
+          <div class="row">
+            <article>
+              <p> تحدث عن هدفك</p>
+              <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
+              <input class="unrequired" type="text" name="ar_coach_goal" placeholder="مثال: أن تكون مدربًا رائعًا" />
+            </article>
+            <article>
+              <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
+              <p>تحدث عن هدفك مره أخري (باللغه الإنجليزية)</p>
+              <input class="unrequired" type="text" name="coach_goal" placeholder="e.g. being an amazing coach for much people" style="direction: ltr;"/>
+            </article>
+          </div>
+          <div class="row">
+            <article>
+              <p>تحدث عن قدوتك</p>
+              <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
+              <!-- <input class="unrequired" type="text" name="ar_coach_role_model" placeholder="من غيرك الى الافضل؟"> -->
+              <input class="unrequired" type="text" name="ar_coach_role_model" placeholder="تحدث عن قدوتك هنا...">
+            </article>
+            <article>
+              <p>تحدث عن قدوتك مره أخري (باللغه الإنجليزية)</p>
+              <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
+              <!-- <input class="unrequired" type="text" name="coach_role_model" placeholder="e.g. Steve jobs in Marketing"> -->
+              <input class="unrequired" type="text" name="coach_role_model" placeholder="Speak about your role model..." style="direction: ltr;">
+            </article>
+          </div>
         </div>
         <div class="step choosing-btns">
           <h2 class="text-center">معرض أعمال المدرب</h2>
@@ -292,122 +318,105 @@
                 <p>What is the industry you can give coaching in?</p>
                 <label>
                   <span>Sales & Marketing</span>
-                  <input type="radio" name="industry" value="Sales & Marketing, المبيعات والتسويق" checked />
+                  <input type="radio" name="industry" value="Sales and Marketing $ المبيعات والتسويق" checked />
                 </label>
                 <label>
                   <span>Business Management</span>
-                  <input type="radio" name="industry" value="Business Management, ادارة اعمال" />
+                  <input type="radio" name="industry" value="Business Management $ ادارة اعمال" />
                 </label>
                 <label>
                   <span>Soft Skills</span>
-                  <input type="radio" name="industry" value="Soft Skills, المهارات الشخصية" />
+                  <input type="radio" name="industry" value="Soft Skills $ المهارات الشخصية" />
                 </label>
                 <label>
                   <span>Content & copy rights</span>
-                  <input type="radio" name="industry" value="Content & copy rights, المحتوى وحقوق النسخ" />
+                  <input type="radio" name="industry" value="Content and copy rights $ المحتوى وحقوق النسخ" />
                 </label>
                 <label>
                   <span>HR</span>
-                  <input type="radio" name="industry" value="HR, الموارد البشرية" />
+                  <input type="radio" name="industry" value="HR $ الموارد البشرية" />
                 </label>
                 <label>
-                  <span>Media, Photography & Film</span>
-                  <input type="radio" name="industry" value="Media, Photography & Film, وسائل الإعلام والتصوير والسينما" />
+                  <span>Media , Photography & Film</span>
+                  <input type="radio" name="industry" value="Media, Photography and Film $ وسائل الإعلام والتصوير والسينما" />
                 </label>
                 <label>
                   <span>Technology</span>
-                  <input type="radio" name="industry" value="Technology, التكنولوجيا" />
+                  <input type="radio" name="industry" value="Technology $ التكنولوجيا" />
                 </label>
                 <label>
                   <span>programming</span>
-                  <input type="radio" name="industry" value="programming, البرمجة" />
+                  <input type="radio" name="industry" value="programming $ البرمجة" />
                 </label>
                 <label>
                   <span>Cyber security</span>
-                  <input type="radio" name="industry" value="Cyber security, الأمن الإلكتروني" />
+                  <input type="radio" name="industry" value="Cyber security $ الأمن الإلكتروني" />
                 </label>
                 <label>
                   <span>operations</span>
-                  <input type="radio" name="industry" value="operations, العمليات" />
+                  <input type="radio" name="industry" value="operations $ العمليات" />
                 </label>
                 <label>
                   <span>Legal</span>
-                  <input type="radio" name="industry" value="Legal, القانوني" />
+                  <input type="radio" name="industry" value="Legal $ القانوني" />
                 </label>
                 <label>
                   <span>Finance</span>
-                  <input type="radio" name="industry" value="Finance, التمويل" />
+                  <input type="radio" name="industry" value="Finance $ التمويل" />
                 </label>
                 <label>
                   <span>Science & Productivity</span>
-                  <input type="radio" name="industry" value="Science & Productivity, العلم والإنتاجية" />
+                  <input type="radio" name="industry" value="Science and Productivity $ العلم والإنتاجية" />
                 </label>
                 <label>
                   <span>Languages</span>
-                  <input type="radio" name="industry" value="Languages, اللغات" />
+                  <input type="radio" name="industry" value="Languages $ اللغات" />
                 </label>
                 <label>
                   <span>Logistics</span>
-                  <input type="radio" name="industry" value="Logistics, الخدمات اللوجستية" />
+                  <input type="radio" name="industry" value="Logistics $ الخدمات اللوجستية" />
                 </label>
                 <label>
                   <span>Arts & Design</span>
-                  <input type="radio" name="industry" value="Arts & Design, الفنون والتصميم" />
+                  <input type="radio" name="industry" value="Arts and Design $ الفنون والتصميم" />
                 </label>
                 <label>
                   <span>Entrepreneurship</span>
-                  <input type="radio" name="industry" value="Entrepreneurship, ريادة الأعمال" />
+                  <input type="radio" name="industry" value="Entrepreneurship $ ريادة الأعمال" />
                 </label>
                 <label>
                   <span>Parenting & Relationships</span>
-                  <input type="radio" name="industry" value="Parenting & Relationships, الأبوة والأمومة والعلاقات" />
+                  <input type="radio" name="industry" value="Parenting and Relationships $ الأبوة والأمومة والعلاقات" />
                 </label>
                 <label>
                   <span>Kids Development</span>
-                  <input type="radio" name="industry" value="Kids Development, تنمية الاطفال" />
+                  <input type="radio" name="industry" value="Kids Development $ تنمية الاطفال" />
                 </label>
                 <label>
                   <span>Lifestyle & Health</span>
-                  <input type="radio" name="industry" value="Lifestyle & Health, نمط الحياة والصحة" />
+                  <input type="radio" name="industry" value="Lifestyle and Health $ نمط الحياة والصحة" />
                 </label>
-                <label>
+                <!-- <label>
                   <span>Others</span>
                   <input type="radio" name="industry" value="Others, أخري" />
-                </label>
+                </label> -->
               </div>
               <article class="d-flex flex-column gap-3" style="width: 100%;padding-top: 5px;max-width: 410px;">
                 <div>
-                  <p>ما هي مهاراتك في اللغة الإنجليزية؟</p>
-                  <select name="en_lang">
-                    <option value="Native">اللغة الأم</option>
-                    <option value="Fluent">طلِق</option>
-                    <option value="Intermediate">متوسط</option>
-                    <option value="Beginner">مبتدئ</option>
-                  </select>
-                </div>
-                <div>
-                  <p>هل أنت متاح لمدة 2: 3 ساعات على الأقل كل أسبوع؟</p>
-                  <label>
-                    <span>نعم</span>
-                    <input type="radio" name="coachTime" value="Yes" checked />
-                  </label>
-                  <label>
-                    <span>لا</span>
-                    <input type="radio" name="coachTime" value="No" />
-                  </label>
-                  <label>
-                    <span>ربما</span>
-                    <input type="radio" name="coachTime" value="Maybe" />
-                  </label>
-                  <!-- <label>
-                    <span>Other</span>
-                    <input type="radio" name="coachTime" value="Other" />
-                  </label> -->
-                </div>
-                <div>
                   <p>هل لديك خبرة في العمل أم لا (يرجى ذكر ما إذا كان لديك)</p>
-                  <span class="example">على سبيل المثال: نعم في شركة أو لا ليس لدي خبرة عملية  Enactus</span>
-                  <textarea name="work_exp" placeholder="أضف خبرتك في العمل هنا ..."></textarea>
+                  <span class="example">على سبيل المثال لا أو تحدث عن تجربتك ، حيث نعرضها للمستخدمين على النحو التالي:</span>
+                  <span class="example">
+                    خبرتي تكمن في إدارة العديد من الأشياء في الشركة. أنا متخصص في قيادة الفريق المسؤول عن تسويق الشركات. حيث عملت كمدير تسويق في Enactus.
+                  </span>
+                  <textarea name="ar_work_exp" placeholder="أضف خبرتك في العمل هنا ..."></textarea>
+                </div>
+                <div>
+                  <p>أضف خبرتك في العمل مرة أخرى باللغة الإنجليزية</p>
+                  <span class="example">على سبيل المثال لا أو تحدث عن تجربتك ، حيث نعرضها للمستخدمين على النحو التالي:</span>
+                  <span class="example en-field">
+                    my expertise lies in managing several things at company. I specialize in leading a team, who are responsible for the Marketing of the companies. as i worked as a Marketing Manager at Enactus.
+                  </span>
+                  <textarea class="en-field" name="work_exp" placeholder="add your work experience here..."></textarea>
                 </div>
                 <div>
                   <p>سنوات الخبرة في العمل *؟</p>
@@ -422,7 +431,7 @@
                     <span>Programming</span>
                     <span>Languages</span>
                   </div>
-                  <div class="d-flex align-items-center position-relative en-field">
+                  <div class="d-flex align-items-center position-relative en-field" style="justify-content: flex-end;">
                     <input type="text" class="unrequired" id="tags-input" placeholder="Keyword" style="border-right: 0;"/>
                     <button type="button" id="tags-add-btn">إضافة</button>
                   </div>
@@ -434,36 +443,40 @@
                 <p>How would you describe your job title?</p>
                 <label>
                   <span>Indiviual Contributer - Self Employed</span>
-                  <input type="radio" checked name="jobTitle" value="Indiviual Contributer - Self Employed, مساهم فردي - صاحب عمل خاص" />
+                  <input type="radio" checked name="jobTitle" value="Indiviual Contributer - Self Employed $ مساهم فردي - صاحب عمل خاص" />
                 </label>
                 <label>
                   <span>Middle Manager</span>
-                  <input type="radio" name="jobTitle" value="Middle Manager, مدير أوسط" />
+                  <input type="radio" name="jobTitle" value="Middle Manager $ مدير أوسط" />
                 </label>
                 <label>
                   <span>Senior Manager</span>
-                  <input type="radio" name="jobTitle" value="Senior Manager, مدير مرشد" />
+                  <input type="radio" name="jobTitle" value="Senior Manager $ مدير مرشد" />
                 </label>
                 <label>
                   <span>Director/VP</span>
-                  <input type="radio" name="jobTitle" value="Director/VP, مخرج / نائب الرئيس" />
+                  <input type="radio" name="jobTitle" value="Director/VP $ مخرج / نائب الرئيس" />
                 </label>
                 <label>
                   <span>C-suite/Executive</span>
-                  <input type="radio" name="jobTitle" value="C-suite/Executive, الإدارة التنفيذية" />
+                  <input type="radio" name="jobTitle" value="C-suite/Executive $ الإدارة التنفيذية" />
                 </label>
                 <label>
                   <span>Founder/Business Owner</span>
-                  <input type="radio" name="jobTitle" value="Founder/Business Owner, مؤسس / صاحب عمل" />
+                  <input type="radio" name="jobTitle" value="Founder/Business Owner $ مؤسس / صاحب عمل" />
                 </label>
-                <label>
-                  <span>Others</span>
-                  <input type="radio" name="jobTitle" value="Others, أخري" />
-                </label>
+                <!--
+                  <label>
+                    <span>Others</span>
+                    <input type="radio" name="jobTitle" value="Others, أخري" />
+                  </label>
+                -->
               </div>
               <div class="en-field">
                 <p>Image file:</p>
+                <span class="example">Upload a high quality image as follows:</span>
                 <span class="example">add the highest professional image you have.</span>
+                <img width="50%" src="assets/img/team/team-1.jpg" alt="Ebraheem Anwar">
                 <label for="image_file" class="file-label">
                   <input type="file" id="image_file" name="image_file" accept="image/*" />
                 </label>
@@ -477,14 +490,14 @@
                   <input type="text" class="unrequired" id="video_link" name="video_link" placeholder="Any Social Media Link..." />
               </div>
               <!--
-              <div>
-                <p>Video file:</p>
-                <span class="example">add 1 minute video brief.</span>
-                <span class="example">When user visit your profile this video will be appear to him.</span>
-                <label for="video_file" class="file-label">
-                  <input type="file" class="unrequired" id="video_file" name="video_file" accept="video/*" />
-                </label>
-              </div>
+                <div>
+                  <p>Video file:</p>
+                  <span class="example">add 1 minute video brief.</span>
+                  <span class="example">When user visit your profile this video will be appear to him.</span>
+                  <label for="video_file" class="file-label">
+                    <input type="file" class="unrequired" id="video_file" name="video_file" accept="video/*" />
+                  </label>
+                </div>
               -->
               <div class="en-field">
                 <p>CV File:</p>
@@ -528,6 +541,36 @@
                 <span class="example">optional</span>
                 <input type="text" class="unrequired" name="tiktok_link" placeholder="https://www.tiktok.com/username" />
               </div>
+              <div>
+                <p>ما هي مهاراتك في اللغة الإنجليزية؟</p>
+                <select name="en_lang">
+                  <option value="Native">اللغة الأم</option>
+                  <option value="Fluent">طلِق</option>
+                  <option value="Intermediate">متوسط</option>
+                  <option value="Beginner">مبتدئ</option>
+                </select>
+              </div>
+              <div>
+                <p>هل أنت متاح لمدة 2: 3 ساعات على الأقل كل أسبوع؟</p>
+                <label>
+                  <span>نعم</span>
+                  <input type="radio" name="coachTime" value="Yes" checked />
+                </label>
+                <label>
+                  <span>لا</span>
+                  <input type="radio" name="coachTime" value="No" />
+                </label>
+                <label>
+                  <span>ربما</span>
+                  <input type="radio" name="coachTime" value="Maybe" />
+                </label>
+                <!--
+                  <label>
+                    <span>Other</span>
+                    <input type="radio" name="coachTime" value="Other" />
+                  </label>
+                -->
+              </div>
             </article>
           </div>
           <div class="row">
@@ -570,8 +613,8 @@
             </article>
             <article>
               <div style="max-width: 390px;">
-                <p>أو أدخل tidycal.com بدلاً من ذلك.</p>
-                <span class="example">
+                <p class="mb-4">أو أدخل tidycal.com بدلاً من ذلك.</p>
+                <span class="example" style="margin-bottom: 21px;">
                   إن لم تكن مسجل علي calendly
                 </span>
               </div>
@@ -864,130 +907,130 @@
 
   <main id="main">
 
-  <!-- ======= Services Section ======= -->
-  <section id="services" class="services section-bg">
-    <div class="container">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
 
-      <div class="section-title aos-init" data-aos="fade-up">
-        <h2>خدماتنا</h2>
-        <p>يدور التدريب عبر الإنترنت حول مساعدة الآخرين على تحقيق هدف أو الوصول إلى تحول في حياتهم.</p>
+        <div class="section-title aos-init" data-aos="fade-up">
+          <h2>خدماتنا</h2>
+          <p>يدور التدريب عبر الإنترنت حول مساعدة الآخرين على تحقيق هدف أو الوصول إلى تحول في حياتهم.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
+            <div class="icon-box icon-box-pink">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">تدريب 1 على 1</a></h4>
+              <p class="description">التدريب الفردي هو الخدمة الأكثر انتشارًا التي يقدمها المدربون عبر الإنترنت.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
+            data-aos-delay="100">
+            <div class="icon-box icon-box-cyan">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">دورة أونلاين</a></h4>
+              <p class="description">يمكن اعتبار الدورات التدريبية عبر الإنترنت منتجات تدريب ، بدلاً من خدمات التدريب.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
+            data-aos-delay="200">
+            <div class="icon-box icon-box-green">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">إيجاد المدرب المناسب</a></h4>
+              <p class="description">نحن نسعى جاهدين للتوفيق بين العميل والمدرب بناءً على أهداف العميل وأهدافه.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="icon-box icon-box-blue">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">بناء خطة مهنية</a></h4>
+              <p class="description">مطابقة مهاراتك ، وما إلى ذلك ، بالوظائف أو الوظائف الحالية. مطابقة أهداف حياتك
+                المهنية مع احتياجاتك المالية.</p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
+    </section><!-- End Services Section -->
 
-      <div class="row">
+    <!-- ======= Coaches Section ======= -->
+    <section id="coaches" class="team">
+      <div class="container">
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
-          <div class="icon-box icon-box-pink">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <h4 class="title"><a href="https://icancoachyou.online/">تدريب 1 على 1</a></h4>
-            <p class="description">التدريب الفردي هو الخدمة الأكثر انتشارًا التي يقدمها المدربون عبر الإنترنت.</p>
-          </div>
+        <div class="section-title" data-aos="fade-up">
+          <h2>المدربون</h2>
+          <p>
+            <q>إذا كنت تريد أن تذهب بسرعة ، اذهب بمفردك ، إذا كنت تريد الذهاب بعيدًا، فدعنا نذهب معًا.</q>
+            مثل أفريقي - مارتا جويترد
+          </p>
+          <br>
+          <a href="coaches-ar.html">تصفح المدربين</a>
+          <!-- <p>“If you want to go fast, go alone, if you want to go far, go together”. African Proverb – Martha Goedert.</p> -->
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
-          data-aos-delay="100">
-          <div class="icon-box icon-box-cyan">
-            <div class="icon"><i class="bx bx-file"></i></div>
-            <h4 class="title"><a href="https://icancoachyou.online/">دورة أونلاين</a></h4>
-            <p class="description">يمكن اعتبار الدورات التدريبية عبر الإنترنت منتجات تدريب ، بدلاً من خدمات التدريب.
-            </p>
-          </div>
-        </div>
+        <div class="row top-coaches" id="coaches-content">
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
-          data-aos-delay="200">
-          <div class="icon-box icon-box-green">
-            <div class="icon"><i class="bx bx-tachometer"></i></div>
-            <h4 class="title"><a href="https://icancoachyou.online/">إيجاد المدرب المناسب</a></h4>
-            <p class="description">نحن نسعى جاهدين للتوفيق بين العميل والمدرب بناءً على أهداف العميل وأهدافه.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in"
-          data-aos-delay="300">
-          <div class="icon-box icon-box-blue">
-            <div class="icon"><i class="bx bx-world"></i></div>
-            <h4 class="title"><a href="https://icancoachyou.online/">بناء خطة مهنية</a></h4>
-            <p class="description">مطابقة مهاراتك ، وما إلى ذلك ، بالوظائف أو الوظائف الحالية. مطابقة أهداف حياتك
-              المهنية مع احتياجاتك المالية.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Services Section -->
-
-  <!-- ======= Coaches Section ======= -->
-  <section id="coaches" class="team">
-    <div class="container">
-
-      <div class="section-title" data-aos="fade-up">
-        <h2>المدربون</h2>
-        <p>
-          <q>إذا كنت تريد أن تذهب بسرعة ، اذهب بمفردك ، إذا كنت تريد الذهاب بعيدًا، فدعنا نذهب معًا.</q>
-          مثل أفريقي - مارتا جويترد
-        </p>
-        <br>
-        <a href="coaches-ar.html">تصفح المدربين</a>
-        <!-- <p>“If you want to go fast, go alone, if you want to go far, go together”. African Proverb – Martha Goedert.</p> -->
-      </div>
-
-      <div class="row top-coaches" id="coaches-content">
-
-        <!--
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="zoom-in">
-              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>إبراهيم أنور</h4>
-                <span>المدرب عام</span>
-                <div class="social">
-                  <a href="https://twitter.com/EbrahemAnwar" target="_blank"><i class="bi bi-twitter"></i></a>
-                  <a href="https://www.facebook.com/EbrahemAnwarMohamed" target="_blank"><i class="bi bi-facebook"></i></a>
-                  <a href="https://www.instagram.com/ebrahemanwar" target="_blank"><i class="bi bi-instagram"></i></a>
-                  <a href="https://www.linkedin.com/in/ebrahemanwar" target="_blank"><i class="bi bi-linkedin"></i></a>
+          <!--
+            <div class="col-lg-4 col-md-6">
+              <div class="member" data-aos="zoom-in">
+                <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4>إبراهيم أنور</h4>
+                  <span>المدرب عام</span>
+                  <div class="social">
+                    <a href="https://twitter.com/EbrahemAnwar" target="_blank"><i class="bi bi-twitter"></i></a>
+                    <a href="https://www.facebook.com/EbrahemAnwarMohamed" target="_blank"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/ebrahemanwar" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ebrahemanwar" target="_blank"><i class="bi bi-linkedin"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          -->
+            -->
 
-      </div>
-    </div>
-  </section><!-- End Team Section -->
-
-  <!-- ======= Roadmap Section ======= -->
-  <!--
-    <section class="roadmap position-relative d-flex flex-column justify-content-center">
-      <div class="container">
-        <style>
-          * {
-            box-sizing: border-box;
-          }
-          input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-          }
-        </style>
-        <input type="text" id="input" class="col-lg-8" name="input" placeholder=" اكتب هنا الوظيفة بالانجليزي التي تحلم بها">
-        <br>
-        <br>
-        <button id="get-career-path" class="btn-get-started border-circle scrollto">احصل على خطة وظيفية في 30
-          ثانية بواسطة
-          الذكاء الاصطناعي</button>
-        <br>
-        <div id="response">
         </div>
-        <br>
-        <a href="coaches-ar.html" class="btn-get-started border-circle scrollto">قابل مدرب</a>
       </div>
-      </div>
-    </section>
-  -->
-  <!-- End Roadmap Section -->
+    </section><!-- End Team Section -->
+
+    <!-- ======= Roadmap Section ======= -->
+    <!--
+      <section class="roadmap position-relative d-flex flex-column justify-content-center">
+        <div class="container">
+          <style>
+            * {
+              box-sizing: border-box;
+            }
+            input[type=text], select, textarea {
+              width: 100%;
+              padding: 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              resize: vertical;
+            }
+          </style>
+          <input type="text" id="input" class="col-lg-8" name="input" placeholder=" اكتب هنا الوظيفة بالانجليزي التي تحلم بها">
+          <br>
+          <br>
+          <button id="get-career-path" class="btn-get-started border-circle scrollto">احصل على خطة وظيفية في 30
+            ثانية بواسطة
+            الذكاء الاصطناعي</button>
+          <br>
+          <div id="response">
+          </div>
+          <br>
+          <a href="coaches-ar.html" class="btn-get-started border-circle scrollto">قابل مدرب</a>
+        </div>
+        </div>
+      </section>
+    -->
+    <!-- End Roadmap Section -->
 
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing section-bg">

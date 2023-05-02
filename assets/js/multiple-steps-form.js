@@ -6,26 +6,26 @@ import {
 import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
 } from 'firebase/storage';
-// iCanCoachU Example Firebase...
-const firebaseConfig = {
-	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-	authDomain: "just-like-icancoachu.firebaseapp.com",
-	projectId: "just-like-icancoachu",
-	storageBucket: "just-like-icancoachu.appspot.com",
-	messagingSenderId: "415289518874",
-	appId: "1:415289518874:web:263bf9089765a2a312daa3"
-};
-// // iCanCoachU Firebase...
+// // iCanCoachU Example Firebase...
 // const firebaseConfig = {
-//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-//   authDomain: "elmawkaabeta.firebaseapp.com",
-//   databaseURL: "https://elmawkaabeta.firebaseio.com",
-//   projectId: "elmawkaabeta",
-//   storageBucket: "elmawkaabeta.appspot.com",
-//   messagingSenderId: "808588970288",
-//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-//   measurementId: "G-G8FTTQ0EB2"
+// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+// 	authDomain: "just-like-icancoachu.firebaseapp.com",
+// 	projectId: "just-like-icancoachu",
+// 	storageBucket: "just-like-icancoachu.appspot.com",
+// 	messagingSenderId: "415289518874",
+// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
 // };
+// iCanCoachU Firebase...
+const firebaseConfig = {
+  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+  authDomain: "elmawkaabeta.firebaseapp.com",
+  databaseURL: "https://elmawkaabeta.firebaseio.com",
+  projectId: "elmawkaabeta",
+  storageBucket: "elmawkaabeta.appspot.com",
+  messagingSenderId: "808588970288",
+  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+  measurementId: "G-G8FTTQ0EB2"
+};
 
 // Page Language
 
@@ -54,6 +54,8 @@ joinForm.addEventListener('submit', async (e) => {
 		let imageURL = '';
 		let cvDownloadURL = '';
 
+		reloadButton();
+
 		if (imageFile) {
 			const compressedImageFile = await compressFileIfNeeded(imageFile);
 			const imageFilePath = `images/${imageFile.name}`;
@@ -73,14 +75,11 @@ joinForm.addEventListener('submit', async (e) => {
 		}
 
 
-		reloadButton();
-
 		/* Some Form Values */
 		const countryVal = joinForm.country.value.charAt(0).toUpperCase() + joinForm.country.value.slice(1, ).toLowerCase();
 		await addDoc(arcolRef, {
 			name: joinForm.ar_name.value,
 			gender: joinForm.gender.value,
-			// age: joinForm.age.value,
 			birthdate: joinForm.birthdate.value,
 			country: countryVal,
 			city: joinForm.city.value,
@@ -95,21 +94,21 @@ joinForm.addEventListener('submit', async (e) => {
 			facebook_account: joinForm.fb_link.value,
 			youtube_account: joinForm.youtube_link.value,
 			tiktok_account: joinForm.tiktok_link.value,
-			industry: joinForm.industry.value.split(',')[1],
-			jobTitle: joinForm.jobTitle.value.split(',')[1],
-			category: joinForm.industry.value.split(',')[1] + ", " + joinForm.jobTitle.value.split(',')[1],
-			work_experience: joinForm.work_exp.value,
+			industry: joinForm.industry.value.split('$')[1],
+			jobTitle: joinForm.jobTitle.value.split('$')[1],
+			category: joinForm.industry.value.split('$')[1] + ", " + joinForm.jobTitle.value.split('$')[1],
+			work_experience: joinForm.ar_work_exp.value, // new
 			work_experience_years: joinForm.work_exp_years.value,
 			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' جنيه مصري',
-			pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' جنيه مصري',
+			pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' دولار أمريكي',
 			english_skills: joinForm.en_lang.value,
 			order: document.querySelectorAll('.filtered-coaches > div').length,
 			rating: 5,
 			summary: joinForm.ar_summary.value,
 			coach_working_life_tags: coachTags,
 			coach_free_time: joinForm.coachTime.value,
-			coach_role_model: joinForm.coach_role_model.value,
-			coach_objective_life: joinForm.coach_goal.value,
+			coach_role_model: joinForm.ar_coach_role_model.value, // new
+			coach_objective_life: joinForm.ar_coach_goal.value, // new
 			coach_calendly_link: joinForm.calendly_link.value,
 			coach_tidycal_link: joinForm.tidycal_link.value,
 			coach_bank_infos: joinForm.coach_bank_infos.value,
@@ -126,7 +125,6 @@ joinForm.addEventListener('submit', async (e) => {
 		await addDoc(encolRef, {
 			name: joinForm.en_name.value,
 			gender: joinForm.gender.value,
-			// age: joinForm.age.value,
 			birthdate: joinForm.birthdate.value,
 			country: countryVal,
 			city: joinForm.city.value,
@@ -141,9 +139,9 @@ joinForm.addEventListener('submit', async (e) => {
 			facebook_account: joinForm.fb_link.value,
 			youtube_account: joinForm.youtube_link.value,
 			tiktok_account: joinForm.tiktok_link.value,
-			industry: joinForm.industry.value.split(',')[0],
-			jobTitle: joinForm.jobTitle.value.split(',')[0],
-			category: joinForm.industry.value.split(',')[0] + ", " + joinForm.jobTitle.value.split(',')[0],
+			industry: joinForm.industry.value.split('$')[0],
+			jobTitle: joinForm.jobTitle.value.split('$')[0],
+			category: joinForm.industry.value.split('$')[0] + ", " + joinForm.jobTitle.value.split('$')[0],
 			work_experience: joinForm.work_exp.value,
 			work_experience_years: joinForm.work_exp_years.value,
 			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' EGP',
@@ -192,11 +190,11 @@ const closeFormBtn = document.querySelector('.close-form');
 joinUs.addEventListener('click', _ => {
 	joinForm.classList.toggle('on');
 	document.body.classList.toggle('hide-flow');
-})
+});
 closeFormBtn.addEventListener('click', _ => {
 	joinForm.classList.toggle('on');
 	document.body.classList.toggle('hide-flow');
-})
+});
 // Multiple Steps Form
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
@@ -210,7 +208,6 @@ showTap(tapIndex);
 let mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
 nextBtn.addEventListener('click', (e) => {
-	console.log("Its Next Button");
 	e.preventDefault();
 	prevNext(1);
 });
@@ -381,7 +378,6 @@ function isValid() {
 	let valid = true;
 	let currentStep = document.querySelector('.fields .step.on');
 	const currentInputs = Array.from(currentStep.querySelectorAll('input:not(.unrequired), select, textarea:not(.unrequired)'));
-	console.log(currentInputs);
 	/* Check All Targeted Input Fields */
 	for(let i = 0;i < currentInputs.length; i++) {
 		// If There is any empty Input make it invalid
@@ -426,7 +422,6 @@ function isValid() {
 		} else {
 			validOne = true;
 			pictureFile.classList.remove('invalid');
-			console.log(pictureFile.files);
 		}
 		// // Video File
 		// let videoFile = currentStep.querySelector('input[name="video_file"]');
@@ -688,8 +683,6 @@ function isValid() {
 			} else {
 				fillAlert('تأكد من أنك ملأت البيانات بالطريقة الصحيحة.');
 			}
-			console.log("Valid", valid);
-			// console.log("Tap Validation", tapValidation);
 			sweetAlert.classList.add('on');
 			return;
 		}
@@ -718,6 +711,7 @@ function reloadButton() {
 		submitBtn.innerHTML += '.';
 		count++;
 		if(count >= 4) {
+			count = 1;
 			if(lang == 'en') {
 				submitBtn.innerHTML = '<span class="spinner"></span> Sending';
 			} else {
