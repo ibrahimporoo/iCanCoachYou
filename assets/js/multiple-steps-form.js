@@ -202,7 +202,7 @@ const submitBtn = document.querySelector('#submit');
 // const tagsAddingBtn = document.querySelector('#tags-add-btn');
 const taps = document.querySelectorAll('.fields .step');
 const progSteps = document.querySelectorAll('.steps h4');
-let tapIndex = 0;
+let tapIndex = 2;
 showTap(tapIndex);
 // Patterns
 let mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
