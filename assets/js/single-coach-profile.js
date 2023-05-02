@@ -106,6 +106,8 @@ async function fetchSingleCoach() {
 		}
 	`;
 	// About Coach
+	let roleModelResult = coach.coach_role_model.replace(coach.coach_role_model.charAt(coach.coach_role_model.lastIndexOf('.')), '');
+	let coachGoalResult = coach.coach_objective_life.replace(coach.coach_objective_life.charAt(coach.coach_objective_life.lastIndexOf('.')), '');
 	if(lang == 'ar') {
 		aboutContainer.innerHTML = `
 		<span>عني</span>
@@ -118,8 +120,8 @@ async function fetchSingleCoach() {
 					${coach.summary}
 				</p>
 				${typeof coach.industry == 'string' ? `<p class="mb-3">يمكنني تدريبك في <strong>${coach.industry}</strong>.</p>` : ``}
-				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">قدوتي <strong class="ms-1">${coach.coach_role_model.replace(coach.coach_role_model.charAt(lastIndexOf('.')), '')}.</strong></p>` : ``}
-				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">هدفي هو <strong class="ms-1">${coach.coach_role_model.replace(coach.coach_role_model.charAt(lastIndexOf('.')), '')}.</strong></p>` : ``}
+				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">قدوتي <strong class="ms-1">${roleModelResult}.</strong></p>` : ``}
+				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">هدفي هو <strong class="ms-1">${coachGoalResult}.</strong></p>` : ``}
 		</div>
 	
 		${
@@ -175,8 +177,8 @@ async function fetchSingleCoach() {
 					${coach.summary}
 				</p>
 				${typeof coach.industry == 'string' ? `<p class="mb-3">I can coach you in <strong>${coach.industry}</strong>.</p>` : ``}
-				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong class="ms-1">${coach.coach_role_model.replaceAll('.', '')}.</strong></p>` : ``}
-				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong class="ms-1">${coach.coach_objective_life.replaceAll('.', '')}.</strong></p>` : ``}
+				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong class="ms-1">${roleModelResult}.</strong></p>` : ``}
+				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong class="ms-1">${coachGoalResult}.</strong></p>` : ``}
 		</div>
 	
 		${

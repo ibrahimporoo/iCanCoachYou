@@ -271,7 +271,7 @@ function viewProfile(documentId, lang, username) {
 	if(lang == 'en') {
 		window.location.href = `coach-profile.html#${username}`;
 	} else {
-		window.location.href = `coach-profile-ar.html#${username}`;
+		window.location.href = `coach-profile-ar.html`;
 	}
 }
 window.onclick = (e) => {
