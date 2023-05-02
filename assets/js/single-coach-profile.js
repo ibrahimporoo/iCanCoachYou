@@ -63,13 +63,13 @@ async function fetchSingleCoach() {
 	//
 	//	Coach Scheduling System
 	if(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(coach.paymentLink)) {
-	let theScheduleTag = document.createElement('a');
-	theScheduleTag.href = coach.paymentLink;
-	theScheduleTag.setAttribute('target', '_blank');
-	theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and schedule a meeting`;
-	if(lang == 'ar') {
-		theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>حجز وتحديد موعد اجتماع`;
-	}
+		let theScheduleTag = document.createElement('a');
+		theScheduleTag.href = coach.paymentLink;
+		theScheduleTag.setAttribute('target', '_blank');
+		theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and schedule a meeting`;
+		if(lang == 'ar') {
+			theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>حجز وتحديد موعد اجتماع`;
+		}
 		coachSchedule.appendChild(theScheduleTag);
 	}
 	//	Coach SM Icons
@@ -106,62 +106,121 @@ async function fetchSingleCoach() {
 		}
 	`;
 	// About Coach
-	aboutContainer.innerHTML = `
-	<span>About Me</span>
-	<div>
-			${
-				coach.college && coach.study_field && coach.graduation_year ? 
-				`<p class="mb-2"><strong>I have Studied at ${coach.college} in the field of ${coach.study_field} and my graduation year is ${coach.graduation_year}.</strong></p>` : ``
-			}
-			<p>
-				${coach.summary}
-			</p>
-			${typeof coach.industry == 'string' ? `<p class="mb-3">I can coach you in <strong>${coach.industry}</strong>.</p>` : ``}
-			${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong class="ms-1">${coach.coach_role_model.replaceAll('.', '')}.</strong></p>` : ``}
-			${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong class="ms-1">${coach.coach_objective_life.replaceAll('.', '')}.</strong></p>` : ``}
-	</div>
-
-	${
-		typeof coach.work_experience === 'string' ?
-		`
-		<span>Work Experience</span>
-
-		<div id="work-exp">
-			
-			<p>${coach.work_experience.replaceAll('Yes,', '').replaceAll('yes,', '').replaceAll('yes', '').replaceAll('Yes', '')}</p>
-	
+	if(lang == 'ar') {
+		aboutContainer.innerHTML = `
+		<span>عني</span>
+		<div>
+				${
+					coach.college && coach.study_field && coach.graduation_year ? 
+					`<p class="mb-2"><strong>لقد درست في ${coach.college} في مجال ${coach.study_field} وسنة تخرجي هي ${coach.graduation_year}.</strong></p>` : ``
+				}
+				<p>
+					${coach.summary}
+				</p>
+				${typeof coach.industry == 'string' ? `<p class="mb-3">يمكنني تدريبك في <strong>${coach.industry}</strong>.</p>` : ``}
+				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">قدوتي <strong class="ms-1">${coach.coach_role_model.replace(coach.coach_role_model.charAt(lastIndexOf('.')), '')}.</strong></p>` : ``}
+				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">هدفي هو <strong class="ms-1">${coach.coach_role_model.replace(coach.coach_role_model.charAt(lastIndexOf('.')), '')}.</strong></p>` : ``}
 		</div>
-		` : ``
-	}
-
-
-	${
-		typeof coach.session_way === 'string' ?
-		`
-		<span>My Sessions Way</span>
-		<p>
-			Currently I can teach you ${coach.session_way == 'both'? 'Online or Offline according to your needs.' : coach.session_way}
-		</p>
-		` : ``
-	}
 	
-
-	${
-		!isNaN(Number(coach.work_experience_years)) && coach.work_experience_years > 0 ?
-		`
-		<div class="achievements-cards p-4 mt-5">
-			<div class="box d-flex align-items-center gap-1">
-				<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" />
-				<div class="text d-flex flex-column gap-1 p-2">
-					<h3>${coach.work_experience_years}</h3>
-					<p>Years of Experience</p>
+		${
+			typeof coach.work_experience === 'string' ?
+			`
+			<span>الخبرة العملية</span>
+	
+			<div id="work-exp">
+				
+				<p>${coach.work_experience.replaceAll('Yes,', '').replaceAll('yes,', '').replaceAll('yes', '').replaceAll('Yes', '')}</p>
+		
+			</div>
+			` : ``
+		}
+	
+	
+		${
+			typeof coach.session_way === 'string' ?
+			`
+			<span>طريقة المقابلة التعليمية</span>
+			<p>
+				في الوقت الحالي يمكنني تعليمك ${coach.session_way == 'both'? 'وجها لوجه أو عن بعد حسب رغباتك' : coach.session_way}
+			</p>
+			` : ``
+		}
+		
+	
+		${
+			!isNaN(Number(coach.work_experience_years)) && coach.work_experience_years > 0 ?
+			`
+			<div class="achievements-cards p-4 mt-5">
+				<div class="box d-flex align-items-center gap-1">
+					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" />
+					<div class="text d-flex flex-column gap-1 p-2">
+						<h3>${coach.work_experience_years}</h3>
+						<p>عام من الخبرات</p>
+					</div>
 				</div>
 			</div>
+			` : ``
+		}
+		
+		`;
+	} else {
+		aboutContainer.innerHTML = `
+		<span>About Me</span>
+		<div>
+				${
+					coach.college && coach.study_field && coach.graduation_year ? 
+					`<p class="mb-2"><strong>I have Studied at ${coach.college} in the field of ${coach.study_field} and my graduation year is ${coach.graduation_year}.</strong></p>` : ``
+				}
+				<p>
+					${coach.summary}
+				</p>
+				${typeof coach.industry == 'string' ? `<p class="mb-3">I can coach you in <strong>${coach.industry}</strong>.</p>` : ``}
+				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong class="ms-1">${coach.coach_role_model.replaceAll('.', '')}.</strong></p>` : ``}
+				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong class="ms-1">${coach.coach_objective_life.replaceAll('.', '')}.</strong></p>` : ``}
 		</div>
-		` : ``
-	}
 	
-	`;
+		${
+			typeof coach.work_experience === 'string' ?
+			`
+			<span>Work Experience</span>
+	
+			<div id="work-exp">
+				
+				<p>${coach.work_experience.replaceAll('Yes,', '').replaceAll('yes,', '').replaceAll('yes', '').replaceAll('Yes', '')}</p>
+		
+			</div>
+			` : ``
+		}
+	
+	
+		${
+			typeof coach.session_way === 'string' ?
+			`
+			<span>My Sessions Way</span>
+			<p>
+				Currently I can teach you ${coach.session_way == 'both'? 'Online or Offline according to your needs.' : coach.session_way}
+			</p>
+			` : ``
+		}
+		
+	
+		${
+			!isNaN(Number(coach.work_experience_years)) && coach.work_experience_years > 0 ?
+			`
+			<div class="achievements-cards p-4 mt-5">
+				<div class="box d-flex align-items-center gap-1">
+					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" />
+					<div class="text d-flex flex-column gap-1 p-2">
+						<h3>${coach.work_experience_years}</h3>
+						<p>Years of Experience</p>
+					</div>
+				</div>
+			</div>
+			` : ``
+		}
+		
+		`;
+	}
 	// Coach Location
 	coachLocation.innerHTML = `<i class="bi bi-geo-alt"></i> ${coach.country} / ${coach.city}`;
 	// Coach Price
