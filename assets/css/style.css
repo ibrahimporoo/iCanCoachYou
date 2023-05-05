@@ -2183,7 +2183,242 @@ section {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
+.search-bar {
+	height: 40px;
+	box-shadow: 2px 4px 18px 0px rgba(0 0 0 / 20%);
+}
 
+.search-bar #coaches-search-input {
+	outline: 0;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+
+.search-bar i {
+	background-color: #007ab7;
+	width: 40px;
+	font-size: 18px;
+	color: white;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	cursor: pointer;
+	transition: .2s;
+	-webkit-transition: .2s;
+	-moz-transition: .2s;
+	-ms-transition: .2s;
+	-o-transition: .2s;
+}
+
+.search-bar i:hover {
+	background-color: #008bd1;
+}
+
+.search-fields .filter-by  {
+	font-size: 14px;
+	font-weight: bold;
+	color: #74747e;
+}
+
+.search-fields input[type="search"] {
+	outline: 0;
+	border: 0;
+	width: 100%;
+	padding: 4px 4px 8px 12px;
+	border-bottom: 2px solid #009cea;
+}
+
+.search-fields input[type="search"]::placeholder {
+	padding: 4px 4px 4px 12px;
+}
+
+.search-fields button {
+	background-color: white;
+	padding: 5px 20px;
+	font-size: 14px;
+	color: #007ab7;
+	font-weight: 600;
+	border: 2px solid transparent;
+	border-radius: 22px;
+	-webkit-border-radius: 22px;
+	-moz-border-radius: 22px;
+	-ms-border-radius: 22px;
+	-o-border-radius: 22px;
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+}
+
+.search-fields button i {
+	font-size: 11px;
+	transition: 0.2s;
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-ms-transition: 0.2s;
+	-o-transition: 0.2s;
+}
+
+.search-fields button:hover,
+.search-fields button.active {
+	background-color: rgba(255 255 255 / 60%);
+	border: 2px solid rgba(255 255 255 / 80%);
+}
+
+.search-fields .filter-menu {
+
+}
+
+.search-fields .filter-menu .filter-menu-content {
+	background-color: white;
+	padding: 12px 20px;
+	box-shadow: 2px 2px 12px 2px rgba(255 255 255 / 20%);
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+	min-width: 270px;
+	z-index: -1;
+	top: calc(100% + 20px);
+	opacity: 0.5;
+	visibility: hidden;
+	overflow: hidden;
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+}
+.search-fields .filter-menu .filter-menu-content .filter-menu-items {
+	height: 250px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+/* Scrollbars in dropdowns */
+/* width */
+.search-fields .filter-menu .filter-menu-content .filter-menu-items::-webkit-scrollbar {
+	width: 3px;
+	height: 80px;
+}
+/* Handle */
+.search-fields .filter-menu .filter-menu-content .filter-menu-items::-webkit-scrollbar-thumb {
+	background-color: #009cea;
+}
+/* Handle on hover */
+.search-fields .filter-menu .filter-menu-content .filter-menu-items::-webkit-scrollbar-thumb:hover {
+	background-color: #007ab7;
+}
+
+/* For JS */
+.search-fields button.active i {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+}
+
+.search-fields button.active + .filter-menu-content {
+	visibility: visible;
+	z-index: 10;
+	top: calc(100% + 6px);
+	opacity: 1;
+	box-shadow: 2px 2px 10px 0 rgba(0 0 0 / 10%);
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+}
+
+.search-fields .filter-menu .filter-menu-content .filter-item {
+	cursor: pointer;
+	white-space: nowrap;
+	transition: 0.2s;
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-ms-transition: 0.2s;
+	-o-transition: 0.2s;
+}
+
+.search-fields .filter-menu .filter-menu-content .filter-item:hover {
+	background-color: #fefcfc;
+}
+
+.search-fields .filter-menu .filter-menu-content .square-check {
+	width: 18px;
+	height: 18px;
+	border: 3px solid #009cea;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	overflow: hidden;
+}
+
+.search-fields .filter-menu .filter-menu-content .square-check:hover {
+	box-shadow: 0px 0px 8px 3px #009cea7b;
+	filter: drop-shadow(0px 0px 6px #009cea7b);
+	-webkit-filter: drop-shadow(0px 0px 6px #009cea7b);
+}
+
+.search-fields .filter-menu .filter-menu-content .square-check i {
+	color: #009cea;
+	top: -8px;
+	left: -4px;
+	font-size: 20px;
+	transition: 0.1s;
+	scale: 0;
+}
+/* For JS */
+.search-fields .filter-menu .filter-menu-content .square-check.check i {
+	scale: 1;
+}
+
+@media (max-width: 992px) {
+	.search-fields .filter-menu .filter-menu-content {
+		min-width: 220px;
+	}
+	.search-fields .filter-menu .filter-menu-content .filter-item {
+    font-size: 13px;
+	}
+}
+@media (max-width: 768px) {
+	.search-fields .filter-menu .filter-menu-content {
+		left: -35px;
+	}
+	.search-fields .filter-menu .filter-menu-content .filter-item {
+		font-size: 13px;
+    white-space: normal;
+    min-width: 200px;
+	}
+}
+@media (max-width: 660px) {
+	.search-fields button {
+    padding: 5px 18px;
+    font-size: 11px;
+	}
+	.search-fields .filter-menu .filter-menu-content {
+		left: -45px;
+		width: 190px;
+	}
+	.search-fields .filter-menu .filter-menu-content .filter-item {
+		font-size: 13px;
+	}
+}
+@media (max-width: 300px) {
+	.search-fields .filter-menu .filter-menu-content {
+		left: 0;
+		width: 160px;
+	}
+}
+
+/* 
 #filtered-form {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
@@ -2279,7 +2514,7 @@ section {
 #filtered-form .input-field.on + .dropdown {
 	top: calc(100% + 10px);
 	opacity: 1;
-}
+} */
 /* End Of Filters Fields */
 
 .team {
@@ -3470,6 +3705,7 @@ section {
 
 .about-coache strong {
 	font-weight: 600;
+	display: block;
 }
 
 .about-coache .achievements-cards {
@@ -3628,6 +3864,7 @@ section {
 }
 #footer .footer-top .footer-info p strong {
 	color: #2282ff;
+	/* display: block; */
 }
 #footer .footer-top .social-links a {
 	font-size: 18px;

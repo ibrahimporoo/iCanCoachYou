@@ -4,26 +4,26 @@ import {
 	query, where,
 } from 'firebase/firestore/lite';
 
-// // iCanCoachU Example Firebase...
-// const firebaseConfig = {
-// 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
-// 	authDomain: "just-like-icancoachu.firebaseapp.com",
-// 	projectId: "just-like-icancoachu",
-// 	storageBucket: "just-like-icancoachu.appspot.com",
-// 	messagingSenderId: "415289518874",
-// 	appId: "1:415289518874:web:263bf9089765a2a312daa3"
-// };
-// iCanCoachU Firebase...
+// iCanCoachU Example Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-  authDomain: "elmawkaabeta.firebaseapp.com",
-  databaseURL: "https://elmawkaabeta.firebaseio.com",
-  projectId: "elmawkaabeta",
-  storageBucket: "elmawkaabeta.appspot.com",
-  messagingSenderId: "808588970288",
-  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-  measurementId: "G-G8FTTQ0EB2"
+	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
+	authDomain: "just-like-icancoachu.firebaseapp.com",
+	projectId: "just-like-icancoachu",
+	storageBucket: "just-like-icancoachu.appspot.com",
+	messagingSenderId: "415289518874",
+	appId: "1:415289518874:web:263bf9089765a2a312daa3"
 };
+// // iCanCoachU Firebase...
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+//   authDomain: "elmawkaabeta.firebaseapp.com",
+//   databaseURL: "https://elmawkaabeta.firebaseio.com",
+//   projectId: "elmawkaabeta",
+//   storageBucket: "elmawkaabeta.appspot.com",
+//   messagingSenderId: "808588970288",
+//   appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+//   measurementId: "G-G8FTTQ0EB2"
+// };
 
 initializeApp(firebaseConfig)
 const db = getFirestore()
@@ -92,7 +92,6 @@ async function getData() {
 };
 // <a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
 
-
 getData().then(() => {
 	if(coachesContent.classList.contains('top-coaches')) {
 		coachesContent.innerHTML = html;
@@ -103,168 +102,37 @@ getData().then(() => {
 	};
 });
 
-/* Input Filters */
-if(document.body.classList.contains('coaches-html')) {
-	/* Hiding Filtered Boxes with select box */
-	const inputFields = document.querySelectorAll('.input-field');
-
-	// if click outside
-	window.onclick = (e) => {
-		if(!e.target.matches('filter-el')) {
-			inputFields.forEach(field => field.classList.remove('on'));
-		}
-	};
-
-	inputFields.forEach(field => {
-		field.addEventListener('click', () => {
-			field.classList.toggle('on');
-		})
-	});
-
-	// Select Dropdown menues
-	const byIndustry = document.querySelectorAll('.dropdown.by-industry li');
-	const byCountry = document.querySelectorAll('.dropdown.by-country li');
-	const byJobTitle = document.querySelectorAll('.dropdown.by-job-title li');
-	// adding checked to the first item in the list
-	checkTheElement(byIndustry, 'category');
-	checkTheElement(byCountry, 'country');
-	checkTheElement(byJobTitle, 'jobTitle');
-
-	function checkTheElement(el, filterBy) {
-
-		el.forEach(item => {
-
-			item.addEventListener('click', () => {
-
-				el.forEach(item => {
-					if(item.classList.contains('on')) {
-						item.classList.remove('on');
-						item.querySelector('i').classList.remove('on');
-					}
-				});
-				
-				item.classList.add('on');
-				item.querySelector('i').classList.add('on');
-				
-				// Search the Item
-				let searchingVal = item.dataset.category;
-				if(searchingVal != 'all') {
-					switch(filterBy) {
-						case 'category':
-							filteredCoaches = coaches.filter( coach => {
-								if(coach.category.toLowerCase().indexOf(searchingVal) != -1) {
-									return coach;
-								}
-							})
-							showNewCoaches(filteredCoaches);
-							break;
-						case 'country':
-							filteredCoaches = coaches.filter( coach => {
-								if(coach.country.toLowerCase().indexOf(searchingVal) != -1) {
-									return coach;
-								}
-							})
-							showNewCoaches(filteredCoaches);
-							break;
-						case 'jobTitle':
-							filteredCoaches = coaches.filter( coach => {
-								if(coach.jobTitle.toLowerCase().indexOf(searchingVal) != -1) {
-									return coach;
-								}
-							})
-							showNewCoaches(filteredCoaches);
-							break;
-						default:
-							return coaches;
-					}
-				} else {
-					showNewCoaches(coaches);
-				}
-			})
-		});
-
-	};
-
-	// Handle Events of searching and filtering when inputs changes
-
-	let searchField = document.getElementById('search-field');
-	let filteredCoaches = coaches;
-	let html_filtering_by_user = '';
-
-	// Handle User searching
-	searchField.addEventListener('input', () => {
-		let searchFieldValue = searchField.value.toLowerCase();
-		if(searchFieldValue !== '') {
-			filteredCoaches = coaches.filter( coach => {
-				if(
-					coach.category.toLowerCase().indexOf(searchFieldValue) != -1 ||
-					coach.name.toLowerCase().indexOf(searchFieldValue) != -1 ||
-					coach.jobTitle.toLowerCase().indexOf(searchFieldValue) != -1 ||
-					coach.country.toLowerCase().indexOf(searchFieldValue) != -1
-				) {
-					return coach;
-				}
-			})
-			showNewCoaches(filteredCoaches);
-		} else {
-			showNewCoaches(filteredCoaches);
-			return false
-		};
-	})
-
-	// Handle User Choosed Categories
-
-	function showNewCoaches(coaches) {
-		html_filtering_by_user = '';
-		coaches.map(coach => {
-			html_filtering_by_user += `
-				<div class="col-lg-4 col-md-6">
-					<div class="member" data-aos="zoom-in">
-						<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
-							<div class="member-info coaches pricing" data-i=${coach.id}>
-								<div class='ps-3 pe-3'>
-									<h5>${coach.name}</h5>
-									<h4>${coach.jobTitle}</h4>
-								</div>
-								${coach.pricing ? `<span>${coach.pricing}</span>`: `<span>${coach.pricing_in_egypt}</span>`}
-								<p class='detail-item mb-1 mt-1'>Details</p>
-								<span>${coach.category}</span>
-								${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
-								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
-								<div class="social">
-									${/^(https?:\/\/)?(www\.)?linkedin.com\/(company\/[a-zA-Z0-9_\-]+|in\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.SM_account) ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
-									${/^(https?:\/\/)?(www\.)?instagram.com\/[a-zA-Z0-9_\-]+\/?$/.test(coach.instagram_account) ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
-									${/^(https?:\/\/)?(www\.)?twitter.com\/[a-zA-Z0-9_]{1,15}\/?$/.test(coach.twitter_account) ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``}
-									${/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/.test(coach.facebook_account) ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``}
-									${/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
-									${/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
-								</div>
-								<button class='profile-btn btn-buy mt-2' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
-							</div>
-						</div>
-					</div>
-				</div>
-		`;
-		});
-		// <a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
-		if(coaches.length > 0) {
-			coachesContent.innerHTML = html_filtering_by_user;
-		} else {
-			if(lang == 'ar') {
-				coachesContent.innerHTML = `
-					<h1 style='padding: 100px 0; text-align: center'>لا يوجد مدربون علي حسب اختيارك</h1>
-				`;
-			} else {
-				coachesContent.innerHTML = `
-				<h1 style='padding: 100px 0; text-align: center'>There are no Coaches according to your filtration</h1>
-				`;
+/* Start Filters */
+const filterBtns = document.querySelectorAll('.search-fields .filter-btn');
+filterBtns.forEach(btn => {
+	btn.addEventListener('click', _ => {
+		filterBtns.forEach(btn => {
+			if(!btn.classList.contains('active')) {
+				btn.classList.remove('active');
 			}
-		}
-	};
-}
+		});
+		btn.classList.toggle('active');
+	});
+});
+// countryBtn.addEventListener('click', _ => {
+// 	hideFilteredMenues('country-menu');
+// 	document.getElementById('country-menu').classList.toggle('show');
+// });
 
+document.querySelectorAll('.filter-menu .filter-item').forEach(item => {
+	item.addEventListener('click', _ => {
+		item.querySelector('.square-check').classList.toggle('check');
+	});
+});
 
-// Code for View Single Coach...
+// function hideFilteredMenues(unless) {
+// 	document.querySelectorAll(`.filter-menu .filter-menu-content:not(.${unless})`).forEach(menu => {
+// 		menu.classList.remove('show');
+// 	});
+// };
+
+/* End Filters */
+
 function viewProfile(documentId, lang, username) {
 	sessionStorage.setItem('selectedCoach', documentId);
 	sessionStorage.setItem('lang', lang);
@@ -280,3 +148,171 @@ window.onclick = (e) => {
 		viewProfile(e.target.parentElement.dataset.i, lang, e.target.dataset.uname);
 	}
 }
+
+
+
+
+
+// /* Input Filters */
+// if(document.body.classList.contains('coaches-html')) {
+// 	/* Hiding Filtered Boxes with select box */
+// 	const inputFields = document.querySelectorAll('.input-field');
+
+// 	// if click outside
+// 	window.onclick = (e) => {
+// 		if(!e.target.matches('filter-el')) {
+// 			inputFields.forEach(field => field.classList.remove('on'));
+// 		}
+// 	};
+
+// 	inputFields.forEach(field => {
+// 		field.addEventListener('click', () => {
+// 			field.classList.toggle('on');
+// 		})
+// 	});
+
+// 	// Select Dropdown menues
+// 	const byIndustry = document.querySelectorAll('.dropdown.by-industry li');
+// 	const byCountry = document.querySelectorAll('.dropdown.by-country li');
+// 	const byJobTitle = document.querySelectorAll('.dropdown.by-job-title li');
+// 	// adding checked to the first item in the list
+// 	checkTheElement(byIndustry, 'category');
+// 	checkTheElement(byCountry, 'country');
+// 	checkTheElement(byJobTitle, 'jobTitle');
+
+// 	function checkTheElement(el, filterBy) {
+
+// 		el.forEach(item => {
+
+// 			item.addEventListener('click', () => {
+
+// 				el.forEach(item => {
+// 					if(item.classList.contains('on')) {
+// 						item.classList.remove('on');
+// 						item.querySelector('i').classList.remove('on');
+// 					}
+// 				});
+				
+// 				item.classList.add('on');
+// 				item.querySelector('i').classList.add('on');
+				
+// 				// Search the Item
+// 				let searchingVal = item.dataset.category;
+// 				if(searchingVal != 'all') {
+// 					switch(filterBy) {
+// 						case 'category':
+// 							filteredCoaches = coaches.filter( coach => {
+// 								if(coach.category.toLowerCase().indexOf(searchingVal) != -1) {
+// 									return coach;
+// 								}
+// 							})
+// 							showNewCoaches(filteredCoaches);
+// 							break;
+// 						case 'country':
+// 							filteredCoaches = coaches.filter( coach => {
+// 								if(coach.country.toLowerCase().indexOf(searchingVal) != -1) {
+// 									return coach;
+// 								}
+// 							})
+// 							showNewCoaches(filteredCoaches);
+// 							break;
+// 						case 'jobTitle':
+// 							filteredCoaches = coaches.filter( coach => {
+// 								if(coach.jobTitle.toLowerCase().indexOf(searchingVal) != -1) {
+// 									return coach;
+// 								}
+// 							})
+// 							showNewCoaches(filteredCoaches);
+// 							break;
+// 						default:
+// 							return coaches;
+// 					}
+// 				} else {
+// 					showNewCoaches(coaches);
+// 				}
+// 			})
+// 		});
+
+// 	};
+
+// 	// Handle Events of searching and filtering when inputs changes
+
+// 	let searchField = document.getElementById('search-field');
+// 	let filteredCoaches = coaches;
+// 	let html_filtering_by_user = '';
+
+// 	// Handle User searching
+// 	searchField.addEventListener('input', () => {
+// 		let searchFieldValue = searchField.value.toLowerCase();
+// 		if(searchFieldValue !== '') {
+// 			filteredCoaches = coaches.filter( coach => {
+// 				if(
+// 					coach.category.toLowerCase().indexOf(searchFieldValue) != -1 ||
+// 					coach.name.toLowerCase().indexOf(searchFieldValue) != -1 ||
+// 					coach.jobTitle.toLowerCase().indexOf(searchFieldValue) != -1 ||
+// 					coach.country.toLowerCase().indexOf(searchFieldValue) != -1
+// 				) {
+// 					return coach;
+// 				}
+// 			})
+// 			showNewCoaches(filteredCoaches);
+// 		} else {
+// 			showNewCoaches(filteredCoaches);
+// 			return false
+// 		};
+// 	})
+
+// 	// Handle User Choosed Categories
+
+// 	function showNewCoaches(coaches) {
+// 		html_filtering_by_user = '';
+// 		coaches.map(coach => {
+// 			html_filtering_by_user += `
+// 				<div class="col-lg-4 col-md-6">
+// 					<div class="member" data-aos="zoom-in">
+// 						<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
+// 							<div class="member-info coaches pricing" data-i=${coach.id}>
+// 								<div class='ps-3 pe-3'>
+// 									<h5>${coach.name}</h5>
+// 									<h4>${coach.jobTitle}</h4>
+// 								</div>
+// 								${coach.pricing ? `<span>${coach.pricing}</span>`: `<span>${coach.pricing_in_egypt}</span>`}
+// 								<p class='detail-item mb-1 mt-1'>Details</p>
+// 								<span>${coach.category}</span>
+// 								${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
+// 								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+// 								<div class="social">
+// 									${/^(https?:\/\/)?(www\.)?linkedin.com\/(company\/[a-zA-Z0-9_\-]+|in\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.SM_account) ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
+// 									${/^(https?:\/\/)?(www\.)?instagram.com\/[a-zA-Z0-9_\-]+\/?$/.test(coach.instagram_account) ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
+// 									${/^(https?:\/\/)?(www\.)?twitter.com\/[a-zA-Z0-9_]{1,15}\/?$/.test(coach.twitter_account) ? `<a href="${coach.twitter_account}" target="_blank"><i class="bi bi-twitter"></i></a>`: ``}
+// 									${/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/.test(coach.facebook_account) ? `<a href="${coach.facebook_account}" target="_blank"><i class="bi bi-facebook"></i></a>`: ``}
+// 									${/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
+// 									${/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
+// 								</div>
+// 								<button class='profile-btn btn-buy mt-2' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
+// 							</div>
+// 						</div>
+// 					</div>
+// 				</div>
+// 		`;
+// 		});
+// 		// <a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Book Now</a>
+// 		if(coaches.length > 0) {
+// 			coachesContent.innerHTML = html_filtering_by_user;
+// 		} else {
+// 			if(lang == 'ar') {
+// 				coachesContent.innerHTML = `
+// 					<h1 style='padding: 100px 0; text-align: center'>لا يوجد مدربون علي حسب اختيارك</h1>
+// 				`;
+// 			} else {
+// 				coachesContent.innerHTML = `
+// 				<h1 style='padding: 100px 0; text-align: center'>There are no Coaches according to your filtration</h1>
+// 				`;
+// 			}
+// 		}
+// 	};
+// }
+ 
+
+
+// Code for View Single Coach...

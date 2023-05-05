@@ -113,15 +113,15 @@ async function fetchSingleCoach() {
 		<span>عني</span>
 		<div>
 				${
-					coach.college && coach.study_field && coach.graduation_year ? 
+					typeof coach.college === 'string' && typeof coach.study_field === 'string' && coach.study_field !== 'undefined' && coach.graduation_year ? 
 					`<p class="mb-2"><strong>لقد درست في ${coach.college} في مجال ${coach.study_field} وسنة تخرجي هي ${coach.graduation_year}.</strong></p>` : ``
 				}
 				<p>
 					${coach.summary}
 				</p>
-				${typeof coach.industry == 'string' ? `<p class="mb-3">يمكنني تدريبك في <strong>${coach.industry}</strong>.</p>` : ``}
-				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">قدوتي <strong class="ms-1">${roleModelResult}.</strong></p>` : ``}
-				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">هدفي هو <strong class="ms-1">${coachGoalResult}.</strong></p>` : ``}
+				${typeof coach.industry == 'string' ? `<p class="mb-3 mt-1">يمكنني تدريبك في <strong class="ms-2">${coach.industry}.</strong></p>` : ``}
+				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">قدوتي <strong class="ms-2">${roleModelResult}.</strong></p>` : ``}
+				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">هدفي هو <strong class="ms-2">${coachGoalResult}.</strong></p>` : ``}
 		</div>
 	
 		${
@@ -165,20 +165,20 @@ async function fetchSingleCoach() {
 		}
 		
 		`;
-	} else {
+	} else { // the content when English
 		aboutContainer.innerHTML = `
 		<span>About Me</span>
 		<div>
 				${
-					coach.college && coach.study_field && coach.graduation_year ? 
+					typeof coach.college === 'string' && typeof coach.study_field === 'string'&& coach.study_field !== 'undefined' && coach.graduation_year ? 
 					`<p class="mb-2"><strong>I have Studied at ${coach.college} in the field of ${coach.study_field} and my graduation year is ${coach.graduation_year}.</strong></p>` : ``
 				}
 				<p>
 					${coach.summary}
 				</p>
-				${typeof coach.industry == 'string' ? `<p class="mb-3">I can coach you in <strong>${coach.industry}</strong>.</p>` : ``}
-				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong class="ms-1">${roleModelResult}.</strong></p>` : ``}
-				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong class="ms-1">${coachGoalResult}.</strong></p>` : ``}
+				${typeof coach.industry == 'string' ? `<p class="mb-3 mt-2">I can coach you in <strong class="ms-2">${coach.industry}.</strong></p>` : ``}
+				${coach.coach_role_model && typeof coach.coach_role_model == 'string' ? `<p class="mb-1 mt-1">My Role Model is <strong class="ms-2">${roleModelResult}.</strong></p>` : ``}
+				${coach.coach_objective_life && typeof coach.coach_objective_life == 'string' ? `<p class="mb-2">My Goal is <strong class="ms-2">${coachGoalResult}.</strong></p>` : ``}
 		</div>
 	
 		${

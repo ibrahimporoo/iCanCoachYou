@@ -701,6 +701,7 @@ function fillAlert(text) {
 }
 let btnReloadingInterval;
 function reloadButton() {
+	submitBtn.style.pointerEvents = "none;"
 	if(lang == 'en') {
 		submitBtn.innerHTML = '<span class="spinner"></span> Sending';
 	} else {
