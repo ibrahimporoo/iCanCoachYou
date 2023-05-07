@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import {
-	getFirestore, collection, addDoc,
-	serverTimestamp
+	getFirestore, collection, getDocs,
+	addDoc, serverTimestamp
 } from 'firebase/firestore';
 import {
 	getStorage, ref, uploadBytesResumable, getDownloadURL
@@ -38,6 +38,33 @@ const db = getFirestore();
 // collection ref
 const arcolRef = collection(db, 'coaches', 'languages', 'ar');
 const encolRef = collection(db, 'coaches', 'languages', 'en');
+let enHowManyCoachesInFirebase = 0;
+let arHowManyCoachesInFirebase = 0;
+
+getDocs(arcolRef)
+  .then(snapshot => {
+		let allCoaches = [];
+    // console.log(snapshot.docs)
+    snapshot.docs.forEach(doc => {
+      allCoaches.push({ ...doc.data(), id: doc.id })
+    })
+		arHowManyCoachesInFirebase = allCoaches.length;
+  })
+  .catch(err => {
+    console.log(err.message);
+  });
+getDocs(encolRef)
+  .then(snapshot => {
+		let allCoaches = [];
+    // console.log(snapshot.docs)
+    snapshot.docs.forEach(doc => {
+      allCoaches.push({ ...doc.data(), id: doc.id })
+    })
+		enHowManyCoachesInFirebase = allCoaches.length;
+  })
+  .catch(err => {
+    console.log(err.message);
+  })
 
 // Popup Multiple Steps Form Menu
 // Multi Step Form - Joining
@@ -102,7 +129,7 @@ joinForm.addEventListener('submit', async (e) => {
 			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' جنيه مصري',
 			pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' دولار أمريكي',
 			english_skills: joinForm.en_lang.value,
-			order: document.querySelectorAll('.filtered-coaches > div').length,
+			order: arHowManyCoachesInFirebase + 1,
 			rating: 5,
 			summary: joinForm.ar_summary.value,
 			coach_working_life_tags: coachTags,
@@ -147,7 +174,7 @@ joinForm.addEventListener('submit', async (e) => {
 			pricing_in_egypt: joinForm.eg_hourly_rate.value + ' EGP',
 			pricing_outside_egypt: joinForm.outside_eg_hourly_rate.value + ' USD',
 			english_skills: joinForm.en_lang.value,
-			order: document.querySelectorAll('.filtered-coaches > div').length,
+			order: enHowManyCoachesInFirebase + 1,
 			rating: 5,
 			summary: joinForm.en_summary.value,
 			coach_working_life_tags: coachTags,
