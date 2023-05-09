@@ -1254,7 +1254,8 @@ button {
 .join-form {
 	display: none;
 }
-.join-form .en-field {
+.join-form .en-field,
+.en-field {
 	direction: ltr;
 }
 .join-form .first .en-field {
@@ -1448,7 +1449,8 @@ button {
 }
 
 #hero .btn-get-started,
-.roadmap .btn-get-started {
+.roadmap .btn-get-started,
+#hero .btn-contact {
 	font-weight: 600;
 	font-size: 13px;
 	text-transform: uppercase;
@@ -1462,7 +1464,14 @@ button {
 	color: #fff;
 	background: #009cea;
 	outline: 0;
-	border: 0;
+	border: 2px solid #ffffff50;
+}
+#hero .btn-contact {
+	border: 2px solid #009cea;
+	color: #009cea;
+	background: #ffffffd1;
+	background: #EEE;
+	background: #f2f2;
 }
 
 #hero .btn-get-started:hover,
@@ -2222,7 +2231,7 @@ section {
 	color: #74747e;
 }
 
-.search-fields input[type="search"] {
+input[type="search"] {
 	outline: 0;
 	border: 0;
 	width: 100%;
@@ -2230,7 +2239,11 @@ section {
 	border-bottom: 2px solid #009cea;
 }
 
-.search-fields input[type="search"]::placeholder {
+#main-search {
+	padding-inline-start: 50px;
+}
+
+input[type="search"]::placeholder {
 	padding: 4px 4px 4px 12px;
 }
 
@@ -2253,6 +2266,32 @@ section {
 	-o-transition: 0.3s;
 }
 
+.search-fields button .close-filtered-btn {
+	display: none;
+	font-size: 25px;
+	width: 24px;
+	height: 24px;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	color: rgba(255, 255, 255, 0.701);
+	color: crimson;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+}
+
+.search-fields button .close-filtered-btn:hover {
+	filter: drop-shadow(0px 0px 4px red);
+	-webkit-filter: drop-shadow(0px 0px 4px red);
+}
+
+.search-fields button.filtered-btn .close-filtered-btn {
+	display: flex;
+}
+
 .search-fields button i {
 	font-size: 11px;
 	transition: 0.2s;
@@ -2267,6 +2306,23 @@ section {
 	background-color: rgba(255 255 255 / 60%);
 	border: 2px solid rgba(255 255 255 / 80%);
 }
+
+.search-fields button.filtered-btn {
+	background-color: #007ab7;
+	color: white;
+	border: 2px solid rgba(255 255 255 / 80%);
+}
+
+.search-fields button.filtered-btn:hover {
+	background-color: #007ab7;
+	color: white;
+	border: 2px solid rgba(255 255 255 / 80%);
+}
+
+/* .search-fields button.filtered-btn:hover {
+	color: #008bd1;
+	background-color: white;
+} */
 
 .search-fields .filter-menu {
 
@@ -2321,11 +2377,19 @@ section {
 	-ms-transform: rotate(180deg);
 	-o-transform: rotate(180deg);
 }
+.search-fields button.active .close-filtered-btn {
+	transform: rotate(1.5turn);
+	-webkit-transform: rotate(1.5turn);
+	-moz-transform: rotate(1.5turn);
+	-ms-transform: rotate(1.5turn);
+	-o-transform: rotate(1.5turn);
+}
 
 .search-fields button.active + .filter-menu-content {
 	visibility: visible;
 	z-index: 10;
 	top: calc(100% + 6px);
+	left: -10px;
 	opacity: 1;
 	box-shadow: 2px 2px 10px 0 rgba(0 0 0 / 10%);
 	transition: 0.3s;
@@ -2334,8 +2398,13 @@ section {
 	-ms-transition: 0.3s;
 	-o-transition: 0.3s;
 }
+.rtl .search-fields button.active + .filter-menu-content {
+	left: initial;
+	right: -10px;
+}
 
 .search-fields .filter-menu .filter-menu-content .filter-item {
+	font-size: 14px;
 	cursor: pointer;
 	white-space: nowrap;
 	transition: 0.2s;
@@ -2343,6 +2412,14 @@ section {
 	-moz-transition: 0.2s;
 	-ms-transition: 0.2s;
 	-o-transition: 0.2s;
+}
+.search-fields .filter-menu .filter-menu-content .filter-item.on {
+	background-color: #0000ff0d;
+	padding: 10px;
+}
+.search-fields .filter-menu .filter-menu-content .filter-item.on:hover {
+	background-color: #0000ff11;
+	padding: 10px;
 }
 
 .search-fields .filter-menu .filter-menu-content .filter-item:hover {
@@ -2392,10 +2469,16 @@ section {
 	.search-fields .filter-menu .filter-menu-content {
 		left: -35px;
 	}
+	.rtl .search-fields .filter-menu .filter-menu-content {
+		left: initial;
+		right: 10px;
+		right: -35px;
+	}
 	.search-fields .filter-menu .filter-menu-content .filter-item {
 		font-size: 13px;
     white-space: normal;
     min-width: 200px;
+		right: -35px;
 	}
 }
 @media (max-width: 660px) {
@@ -2407,6 +2490,10 @@ section {
 		left: -45px;
 		width: 190px;
 	}
+	.rtl .search-fields .filter-menu .filter-menu-content {
+		left: initial;
+		right: -35px;
+	}
 	.search-fields .filter-menu .filter-menu-content .filter-item {
 		font-size: 13px;
 	}
@@ -2415,6 +2502,9 @@ section {
 	.search-fields .filter-menu .filter-menu-content {
 		left: 0;
 		width: 160px;
+	}
+	.rtl .search-fields .filter-menu .filter-menu-content {
+		left: initial;
 	}
 }
 
@@ -2516,7 +2606,6 @@ section {
 	opacity: 1;
 } */
 /* End Of Filters Fields */
-
 .team {
 	background: url("../img/team-bg.jpg") center center no-repeat;
 	background-size: cover;
@@ -2539,6 +2628,10 @@ section {
 .team .container {
 	position: relative;
 	z-index: 10;
+}
+
+.team .filtered-coaches {
+	min-height: 10vh;
 }
 
 .team .member {

@@ -55,12 +55,6 @@ async function fetchSingleCoach() {
 	coachName.innerText = coach.name;
 	//	Coach job title
 	coachJobTitle.innerText = coach.jobTitle;
-	
-	// 
-	// theScheduleTag.href = /https:\/\/calendly\.com\/[a-zA-Z0-9_-]+(?:\?.*)?/.test(coach.coach_calendly_link) ?
-	// coach.coach_calendly_link : /https:\/\/tidycal\.com\/[a-zA-Z0-9_-]+(?:\/[a-zA-Z0-9_-]+)*/.test(coach.coach_tidycal_link) ?
-	// coach.coach_tidycal_link : ``;
-	//
 	//	Coach Scheduling System
 	if(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(coach.paymentLink)) {
 		let theScheduleTag = document.createElement('a');

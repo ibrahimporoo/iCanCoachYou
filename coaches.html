@@ -624,7 +624,7 @@
                 <span class="example" style="margin-bottom: 2px;">
                   if you don't have calendly account
                   Create one from this link
-                  <a href="https://calendly.com/">
+                  <a href="https://calendly.com/" target="_blank">
                     calendly.com
                   </a>
                 </span>
@@ -646,7 +646,7 @@
                 <span class="example" style="margin-bottom: 16px;">
                   if you don't have a tidycal account
                   create one through this link
-                  <a href="https://tidycal.com/">
+                  <a href="https://tidycal.com/" target="_blank">
                     tidycal.com
                   </a>
                 </span>
@@ -903,12 +903,12 @@
           </p>
         </div>
 
-        <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-stretch gap-4 justify-content-between mb-5 pb-4 pt-4">
+        <div class="search-container align-items-center align-items-sm-stretch d-flex flex-column flex-sm-row gap-4 justify-content-end mb-5 pb-4 pt-4">
           <!-- Search bar -->
           <div class="col-12 col-sm-5">
             <h3 class="mb-3">Search Coaches</h3>
             <div class="search-bar position-relative">
-              <input class="w-100 h-100 border-0 ps-2" type="search" id="coaches-search-input" placeholder="search for your coach...">
+              <input class="w-100 h-100 border-0 ps-2" type="search" id="main-search" placeholder="search for your coach...">
               <i class="bi bi-search position-absolute end-0 top-50 translate-middle-y h-100 d-flex align-items-center justify-content-center"></i>
             </div>
           </div>
@@ -922,6 +922,7 @@
                 <button class="filter-btn d-flex align-items-center justify-content-center gap-1">
                   Country
                   <i class="bi bi-caret-down-fill"></i>
+                  <i class="bi bi-x ms-2 close-filtered-btn"></i>
                 </button>
                 <div class="filter-menu-content position-absolute">
                   <!-- Top Search -->
@@ -1358,6 +1359,7 @@
                 <button class="filter-btn d-flex align-items-center justify-content-center gap-1">
                   Job title
                   <i class="bi bi-caret-down-fill"></i>
+                  <i class="bi bi-x ms-2 close-filtered-btn"></i>
                 </button>
                 <div class="filter-menu-content position-absolute">
                   <!-- Top Search -->
@@ -1390,7 +1392,7 @@
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="director">
+                      <span class="square-check position-relative" value="director/vp">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Director/VP
@@ -1419,13 +1421,9 @@
                 <button class="filter-btn d-flex align-items-center justify-content-center gap-1">
                   Gender
                   <i class="bi bi-caret-down-fill"></i>
+                  <i class="bi bi-x ms-2 close-filtered-btn"></i>
                 </button>
                 <div class="filter-menu-content position-absolute" style="min-width: 200px;left: -40px;">
-                  <!-- Top Search -->
-                  <div class="filter-item-input mb-2 d-flex align-items-center gap-2">
-                    <i class="bi bi-search"></i>
-                    <input type="search" placeholder="search" />
-                  </div>
 
                   <!-- Items -->
                   <div id="gender-menu">
@@ -1454,6 +1452,7 @@
                 <button class="filter-btn d-flex align-items-center justify-content-center gap-1">
                   Coach Specialities
                   <i class="bi bi-caret-down-fill"></i>
+                  <i class="bi bi-x ms-2 close-filtered-btn"></i>
                 </button>
                 <div class="filter-menu-content position-absolute">
 
@@ -1467,7 +1466,7 @@
                   <div id="specialities-menu" class="filter-menu-items">
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="sales">
+                      <span class="square-check position-relative" value="sales & marketing">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Sales & Marketing
@@ -1512,7 +1511,7 @@
                       <span class="square-check position-relative" value="programming">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
-                      programming
+                      Programming
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
                       <span class="square-check position-relative" value="cyber security">
@@ -1597,6 +1596,7 @@
                 <button class="filter-btn d-flex align-items-center justify-content-center gap-1">
                   Years of experience
                   <i class="bi bi-caret-down-fill"></i>
+                  <i class="bi bi-x ms-2 close-filtered-btn"></i>
                 </button>
                 <div class="filter-menu-content position-absolute">
                   <!-- Items -->
@@ -1688,17 +1688,11 @@
                 <button class="filter-btn d-flex align-items-center justify-content-center gap-1">
                   Modality
                   <i class="bi bi-caret-down-fill"></i>
+                  <i class="bi bi-x ms-2 close-filtered-btn"></i>
                 </button>
                 <div class="filter-menu-content position-absolute" style="min-width: 210px;left: -50px;">
                   <!-- Items -->
                   <div id="modality-menu">
-
-                    <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="offline">
-                        <i class="bi bi-check-square-fill position-absolute"></i>
-                      </span>
-                      in person
-                    </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
                       <span class="square-check position-relative" value="online">
@@ -1708,10 +1702,17 @@
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
+                      <span class="square-check position-relative" value="offline">
+                        <i class="bi bi-check-square-fill position-absolute"></i>
+                      </span>
+                      offline
+                    </div>
+
+                    <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
                       <span class="square-check position-relative" value="both">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
-                      online & in person
+                      online & offline
                     </div>
 
                   </div>
@@ -1723,139 +1724,9 @@
         </div>
 
         <!-- Filtering with select box -->
-        <!-- <div id="filtered-form" class="d-md-flex align-items-center justify-content-between mb-4">
-
-          <div class="mb-2 mb-md-0 filter-el">
-            <input class="w-100" type="search" id="search-field" placeholder="search anything...">
-          </div>
-
-          <div
-            class="selection-group d-flex align-items-center justify-content-between justify-content-md-center gap-2">
-
-            <div class="position-relative">
-
-              <div class="input-field filter-el d-flex justify-content-between">
-                <p class="mb-0 filter-el">Job title</p>
-                <i class="bi bi-chevron-down filter-el"></i>
-              </div>
-              <ul class="dropdown position-absolute filter-el by-job-title">
-                <li class="filter-el on" data-category="all">
-                  All <i class="check-icon bi bi-check on"></i>
-                </li>
-                <li class="filter-el" data-category="self">
-                  Individual Contributor - Self Employed
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="middle">Middle Manager
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="senior">Senior Manager
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="director">Director/VP
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="founder">Founder/Business Owner
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-              </ul>
-
-            </div>
-
-            <div class="position-relative filter-el">
-
-              <div class="input-field d-flex justify-content-between filter-el">
-                <p class="mb-0 filter-el">Select industry</p>
-                <i class="bi bi-chevron-down filter-el"></i>
-              </div>
-
-              <ul class="dropdown position-absolute filter-el by-industry">
-                <li class="filter-el on" data-category="all">
-                  All <i class="check-icon bi bi-check on"></i>
-                </li>
-                <li class="filter-el" data-category="sales">Sales & Marketing
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="business">Business Management
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="soft">Soft Skills
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="cont">Content & copy rights
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="hr">HR
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="media">Media, Photography & Film
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="technology">Technology
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="programming">programming
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="cyber">Cyber security
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="operation">operations
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="legal">Legal
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="finance">Finance
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="scienc">Science & Productivity
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="langua">Languages
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="logist">Logistics
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="arts">Arts & Design
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="entrepreneurship">Entrepreneurship
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-              </ul>
-
-            </div>
-
-            <div class="position-relative">
-
-              <div class="input-field filter-el d-flex justify-content-between">
-                <p class="mb-0 filter-el">All over the world</p>
-                <i class="bi bi-chevron-down filter-el"></i>
-              </div>
-              <ul class="dropdown position-absolute filter-el by-country">
-                <li class="filter-el on" data-category="all">
-                  All <i class="check-icon bi bi-check on"></i>
-                </li>
-                <li class="filter-el" data-category="egypt">Egypt
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-                <li class="filter-el" data-category="saudia">Saudia Arabia
-                  <i class="check-icon bi bi-check"></i>
-                </li>
-              </ul>
-
-            </div>
-
-          </div>
-
-        </div> -->
-
         <div class="row filtered-coaches" id="coaches-content">
           <!-- Filtering Coaches -->
           <!-- Sales Marketing Coaches -->
-
 
           <!-- business Management Coaches -->
           <!-- <div class="business-management">
