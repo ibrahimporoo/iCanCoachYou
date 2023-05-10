@@ -1465,17 +1465,12 @@ button {
 	background: #009cea;
 	outline: 0;
 	border: 2px solid #ffffff50;
-}
-#hero .btn-contact {
 	border: 2px solid #009cea;
-	color: #009cea;
-	background: #ffffffd1;
-	background: #EEE;
-	background: #f2f2;
 }
 
 #hero .btn-get-started:hover,
-.roadmap .btn-get-started:hover {
+.roadmap .btn-get-started:hover,
+#hero .btn-contact:hover {
 	background: #008bd1;
 }
 
@@ -3820,8 +3815,6 @@ input[type="search"]::placeholder {
 
 @media (max-width: 992px) {
 	.coache-profile .container {
-		/* padding: 30px 30px 125px;
-		 */
     padding: 30px 30px 175px;
 		flex-direction: column-reverse;
 	}
@@ -3829,7 +3822,7 @@ input[type="search"]::placeholder {
 		position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -110px;
+		bottom: -115px;
 	}
 	.coache-profile .coache-details {
     justify-content: center;
@@ -3839,28 +3832,18 @@ input[type="search"]::placeholder {
 		justify-content: center;
 	}
 	.coache-profile .img-holder {
-    width: 220px;
-    height: 220px;
+    width: 225px;
+    height: 225px;
     margin-right: 0px;
-		/* 
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-		*/
 	}
 	.coache-profile .coache-info {
     text-align: center;
-    /* width: 100%; */
 	}
 }
 
 @media (max-width: 768px) {
 	.coache-profile .container .schedule a {
-		font-size: 11px;
+		font-size: 13px;
 	}
 	.coache-profile {
 		padding: 0 10px;
@@ -3891,29 +3874,21 @@ input[type="search"]::placeholder {
     letter-spacing: 1px;
 	}
 	.coache-profile .img-holder {
-    width: 160px;
-    height: 160px;
-		bottom: -90px;
-	}
-	.coache-profile .container {
-		padding: 20px 20px 120px;
+    width: 202px;
+    height: 202px;
 	}
 	.coache-profile .container .schedule a {
-    font-size: 8px;
+    gap: 4px;
+		font-size: 12px;
 	}
-	.coache-profile .coache-details #coach-price span {
-    font-size: 6px;
+	.coache-profile .container {
+		padding: 20px 20px 160px;
 	}
 	#coach-location {
 		font-size: 11px;
 	}
 	.coache-profile .coache-details #coach-price {
     font-size: 13px;
-	}
-}
-@media (max-width: 315px) {
-	#coach-location {
-		font-size: 8px;
 	}
 }
 

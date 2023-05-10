@@ -220,12 +220,12 @@ async function fetchSingleCoach() {
 	// Coach Location
 	coachLocation.innerHTML = `<i class="bi bi-geo-alt"></i> ${coach.country} / ${coach.city}`;
 	// Coach Price
-	let priceTime = "per hour";
+	let priceTime = "/ Hr";
 	if(lang == 'ar') {
 		priceTime = "للساعة";
 	}
-	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack me-2"></i> ${coach.pricing_in_egypt} <span>${priceTime}</span>` :
-	`<i class="bi bi-cash-stack me-2"></i> ${coach.pricing} <span>${priceTime}</span>`;
+	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack"></i> ${coach.pricing_in_egypt} <span>${priceTime}</span>` :
+	`<i class="bi bi-cash-stack"></i> ${coach.pricing} <span>${priceTime}</span>`;
 }
 
 fetchSingleCoach();

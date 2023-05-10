@@ -65,7 +65,7 @@ async function getData() {
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
 							</div>
-							${coach.pricing_in_egypt ? `<span class="mb-0">${coach.pricing_in_egypt}</span>` : `<span class="mb-0">${coach.pricing}</span>`}
+							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt} / Hr</span>` : `<span class="mb-0 text-uppercase">${coach.pricing} / Hr</span>`}
 							<p class='detail-item mb-1 mt-1'>Details</p>
 							<span>${coach.category}</span>
 							${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
