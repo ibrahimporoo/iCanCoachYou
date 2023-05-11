@@ -39,7 +39,7 @@ let coaches = []; // for fulling coaches in coaches page
 let html = ''; // content that we put in html
 // let html_filtered_coaches = ''; // content that we put in html
 coachesContent.innerHTML = ''; // empty coaches content before getting data
-
+let priceUnit = lang == 'en' ? '/hr' : ' / للساعة';
 async function getData() {
 	// Fetching 'Getting' Data
 	await getDocs(qCompleted)
@@ -65,7 +65,7 @@ async function getData() {
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
 							</div>
-							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt} / Hr</span>` : `<span class="mb-0 text-uppercase">${coach.pricing} / Hr</span>`}
+							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt}${priceUnit}</span>` : `<span class="mb-0 text-uppercase">${coach.pricing}/Hr</span>`}
 							<p class='detail-item mb-1 mt-1'>Details</p>
 							<span>${coach.category}</span>
 							${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
@@ -139,7 +139,6 @@ function viewProfile(documentId, lang, username) {
 
 window.onclick = (e) => {
 	if(e.target.matches('.profile-btn')) {
-		// console.log(e.target.dataset.uname);
 		viewProfile(e.target.parentElement.dataset.i, lang, e.target.dataset.uname);
 	}
 }
@@ -159,7 +158,8 @@ if(document.body.classList.contains('coaches-html')) {
 	const genderFilter = document.getElementById('gender-menu');
 	const yearsOfExperienceFilter = document.getElementById('years-experience-menu');
 	const modalityFilter = document.getElementById('modality-menu');
-
+	let minVal = 150, maxVal = 5000;
+	// const priceFilter = document.getElementById('price-menu');
 
 	const filterBtns = document.querySelectorAll('.search-fields .filter-btn');
 	const closeFilteredBtns = document.querySelectorAll('.search-fields .close-filtered-btn');
@@ -179,19 +179,9 @@ if(document.body.classList.contains('coaches-html')) {
 		});
 	});
 
-	// window.addEventListener('click', e => {
-	// 	if( e.target.closest(":not(.filter-btn)") ) {
-	// 		console.log("The clicked in , ", e.target);
-	// 		filterBtns.forEach(btn => {
-	// 			btn.classList.remove('active');
-	// 		});
-	// 	}
-	// });
-
 	closeFilteredBtns.forEach(btn => {
-		btn.addEventListener('click', e => {
+		btn.addEventListener('click', _ => {
 			const theDad = btn.parentElement;
-			console.log(theDad);
 			theDad.classList.remove('filtered-btn');
 			theDad.nextElementSibling.querySelectorAll('.check').forEach(el => {
 				el.parentElement.classList.remove('on');
@@ -221,6 +211,7 @@ if(document.body.classList.contains('coaches-html')) {
 		const selectedGenders = getSelectedItems(genderFilter);
 		const selectedYearsOfExperience = getSelectedItems(yearsOfExperienceFilter);
 		const selectedModalities = getSelectedItems(modalityFilter);
+		// const selectedPrices = getSelectedItems(priceFilter);
 
 		const filteredData = coaches.filter(coach => {
 			let validOne = true;
@@ -235,16 +226,16 @@ if(document.body.classList.contains('coaches-html')) {
 				validOne = false;
 			}
 
-			let validTwo = true;
+			let genderValidation = true;
 			if (selectedGenders.length > 0) {
 				if(coach.gender) {
 					if(selectedGenders.includes(coach.gender.trim().toLowerCase())) {
-						validTwo = true;
+						genderValidation = true;
 					} else {
-						validTwo = false;
+						genderValidation = false;
 					}
 				} else {
-					validTwo = false;
+					genderValidation = false;
 				}
 			};
 
@@ -263,6 +254,15 @@ if(document.body.classList.contains('coaches-html')) {
 				}
 			}
 
+			// Filter by Prices
+			let theCoachPrice = parseInt(coach.pricing_in_egypt) || parseInt(coach.pricing);
+			let coachPriceInRange = true;
+			if(minVal <= theCoachPrice && maxVal >= theCoachPrice) {
+				coachPriceInRange = true;
+			} else {
+				coachPriceInRange = false;
+			}
+
 			// Filter by Years of Experience Year
 			let coachExpYears = parseInt(coach.work_experience_years);
 			if(selectedYearsOfExperience.length > 0) {
@@ -271,19 +271,19 @@ if(document.body.classList.contains('coaches-html')) {
 					selectedYearsOfExperience.forEach(year => {
 						if (coachExpYears >= parseInt(year['minVal']) && coachExpYears <= parseInt(year['maxVal'])) {
 							userCheckedYearInRange = true;
-							console.log("coach in range => ", coach);
 						}
 					});
-					return userCheckedYearInRange && validOne && validTwo && searchValidation;
+					return userCheckedYearInRange && validOne && genderValidation && coachPriceInRange && searchValidation;
 				} else {
 					return false;
 				}
 			};
 
-			return validOne && validTwo && searchValidation;
+			return validOne && genderValidation && searchValidation && coachPriceInRange;
 
 		});
 
+		/* if there is not filtered coaches show a message to a user */
 		if(filteredData.length > 0) {
 			displayResults(filteredData);
 		} else {
@@ -317,17 +317,17 @@ if(document.body.classList.contains('coaches-html')) {
 			coachesContent.innerHTML += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
-					<div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
 						<div class="member-info coaches pricing" data-i=${coach.id}>
 							<div class='ps-3 pe-3'>
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
 							</div>
-							${coach.pricing ? `<span>${coach.pricing}</span>`: `<span>${coach.pricing_in_egypt}</span>`}
+							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt}${priceUnit}</span>` : `<span class="mb-0 text-uppercase">${coach.pricing}/Hr</span>`}
 							<p class='detail-item mb-1 mt-1'>Details</p>
 							<span>${coach.category}</span>
 							${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
-							<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+							<span class="mt-1">${coach.country}/${coach.city} - ${coach.rating} stars</span>
 							<div class="social">
 								${/^(https?:\/\/)?(www\.)?linkedin.com\/(company\/[a-zA-Z0-9_\-]+|in\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.SM_account) ? `<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>` : `<a href="${coach.linkedIn_account}" target="_blank"><i class="bi bi-linkedin"></i></a>`}
 								${/^(https?:\/\/)?(www\.)?instagram.com\/[a-zA-Z0-9_\-]+\/?$/.test(coach.instagram_account) ? `<a href="${coach.instagram_account}" target="_blank"><i class="bi bi-instagram"></i></a>`: ``}
@@ -349,9 +349,6 @@ if(document.body.classList.contains('coaches-html')) {
 	const menuSearches = document.querySelectorAll('.filter-menu-content input[type="search"]');
 	menuSearches.forEach(searchInput => {
 		searchInput.addEventListener('input', e => {
-			// console.log(e.target);
-			// console.log("The Parent ELement => ", e.target.parentElement);
-			// const ownFilterItemsMenu = e.target.parentElement.nextElementSibling;
 			let userInputVal = e.target.value.toLowerCase().trim();
 			if(userInputVal) {
 				const filterItems = e.target.parentElement.nextElementSibling.querySelectorAll('.square-check');
@@ -363,12 +360,61 @@ if(document.body.classList.contains('coaches-html')) {
 						item.parentElement.style.cssText = 'display:flex;scale: 1; ';
 					}
 				})
-				// console.log("The Parent ELement OWN MENu => ", ownFilterItemsMenu);
-			} else {
-				console.log("empty");
 			}
 		})
 	});
+
+	let priceGap = 100;
+
+	// Price Inputs
+	const rangeInput = document.querySelectorAll('.range-input input'),
+	priceInput = document.querySelectorAll('.price-input input'),
+	progress = document.querySelector('.slider .range-bar');
+
+	priceInput.forEach(input => {
+		input.addEventListener('input', (e) => {
+			// let minVal = parseInt(priceInput[0].value),
+			minVal = parseInt(priceInput[0].value);
+			maxVal = parseInt(priceInput [1].value);
+
+			if((maxVal - minVal >= priceGap) && maxVal <= 10000) {
+				if(e.target.className === 'price-min') {
+					rangeInput[0].value = minVal;
+					progress.style.left = (minVal / rangeInput[0].max) * 100 + '%';
+				} else {
+					rangeInput[1].value = maxVal;
+					progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + '%';
+				}
+			};
+
+			filterResults();
+
+		})
+	});
+
+	rangeInput.forEach(input => {
+		input.addEventListener('input', (e) => {
+			// let minVal = parseInt(rangeInput[0].value),
+			minVal = parseInt(rangeInput[0].value);
+			maxVal = parseInt(rangeInput[1].value);
+
+			if(maxVal - minVal < priceGap) {
+				if(e.target.className === 'range-min') {
+					rangeInput[0].value = maxVal - priceGap;
+				} else {
+					rangeInput[1].value = minVal + priceGap;
+				}
+			} else {
+				priceInput[0].value = minVal;
+				priceInput[1].value = maxVal;
+				progress.style.left = (minVal / rangeInput[0].max) * 100 + '%';
+				progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + '%';
+			};
+
+			filterResults();
+
+		})
+	})
 
 	/* End Filters */
 };
