@@ -158,11 +158,9 @@ if(document.body.classList.contains('coaches-html')) {
 	const genderFilter = document.getElementById('gender-menu');
 	const yearsOfExperienceFilter = document.getElementById('years-experience-menu');
 	const modalityFilter = document.getElementById('modality-menu');
-	let minVal = 150, maxVal = 5000;
-	// const priceFilter = document.getElementById('price-menu');
+	let minVal = 150, maxVal = 9000;
 
 	const filterBtns = document.querySelectorAll('.search-fields .filter-btn');
-	const closeFilteredBtns = document.querySelectorAll('.search-fields .close-filtered-btn');
 
 	filterBtns.forEach(btn => {
 		btn.addEventListener('click', e => {
@@ -176,18 +174,9 @@ if(document.body.classList.contains('coaches-html')) {
 					}
 				});
 			}
-		});
-	});
-
-	closeFilteredBtns.forEach(btn => {
-		btn.addEventListener('click', _ => {
-			const theDad = btn.parentElement;
-			theDad.classList.remove('filtered-btn');
-			theDad.nextElementSibling.querySelectorAll('.check').forEach(el => {
-				el.parentElement.classList.remove('on');
-				el.classList.remove('check');
-			});
-			filterResults();
+			if(e.target.closest('.close-filtered-btn')) { /* Deactive all Dropdowns */
+				btn.classList.remove('active');
+			}
 		});
 	});
 
@@ -291,7 +280,6 @@ if(document.body.classList.contains('coaches-html')) {
 		}
 	};
 
-
 	function getSelectedItems(filterMenu) {
 		const selectedItems = [];
 		const filterItems = filterMenu.querySelectorAll('.check');
@@ -387,6 +375,7 @@ if(document.body.classList.contains('coaches-html')) {
 				}
 			};
 
+			document.querySelector('.search-fields .filter-btn.active').classList.add('filtered-btn');
 			filterResults();
 
 		})
@@ -411,10 +400,49 @@ if(document.body.classList.contains('coaches-html')) {
 				progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + '%';
 			};
 
+			document.querySelector('.search-fields .filter-btn.active').classList.add('filtered-btn');
 			filterResults();
 
 		})
 	})
+
+	// Reset Filters
+	const closeFilteredBtns = document.querySelectorAll('.search-fields .close-filtered-btn');
+	closeFilteredBtns.forEach(btn => {
+
+		btn.addEventListener('click', _ => {
+
+			const theDad = btn.parentElement;
+
+			if(!theDad.classList.contains('hourly-rate')) {
+
+				theDad.nextElementSibling.querySelectorAll('.check').forEach(el => {
+					el.parentElement.classList.remove('on');
+					el.classList.remove('check');
+				});
+
+			} else {
+
+				minVal = 150;
+				maxVal = 9000;
+
+				progress.style.cssText = 'left: 1.5%;right: 10%;';
+
+				rangeInput[0].value = minVal;
+				rangeInput[1].value = maxVal;
+
+				priceInput[0].value = minVal;
+				priceInput [1].value = maxVal;
+
+			};
+
+			theDad.classList.remove('filtered-btn');
+
+			filterResults();
+
+		});
+
+	});
 
 	/* End Filters */
 };

@@ -2380,7 +2380,7 @@ input[type="search"]::placeholder {
 	background-color: #009cea;
 	position: absolute;
 	left: 1.5%;
-	right: 50%;
+	right: 10%;
 }
 
 #price-menu .price-input {
