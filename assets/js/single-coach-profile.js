@@ -56,16 +56,15 @@ async function fetchSingleCoach() {
 	//	Coach job title
 	coachJobTitle.innerText = coach.jobTitle;
 	//	Coach Scheduling System
-	if(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(coach.paymentLink)) {
-		let theScheduleTag = document.createElement('a');
-		theScheduleTag.href = coach.paymentLink;
-		theScheduleTag.setAttribute('target', '_blank');
-		theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and schedule a meeting`;
-		if(lang == 'ar') {
-			theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>حجز وتحديد موعد اجتماع`;
-		}
-		coachSchedule.appendChild(theScheduleTag);
+	/* if(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(coach.paymentLink)) */
+	let theScheduleTag = document.createElement('a');
+	theScheduleTag.href = coach.paymentLink;
+	theScheduleTag.setAttribute('target', '_blank');
+	theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>Book and schedule a meeting`;
+	if(lang == 'ar') {
+		theScheduleTag.innerHTML = `<i class="bi bi-calendar2"></i>حجز وتحديد موعد اجتماع`;
 	}
+	coachSchedule.appendChild(theScheduleTag);
 	//	Coach SM Icons
 	coachSmIcons.innerHTML = `
 		${
