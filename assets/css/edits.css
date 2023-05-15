@@ -44,7 +44,6 @@ textarea::-webkit-scrollbar-track,
 body {
 	font-family: "Open Sans", sans-serif;
 	color: #444444;
-	height: 100vh;
 	overflow: hidden;
 }
 

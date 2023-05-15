@@ -51,6 +51,7 @@ const registerPage = document.querySelector('.register-page');
 
 function displayProtectedPage(uID) {
 	// Hide HTML Elements
+	document.body.style.overflow = "auto"
 	mainSection.style.display = "block";
 	registerPage.style.cssText = "display: none !important;";
 
@@ -61,7 +62,6 @@ function displayProtectedPage(uID) {
 			snapshot.docs.forEach(doc => {
 				completedCoaches.push({ ...doc.data(), id: doc.id })
 			})
-			console.log("Completed, ", completedCoaches);
 			completedContent.innerHTML = '';
 			fillInHTML(completedCoaches, true);
 		})
@@ -76,7 +76,6 @@ function displayProtectedPage(uID) {
 			snapshot.docs.forEach(doc => {
 				pendingCoaches.push({ ...doc.data(), id: doc.id });
 			});
-			console.log("Pending, ", pendingCoaches);
 			pendingContent.innerHTML = '';
 			fillInHTML(pendingCoaches, false);
 		})
@@ -548,11 +547,7 @@ window.onload = () => {
 			// Check if the authenticated user ID matches the ID you are looking for
 			if (userId === sessionStorage.getItem('userID')) {
 				displayProtectedPage(sessionStorage.getItem('userID'));
-			} else {
-				console.log("Authenticated user ID does not match the ID you are looking for");
 			}
-		} else {
-			console.log("No authenticated user");
 		}
 	});
 };
