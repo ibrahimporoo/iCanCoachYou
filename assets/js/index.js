@@ -135,13 +135,13 @@ function viewProfile(documentId, lang, username) {
 	} else {
 		window.location.href = `coach-profile-ar.html`;
 	}
-}
+};
 
 window.onclick = (e) => {
 	if(e.target.matches('.profile-btn')) {
 		viewProfile(e.target.parentElement.dataset.i, lang, e.target.dataset.uname);
 	}
-}
+};
 
 if(document.body.classList.contains('coaches-html')) {
 	/* Start Filters */

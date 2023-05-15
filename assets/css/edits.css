@@ -44,6 +44,8 @@ textarea::-webkit-scrollbar-track,
 body {
 	font-family: "Open Sans", sans-serif;
 	color: #444444;
+	height: 100vh;
+	overflow: hidden;
 }
 
 body.hide-flow {
@@ -420,6 +422,125 @@ h6 {
 	display: block;
 }
 /* ------------------ */
+
+/* Start Register Page */
+.register-page {
+	height: 100vh;
+	padding-top: 5px;
+}
+
+.register-page .img-holder {
+	/* width: 60%; */
+}
+
+.register-page .img-holder img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.register-page .log-in {
+	display: flex;
+	flex-direction: column;
+	border-radius: 8px;
+	color: white;
+	margin: 0 auto;
+	width: 30%;
+	text-align: center;
+}
+
+.register-page .log-in label {
+
+}
+
+.register-page .log-in h2 {
+	color: #007ab7;
+}
+
+.register-page .log-in p {
+	color: #001d3d;
+	font-size: 11px;
+}
+
+.register-page .log-in label {
+	border-radius: 6px;
+	border: 2px solid #ddd;
+	box-shadow: 0 0 3px 0px rgba(0 0 0 / 20%);
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+}
+
+.register-page .log-in label i {
+	color: #ddd;
+	font-size: 20px;
+}
+
+.register-page .log-in input {
+	border: 0;
+	outline: 0;
+	padding: 6px 10px;
+	width: 100%;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+
+.register-page .log-in button {
+	width: 100px;
+	background-color: #007ab7;
+	border-radius: 4px;
+	border: 3px solid #007ab7;
+	color: white;
+	margin: 0 auto;
+	padding: 5px 12px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+
+@media (max-width: 840px) {
+	.register-page .log-in {
+    width: 40%;
+	}
+	.register-page {
+		padding-top: 77px;
+	}
+}
+
+@media (max-width: 760px) {
+	.register-page .img-holder {
+    width: 50%;
+		margin-bottom: 20px;
+	}
+	.register-page .log-in {
+    margin-top: -64px;
+    width: 55%;
+	}
+}
+
+@media (max-width: 600px) {
+	.register-page .img-holder {
+		width: 72%;
+	}
+	.register-page .log-in {
+		width: 80%;
+	}
+}
+@media (max-width: 450px) {
+	.register-page .img-holder {
+		width: 100%;
+	}
+}
+/* @media (max-width: 400px) {
+	.register-page .img-holder {
+		width: 75%;
+	}
+} */
+/* End Register Page */
 
 .team .container {
 	padding-top: 140px;

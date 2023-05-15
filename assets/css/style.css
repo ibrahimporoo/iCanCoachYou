@@ -54,6 +54,7 @@ textarea::-webkit-scrollbar-track,
 body {
 	font-family: "Open Sans", sans-serif;
 	color: #444444;
+	overflow-x: hidden;
 	/* background-color: #001d3d; */
 }
 
@@ -1450,7 +1451,7 @@ button {
 
 #hero .btn-get-started,
 .roadmap .btn-get-started,
-#hero .btn-contact {
+.btn-contact {
 	font-weight: 600;
 	font-size: 13px;
 	text-transform: uppercase;
@@ -1470,7 +1471,7 @@ button {
 
 #hero .btn-get-started:hover,
 .roadmap .btn-get-started:hover,
-#hero .btn-contact:hover {
+.btn-contact:hover {
 	background: #008bd1;
 }
 
@@ -3243,34 +3244,13 @@ input[type="search"]::placeholder {
 .contact .section-title {
 	padding-bottom: 30px;
 }
-/* .contact .section-title h2::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: #009961;
-  bottom: 0;
-  left: 0;
-} */
+
 .contact .info {
 	width: 100%;
 	background: #fff;
 	padding: 25px;
 	border-radius: 4px;
 }
-/* .contact .info i {
-  font-size: 32px;
-  color: #009961;
-  float: left;
-  line-height: 1;
-} */
-/* .ri-map-pin-line:before {
-  content: "\ef14";
-} */
-/* .contact .fal::before {
-  content: "\f3c5";
-} */
 
 .contact .info i {
 	font-size: 23px;
