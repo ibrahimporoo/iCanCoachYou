@@ -3673,7 +3673,6 @@ input[type="search"]::placeholder {
 	font-size: 14px;
 	letter-spacing: 0;
 	font-weight: 500;
-	max-width: 320px;
 }
 
 .coache-profile .coache-details #coach-price {
