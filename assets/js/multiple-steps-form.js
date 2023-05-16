@@ -313,7 +313,7 @@ function prevNext(n) {
 /* Compressing Files if needed */
 async function compressFileIfNeeded(file) {
 	return new Promise(async (resolve, reject) => {
-		if (file.size > 1000000 && file.type.startsWith("image/")) {
+		if (file.size > 500000 && file.type.startsWith("image/")) {
 			const imageURL = URL.createObjectURL(file);
 			const image = new Image();
 			image.src = imageURL;

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -13,23 +14,14 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Firebase's JavaScript API to interact with Firebase services -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-app.js" integrity="sha512-KakHaWvNgg3Mo/LptevcdwXzAmSFCFHrsvRUIRbUb++of57rXmIPQiAmpEeqaEdvhVk0ljxT2FpQk+wvP+j5LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" async>
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" async>
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" async>
 
   <!-- Template Main CSS File -->
   <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
-  <link href="assets/css/edits.css" rel="stylesheet">
+  <link href="assets/css/edits.css" rel="stylesheet" defer>
 
-  <!-- =======================================================
-  * Template Name: Scaffold - v4.10.0
-  * Template URL: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->    
 </head>
 
 
@@ -270,19 +262,20 @@
   </a> -->
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js" defer></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/vendor/aos/aos.js" defer></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js" defer></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js" defer></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
 
   <!-- With Webpack -->
   <!-- Output of fetching data from database -->
-  <script type="module" src="dist/deal-with-firebase-bundle.js"></script>
+  <script type="module" src="dist/deal-with-firebase-bundle.js" defer></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!-- <script src="assets/js/main.js"></script> -->
+  <script type="module" src="dist/main-bundle.js" defer></script>
 
 </body>
 
