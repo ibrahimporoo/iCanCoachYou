@@ -6,7 +6,9 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>I can coach you</title>
-  <meta content="coaching" name="description">
+  <!-- <meta content="coaching" name="description"> -->
+  <meta name="description"
+  content="We empower you not just coach you. We are a team of talented coaches who give others plans to reach their goals using AI.">
   <meta content="coaching, career path, career plan" name="keywords">
 
   <!-- Favicons -->
@@ -141,17 +143,17 @@
                         <option value="oman">Oman</option>
                         <option value="palestine">Palestine</option>
                         <option value="qatar">Qatar</option>
-                        <option value="saudi_arabia">Saudi Arabia</option>
+                        <option value="saudi arabia">Saudi Arabia</option>
                         <option value="somalia">Somalia</option>
                         <option value="sudan">Sudan</option>
                         <option value="syria">Syria</option>
                         <option value="tunisia">Tunisia</option>
-                        <option value="united_arab_emirates">United Arab Emirates</option>
+                        <option value="united arab emirates">United Arab Emirates</option>
                         <option value="yemen">Yemen</option>
                       </optgroup>
                       <!-- USA countries -->
                       <optgroup label="USA">
-                        <option value="united_states">United States</option>
+                        <option value="united states">United States</option>
                       </optgroup>
                       <!-- Europe countries -->
                       <optgroup label="Europe">
@@ -160,11 +162,11 @@
                         <option value="austria">Austria</option>
                         <option value="belarus">Belarus</option>
                         <option value="belgium">Belgium</option>
-                        <option value="bosnia_and_herzegovina">Bosnia and Herzegovina</option>
+                        <option value="bosnia and herzegovina">Bosnia and Herzegovina</option>
                         <option value="bulgaria">Bulgaria</option>
                         <option value="croatia">Croatia</option>
                         <option value="cyprus">Cyprus</option>
-                        <option value="czech_republic">Czech Republic</option>
+                        <option value="czech republic">Czech Republic</option>
                         <option value="denmark">Denmark</option>
                         <option value="estonia">Estonia</option>
                         <option value="finland">Finland</option>
@@ -185,13 +187,13 @@
                         <option value="monaco">Monaco</option>
                         <option value="montenegro">Montenegro</option>
                         <option value="netherlands">Netherlands</option>
-                        <option value="north_macedonia">North Macedonia</option>
+                        <option value="north macedonia">North Macedonia</option>
                         <option value="norway">Norway</option>
                         <option value="poland">Poland</option>
                         <option value="portugal">Portugal</option>
                         <option value="romania">Romania</option>
                         <option value="russia">Russia</option>
-                        <option value="san_marino">San Marino</option>
+                        <option value="san marino">San Marino</option>
                         <option value="serbia">Serbia</option>
                         <option value="slovakia">Slovakia</option>
                         <option value="slovenia">Slovenia</option>
@@ -199,8 +201,8 @@
                         <option value="sweden">Sweden</option>
                         <option value="switzerland">Switzerland</option>
                         <option value="ukraine">Ukraine</option>
-                        <option value="united_kingdom">United Kingdom</option>
-                        <option value="vatican_city">Vatican City</option>
+                        <option value="united kingdom">United Kingdom</option>
+                        <option value="vatican city">Vatican City</option>
                       </optgroup>
                     </select>
                   </div>
@@ -255,14 +257,6 @@
                 <p>ما هو البريد الإلكتروني الرئيسي الذي تفتحه دائمًا؟</p>
                 <input type="email" name="user_mail" placeholder="email..." style="direction: ltr;">
               </div>
-              <!-- <div>
-                <p>ما هو هدفك في الحياة؟</p>
-                <input class="unrequired" type="text" name="coach_goal" placeholder="مثال: أن تكون مدربًا رائعًا" />
-              </div>
-              <div>
-                <p>من هو قدوتك؟</p>
-                <input class="unrequired" type="text" name="coach_role_model" placeholder="من غيرك الى الافضل؟">
-              </div> -->
             </article>
             <article class="d-flex flex-column gap-3">
               <div>
@@ -290,10 +284,12 @@
             <article>
               <p> تحدث عن هدفك</p>
               <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
+              <span class="example">إختياري</span>
               <input class="unrequired" type="text" name="ar_coach_goal" placeholder="مثال: أن تكون مدربًا رائعًا" />
             </article>
             <article>
               <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
+              <span class="example">إختياري</span>
               <p>تحدث عن هدفك مره أخري (باللغه الإنجليزية)</p>
               <input class="unrequired" type="text" name="coach_goal" placeholder="e.g. being an amazing coach for much people" style="direction: ltr;"/>
             </article>
@@ -301,12 +297,14 @@
           <div class="row">
             <article>
               <p>تحدث عن قدوتك</p>
+              <span class="example">إختياري</span>
               <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
               <!-- <input class="unrequired" type="text" name="ar_coach_role_model" placeholder="من غيرك الى الافضل؟"> -->
               <input class="unrequired" type="text" name="ar_coach_role_model" placeholder="تحدث عن قدوتك هنا...">
             </article>
             <article>
               <p>تحدث عن قدوتك مره أخري (باللغه الإنجليزية)</p>
+              <span class="example">إختياري</span>
               <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
               <!-- <input class="unrequired" type="text" name="coach_role_model" placeholder="e.g. Steve jobs in Marketing"> -->
               <input class="unrequired" type="text" name="coach_role_model" placeholder="Speak about your role model..." style="direction: ltr;">
@@ -458,7 +456,7 @@
                 </label>
                 <label>
                   <span>Director/VP</span>
-                  <input type="radio" name="jobTitle" value="Director/VP $ مخرج / نائب الرئيس" />
+                  <input type="radio" name="jobTitle" value="Director/VP $ مدير / نائب الرئيس">
                 </label>
                 <label>
                   <span>C-suite/Executive</span>
@@ -486,6 +484,7 @@
               </div>
               <div class="en-field">
                 <p>Video Link:</p>
+                <span class="example">إختياري</span>
                 <span class="example">add 1 minute video brief.</span>
                 <span class="example">When user visit your profile this video will be appear to him.</span>
                 <span class="example">Any Video Link like <a href="https://youtu.be/VB4YfOm-3Zw"
@@ -504,6 +503,7 @@
               -->
               <div class="en-field">
                 <p>CV File:</p>
+                <span class="example">إختياري</span>
                 <span class="example">pdf or docx</span>
                 <label for="cv_file" class="file-label">
                   <input type="file" class="unrequired" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" />
@@ -516,32 +516,32 @@
               </div>
               <div class="en-field">
                 <p>profile Instagram Link?</p>
-                <span class="example">optional</span>
+                <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.instagram.com" target="_blank">here </a></span>
                 <input type="text" class="unrequired" name="instagram_link" placeholder="https://www.instagram.com/username" />
               </div>
               <div class="en-field">
                 <p>profile Twitter link?</p>
-                <span class="example">optional</span>
+                <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.twitter.com" target="_blank">here</a></span>
                 <input type="text" class="unrequired" name="twitter_link" placeholder="https://www.twitter.com/username" />
               </div>
               <div class="en-field">
                 <p>profile Facebook link?</p>
-                <span class="example">optional</span>
+                <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.facebook.com" target="_blank">here</a></span>
                 <input type="text" class="unrequired" name="fb_link" placeholder="https://www.facebook.com/username" />
               </div>
               <div class="en-field">
                 <p>Youtube channel link?</p>
-                <span class="example">optional</span>
+                <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.youtube.com" target="_blank">here</a></span>
                 <input type="text" class="unrequired" name="youtube_link" placeholder="https://www.youtube.com/username" />
               </div>
               <div class="en-field">
                 <p>profile Tiktok link?</p>
+                <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.tiktok.com" target="_blank">here</a></span>
-                <span class="example">optional</span>
                 <input type="text" class="unrequired" name="tiktok_link" placeholder="https://www.tiktok.com/username" />
               </div>
               <div>
@@ -685,6 +685,7 @@
               </div>
               <div>
                 <p>يمكنك إرسال أي تعليق إلينا عن أي شيء تريد التحدث عنه.</p>
+                <span class="example">إختياري</span>
                 <span class="example">- سيكون من الرائع أن تقدم لنا ملاحظاتك.</span>
                 <textarea name="comment" class="unrequired" placeholder="علق هنا..." style="min-height: 157px;"></textarea>
               </div>

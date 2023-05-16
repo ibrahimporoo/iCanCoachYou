@@ -278,7 +278,6 @@ button {
 }
 #alert .text {
 	text-align: left;
-	direction: ltr;
 }
 #alert .text h3 {
 	margin-bottom: 10px;

@@ -434,7 +434,8 @@ function isValid() {
 	};
 	if(tapIndex == 1) {
 		let tapValidation = false;
-		let validOne, validThree, validFour, validFive, validSix, validSeven, validEight, validNine, validTen, validTags;
+		// let validOne, validThree, validFour, validFive, validSix, validSeven, validEight, validNine, validTen, validTags;
+		let validOne, validThree, validFour, validTen, validTags;
 		sweetAlertText.innerHTML = '';
 		// Picture File
 		let pictureFile = currentStep.querySelector('input[name="image_file"]');
@@ -494,6 +495,7 @@ function isValid() {
 			linkedInLink.classList.remove('invalid');
 		}
 		// Instagram Profile URL
+		/* 
 		let instagramLink = currentStep.querySelector('input[name="instagram_link"]');
 		let instagramRegex = /^(https?:\/\/)?(www\.)?instagram.com\/[a-zA-Z0-9_\-]+\/?$/;
 		if(instagramLink.value.length && !instagramRegex.test(instagramLink.value)) {
@@ -508,7 +510,9 @@ function isValid() {
 			validFive = true;
 			instagramLink.classList.remove('invalid');
 		}
+		*/
 		// Twitter Profile URL
+		/*
 		let twitterLink = currentStep.querySelector('input[name="twitter_link"]');
 		let twitterRegex = /^(https?:\/\/)?(www\.)?twitter.com\/[a-zA-Z0-9_]{1,15}\/?$/;
 		if(twitterLink.value.length && !twitterRegex.test(twitterLink.value)) {
@@ -523,7 +527,9 @@ function isValid() {
 			validSix = true;
 			twitterLink.classList.remove('invalid');
 		}
+		*/
 		// Facebook Profile URL
+		/*
 		let fbLink = currentStep.querySelector('input[name="fb_link"]');
 		let fbRegex = /^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/;
 		if(fbLink.value.length && !fbRegex.test(fbLink.value)) {
@@ -538,7 +544,9 @@ function isValid() {
 			validSeven = true;
 			fbLink.classList.remove('invalid');
 		}
+		*/
 		// Youtube Profile URL
+		/*
 		let youtubeLink = currentStep.querySelector('input[name="youtube_link"]');
 		let youtubeRegex = /^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/;
 		if(youtubeLink.value.length && !youtubeRegex.test(youtubeLink.value)) {
@@ -552,8 +560,9 @@ function isValid() {
 		} else {
 			validEight = true;
 			youtubeLink.classList.remove('invalid');
-		}
+		} */
 		// Tiktok Profile URL
+		/*
 		let tiktokLink = currentStep.querySelector('input[name="tiktok_link"]');
 		let tiktokRegex = /^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/;
 		if(tiktokLink.value.length && !tiktokRegex.test(tiktokLink.value)) {
@@ -568,6 +577,7 @@ function isValid() {
 			validNine = true;
 			tiktokLink.classList.remove('invalid');
 		}
+		*/
 		// Tags Validations.
 		/* One of the immediately handling inputs */ 
 		if(coachTags.length > 0) {
@@ -609,7 +619,7 @@ function isValid() {
 			}
 		}
 		// Finally Validation
-		if(validTags && validOne && validThree && validFour && validFive && validSix && validSeven && validEight && validNine && validTen) {
+		if(validTags && validOne && validThree && validFour && validTen) {
 			tapValidation = true;
 		} else {
 			sweetAlert.classList.add('on');
