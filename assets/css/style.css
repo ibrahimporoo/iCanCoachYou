@@ -1,17 +1,3 @@
-/*
-* Prefixed by:
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
-
-/**
-* Template Name: Scaffold - v4.10.0
-* Template URL: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -1372,7 +1358,7 @@ button {
 #hero {
 	width: 100%;
 	height: 100vh;
-	background-image: url("../img/home-img.png");
+	background-image: url("../img/home-img.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: right top;
