@@ -147,7 +147,7 @@ async function fetchSingleCoach() {
 			`
 			<div class="achievements-cards p-4 mt-5">
 				<div class="box d-flex align-items-center gap-1">
-					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" />
+					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" loading="lazy" />
 					<div class="text d-flex flex-column gap-1 p-2">
 						<h3>${coach.work_experience_years}</h3>
 						<p>عام من الخبرات</p>
@@ -204,7 +204,7 @@ async function fetchSingleCoach() {
 			`
 			<div class="achievements-cards p-4 mt-5">
 				<div class="box d-flex align-items-center gap-1">
-					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" />
+					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" loading="lazy"/>
 					<div class="text d-flex flex-column gap-1 p-2">
 						<h3>${coach.work_experience_years}</h3>
 						<p>Years of Experience</p>

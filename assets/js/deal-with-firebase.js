@@ -151,12 +151,11 @@ function displayProtectedPage(uID) {
 				// Formatting the date and time as a string
 				date_string = date.toLocaleString();
 			}
-			/* <div class="pic"><img src=${coach.image} class="img-fluid" onerror="this.onerror=null;this.src='assets/img/team/default-img-1.jpg';" alt="${coach.name}"></div> */
 			if(completed) {
 				completedContent.innerHTML += `
 					<div class="col-lg-4 col-md-6">
 						<div class="member">
-						<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
+						<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}" loading="lazy"></div>
 							<div class="member-info edits">
 								<div class="">
 									<h5 class="text-center coach-answer">${coach.name}</h5>
@@ -259,7 +258,7 @@ function displayProtectedPage(uID) {
 				pendingContent.innerHTML += `
 					<div class="col-lg-4 col-md-6">
 						<div class="member position-relative">
-							<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
+							<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}" loading="lazy"></div>
 							<div class="member-info edits">
 								<div class="">
 									<h5 class="text-center coach-answer">${coach.name}</h5>

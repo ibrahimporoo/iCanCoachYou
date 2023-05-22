@@ -1,9 +1,6 @@
-import { initializeApp } from 'firebase/app'
-import {
-	getFirestore, collection, getDocs,
-	query, where,
-} from 'firebase/firestore/lite';
-
+// import { getFirestore, collection, getDocs, query, where, orderBy, startAfter, endBefore, limit } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-firestore.js";
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, updateDoc, doc, query, where, orderBy, startAfter, limit } from 'firebase/firestore';
 // // iCanCoachU Example Firebase...
 // const firebaseConfig = {
 // 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
@@ -15,57 +12,70 @@ import {
 // };
 // iCanCoachU Firebase...
 const firebaseConfig = {
-  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-  authDomain: "elmawkaabeta.firebaseapp.com",
-  databaseURL: "https://elmawkaabeta.firebaseio.com",
-  projectId: "elmawkaabeta",
-  storageBucket: "elmawkaabeta.appspot.com",
-  messagingSenderId: "808588970288",
-  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-  measurementId: "G-G8FTTQ0EB2"
+	apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+	authDomain: "elmawkaabeta.firebaseapp.com",
+	databaseURL: "https://elmawkaabeta.firebaseio.com",
+	projectId: "elmawkaabeta",
+	storageBucket: "elmawkaabeta.appspot.com",
+	messagingSenderId: "808588970288",
+	appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
+	measurementId: "G-G8FTTQ0EB2"
 };
 
-initializeApp(firebaseConfig)
-const db = getFirestore()
-const lang = document.querySelector('html').lang; // get page's Lang to assign it to database
-const colRef = collection(db, 'coaches', 'languages', lang);
+const app = initializeApp(firebaseConfig);
 
-// queries
-const qCompleted = query(colRef, where("appear", "==", true));
+const lang = document.querySelector('html').lang;
+// Create a reference to your Firestore collection
+const db = getFirestore(app);
+const collectionRef = collection(db, 'coaches', 'languages', lang);
 
-// selecting the coaches Row in html file
-const coachesContent = document.getElementById('coaches-content');
-let coaches = []; // for fulling coaches in coaches page
-let html = ''; // content that we put in html
-// let html_filtered_coaches = ''; // content that we put in html
-coachesContent.innerHTML = ''; // empty coaches content before getting data
+const container = document.getElementById('coaches-content');
+
+// Query the first page of docs
+const seeMoreBtn = document.querySelector('.see-more');
+const filterToolBtn = document.querySelector('.filter-tool');
+let start = false; // to check if user used filters tool before btn click.
+let coaches = [];
+let latestDoc = null;
+let cardsCount = 6;
+// For template
 let priceUnit = lang == 'en' ? '/hr' : ' / للساعة';
-async function getData() {
-	// Fetching 'Getting' Data
-	await getDocs(qCompleted)
-	.then((snapshot) => {
-		// Check if we in the home page or top coaches page
-		snapshot.docs.forEach((doc) => {
-			coaches.push({ ...doc.data(), id: doc.id });
-		});
-		coaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
-		// in the index 'top coaches' page
-		if(coachesContent.classList.contains('top-coaches')) {
-			// Adding Content of Data coming from Firebase to HTML
-			coaches = coaches.filter(coach => coach.order <= 3);
-			coaches = coaches.length > 3 ? coaches.slice(0, 3) : coaches;
-		}
-		coaches.map(coach => {
-			html += `
+const displayNext = async (viewAll = false) => {
+
+	let ref = query(collectionRef,
+		where('appear', '==', true),
+		orderBy('order', 'asc'),
+		startAfter(latestDoc || 0),
+		limit(cardsCount)
+	);
+
+	cardsCount += 3;
+
+	if(viewAll) {
+		ref = query(collectionRef, 
+			where('appear', '==', true), 
+			orderBy('order', 'asc'),
+			startAfter(latestDoc || 0),
+		);
+	}
+
+	const data = await getDocs(ref);
+
+
+	// let template = '';
+	data.docs.forEach(doc => {
+		const coach = doc.data();
+		coach.id = doc.id;
+		container.innerHTML += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
-					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}" loading="lazy"></div>
 						<div class="member-info coaches pricing" data-i=${coach.id}>
 							<div class='ps-3 pe-3'>
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
 							</div>
-							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt}${priceUnit}</span>` : `<span class="mb-0 text-uppercase">${coach.pricing}/Hr</span>`}
+							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt}${priceUnit}</span>` : `<span class="mb-0 text-uppercase">${coach.pricing}${priceUnit}</span>`}
 							<p class='detail-item mb-1 mt-1'>Details</p>
 							<span>${coach.category}</span>
 							${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
@@ -84,48 +94,51 @@ async function getData() {
 				</div>
 			</div>
 		`;
-		})
-	})
-	.catch( _ => {
-		coachesContent.innerHTML = `<h1 style='padding: 100px 0; text-align: center'>No coaches till now</h1>`;
+		coaches.push({ ...coach }); // push coach
 	});
+
+	// container.innerHTML += template;
+
+	// Update last Doc
+	latestDoc = data.docs[data.docs.length - 1];
+
+	// Unattach event listener if no more docs
+	if(data.empty) {
+		seeMoreBtn.removeEventListener('click', handleClick);
+		seeMoreBtn.style.display = 'none';
+		filterToolBtn.style.display = 'none';
+		document.querySelector('.search-fields').style.display = 'block';
+		return
+	}
+
+	seeMoreBtn &&	(seeMoreBtn.style.display = 'flex');
+	seeMoreBtn &&	(seeMoreBtn.innerHTML = lang == 'en'? 'See More <i class="bi bi-chevron-down"></i>': 'شاهد المزيد <i class="bi bi-chevron-down"></i>');
+
+
 };
 
-getData().then(() => {
-	if(coachesContent.classList.contains('top-coaches')) {
-		coachesContent.innerHTML = html;
-	} else if (coachesContent.classList.contains('filtered-coaches')) {
-		coachesContent.innerHTML = html;
-	} else {
-		coachesContent.innerHTML = `<h1 style='padding: 100px 0; text-align: center'>No coaches till now</h1>`;
-	};
-});
+function reloadButton(btn) {
+	btn.style.pointerEvents = "none;"
+	btn.innerHTML = '<span class="spinner"></span>';
+};
 
-/*
-getData().then(() => {
-	if(coachesContent.classList.contains('top-coaches')) {
-		coachesContent.innerHTML = html;
-	} else if (coachesContent.classList.contains('filtered-coaches')) {
-		coachesContent.innerHTML = html;
-	} else {
-		coachesContent.innerHTML = `<h1 style='padding: 100px 0; text-align: center'>No coaches till now</h1>`;
-	};
-	const bgLoading = document.getElementById('bgLoading');
-	const bgLoadingCont = document.querySelector('#bgLoading .loading-container');
-	const afterLoadings = document.querySelectorAll('.after-loading');
-	setTimeout(function() {
-			bgLoadingCont.style.opacity = "0";
-			setTimeout(function() {
-					bgLoadingCont.style.display = "none";
-					bgLoading.style.display = "none";
-					// document.getElementById('main').style.height = "fit-content";
-					afterLoadings.forEach(afterLoading => {
-						afterLoading.style.visibility = "visible";
-					})
-			}, 500)
-	}, 500);
-});
-*/
+const handleClick = () => {
+	reloadButton(seeMoreBtn);
+	displayNext(false);
+};
+const viewAll = () => {
+	start = true;
+	reloadButton(seeMoreBtn);
+	displayNext(true);
+	filterToolBtn.style.display = "none";
+	seeMoreBtn.style.display = 'none';
+	document.querySelector('.search-fields').style.display = "block";
+};
+
+window.addEventListener('DOMContentLoaded', () => displayNext());
+seeMoreBtn && seeMoreBtn.addEventListener('click', handleClick);
+filterToolBtn && filterToolBtn.addEventListener('click', viewAll)
+
 
 function viewProfile(documentId, lang, username) {
 	sessionStorage.setItem('selectedCoach', documentId);
@@ -143,13 +156,20 @@ window.onclick = (e) => {
 	}
 };
 
+/* Start Filters */
 if(document.body.classList.contains('coaches-html')) {
-	/* Start Filters */
 	const mainSearch = document.getElementById('main-search');
 
 	// Handle User searching
-	mainSearch.addEventListener('input', (e) => {
-		filterResults();
+	mainSearch.addEventListener('input', () => {
+		if(!start) {
+			viewAll();
+			setTimeout(() => {
+				filterResults();
+			}, 500);
+		} else {
+			filterResults();
+		}
 	})
 
 	const jobTitleFilter = document.getElementById('job-title-menu');
@@ -276,7 +296,7 @@ if(document.body.classList.contains('coaches-html')) {
 		if(filteredData.length > 0) {
 			displayResults(filteredData);
 		} else {
-			coachesContent.innerHTML = 'There is no coaches according to your needs...';
+			container.innerHTML = 'There is no coaches according to your needs...';
 		}
 	};
 
@@ -299,19 +319,19 @@ if(document.body.classList.contains('coaches-html')) {
 	};
 
 	function displayResults(results) {
-		coachesContent.innerHTML = '';
+		container.innerHTML = '';
 
 		results.forEach(coach => {
-			coachesContent.innerHTML += `
+			container.innerHTML += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
-					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}" loading="lazy"></div>
 						<div class="member-info coaches pricing" data-i=${coach.id}>
 							<div class='ps-3 pe-3'>
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
 							</div>
-							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt}${priceUnit}</span>` : `<span class="mb-0 text-uppercase">${coach.pricing}/Hr</span>`}
+							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt}${priceUnit}</span>` : `<span class="mb-0 text-uppercase">${coach.pricing}${priceUnit}</span>`}
 							<p class='detail-item mb-1 mt-1'>Details</p>
 							<span>${coach.category}</span>
 							${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
@@ -330,7 +350,6 @@ if(document.body.classList.contains('coaches-html')) {
 				</div>
 			</div>
 			`;
-			// resultsContainer.appendChild(personElement);
 		});
 	};
 
@@ -444,5 +463,6 @@ if(document.body.classList.contains('coaches-html')) {
 
 	});
 
-	/* End Filters */
 };
+/* End Filters */
+

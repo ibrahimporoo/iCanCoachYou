@@ -81,7 +81,7 @@ joinForm.addEventListener('submit', async (e) => {
 		let imageURL = '';
 		let cvDownloadURL = '';
 
-		reloadButton();
+		reloadButton(submitBtn);
 
 		if (imageFile) {
 			const compressedImageFile = await compressFileIfNeeded(imageFile);
@@ -737,23 +737,23 @@ function fillAlert(text) {
 	sweetAlertText.appendChild(warnText);
 }
 let btnReloadingInterval;
-function reloadButton() {
-	submitBtn.style.pointerEvents = "none;"
+function reloadButton(btn) {
+	btn.style.pointerEvents = "none;"
 	if(lang == 'en') {
-		submitBtn.innerHTML = '<span class="spinner"></span> Sending';
+		btn.innerHTML = '<span class="spinner"></span> Sending';
 	} else {
-		submitBtn.innerHTML = '<span class="spinner"></span> قيد الارسال';
+		btn.innerHTML = '<span class="spinner"></span> قيد الارسال';
 	}
 	let count = 1
 	btnReloadingInterval = setInterval(() => {
-		submitBtn.innerHTML += '.';
+		btn.innerHTML += '.';
 		count++;
 		if(count >= 4) {
 			count = 1;
 			if(lang == 'en') {
-				submitBtn.innerHTML = '<span class="spinner"></span> Sending';
+				btn.innerHTML = '<span class="spinner"></span> Sending';
 			} else {
-				submitBtn.innerHTML = '<span class="spinner"></span> قيد الارسال';
+				btn.innerHTML = '<span class="spinner"></span> قيد الارسال';
 			}
 		}
 	}, 1000);
