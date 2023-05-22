@@ -134,8 +134,8 @@ const viewAll = () => {
 	seeMoreBtn.style.display = 'none';
 	document.querySelector('.search-fields').style.display = "block";
 };
-
-window.addEventListener('DOMContentLoaded', () => displayNext());
+displayNext();
+// window.addEventListener('DOMContentLoaded', () => );
 seeMoreBtn && seeMoreBtn.addEventListener('click', handleClick);
 filterToolBtn && filterToolBtn.addEventListener('click', viewAll)
 
