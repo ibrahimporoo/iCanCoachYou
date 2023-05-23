@@ -33,7 +33,6 @@ const container = document.getElementById('coaches-content');
 
 // Query the first page of docs
 const seeMoreBtn = document.querySelector('.see-more');
-const filterToolBtn = document.querySelector('.filter-tool');
 let start = false; // to check if user used filters tool before btn click.
 let coaches = [];
 let latestDoc = null;
@@ -106,8 +105,7 @@ const displayNext = async (viewAll = false) => {
 	if(data.empty) {
 		seeMoreBtn.removeEventListener('click', handleClick);
 		seeMoreBtn.style.display = 'none';
-		filterToolBtn.style.display = 'none';
-		document.querySelector('.search-fields').style.display = 'block';
+		start = true;
 		return
 	}
 
@@ -130,15 +128,10 @@ const viewAll = () => {
 	start = true;
 	reloadButton(seeMoreBtn);
 	displayNext(true);
-	filterToolBtn.style.display = "none";
 	seeMoreBtn.style.display = 'none';
-	document.querySelector('.search-fields').style.display = "block";
 };
 displayNext();
-// window.addEventListener('DOMContentLoaded', () => );
 seeMoreBtn && seeMoreBtn.addEventListener('click', handleClick);
-filterToolBtn && filterToolBtn.addEventListener('click', viewAll)
-
 
 function viewProfile(documentId, lang, username) {
 	sessionStorage.setItem('selectedCoach', documentId);
@@ -184,6 +177,9 @@ if(document.body.classList.contains('coaches-html')) {
 
 	filterBtns.forEach(btn => {
 		btn.addEventListener('click', e => {
+			if(!start) {
+				viewAll();
+			}
 			// Check if the clicked element is a button or an i element that is a child of a button element
 			if (e.target.closest('button') || e.target.parentNode.closest('button')) {
 				filterBtns.forEach(btn => {

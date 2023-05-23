@@ -537,16 +537,28 @@ loginForm.addEventListener('submit', (e) => {
 		})
 });
 
-window.onload = () => {
-	// Check if there is a currently authenticated user
-	onAuthStateChanged(auth, (user) => {
-		if (user) {
-			const userId = user.uid; // Get the current user's ID
+// window.onload = () => {
+// 	// Check if there is a currently authenticated user
+// 	onAuthStateChanged(auth, (user) => {
+// 		if (user) {
+// 			const userId = user.uid; // Get the current user's ID
 
-			// Check if the authenticated user ID matches the ID you are looking for
-			if (userId === sessionStorage.getItem('userID')) {
-				displayProtectedPage(sessionStorage.getItem('userID'));
-			}
+// 			// Check if the authenticated user ID matches the ID you are looking for
+// 			if (userId === sessionStorage.getItem('userID')) {
+// 				displayProtectedPage(sessionStorage.getItem('userID'));
+// 			}
+// 		}
+// 	});
+// };
+
+// Check if there is a currently authenticated user
+onAuthStateChanged(auth, (user) => {
+	if (user) {
+		const userId = user.uid; // Get the current user's ID
+
+		// Check if the authenticated user ID matches the ID you are looking for
+		if (userId === sessionStorage.getItem('userID')) {
+			displayProtectedPage(sessionStorage.getItem('userID'));
 		}
-	});
-};
+	}
+});
