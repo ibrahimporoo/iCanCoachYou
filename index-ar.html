@@ -2,44 +2,37 @@
 <html lang="ar" dir="rtl">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>I can coach you</title>
-  <!-- <meta content="coaching" name="description"> -->
+  <meta charset="UTF-8">
+  <meta name="keywords" content="coaching, career path, career plan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
   content="We empower you not just coach you. We are a team of talented coaches who give others plans to reach their goals using AI.">
-  <meta content="coaching, career path, career plan" name="keywords">
 
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="assets/img/logo.webp">
-  <meta property="og:image" content="assets/img/hero-img.webp" >
-  <meta property="og:url" content="icancoachyou.online" >
+  <meta property="og:image" content="assets/img/hero-img.webp">
+  <meta property="og:url" content="icancoachyou.online">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link media="all" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap">
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+  <link media="all" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
-    crossorigin="anonymous"></script> -->
-
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet" defer>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" defer>
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" defer>
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" defer>
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" defer>
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" defer>
+  <link media="all" href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet" defer>
+  <link media="all" href="assets/css/style.css" rel="stylesheet">
   <!-- <link rel="preload" href="myfont.woff2" as="font" type="font/woff2" crossorigin> -->
 
   <!-- Google Tag Manager -->
@@ -94,7 +87,7 @@
           <div class="row">
             <article>
               <p>أدخل اسمك مره أخري بالعربية</p>
-              <input type="text" name="ar_name" placeholder="مثال: إبراهيم أنور"/>
+              <input type="text" name="ar_name" placeholder="مثال: إبراهيم أنور">
             </article>
             <article class="en-field">
               <p>What's your name in English?</p>
@@ -208,8 +201,7 @@
           <div class="row">
             <article>
               <p>اكتب تاريخ ميلادك</p>
-              <input type="date" id="birthdate" name="birthdate" />
-              <!-- <input type="number" name="age" placeholder="example: 20"> -->
+              <input type="date" id="birthdate" name="birthdate">
             </article>
             <article class="en-field">
               <p>What's your WhatsApp number?</p>
@@ -253,19 +245,19 @@
                 <p>أي من هذه الخيارات يناسبك لجلسات التدريب؟</p>
                 <label>
                   <span>عن بعد أو حضوريا لا يهم</span>
-                  <input type="radio" checked name="session_way" value="both" />
+                  <input type="radio" checked name="session_way" value="both">
                 </label>
                 <label>
                   <span>عن بعد</span>
-                  <input type="radio" name="session_way" value="online" />
+                  <input type="radio" name="session_way" value="online">
                 </label>
                 <label>
                   <span>حضوريا</span>
-                  <input type="radio" name="session_way" value="offline" />
+                  <input type="radio" name="session_way" value="offline">
                 </label>
                 <label>
                   <span>أخري</span>
-                  <input type="radio" name="session_way" value="Other" />
+                  <input type="radio" name="session_way" value="Other">
                 </label>
               </div>
             </article>
@@ -275,13 +267,13 @@
               <p> تحدث عن هدفك</p>
               <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
               <span class="example">إختياري</span>
-              <input class="unrequired" type="text" name="ar_coach_goal" placeholder="مثال: أن تكون مدربًا رائعًا" />
+              <input class="unrequired" type="text" name="ar_coach_goal" placeholder="مثال: أن تكون مدربًا رائعًا">
             </article>
             <article>
               <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
               <span class="example">إختياري</span>
               <p>تحدث عن هدفك مره أخري (باللغه الإنجليزية)</p>
-              <input class="unrequired" type="text" name="coach_goal" placeholder="e.g. being an amazing coach for much people" style="direction: ltr;"/>
+              <input class="unrequired" type="text" name="coach_goal" placeholder="e.g. being an amazing coach for much people" style="direction: ltr;">
             </article>
           </div>
           <div class="row">
@@ -289,14 +281,12 @@
               <p>تحدث عن قدوتك</p>
               <span class="example">إختياري</span>
               <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
-              <!-- <input class="unrequired" type="text" name="ar_coach_role_model" placeholder="من غيرك الى الافضل؟"> -->
               <input class="unrequired" type="text" name="ar_coach_role_model" placeholder="تحدث عن قدوتك هنا...">
             </article>
             <article>
               <p>تحدث عن قدوتك مره أخري (باللغه الإنجليزية)</p>
               <span class="example">إختياري</span>
               <span class="example">لاحظ أننا سنعرضه للمستخدمين</span>
-              <!-- <input class="unrequired" type="text" name="coach_role_model" placeholder="e.g. Steve jobs in Marketing"> -->
               <input class="unrequired" type="text" name="coach_role_model" placeholder="Speak about your role model..." style="direction: ltr;">
             </article>
           </div>
@@ -309,88 +299,84 @@
                 <p>What is the industry you can give coaching in?</p>
                 <label>
                   <span>Sales & Marketing</span>
-                  <input type="radio" name="industry" value="Sales and Marketing $ المبيعات والتسويق" checked />
+                  <input type="radio" name="industry" value="Sales and Marketing $ المبيعات والتسويق" checked>
                 </label>
                 <label>
                   <span>Business Management</span>
-                  <input type="radio" name="industry" value="Business Management $ ادارة اعمال" />
+                  <input type="radio" name="industry" value="Business Management $ ادارة اعمال">
                 </label>
                 <label>
                   <span>Soft Skills</span>
-                  <input type="radio" name="industry" value="Soft Skills $ المهارات الشخصية" />
+                  <input type="radio" name="industry" value="Soft Skills $ المهارات الشخصية">
                 </label>
                 <label>
                   <span>Content & copy rights</span>
-                  <input type="radio" name="industry" value="Content and copy rights $ المحتوى وحقوق النسخ" />
+                  <input type="radio" name="industry" value="Content and copy rights $ المحتوى وحقوق النسخ">
                 </label>
                 <label>
                   <span>HR</span>
-                  <input type="radio" name="industry" value="HR $ الموارد البشرية" />
+                  <input type="radio" name="industry" value="HR $ الموارد البشرية">
                 </label>
                 <label>
                   <span>Media , Photography & Film</span>
-                  <input type="radio" name="industry" value="Media, Photography and Film $ وسائل الإعلام والتصوير والسينما" />
+                  <input type="radio" name="industry" value="Media, Photography and Film $ وسائل الإعلام والتصوير والسينما">
                 </label>
                 <label>
                   <span>Technology</span>
-                  <input type="radio" name="industry" value="Technology $ التكنولوجيا" />
+                  <input type="radio" name="industry" value="Technology $ التكنولوجيا">
                 </label>
                 <label>
                   <span>programming</span>
-                  <input type="radio" name="industry" value="programming $ البرمجة" />
+                  <input type="radio" name="industry" value="programming $ البرمجة">
                 </label>
                 <label>
                   <span>Cyber security</span>
-                  <input type="radio" name="industry" value="Cyber security $ الأمن الإلكتروني" />
+                  <input type="radio" name="industry" value="Cyber security $ الأمن الإلكتروني">
                 </label>
                 <label>
                   <span>operations</span>
-                  <input type="radio" name="industry" value="operations $ العمليات" />
+                  <input type="radio" name="industry" value="operations $ العمليات">
                 </label>
                 <label>
                   <span>Legal</span>
-                  <input type="radio" name="industry" value="Legal $ القانوني" />
+                  <input type="radio" name="industry" value="Legal $ القانوني">
                 </label>
                 <label>
                   <span>Finance</span>
-                  <input type="radio" name="industry" value="Finance $ التمويل" />
+                  <input type="radio" name="industry" value="Finance $ التمويل">
                 </label>
                 <label>
                   <span>Science & Productivity</span>
-                  <input type="radio" name="industry" value="Science and Productivity $ العلم والإنتاجية" />
+                  <input type="radio" name="industry" value="Science and Productivity $ العلم والإنتاجية">
                 </label>
                 <label>
                   <span>Languages</span>
-                  <input type="radio" name="industry" value="Languages $ اللغات" />
+                  <input type="radio" name="industry" value="Languages $ اللغات">
                 </label>
                 <label>
                   <span>Logistics</span>
-                  <input type="radio" name="industry" value="Logistics $ الخدمات اللوجستية" />
+                  <input type="radio" name="industry" value="Logistics $ الخدمات اللوجستية">
                 </label>
                 <label>
                   <span>Arts & Design</span>
-                  <input type="radio" name="industry" value="Arts and Design $ الفنون والتصميم" />
+                  <input type="radio" name="industry" value="Arts and Design $ الفنون والتصميم">
                 </label>
                 <label>
                   <span>Entrepreneurship</span>
-                  <input type="radio" name="industry" value="Entrepreneurship $ ريادة الأعمال" />
+                  <input type="radio" name="industry" value="Entrepreneurship $ ريادة الأعمال">
                 </label>
                 <label>
                   <span>Parenting & Relationships</span>
-                  <input type="radio" name="industry" value="Parenting and Relationships $ الأبوة والأمومة والعلاقات" />
+                  <input type="radio" name="industry" value="Parenting and Relationships $ الأبوة والأمومة والعلاقات">
                 </label>
                 <label>
                   <span>Kids Development</span>
-                  <input type="radio" name="industry" value="Kids Development $ تنمية الاطفال" />
+                  <input type="radio" name="industry" value="Kids Development $ تنمية الاطفال">
                 </label>
                 <label>
                   <span>Lifestyle & Health</span>
-                  <input type="radio" name="industry" value="Lifestyle and Health $ نمط الحياة والصحة" />
+                  <input type="radio" name="industry" value="Lifestyle and Health $ نمط الحياة والصحة">
                 </label>
-                <!-- <label>
-                  <span>Others</span>
-                  <input type="radio" name="industry" value="Others, أخري" />
-                </label> -->
               </div>
               <article class="d-flex flex-column gap-3" style="width: 100%;padding-top: 5px;max-width: 410px;">
                 <div>
@@ -423,7 +409,7 @@
                     <span>Languages</span>
                   </div>
                   <div class="d-flex align-items-center position-relative en-field" style="justify-content: flex-end;">
-                    <input type="text" class="unrequired" id="tags-input" placeholder="Keyword" style="border-right: 0;"/>
+                    <input type="text" class="unrequired" id="tags-input" placeholder="Keyword" style="border-right: 0;">
                     <button type="button" id="tags-add-btn">إضافة</button>
                   </div>
                 </div>
@@ -434,15 +420,15 @@
                 <p>How would you describe your job title?</p>
                 <label>
                   <span>Indiviual Contributer - Self Employed</span>
-                  <input type="radio" checked name="jobTitle" value="Indiviual Contributer - Self Employed $ مساهم فردي - صاحب عمل خاص" />
+                  <input type="radio" checked name="jobTitle" value="Indiviual Contributer - Self Employed $ مساهم فردي - صاحب عمل خاص">
                 </label>
                 <label>
                   <span>Middle Manager</span>
-                  <input type="radio" name="jobTitle" value="Middle Manager $ مدير أوسط" />
+                  <input type="radio" name="jobTitle" value="Middle Manager $ مدير أوسط">
                 </label>
                 <label>
                   <span>Senior Manager</span>
-                  <input type="radio" name="jobTitle" value="Senior Manager $ مدير مرشد" />
+                  <input type="radio" name="jobTitle" value="Senior Manager $ مدير مرشد">
                 </label>
                 <label>
                   <span>Director/VP</span>
@@ -450,16 +436,16 @@
                 </label>
                 <label>
                   <span>C-suite/Executive</span>
-                  <input type="radio" name="jobTitle" value="C-suite/Executive $ الإدارة التنفيذية" />
+                  <input type="radio" name="jobTitle" value="C-suite/Executive $ الإدارة التنفيذية">
                 </label>
                 <label>
                   <span>Founder/Business Owner</span>
-                  <input type="radio" name="jobTitle" value="Founder/Business Owner $ مؤسس / صاحب عمل" />
+                  <input type="radio" name="jobTitle" value="Founder/Business Owner $ مؤسس / صاحب عمل">
                 </label>
                 <!--
                   <label>
                     <span>Others</span>
-                    <input type="radio" name="jobTitle" value="Others, أخري" />
+                    <input type="radio" name="jobTitle" value="Others, أخري">
                   </label>
                 -->
               </div>
@@ -469,7 +455,7 @@
                 <span class="example">add the highest professional image you have.</span>
                 <img class="w-50" src="assets/img/team/team-1.webp" alt="Ebraheem Anwar" loading="lazy">
                 <label for="image_file" class="file-label">
-                  <input type="file" id="image_file" name="image_file" accept="image/*" />
+                  <input type="file" id="image_file" name="image_file" accept="image/*">
                 </label>
               </div>
               <div class="en-field">
@@ -479,7 +465,7 @@
                 <span class="example">When user visit your profile this video will be appear to him.</span>
                 <span class="example">Any Video Link like <a href="https://youtu.be/VB4YfOm-3Zw"
                   target="_blank">here</a></span>
-                  <input type="text" class="unrequired" id="video_link" name="video_link" placeholder="Any Social Media Link..." />
+                  <input type="text" class="unrequired" id="video_link" name="video_link" placeholder="Any Social Media Link...">
               </div>
               <!--
                 <div>
@@ -487,7 +473,7 @@
                   <span class="example">add 1 minute video brief.</span>
                   <span class="example">When user visit your profile this video will be appear to him.</span>
                   <label for="video_file" class="file-label">
-                    <input type="file" class="unrequired" id="video_file" name="video_file" accept="video/*" />
+                    <input type="file" class="unrequired" id="video_file" name="video_file" accept="video/*">
                   </label>
                 </div>
               -->
@@ -496,43 +482,43 @@
                 <span class="example">إختياري</span>
                 <span class="example">pdf or docx</span>
                 <label for="cv_file" class="file-label">
-                  <input type="file" class="unrequired" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" />
+                  <input type="file" class="unrequired" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx">
                 </label>
               </div>
               <div class="en-field">
                 <p>profile LinkedIn Link?*</p>
                 <span class="example">You can bring the link from <a href="https://www.linkedin.com" target="_blank">here </a></span>
-                <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
+                <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username">
               </div>
               <div class="en-field">
                 <p>profile Instagram Link?</p>
                 <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.instagram.com" target="_blank">here </a></span>
-                <input type="text" class="unrequired" name="instagram_link" placeholder="https://www.instagram.com/username" />
+                <input type="text" class="unrequired" name="instagram_link" placeholder="https://www.instagram.com/username">
               </div>
               <div class="en-field">
                 <p>profile Twitter link?</p>
                 <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.twitter.com" target="_blank">here</a></span>
-                <input type="text" class="unrequired" name="twitter_link" placeholder="https://www.twitter.com/username" />
+                <input type="text" class="unrequired" name="twitter_link" placeholder="https://www.twitter.com/username">
               </div>
               <div class="en-field">
                 <p>profile Facebook link?</p>
                 <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.facebook.com" target="_blank">here</a></span>
-                <input type="text" class="unrequired" name="fb_link" placeholder="https://www.facebook.com/username" />
+                <input type="text" class="unrequired" name="fb_link" placeholder="https://www.facebook.com/username">
               </div>
               <div class="en-field">
                 <p>Youtube channel link?</p>
                 <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.youtube.com" target="_blank">here</a></span>
-                <input type="text" class="unrequired" name="youtube_link" placeholder="https://www.youtube.com/username" />
+                <input type="text" class="unrequired" name="youtube_link" placeholder="https://www.youtube.com/username">
               </div>
               <div class="en-field">
                 <p>profile Tiktok link?</p>
                 <span class="example">إختياري</span>
                 <span class="example">You can bring the link from <a href="https://www.tiktok.com" target="_blank">here</a></span>
-                <input type="text" class="unrequired" name="tiktok_link" placeholder="https://www.tiktok.com/username" />
+                <input type="text" class="unrequired" name="tiktok_link" placeholder="https://www.tiktok.com/username">
               </div>
               <div>
                 <p>ما هي مهاراتك في اللغة الإنجليزية؟</p>
@@ -547,22 +533,16 @@
                 <p>هل أنت متاح لمدة 2: 3 ساعات على الأقل كل أسبوع؟</p>
                 <label>
                   <span>نعم</span>
-                  <input type="radio" name="coachTime" value="Yes" checked />
+                  <input type="radio" name="coachTime" value="Yes" checked>
                 </label>
                 <label>
                   <span>لا</span>
-                  <input type="radio" name="coachTime" value="No" />
+                  <input type="radio" name="coachTime" value="No">
                 </label>
                 <label>
                   <span>ربما</span>
-                  <input type="radio" name="coachTime" value="Maybe" />
+                  <input type="radio" name="coachTime" value="Maybe">
                 </label>
-                <!--
-                  <label>
-                    <span>Other</span>
-                    <input type="radio" name="coachTime" value="Other" />
-                  </label>
-                -->
               </div>
             </article>
           </div>
@@ -611,7 +591,7 @@
                   </a>
                 </span>
               </div>
-              <input class="en-field" type="text" placeholder="https://calendly.com/icancoachyou/60min" name="calendly_link"/>
+              <input class="en-field" type="text" placeholder="https://calendly.com/icancoachyou/60min" name="calendly_link">
             </article>
             <article>
               <div style="max-width: 390px;">
@@ -627,7 +607,7 @@
                   </a>
                 </span>
               </div>
-              <input class="en-field" type="text" placeholder="https://tidycal.com/icancoachyou/60min" name="tidycal_link" />
+              <input class="en-field" type="text" placeholder="https://tidycal.com/icancoachyou/60min" name="tidycal_link">
             </article>
           </div>
           <div class="row">
@@ -637,7 +617,7 @@
               <span class="example" style="padding-left: 13px;">
                 - ايضا نأخذ عمولة 25٪ لنكون مستدام و لرسوم اجازة السداد مع حد ادنى للعمولة 150 جنيه على سبيل المثال اذا قمت باضافة 150 جنيه سنأخذها كلها
               </span>
-              <input type="number" placeholder="500" name="eg_hourly_rate" />
+              <input type="number" placeholder="500" name="eg_hourly_rate">
             </article>
             <article>
               <p>ما هو راتبك بالدولار بالساعة لجلسة تدريب لمدة ساعة خارج مصر؟</p>
@@ -645,7 +625,7 @@
               <span class="example" style="padding-left: 13px;">
                 - ايضا نأخذ عمولة 25٪ لنكون مستدام و لرسوم اجازة السداد مع حد ادنى للعمولة 5 دولار على سبيل المثال اذا قمت باضافة 5 دولار سنأخذها كلها
               </span>
-              <input type="number" placeholder="30" name="outside_eg_hourly_rate" />
+              <input type="number" placeholder="30" name="outside_eg_hourly_rate">
             </article>
           </div>
           <div class="row">
@@ -654,23 +634,23 @@
                 <p>كيف سمعت عنا؟</p>
                 <label>
                   <span>جوجل</span>
-                  <input type="radio" name="arrival_way" value="google" checked />
+                  <input type="radio" name="arrival_way" value="google" checked >
                 </label>
                 <label>
                   <span>فيسبوك</span>
-                  <input type="radio" name="arrival_way" value="facebook" />
+                  <input type="radio" name="arrival_way" value="facebook" >
                 </label>
                 <label>
                   <span>لينكيد ان</span>
-                  <input type="radio" name="arrival_way" value="linkedIn" />
+                  <input type="radio" name="arrival_way" value="linkedIn" >
                 </label>
                 <label>
                   <span>صديق</span>
-                  <input type="radio" name="arrival_way" value="friend" />
+                  <input type="radio" name="arrival_way" value="friend" >
                 </label>
                 <label>
                   <span>أخري</span>
-                  <input type="radio" name="arrival_way" value="other" />
+                  <input type="radio" name="arrival_way" value="other" >
                 </label>
               </div>
               <div>
@@ -867,19 +847,18 @@
           </div>
         </div>
         <!-- Modal -->
-
+<!-- 
         <div class="modal" tabindex="-1" role="dialog" id="responseModal" style="direction: ltr">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">خطة المسار الوظيفي جاهزة</h5>
                 <button type="button" class="btn btn-primary" onclick="copyToClipboard()">نسخ إلى الحافظة</button>
-                </button>
               </div>
               <div class="modal-body" id="modal-body"></div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -960,22 +939,22 @@
         <div class="row top-coaches">
 
           <div class="box col-6 col-sm-4 mb-3">
-            <img src="assets/img/team/team-1.webp" class="img-fluid" loading="lazy">
+            <img src="assets/img/team/team-1.webp" class="img-fluid" alt="our team" loading="lazy">
           </div>
           <div class="box col-6 col-sm-4 mb-3">
-            <img src="assets/img/team/team-2.webp" class="img-fluid" loading="lazy">
+            <img src="assets/img/team/team-2.webp" class="img-fluid" alt="our team" loading="lazy">
           </div>
           <div class="box col-6 col-sm-4 mb-3">
-            <img src="assets/img/team/team-3.webp" class="img-fluid" loading="lazy">
+            <img src="assets/img/team/team-3.webp" class="img-fluid" alt="our team" loading="lazy">
           </div>
           <div class="box col-6 col-sm-4 mb-3">
-            <img src="assets/img/team/team-4.webp" class="img-fluid" loading="lazy">
+            <img src="assets/img/team/team-4.webp" class="img-fluid" alt="our team" loading="lazy">
           </div>
           <div class="box col-6 col-sm-4 mb-3">
-            <img src="assets/img/team/team-5.webp" class="img-fluid" loading="lazy">
+            <img src="assets/img/team/team-5.webp" class="img-fluid" alt="our team" loading="lazy">
           </div>
           <div class="box col-6 col-sm-4 mb-3">
-            <img src="assets/img/team/team-6.webp" class="img-fluid" loading="lazy">
+            <img src="assets/img/team/team-6.webp" class="img-fluid" alt="our team" loading="lazy">
           </div>
           <!-- First Row -->
           <!-- <div class="col-12">
@@ -1276,7 +1255,7 @@
     </section><!-- End Testimonials Section -->
 
     <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
+    <section class="cta">
       <div class="container">
 
         <div class="row" data-aos="zoom-in">
@@ -1293,6 +1272,7 @@
 
       </div>
     </section><!-- End Cta Section -->
+
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
@@ -1398,7 +1378,7 @@
         <ul class="faq-list">
 
           <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">ما هي خطة المسار الوظيفي؟ ولماذا تحتاجها؟<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" class="collapsed question">ما هي خطة المسار الوظيفي؟ ولماذا تحتاجها؟<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq1" class="collapse" data-bs-parent=".faq-list">
               <p>
                 التخطيط الوظيفي هو العملية التي من خلالها يساعد كبار السن / المدربون / متخصصو الموارد البشرية المتقدمين في اختيار الأهداف المهنية وتحديد المسار لتحقيقها. الهدف الرئيسي من التخطيط الوظيفي هو مساعدة الطلاب / الموظفين / المتقدمين على إيجاد تطابق أفضل بين أهدافهم الشخصية والفرص المتاحة في السوق.
@@ -1407,7 +1387,7 @@
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">كيف تتعامل مع النتائج؟ <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" class="collapsed question">كيف تتعامل مع النتائج؟ <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq2" class="collapse" data-bs-parent=".faq-list">
               <p>
                 تستند جميع النتائج إلى البيانات التي أضفتها في النموذج ، لذا يرجى التفكير والقراءة بعناية قبل اتخاذ أي خطوة.

@@ -302,11 +302,11 @@ if(document.body.classList.contains('coaches-html')) {
 
 		filterItems.forEach(item => {
 			if(filterMenu == yearsOfExperienceFilter) {
-				let minVal = parseInt(item.getAttribute('min-value'));
-				let maxVal = parseInt(item.getAttribute('max-value'));
+				let minVal = parseInt(item.dataset.minvalue);
+				let maxVal = parseInt(item.dataset.maxvalue);
 				selectedItems.push({ minVal, maxVal });
 			} else {
-				let value = item.getAttribute('value').trim().toLowerCase();
+				let value = item.dataset.value.trim().toLowerCase();
 				selectedItems.push(value);
 			}
 		});
@@ -356,7 +356,7 @@ if(document.body.classList.contains('coaches-html')) {
 			if(userInputVal) {
 				const filterItems = e.target.parentElement.nextElementSibling.querySelectorAll('.square-check');
 				filterItems.forEach(item => {
-					let filterItem = item.getAttribute('value').toLowerCase().trim();
+					let filterItem = item.dataset.value.toLowerCase().trim();
 					if(!filterItem.includes(userInputVal)) {
 						item.parentElement.style.cssText = 'display:none !important;scale: 0; ';
 					} else {

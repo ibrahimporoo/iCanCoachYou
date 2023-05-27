@@ -17,29 +17,29 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link media="all" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap">
+
+  <link media="all" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link media="all" href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet" defer>
+  <link media="all" href="assets/css/style.css" rel="stylesheet">
   <!-- <link rel="preload" href="myfont.woff2" as="font" type="font/woff2" crossorigin> -->
 
   <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-NN9C5QH');</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NN9C5QH');</script>
   <!-- End Google Tag Manager -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8FTTQ0EB2"></script>
@@ -47,11 +47,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8FTTQ0EB2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-G8FTTQ0EB2');
   </script>
+
 </head>
 
 <body class="coaches-html">
@@ -89,7 +90,7 @@
             </article>
             <article>
               <p>What's your name in Arabic?</p>
-              <input type="text" name="ar_name" placeholder="مثال: إبراهيم أنور" style="direction: rtl;" />
+              <input type="text" name="ar_name" placeholder="مثال: إبراهيم أنور" style="direction: rtl;">
             </article>
           </div>
           <div class="row">
@@ -203,7 +204,7 @@
             </article>
             <article>
               <p>Enter your birthdate:</p>
-              <input type="date" id="birthdate" name="birthdate" />
+              <input type="date" id="birthdate" name="birthdate">
             </article>
           </div>
           <div class="row">
@@ -243,19 +244,19 @@
                 <p>Which one of these options suits you for the coaching sessions?</p>
                 <label>
                   <span>Online or offline it doesn't matter</span>
-                  <input type="radio" checked name="session_way" value="both" />
+                  <input type="radio" checked name="session_way" value="both">
                 </label>
                 <label>
                   <span>Online</span>
-                  <input type="radio" name="session_way" value="online" />
+                  <input type="radio" name="session_way" value="online">
                 </label>
                 <label>
                   <span>Offline</span>
-                  <input type="radio" name="session_way" value="offline" />
+                  <input type="radio" name="session_way" value="offline">
                 </label>
                 <label>
                   <span>Other</span>
-                  <input type="radio" name="session_way" value="Other" />
+                  <input type="radio" name="session_way" value="Other">
                 </label>
               </div>
             </article>
@@ -265,14 +266,14 @@
               <p>What's your objective in life?</p>
               <span class="example">optionally</span>
               <span class="example">note that we will show it to users</span>
-              <input class="unrequired" type="text" name="coach_goal" placeholder="Speak about your goal..." />
+              <input class="unrequired" type="text" name="coach_goal" placeholder="Speak about your goal...">
             </article>
             <article>
               <p>What's your objective in life? (in arabic)</p>
               <span class="example">optionally</span>
               <span class="example">note that we will show it to users</span>
               <input class="unrequired" type="text" name="ar_coach_goal" placeholder="تحدث عن هدفك هنا ..."
-                style="direction: rtl;" />
+                style="direction: rtl;">
             </article>
           </div>
           <div class="row">
@@ -299,84 +300,84 @@
               <p>What is the industry you can give coaching in?</p>
               <label>
                 <span>Sales & Marketing</span>
-                <input type="radio" name="industry" value="Sales Marketing $ المبيعات والتسويق" checked />
+                <input type="radio" name="industry" value="Sales Marketing $ المبيعات والتسويق" checked>
               </label>
               <label>
                 <span>Business Management</span>
-                <input type="radio" name="industry" value="Business Management $ ادارة اعمال" />
+                <input type="radio" name="industry" value="Business Management $ ادارة اعمال">
               </label>
               <label>
                 <span>Soft Skills</span>
-                <input type="radio" name="industry" value="Soft Skills $ المهارات الشخصية" />
+                <input type="radio" name="industry" value="Soft Skills $ المهارات الشخصية">
               </label>
               <label>
                 <span>Content & copy rights</span>
-                <input type="radio" name="industry" value="Content copy rights $ المحتوى وحقوق النسخ" />
+                <input type="radio" name="industry" value="Content copy rights $ المحتوى وحقوق النسخ">
               </label>
               <label>
                 <span>HR</span>
-                <input type="radio" name="industry" value="HR $ الموارد البشرية" />
+                <input type="radio" name="industry" value="HR $ الموارد البشرية">
               </label>
               <label>
                 <span>Media, Photography & Film</span>
                 <input type="radio" name="industry"
-                  value="Media, Photography and Film $ وسائل الإعلام والتصوير والسينما" />
+                  value="Media, Photography and Film $ وسائل الإعلام والتصوير والسينما">
               </label>
               <label>
                 <span>Technology</span>
-                <input type="radio" name="industry" value="Technology $ التكنولوجيا" />
+                <input type="radio" name="industry" value="Technology $ التكنولوجيا">
               </label>
               <label>
                 <span>programming</span>
-                <input type="radio" name="industry" value="programming $ البرمجة" />
+                <input type="radio" name="industry" value="programming $ البرمجة">
               </label>
               <label>
                 <span>Cyber security</span>
-                <input type="radio" name="industry" value="Cyber security $ الأمن الإلكتروني" />
+                <input type="radio" name="industry" value="Cyber security $ الأمن الإلكتروني">
               </label>
               <label>
                 <span>operations</span>
-                <input type="radio" name="industry" value="operations $ العمليات" />
+                <input type="radio" name="industry" value="operations $ العمليات">
               </label>
               <label>
                 <span>Legal</span>
-                <input type="radio" name="industry" value="Legal $ القانوني" />
+                <input type="radio" name="industry" value="Legal $ القانوني">
               </label>
               <label>
                 <span>Finance</span>
-                <input type="radio" name="industry" value="Finance $ التمويل" />
+                <input type="radio" name="industry" value="Finance $ التمويل">
               </label>
               <label>
                 <span>Science & Productivity</span>
-                <input type="radio" name="industry" value="Science and Productivity $ العلم والإنتاجية" />
+                <input type="radio" name="industry" value="Science and Productivity $ العلم والإنتاجية">
               </label>
               <label>
                 <span>Languages</span>
-                <input type="radio" name="industry" value="Languages $ اللغات" />
+                <input type="radio" name="industry" value="Languages $ اللغات">
               </label>
               <label>
                 <span>Logistics</span>
-                <input type="radio" name="industry" value="Logistics $ الخدمات اللوجستية" />
+                <input type="radio" name="industry" value="Logistics $ الخدمات اللوجستية">
               </label>
               <label>
                 <span>Arts & Design</span>
-                <input type="radio" name="industry" value="Arts and Design $ الفنون والتصميم" />
+                <input type="radio" name="industry" value="Arts and Design $ الفنون والتصميم">
               </label>
               <label>
                 <span>Entrepreneurship</span>
-                <input type="radio" name="industry" value="Entrepreneurship $ ريادة الأعمال" />
+                <input type="radio" name="industry" value="Entrepreneurship $ ريادة الأعمال">
               </label>
               <label>
                 <span>Parenting & Relationships</span>
-                <input type="radio" name="industry" value="Parenting and Relationships $ الأبوة والأمومة والعلاقات" />
+                <input type="radio" name="industry" value="Parenting and Relationships $ الأبوة والأمومة والعلاقات">
               </label>
               <label>
                 <span>Kids Development</span>
-                <input type="radio" name="industry" value="Kids Development $ تنمية الاطفال" />
+                <input type="radio" name="industry" value="Kids Development $ تنمية الاطفال">
               </label>
               <label>
                 <span>Lifestyle & Health</span>
-                <input type="radio" name="industry" value="Lifestyle and Health $ نمط الحياة والصحة" />
+                <input type="radio" name="industry" value="Lifestyle and Health $ نمط الحياة والصحة">
               </label>
               <!-- <label>
                 <span>Others</span>
@@ -396,19 +397,19 @@
                   <p>Are you available/free for at least 2:3 hours every week?</p>
                   <label>
                     <span>Yes</span>
-                    <input type="radio" name="coachTime" value="Yes" checked />
+                    <input type="radio" name="coachTime" value="Yes" checked>
                   </label>
                   <label>
                     <span>No</span>
-                    <input type="radio" name="coachTime" value="No" />
+                    <input type="radio" name="coachTime" value="No">
                   </label>
                   <label>
                     <span>Maybe</span>
-                    <input type="radio" name="coachTime" value="Maybe" />
+                    <input type="radio" name="coachTime" value="Maybe">
                   </label>
                   <label>
                     <span>Other</span>
-                    <input type="radio" name="coachTime" value="Other" />
+                    <input type="radio" name="coachTime" value="Other">
                   </label>
                 </div>
                 <div>
@@ -449,7 +450,7 @@
                   </div>
                   <div class="d-flex align-items-center position-relative">
                     <input type="text" class="unrequired" id="tags-input" placeholder="Keyword,"
-                      style="border-right: 0;" />
+                      style="border-right: 0;">
                     <button type="button" id="tags-add-btn">Add</button>
                   </div>
                 </div>
@@ -461,27 +462,27 @@
                 <label>
                   <span>Indiviual Contributer - Self Employed</span>
                   <input type="radio" checked name="jobTitle"
-                    value="Indiviual Contributer - Self Employed $ مساهم فردي - صاحب عمل خاص" />
+                    value="Indiviual Contributer - Self Employed $ مساهم فردي - صاحب عمل خاص">
                 </label>
                 <label>
                   <span>Middle Manager</span>
-                  <input type="radio" name="jobTitle" value="Middle Manager $ مدير أوسط" />
+                  <input type="radio" name="jobTitle" value="Middle Manager $ مدير أوسط">
                 </label>
                 <label>
                   <span>Senior Manager</span>
-                  <input type="radio" name="jobTitle" value="Senior Manager $ مدير مرشد" />
+                  <input type="radio" name="jobTitle" value="Senior Manager $ مدير مرشد">
                 </label>
                 <label>
                   <span>Director/VP</span>
-                  <input type="radio" name="jobTitle" value="Director/VP $ مخرج / نائب الرئيس" />
+                  <input type="radio" name="jobTitle" value="Director/VP $ مخرج / نائب الرئيس">
                 </label>
                 <label>
                   <span>C-suite/Executive</span>
-                  <input type="radio" name="jobTitle" value="C-suite/Executive $ الإدارة التنفيذية" />
+                  <input type="radio" name="jobTitle" value="C-suite/Executive $ الإدارة التنفيذية">
                 </label>
                 <label>
                   <span>Founder/Business Owner</span>
-                  <input type="radio" name="jobTitle" value="Founder/Business Owner $ مؤسس / صاحب عمل" />
+                  <input type="radio" name="jobTitle" value="Founder/Business Owner $ مؤسس / صاحب عمل">
                 </label>
                 <!-- <label>
                   <span>Others</span>
@@ -492,9 +493,9 @@
                 <p>Image file:</p>
                 <span class="example">add the highest professional image you have.</span>
                 <span class="example">Upload a high quality image as follows:</span>
-                <img class="w-50" src="assets/img/team/team-1.webp" alt="Ebraheem Anwar">
+                <img class="w-50" src="assets/img/team/team-1.webp" alt="Ebraheem Anwar" loading="lazy">
                 <label for="image_file" class="file-label">
-                  <input type="file" id="image_file" name="image_file" accept="image/*" />
+                  <input type="file" id="image_file" name="image_file" accept="image/*">
                 </label>
               </div>
               <div>
@@ -506,21 +507,21 @@
                   target="_blank">here</a>
                 </span>
                 <input type="text" class="unrequired" id="video_link" name="video_link"
-                  placeholder="Any Social Media Link..." />
+                  placeholder="Any Social Media Link...">
               </div>
               <div>
                 <p>CV File:</p>
                 <span class="example">optionally</span>
                 <span class="example">pdf or docx</span>
                 <label for="cv_file" class="file-label">
-                  <input type="file" class="unrequired" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" />
+                  <input type="file" class="unrequired" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx">
                 </label>
               </div>
               <div>
                 <p>profile LinkedIn Link?*</p>
                 <span class="example">You can bring the link from <a href="https://www.linkedin.com"
                     target="_blank">here </a></span>
-                <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username" />
+                <input type="text" name="linkedIn_link" placeholder="https://www.linkedin.com/username">
               </div>
               <div>
                 <p>profile Instagram Link?</p>
@@ -528,7 +529,7 @@
                 <span class="example">You can bring the link from <a href="https://www.instagram.com"
                     target="_blank">here </a></span>
                 <input type="text" class="unrequired" name="instagram_link"
-                  placeholder="https://www.instagram.com/username" />
+                  placeholder="https://www.instagram.com/username">
               </div>
               <div>
                 <p>profile Twitter link?</p>
@@ -536,14 +537,14 @@
                 <span class="example">You can bring the link from <a href="https://www.twitter.com"
                   target="_blank">here</a></span>
                 <input type="text" class="unrequired" name="twitter_link"
-                  placeholder="https://www.twitter.com/username" />
+                  placeholder="https://www.twitter.com/username">
               </div>
               <div>
                 <p>profile Facebook link?</p>
                 <span class="example">optionally</span>
                 <span class="example">You can bring the link from <a href="https://www.facebook.com"
                     target="_blank">here</a></span>
-                <input type="text" class="unrequired" name="fb_link" placeholder="https://www.facebook.com/username" />
+                <input type="text" class="unrequired" name="fb_link" placeholder="https://www.facebook.com/username">
               </div>
               <div>
                 <p>Youtube channel link?</p>
@@ -551,7 +552,7 @@
                 <span class="example">You can bring the link from <a href="https://www.youtube.com"
                     target="_blank">here</a></span>
                 <input type="text" class="unrequired" name="youtube_link"
-                  placeholder="https://www.youtube.com/username" />
+                  placeholder="https://www.youtube.com/username">
               </div>
               <div>
                 <p>profile Tiktok link?</p>
@@ -559,7 +560,7 @@
                 <span class="example">You can bring the link from <a href="https://www.tiktok.com"
                     target="_blank">here</a></span>
                 <input type="text" class="unrequired" name="tiktok_link"
-                  placeholder="https://www.tiktok.com/username" />
+                  placeholder="https://www.tiktok.com/username">
               </div>
             </article>
           </div>
@@ -620,7 +621,7 @@
                   </a>
                 </span>
               </div>
-              <input type="text" placeholder="https://calendly.com/waleed-abdelrahman/60min" name="calendly_link" />
+              <input type="text" placeholder="https://calendly.com/waleed-abdelrahman/60min" name="calendly_link">
             </article>
             <article>
               <div style="max-width: 390px;">
@@ -637,7 +638,7 @@
                   </a>
                 </span>
               </div>
-              <input type="text" placeholder="e.g. https://tidycal.com/waleed-abdelrahman/60min" name="tidycal_link" />
+              <input type="text" placeholder="e.g. https://tidycal.com/waleed-abdelrahman/60min" name="tidycal_link">
             </article>
           </div>
           <div class="row">
@@ -648,7 +649,7 @@
                 - also we take 25% commission to be sustainable and for payment getaway's fees with minimum commission
                 150 EGP, for example, if you add 150 EGP, we will take it all.
               </span>
-              <input type="number" placeholder="500" name="eg_hourly_rate" />
+              <input type="number" placeholder="500" name="eg_hourly_rate">
             </article>
             <article>
               <p>What's your hourly rate for an hour coach session outside Egypt (in USD)</p>
@@ -657,7 +658,7 @@
                 - also we take 25% commission to be sustainable and for payment getaway's fees with minimum commission 5
                 USD, for example, if you add 5 USD, we will take it all.
               </span>
-              <input type="number" placeholder="30" name="outside_eg_hourly_rate" />
+              <input type="number" placeholder="30" name="outside_eg_hourly_rate">
             </article>
           </div>
           <div class="row">
@@ -682,23 +683,23 @@
                 <p>How did you hear about us?</p>
                 <label>
                   <span>Google</span>
-                  <input type="radio" name="arrival_way" value="google" checked />
+                  <input type="radio" name="arrival_way" value="google" checked>
                 </label>
                 <label>
                   <span>Facebook</span>
-                  <input type="radio" name="arrival_way" value="facebook" />
+                  <input type="radio" name="arrival_way" value="facebook">
                 </label>
                 <label>
                   <span>LinkedIn</span>
-                  <input type="radio" name="arrival_way" value="linkedIn" />
+                  <input type="radio" name="arrival_way" value="linkedIn">
                 </label>
                 <label>
                   <span>Friend</span>
-                  <input type="radio" name="arrival_way" value="friend" />
+                  <input type="radio" name="arrival_way" value="friend">
                 </label>
                 <label>
                   <span>Other</span>
-                  <input type="radio" name="arrival_way" value="other" />
+                  <input type="radio" name="arrival_way" value="other">
                 </label>
               </div>
               <div>
@@ -912,423 +913,423 @@
                   <!-- Top Search -->
                   <div class="filter-item-input mb-2 d-flex align-items-center gap-2">
                     <i class="bi bi-search"></i>
-                    <input type="search" placeholder="search" />
+                    <input type="search" placeholder="search">
                   </div>
                   <!-- Items -->
                   <div id="country-menu" class="filter-menu-items">
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="algeria">
+                      <span class="square-check position-relative" data-value="algeria">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Algeria
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="bahrain">
+                      <span class="square-check position-relative" data-value="bahrain">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Bahrain
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="comoros">
+                      <span class="square-check position-relative" data-value="comoros">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Comoros
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="djibouti">
+                      <span class="square-check position-relative" data-value="djibouti">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Djibouti
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="egypt">
+                      <span class="square-check position-relative" data-value="egypt">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Egypt
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="iraq">
+                      <span class="square-check position-relative" data-value="iraq">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Iraq
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="jordan">
+                      <span class="square-check position-relative" data-value="jordan">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Jordan
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="kuwait">
+                      <span class="square-check position-relative" data-value="kuwait">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Kuwait
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="lebanon">
+                      <span class="square-check position-relative" data-value="lebanon">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Lebanon
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="libya">
+                      <span class="square-check position-relative" data-value="libya">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Libya
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="mauritania">
+                      <span class="square-check position-relative" data-value="mauritania">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Mauritania
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="morocco">
+                      <span class="square-check position-relative" data-value="morocco">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Morocco
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="oman">
+                      <span class="square-check position-relative" data-value="oman">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Oman
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="palestine">
+                      <span class="square-check position-relative" data-value="palestine">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Palestine
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="qatar">
+                      <span class="square-check position-relative" data-value="qatar">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Qatar
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="saudi arabia">
+                      <span class="square-check position-relative" data-value="saudi arabia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Saudi Arabia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="somalia">
+                      <span class="square-check position-relative" data-value="somalia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Somalia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="sudan">
+                      <span class="square-check position-relative" data-value="sudan">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Sudan
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="syria">
+                      <span class="square-check position-relative" data-value="syria">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Syria
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="tunisia">
+                      <span class="square-check position-relative" data-value="tunisia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Tunisia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="united arab emirates">
+                      <span class="square-check position-relative" data-value="united arab emirates">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       United Arab Emirates
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="yemen">
+                      <span class="square-check position-relative" data-value="yemen">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Yemen
                     </div>
                     <!-- USA countries -->
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="united states">
+                      <span class="square-check position-relative" data-value="united states">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       United States
                     </div>
                     <!-- Europe countries -->
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="albania">
+                      <span class="square-check position-relative" data-value="albania">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Albania
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="andorra">
+                      <span class="square-check position-relative" data-value="andorra">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Andorra
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="austria">
+                      <span class="square-check position-relative" data-value="austria">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Austria
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="belarus">
+                      <span class="square-check position-relative" data-value="belarus">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Belarus
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="belgium">
+                      <span class="square-check position-relative" data-value="belgium">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Belgium
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="bosnia and herzegovina">
+                      <span class="square-check position-relative" data-value="bosnia and herzegovina">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Bosnia and Herzegovina
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="bulgaria">
+                      <span class="square-check position-relative" data-value="bulgaria">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Bulgaria
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="croatia">
+                      <span class="square-check position-relative" data-value="croatia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Croatia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="cyprus">
+                      <span class="square-check position-relative" data-value="cyprus">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Cyprus
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="czech republic">
+                      <span class="square-check position-relative" data-value="czech republic">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Czech Republic
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="denmark">
+                      <span class="square-check position-relative" data-value="denmark">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Denmark
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="estonia">
+                      <span class="square-check position-relative" data-value="estonia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Estonia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="finland">
+                      <span class="square-check position-relative" data-value="finland">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Finland
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="france">
+                      <span class="square-check position-relative" data-value="france">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       France
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="germany">
+                      <span class="square-check position-relative" data-value="germany">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Germany
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="greece">
+                      <span class="square-check position-relative" data-value="greece">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Greece
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="hungary">
+                      <span class="square-check position-relative" data-value="hungary">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Hungary
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="iceland">
+                      <span class="square-check position-relative" data-value="iceland">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Iceland
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="ireland">
+                      <span class="square-check position-relative" data-value="ireland">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Ireland
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="italy">
+                      <span class="square-check position-relative" data-value="italy">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Italy
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="kosovo">
+                      <span class="square-check position-relative" data-value="kosovo">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Kosovo
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="latvia">
+                      <span class="square-check position-relative" data-value="latvia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Latvia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="liechtenstein">
+                      <span class="square-check position-relative" data-value="liechtenstein">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Liechtenstein
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="lithuania">
+                      <span class="square-check position-relative" data-value="lithuania">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Lithuania
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="luxembourg">
+                      <span class="square-check position-relative" data-value="luxembourg">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Luxembourg
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="malta">
+                      <span class="square-check position-relative" data-value="malta">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Malta
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="moldova">
+                      <span class="square-check position-relative" data-value="moldova">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Moldova
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="monaco">
+                      <span class="square-check position-relative" data-value="monaco">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Monaco
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="montenegro">
+                      <span class="square-check position-relative" data-value="montenegro">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Montenegro
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="netherlands">
+                      <span class="square-check position-relative" data-value="netherlands">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Netherlands
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="north macedonia">
+                      <span class="square-check position-relative" data-value="north macedonia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       North Macedonia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="norway">
+                      <span class="square-check position-relative" data-value="norway">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Norway
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="poland">
+                      <span class="square-check position-relative" data-value="poland">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Poland
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="portugal">
+                      <span class="square-check position-relative" data-value="portugal">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Portugal
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="romania">
+                      <span class="square-check position-relative" data-value="romania">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Romania
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="russia">
+                      <span class="square-check position-relative" data-value="russia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Russia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="san marino">
+                      <span class="square-check position-relative" data-value="san marino">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       San Marino
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="serbia">
+                      <span class="square-check position-relative" data-value="serbia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Serbia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="slovakia">
+                      <span class="square-check position-relative" data-value="slovakia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Slovakia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="slovenia">
+                      <span class="square-check position-relative" data-value="slovenia">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Slovenia
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="spain">
+                      <span class="square-check position-relative" data-value="spain">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Spain
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="sweden">
+                      <span class="square-check position-relative" data-value="sweden">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Sweden
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="switzerland">
+                      <span class="square-check position-relative" data-value="switzerland">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Switzerland
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="ukraine">
+                      <span class="square-check position-relative" data-value="ukraine">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Ukraine
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="united kingdom">
+                      <span class="square-check position-relative" data-value="united kingdom">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       United Kingdom
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="vatican city">
+                      <span class="square-check position-relative" data-value="vatican city">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Vatican City
@@ -1349,48 +1350,48 @@
                   <!-- Top Search -->
                   <div class="filter-item-input mb-2 d-flex align-items-center gap-2">
                     <i class="bi bi-search"></i>
-                    <input type="search" placeholder="search" />
+                    <input type="search" placeholder="search">
                   </div>
                   <!-- Items -->
                   <div id="job-title-menu">
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="Indiviual Contributer - Self Employed">
+                      <span class="square-check position-relative" data-value="Indiviual Contributer - Self Employed">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Indiviual Contributer - Self Employed
                     </div>
                     
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="middle manager">
+                      <span class="square-check position-relative" data-value="middle manager">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Middle Manager
                     </div>
                     
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="senior manager">
+                      <span class="square-check position-relative" data-value="senior manager">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Senior Manager
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="director/vp">
+                      <span class="square-check position-relative" data-value="director/vp">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Director/VP
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="c-suite/executive">
+                      <span class="square-check position-relative" data-value="c-suite/executive">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       C-suite/Executive
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="founder/business owner">
+                      <span class="square-check position-relative" data-value="founder/business owner">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Founder/Business Owner
@@ -1448,128 +1449,128 @@
                   <!-- Top Search -->
                   <div class="filter-item-input mb-2 d-flex align-items-center gap-2">
                     <i class="bi bi-search"></i>
-                    <input type="search" placeholder="search" />
+                    <input type="search" placeholder="search">
                   </div>
 
                   <!-- Items -->
                   <div id="specialities-menu" class="filter-menu-items">
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="sales & marketing">
+                      <span class="square-check position-relative" data-value="sales & marketing">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Sales & Marketing
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="business management">
+                      <span class="square-check position-relative" data-value="business management">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Business Management
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="soft skills">
+                      <span class="square-check position-relative" data-value="soft skills">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Soft Skills
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="content & copy rights">
+                      <span class="square-check position-relative" data-value="content & copy rights">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Content & copy rights
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="hr">
+                      <span class="square-check position-relative" data-value="hr">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       HR
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="media, photography & film">
+                      <span class="square-check position-relative" data-value="media, photography & film">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Media, Photography & Film
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="technology">
+                      <span class="square-check position-relative" data-value="technology">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Technology
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="programming">
+                      <span class="square-check position-relative" data-value="programming">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Programming
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="cyber security">
+                      <span class="square-check position-relative" data-value="cyber security">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Cyber security
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="operations">
+                      <span class="square-check position-relative" data-value="operations">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Operations
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="legal">
+                      <span class="square-check position-relative" data-value="legal">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Legal
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="finance">
+                      <span class="square-check position-relative" data-value="finance">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Finance
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="science & productivity">
+                      <span class="square-check position-relative" data-value="science & productivity">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Science & Productivity
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="languages">
+                      <span class="square-check position-relative" data-value="languages">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Languages
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="logistics">
+                      <span class="square-check position-relative" data-value="logistics">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Logistics
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="arts & design">
+                      <span class="square-check position-relative" data-value="arts & design">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Arts & Design
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="entrepreneurship">
+                      <span class="square-check position-relative" data-value="entrepreneurship">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Entrepreneurship
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="parenting & relationships">
+                      <span class="square-check position-relative" data-value="parenting & relationships">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Parenting & Relationships
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="kids development">
+                      <span class="square-check position-relative" data-value="kids development">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Kids Development
                     </div>
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="lifestyle & health">
+                      <span class="square-check position-relative" data-value="lifestyle & health">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Lifestyle & Health
@@ -1592,77 +1593,77 @@
                   <div id="years-experience-menu" class="filter-menu-items">
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" min-value="0" max-value="5">
+                      <span class="square-check position-relative" data-minValue="0" data-maxValue="5">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       0 - 5 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" min-value="5" max-value="10">
+                      <span class="square-check position-relative" data-minValue="5" data-maxValue="10">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       5 - 10 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" min-value="10" max-value="15">
+                      <span class="square-check position-relative" data-minValue="10" data-maxValue="15">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       10 - 15 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative"  min-value="15" max-value="20">
+                      <span class="square-check position-relative" data-minValue="15" data-maxValue="20">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       15 - 20 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="female">
+                      <span class="square-check position-relative" data-minValue="20" data-maxValue="25">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       20 - 25 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="female">
+                      <span class="square-check position-relative" data-minValue="25" data-maxValue="30">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       25 - 30 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="female">
+                      <span class="square-check position-relative" data-minValue="30" data-maxValue="35">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       30 - 35 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="female">
+                      <span class="square-check position-relative" data-minValue="35" data-maxValue="40">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       35 - 40 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="female">
+                      <span class="square-check position-relative" data-minValue="40" data-maxValue="45">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       40 - 45 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="female">
+                      <span class="square-check position-relative" data-minValue="45" data-maxValue="50">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       45 - 50 yrs
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="female">
+                      <span class="square-check position-relative" data-minValue="50" data-maxValue="100">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       50+ yrs
@@ -1685,14 +1686,14 @@
                   <div id="gender-menu">
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="male">
+                      <span class="square-check position-relative" data-value="male">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Male
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="female">
+                      <span class="square-check position-relative" data-value="female">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       Female
@@ -1715,21 +1716,21 @@
                   <div id="modality-menu">
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="online">
+                      <span class="square-check position-relative" data-value="online">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       online
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="offline">
+                      <span class="square-check position-relative" data-value="offline">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       offline
                     </div>
 
                     <div class="filter-item pt-1 pb-1 d-flex align-items-center gap-2">
-                      <span class="square-check position-relative" value="both">
+                      <span class="square-check position-relative" data-value="both">
                         <i class="bi bi-check-square-fill position-absolute"></i>
                       </span>
                       online & offline
@@ -1772,7 +1773,7 @@
                 <a class="navbar-brand" href="index.html">
                   <img src="assets/img/logo.webp" alt="">
                 </a>
-              </div>>
+              </div>
               <p>
                 171 El Tahrir, Downtown,
                 NCairo Governorate 11513,
@@ -1810,7 +1811,6 @@
         </div>
 
       </div>
-    </div>
     </div>
 
     <div class="container">
