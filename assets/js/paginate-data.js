@@ -25,7 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const lang = document.querySelector('html').lang;
-let userCountry = null;
+let userCountry = 'USD';
 let thePrice;
 // Create a reference to your Firestore collection
 const db = getFirestore(app);
@@ -42,8 +42,6 @@ function onSuccess(position) {
 	// console.log("Position - ", position);
 	let { latitude, longitude } = position.coords;
   const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=e5f4e9ff26ae4617a4ce7c78306a1867`;
-	// let latitude = 24160.86
-	// let longitude = 450628.26
   // const url = `https://api.opencagedata.com/geocode/v1/json?q=Saudi,+Riyadh&key=e5f4e9ff26ae4617a4ce7c78306a1867`;
 
   fetch(url)
@@ -78,7 +76,7 @@ const displayNext = async (viewAll = false) => {
 		limit(cardsCount)
 	);
 
-	cardsCount += 3;
+	// cardsCount += 3;
 
 	if(viewAll) {
 		ref = query(collectionRef, 
@@ -90,13 +88,13 @@ const displayNext = async (viewAll = false) => {
 
 	const data = await getDocs(ref);
 
-	// console.log(userCountry);
+	console.log(userCountry);
 	data.docs.forEach(doc => {
 		const coach = doc.data();
 		coach.id = doc.id;
-		if(userCountry == 'Egypt') {
+		if(userCountry === 'Egypt') {
 			thePrice = isNaN(Number(coach.pricing_in_egypt)) ? coach.pricing : coach.pricing_in_egypt;
-		} else if (userCountry == 'Saudi Arabia') {
+		} else if (userCountry === 'Saudi Arabia') {
 			thePrice = isNaN(Number(coach.pricing_in_egypt)) ? Math.floor(parseInt(coach.pricing) * 3.75) + ' SAR' : Math.floor(parseInt(coach.pricing_in_egypt) * 3.75) + ' SAR';
 		} else {
 			thePrice = isNaN(Number(coach.pricing_outside_egypt)) ? '30 USD' : coach.pricing_outside_egypt + ' USD' ;
