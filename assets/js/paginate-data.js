@@ -92,7 +92,7 @@ const displayNext = async (viewAll = false) => {
 		container.innerHTML += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
-					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}" loading="lazy"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}" loading="lazy" onerror="this.src='${coach.image}';"></div>
 						<div class="member-info coaches pricing" data-i=${coach.id}>
 							<div class='ps-3 pe-3'>
 								<h5>${coach.name}</h5>
@@ -346,7 +346,7 @@ if(document.body.classList.contains('coaches-html')) {
 			container.innerHTML += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
-					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}" loading="lazy"></div>
+					<div class="pic"><img src=${coach.image} class="img-fluid" alt="${coach.name}" loading="lazy" onerror="this.src='${coach.image}';"></div>
 						<div class="member-info coaches pricing" data-i=${coach.id}>
 							<div class='ps-3 pe-3'>
 								<h5>${coach.name}</h5>
