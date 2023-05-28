@@ -35,9 +35,37 @@ const container = document.getElementById('coaches-content');
 
 /* Getting User Location */
 if(navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(onSuccess, onError)
+	navigator.geolocation.getCurrentPosition(onSuccess);
 }
 
+function onSuccess(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  // Egypt's coordinates
+  const egyptNorth = 31.916667;
+  const egyptSouth = 22.0;
+  const egyptEast = 36.333333;
+  const egyptWest = 25.0;
+
+  // Saudi Arabia's coordinates
+  const saudiNorth = 32.154284;
+  const saudiSouth = 16.000001;
+  const saudiEast = 55.666666;
+  const saudiWest = 34.5;
+
+  if (lat >= egyptSouth && lat <= egyptNorth && lon >= egyptWest && lon <= egyptEast) {
+		userCountry = 'Egypt';
+    console.log("User is in Egypt.");
+  } else if (lat >= saudiSouth && lat <= saudiNorth && lon >= saudiWest && lon <= saudiEast) {
+		userCountry = 'Saudi Arabia';
+    console.log("User is in Saudi Arabia.");
+  } else {
+    console.log("User is in another country.");
+  }
+};
+
+/*
 function onSuccess(position) {
 	// console.log("Position - ", position);
 	let { latitude, longitude } = position.coords;
@@ -58,6 +86,7 @@ function onSuccess(position) {
 function onError(err) {
 	console.log("The Error: ", err);
 }
+*/
 
 // Query the first page of docs
 const seeMoreBtn = document.querySelector('.see-more');
