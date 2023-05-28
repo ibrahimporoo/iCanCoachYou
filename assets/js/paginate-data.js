@@ -241,7 +241,6 @@ if(document.body.classList.contains('coaches-html')) {
 		const selectedGenders = getSelectedItems(genderFilter);
 		const selectedYearsOfExperience = getSelectedItems(yearsOfExperienceFilter);
 		const selectedModalities = getSelectedItems(modalityFilter);
-		// const selectedPrices = getSelectedItems(priceFilter);
 
 		const filteredData = coaches.filter(coach => {
 			let validOne = true;
@@ -285,7 +284,19 @@ if(document.body.classList.contains('coaches-html')) {
 			}
 
 			// Filter by Prices
-			let theCoachPrice = parseInt(coach.pricing_in_egypt) || parseInt(coach.pricing);
+			// Before
+			// let theCoachPrice = parseInt(coach.pricing_in_egypt) || parseInt(coach.pricing);
+			let theCoachPrice;
+			if(userCountry == 'Egypt') {
+				theCoachPrice = parseInt(coach.pricing_in_egypt) || parseInt(coach.pricing);
+			} else if (userCountry == 'Saudi Arabia') {
+				theCoachPrice = !isNaN(parseInt(coach.pricing_in_egypt)) ? Math.floor(parseInt(coach.pricing_in_egypt) * 3.75) : Math.floor(parseInt(coach.pricing) * 3.75);
+			} else {
+				theCoachPrice = parseInt(coach.pricing_outside_egypt);
+			}
+			console.log("The Coach Name", coach.name);
+			console.log("The Coach Price", theCoachPrice);
+			// theCoachPrice = parseInt(coach.pricing_in_egypt) || parseInt(coach.pricing);
 			let coachPriceInRange = true;
 			if(minVal <= theCoachPrice && maxVal >= theCoachPrice) {
 				coachPriceInRange = true;
@@ -341,8 +352,15 @@ if(document.body.classList.contains('coaches-html')) {
 
 	function displayResults(results) {
 		container.innerHTML = '';
-
+		console.log(results);
 		results.forEach(coach => {
+			if(userCountry == 'Egypt') {
+				thePrice = isNaN(parseInt(coach.pricing_in_egypt)) ? coach.pricing : coach.pricing_in_egypt;
+			} else if (userCountry == 'Saudi Arabia') {
+				thePrice = isNaN(parseInt(coach.pricing_in_egypt)) ? Math.floor(parseInt(coach.pricing) * 3.75) + ' SAR' : Math.floor(parseInt(coach.pricing_in_egypt) * 3.75) + ' SAR';
+			} else {
+				thePrice = isNaN(parseInt(coach.pricing_outside_egypt)) ? '30 USD' : coach.pricing_outside_egypt.toLowerCase().includes('usd') ? coach.pricing_outside_egypt : coach.pricing_outside_egypt + ' USD' ;
+			}
 			container.innerHTML += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
