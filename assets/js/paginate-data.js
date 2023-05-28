@@ -50,29 +50,6 @@ fetch('https://api.ipify.org?format=json')
   })
   .catch(error => console.error(error));
 
-/*
-function onSuccess(position) {
-	// console.log("Position - ", position);
-	let { latitude, longitude } = position.coords;
-  const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=e5f4e9ff26ae4617a4ce7c78306a1867`;
-  // const url = `https://api.opencagedata.com/geocode/v1/json?q=Saudi,+Riyadh&key=e5f4e9ff26ae4617a4ce7c78306a1867`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-			let allDetails = data.results[0].components;
-			let { country } = allDetails;
-			userCountry = country;
-			// console.log(allDetails);
-    })
-    .catch(error => console.log(error));
-}
-
-function onError(err) {
-	console.log("The Error: ", err);
-}
-*/
-
 // Query the first page of docs
 const seeMoreBtn = document.querySelector('.see-more');
 let start = false; // to check if user used filters tool before btn click.
@@ -102,7 +79,6 @@ const displayNext = async (viewAll = false) => {
 
 	const data = await getDocs(ref);
 
-	console.log(userCountry);
 	data.docs.forEach(doc => {
 		const coach = doc.data();
 		coach.id = doc.id;
