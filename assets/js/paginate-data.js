@@ -25,7 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const lang = document.querySelector('html').lang;
-let userCountry = null;
+let userCountry = 'gypt';
 let thePrice;
 // Create a reference to your Firestore collection
 const db = getFirestore(app);
@@ -44,11 +44,11 @@ fetch('https://api.ipify.org?format=json')
     fetch(`https://ipapi.co/${ipAddress}/json/`)
       .then(response => response.json())
       .then(data => {
-				userCountry = data.country_name;
+				userCountry = data.country_name.trim();
+				displayNext();
 			})
-      .catch(error => console.error(error));
   })
-  .catch(error => console.error(error));
+  .catch(_ => displayNext());
 
 // Query the first page of docs
 const seeMoreBtn = document.querySelector('.see-more');
@@ -67,7 +67,7 @@ const displayNext = async (viewAll = false) => {
 		limit(cardsCount)
 	);
 
-	// cardsCount += 3;
+	cardsCount = 9;
 
 	if(viewAll) {
 		ref = query(collectionRef,
@@ -82,12 +82,12 @@ const displayNext = async (viewAll = false) => {
 	data.docs.forEach(doc => {
 		const coach = doc.data();
 		coach.id = doc.id;
-		if(userCountry === 'Egypt') {
-			thePrice = isNaN(Number(coach.pricing_in_egypt)) ? coach.pricing : coach.pricing_in_egypt;
-		} else if (userCountry === 'Saudi Arabia') {
-			thePrice = isNaN(Number(coach.pricing_in_egypt)) ? Math.floor(parseInt(coach.pricing) * 3.75) + ' SAR' : Math.floor(parseInt(coach.pricing_in_egypt) * 3.75) + ' SAR';
+		if(userCountry == 'Egypt') {
+			thePrice = isNaN(parseInt(coach.pricing_in_egypt)) ? coach.pricing : coach.pricing_in_egypt;
+		} else if (userCountry == 'Saudi Arabia') {
+			thePrice = isNaN(parseInt(coach.pricing_in_egypt)) ? Math.floor(parseInt(coach.pricing) * 3.75) + ' SAR' : Math.floor(parseInt(coach.pricing_in_egypt) * 3.75) + ' SAR';
 		} else {
-			thePrice = isNaN(Number(coach.pricing_outside_egypt)) ? '30 USD' : coach.pricing_outside_egypt + ' USD' ;
+			thePrice = isNaN(parseInt(coach.pricing_outside_egypt)) ? '30 USD' : coach.pricing_outside_egypt.toLowerCase().includes('usd') ? coach.pricing_outside_egypt : coach.pricing_outside_egypt + ' USD' ;
 		}
 		container.innerHTML += `
 			<div class="col-lg-4 col-md-6">
@@ -156,7 +156,6 @@ const viewAll = () => {
 	seeMoreBtn.style.display = 'none';
 };
 
-displayNext();
 seeMoreBtn && seeMoreBtn.addEventListener('click', handleClick);
 
 function viewProfile(documentId, lang, username) {
