@@ -1,6 +1,6 @@
 // import { getFirestore, collection, getDocs, query, where, orderBy, startAfter, endBefore, limit } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-firestore.js";
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, updateDoc, doc, query, where, orderBy, startAfter, limit } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, where, orderBy, startAfter, limit } from 'firebase/firestore';
 // // iCanCoachU Example Firebase...
 // const firebaseConfig = {
 // 	apiKey: "AIzaSyCl1e2eawcwTIdXk7E7IGbxiEnG4guzVzM",
@@ -25,11 +25,41 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const lang = document.querySelector('html').lang;
+let userCountry = null;
+let thePrice;
 // Create a reference to your Firestore collection
 const db = getFirestore(app);
 const collectionRef = collection(db, 'coaches', 'languages', lang);
 
 const container = document.getElementById('coaches-content');
+
+/* Getting User Location */
+if(navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(onSuccess, onError)
+}
+
+function onSuccess(position) {
+	// console.log("Position - ", position);
+	let { latitude, longitude } = position.coords;
+  const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=e5f4e9ff26ae4617a4ce7c78306a1867`;
+	// let latitude = 24160.86
+	// let longitude = 450628.26
+  // const url = `https://api.opencagedata.com/geocode/v1/json?q=Saudi,+Riyadh&key=e5f4e9ff26ae4617a4ce7c78306a1867`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+			let allDetails = data.results[0].components;
+			let { country } = allDetails;
+			userCountry = country;
+			// console.log(allDetails);
+    })
+    .catch(error => console.log(error));
+}
+
+function onError(err) {
+	console.log("The Error: ", err);
+}
 
 // Query the first page of docs
 const seeMoreBtn = document.querySelector('.see-more');
@@ -60,11 +90,17 @@ const displayNext = async (viewAll = false) => {
 
 	const data = await getDocs(ref);
 
-
-	// let template = '';
+	// console.log(userCountry);
 	data.docs.forEach(doc => {
 		const coach = doc.data();
 		coach.id = doc.id;
+		if(userCountry == 'Egypt') {
+			thePrice = isNaN(Number(coach.pricing_in_egypt)) ? coach.pricing : coach.pricing_in_egypt;
+		} else if (userCountry == 'Saudi Arabia') {
+			thePrice = isNaN(Number(coach.pricing_in_egypt)) ? Math.floor(parseInt(coach.pricing) * 3.75) + ' SAR' : Math.floor(parseInt(coach.pricing_in_egypt) * 3.75) + ' SAR';
+		} else {
+			thePrice = isNaN(Number(coach.pricing_outside_egypt)) ? '30 USD' : coach.pricing_outside_egypt + ' USD' ;
+		}
 		container.innerHTML += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
@@ -74,7 +110,7 @@ const displayNext = async (viewAll = false) => {
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
 							</div>
-							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt}${priceUnit}</span>` : `<span class="mb-0 text-uppercase">${coach.pricing}${priceUnit}</span>`}
+							<span class="mb-0 text-uppercase">${thePrice}${priceUnit}</span>
 							<p class='detail-item mb-1 mt-1'>Details</p>
 							<span>${coach.category}</span>
 							${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
@@ -124,12 +160,14 @@ const handleClick = () => {
 	reloadButton(seeMoreBtn);
 	displayNext(false);
 };
+
 const viewAll = () => {
 	start = true;
 	reloadButton(seeMoreBtn);
 	displayNext(true);
 	seeMoreBtn.style.display = 'none';
 };
+
 displayNext();
 seeMoreBtn && seeMoreBtn.addEventListener('click', handleClick);
 
@@ -327,7 +365,7 @@ if(document.body.classList.contains('coaches-html')) {
 								<h5>${coach.name}</h5>
 								<h4>${coach.jobTitle}</h4>
 							</div>
-							${coach.pricing_in_egypt ? `<span class="mb-0 text-uppercase">${coach.pricing_in_egypt}${priceUnit}</span>` : `<span class="mb-0 text-uppercase">${coach.pricing}${priceUnit}</span>`}
+							<span class="mb-0 text-uppercase">${thePrice}${priceUnit}</span>
 							<p class='detail-item mb-1 mt-1'>Details</p>
 							<span>${coach.category}</span>
 							${coach.summary.length > 180 ? `<span>${coach.summary.slice(0, 180) + '...'}</span>` : `<span>${coach.summary}</span>`}
