@@ -25,7 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const lang = document.querySelector('html').lang;
-let userCountry = 'USD';
+let userCountry = null;
 let thePrice;
 // Create a reference to your Firestore collection
 const db = getFirestore(app);
@@ -34,36 +34,21 @@ const collectionRef = collection(db, 'coaches', 'languages', lang);
 const container = document.getElementById('coaches-content');
 
 /* Getting User Location */
-if(navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(onSuccess);
-}
+// Get the user's IP address using ipify
+fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    const ipAddress = data.ip;
 
-function onSuccess(position) {
-  const lat = position.coords.latitude;
-  const lon = position.coords.longitude;
-
-  // Egypt's coordinates
-  const egyptNorth = 31.916667;
-  const egyptSouth = 22.0;
-  const egyptEast = 36.333333;
-  const egyptWest = 25.0;
-
-  // Saudi Arabia's coordinates
-  const saudiNorth = 32.154284;
-  const saudiSouth = 16.000001;
-  const saudiEast = 55.666666;
-  const saudiWest = 34.5;
-
-  if (lat >= egyptSouth && lat <= egyptNorth && lon >= egyptWest && lon <= egyptEast) {
-		userCountry = 'Egypt';
-    console.log("User is in Egypt.");
-  } else if (lat >= saudiSouth && lat <= saudiNorth && lon >= saudiWest && lon <= saudiEast) {
-		userCountry = 'Saudi Arabia';
-    console.log("User is in Saudi Arabia.");
-  } else {
-    console.log("User is in another country.");
-  }
-};
+    // Use ipapi to get the user's country based on their IP address
+    fetch(`https://ipapi.co/${ipAddress}/json/`)
+      .then(response => response.json())
+      .then(data => {
+				userCountry = data.country_name;
+			})
+      .catch(error => console.error(error));
+  })
+  .catch(error => console.error(error));
 
 /*
 function onSuccess(position) {
@@ -108,7 +93,7 @@ const displayNext = async (viewAll = false) => {
 	// cardsCount += 3;
 
 	if(viewAll) {
-		ref = query(collectionRef, 
+		ref = query(collectionRef,
 			where('appear', '==', true), 
 			orderBy('order', 'asc'),
 			startAfter(latestDoc || 0),
