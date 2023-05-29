@@ -99,8 +99,8 @@ async function fetchSingleCoach() {
 		}
 	`;
 	// About Coach
-	let roleModelResult = coach.coach_role_model.replace(coach.coach_role_model.charAt(coach.coach_role_model.lastIndexOf('.')), '');
-	let coachGoalResult = coach.coach_objective_life.replace(coach.coach_objective_life.charAt(coach.coach_objective_life.lastIndexOf('.')), '');
+	let roleModelResult = coach.coach_role_model && coach.coach_role_model.replace(coach.coach_role_model.charAt(coach.coach_role_model.lastIndexOf('.')), '');
+	let coachGoalResult = coach.coach_objective_life && coach.coach_objective_life.replace(coach.coach_objective_life.charAt(coach.coach_objective_life.lastIndexOf('.')), '');
 	if(lang == 'ar') {
 		aboutContainer.innerHTML = `
 		<span>عني</span>
@@ -147,7 +147,7 @@ async function fetchSingleCoach() {
 			`
 			<div class="achievements-cards p-4 mt-5">
 				<div class="box d-flex align-items-center gap-1">
-					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" loading="lazy" />
+					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" loading="lazy" onerror="this.src='${coach.image}';" />
 					<div class="text d-flex flex-column gap-1 p-2">
 						<h3>${coach.work_experience_years}</h3>
 						<p>عام من الخبرات</p>
@@ -204,7 +204,7 @@ async function fetchSingleCoach() {
 			`
 			<div class="achievements-cards p-4 mt-5">
 				<div class="box d-flex align-items-center gap-1">
-					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" loading="lazy"/>
+					<img width="130px" src="assets/img/experience-icon-1.jpg" alt="EXP" loading="lazy" onerror="this.src='${coach.image}';"/>
 					<div class="text d-flex flex-column gap-1 p-2">
 						<h3>${coach.work_experience_years}</h3>
 						<p>Years of Experience</p>
@@ -220,8 +220,13 @@ async function fetchSingleCoach() {
 	coachLocation.innerHTML = `<i class="bi bi-geo-alt"></i> ${coach.country} / ${coach.city}`;
 	// Coach Price
 	let priceUnit = lang == 'en' ? '/hr' : ' / للساعة';
-	coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack"></i> ${coach.pricing_in_egypt}<span>${priceUnit}</span>` :
-	`<i class="bi bi-cash-stack"></i> ${coach.pricing} <span>${priceUnit}</span>`;
+	if(sessionStorage.getItem('sessionPrice')) {
+		coachPrice.innerHTML = sessionStorage.getItem('sessionPrice');
+		theScheduleTag.href = `https://wa.me/201099491090/?text=Hey%20I%20Want%20To%20Book%20${coach.name}%20with%20${sessionStorage.getItem('sessionPrice')}%20per%20hour`;
+	} else {
+		coachPrice.innerHTML = coach.pricing_in_egypt ? `<i class="bi bi-cash-stack"></i> ${coach.pricing_in_egypt} <span>${priceUnit}</span>` :
+		`<i class="bi bi-cash-stack"></i> ${coach.pricing} <span>${priceUnit}</span>`;
+	}
 }
 
 fetchSingleCoach();
@@ -242,7 +247,9 @@ window.onload = () => {
 			}, 800)
 	}, 500)
 }
-
+window.addEventListener('beforeunload', (e) => {
+	sessionStorage.clear();
+});
 // setTimeout(() => {
 // 	const video = document.querySelector('video');
 // 	video.addEventListener('error', () => {

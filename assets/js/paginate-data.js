@@ -21,7 +21,6 @@ const firebaseConfig = {
 	appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
 	measurementId: "G-G8FTTQ0EB2"
 };
-
 const app = initializeApp(firebaseConfig);
 
 const lang = document.querySelector('html').lang;
@@ -111,7 +110,7 @@ const displayNext = async (viewAll = false) => {
 								${/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
 								${/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
 							</div>
-							<button class='profile-btn btn-buy mt-2' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
+							<button class='profile-btn btn-buy mt-2' data-price="${thePrice}" data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
 						</div>
 					</div>
 				</div>
@@ -158,8 +157,9 @@ const viewAll = () => {
 
 seeMoreBtn && seeMoreBtn.addEventListener('click', handleClick);
 
-function viewProfile(documentId, lang, username) {
+function viewProfile(documentId, lang, username, price) {
 	sessionStorage.setItem('selectedCoach', documentId);
+	userCountry !== 'Egypt' && sessionStorage.setItem('sessionPrice', price)
 	sessionStorage.setItem('lang', lang);
 	if(lang == 'en') {
 		window.location.href = `coach-profile.html#${username}`;
@@ -170,21 +170,25 @@ function viewProfile(documentId, lang, username) {
 
 window.onclick = (e) => {
 	if(e.target.matches('.profile-btn')) {
-		viewProfile(e.target.parentElement.dataset.i, lang, e.target.dataset.uname);
+		viewProfile(e.target.parentElement.dataset.i, lang, e.target.dataset.uname, e.target.dataset.price);
 	}
 };
 
 /* Start Filters */
 if(document.body.classList.contains('coaches-html')) {
 	const mainSearch = document.getElementById('main-search');
+	// mainSearch.addEventListener('focus', () => {
+		
+	// })
 
 	// Handle User searching
 	mainSearch.addEventListener('input', () => {
+		console.log(coaches);
 		if(!start) {
 			viewAll();
 			setTimeout(() => {
 				filterResults();
-			}, 500);
+			}, 1000);
 		} else {
 			filterResults();
 		}
@@ -294,8 +298,6 @@ if(document.body.classList.contains('coaches-html')) {
 			} else {
 				theCoachPrice = parseInt(coach.pricing_outside_egypt);
 			}
-			console.log("The Coach Name", coach.name);
-			console.log("The Coach Price", theCoachPrice);
 			// theCoachPrice = parseInt(coach.pricing_in_egypt) || parseInt(coach.pricing);
 			let coachPriceInRange = true;
 			if(minVal <= theCoachPrice && maxVal >= theCoachPrice) {
@@ -383,7 +385,7 @@ if(document.body.classList.contains('coaches-html')) {
 								${/^(https?:\/\/)?(www\.)?youtube.com\/(channel\/[a-zA-Z0-9_\-]+|user\/[a-zA-Z0-9_\-]+)\/?$/.test(coach.youtube_account) ? `<a href="${coach.youtube_account}" target="_blank"><i class="bi bi-youtube"></i></a>`: ``}
 								${/^(https?:\/\/)?(www\.)?tiktok.com\/(@[a-zA-Z0-9.\-_]+|v\/[a-zA-Z0-9.\-_]+|embed\/[a-zA-Z0-9.\-_]+)/.test(coach.tiktok_account) ? `<a href="${coach.tiktok_account}" target="_blank"><i class="bi bi-tiktok"></i></a>`: ``}
 							</div>
-							<button class='profile-btn btn-buy mt-2' data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
+							<button class='profile-btn btn-buy mt-2' data-price=${thePrice} data-uname=${coach.name.trim().replace(/\s+/g, "_").toLowerCase()}>VIEW PROFILE</button>
 						</div>
 					</div>
 				</div>
